@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>reverse on </title>
+    <link>https://vozec.github.io/tags/reverse/</link>
+    <description>Recent content in reverse on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 26 Jun 2022 12:00:00 +0000</lastBuildDate><atom:link href="https://vozec.github.io/tags/reverse/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RustyTheClown | leHack 2022 | Catégorie reverse</title>
+      <link>https://vozec.github.io/writeups/rustytheclown-lehack2022/</link>
+      <pubDate>Sun, 26 Jun 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/rustytheclown-lehack2022/</guid>
+      <description>RustyTheClown 2 | leHack CTF 2022 Fichier(s) RustyTheClown Nécessaires IDA/Ghidra Python3 Flag lh_68eca3c515dbefd71ec8fec3849ba0083af806447d9f9f7cdca2a5cc Solution détaillée Analyse Statique Le challenge est un crackme . On nous demande un mot de passe et celui est modifié puis comparé avant de nous donner ou non le flag .
+Désassemblons le binaire dans IDA :
+Dans void rustyTheClown::main::hecc4c87ee1b9aeab() voici ce qu&amp;rsquo;on trouve d&amp;rsquo;important :
+std::io::stdio::Stdin::read_line::hd0723957e63cf850(); if ( &amp;amp;unk_52408 ) core::ptr::drop_in_place$LT$std..io..error..Error$GT$::h815d6777c4f5f9e1(*((_QWORD *)&amp;amp;dest + 1)); v4 = 0LL; v3 = 1uLL; _$LT$core.</description>
+    </item>
+    
+    <item>
+      <title>Mod ctfauth | Bsidessf 2022 | Catégorie Reverse | [Vozec/FR]</title>
+      <link>https://vozec.github.io/writeups/mod_ctfauth-bsidessf-2022/</link>
+      <pubDate>Fri, 10 Jun 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/mod_ctfauth-bsidessf-2022/</guid>
+      <description>Mod ctfauth | Tjctf 2022 Fichier(s) Challenge files Challenge files Nécessaires Python3 + Ida + Ghidra Flag CTF{http_headers_amiright} Solution détaillée Partie 1: Découverte du challenge Ce challenge mélange un peu de Web et une majorité de reverse. Deux fichiers sont fournis,
+Une configuration apache2 Un fichier .so Le lien d&amp;rsquo;un site web (Hébergé en local pour le writeup) Voici ce que nous avons quand nous nous rendons sur le site :</description>
+    </item>
+    
+    <item>
+      <title>Writeup Herald | Insomnihack 2022 | Catégorie reverse | [Vozec/FR] </title>
+      <link>https://vozec.github.io/writeups/herald-insomnihack-ctf-2022/</link>
+      <pubDate>Sun, 30 Jan 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/herald-insomnihack-ctf-2022/</guid>
+      <description>Fichier(s) Herald.apk Nécessaires Un téléphone Android Apk-signer Apktool Jdax Flag INS{Y0u_Kn0W_aB0uT_Th3_Her4ld_0F_the_G0ds?} Description Our lab administrator has just passed out from a strange virus. Please help us find the password to his messaging app so we can identify what he was working on and save his life. Solution détaillée La première chose que j&amp;rsquo;ai faite et de mettre mon fichier apk dans Jdax pour voir le code source est commencé à reverse :</description>
+    </item>
+    
+    <item>
+      <title>Android CrackMe Native | CyberSpace CTF 2022 | Catégorie Reverse | [Vozec/FR] </title>
+      <link>https://vozec.github.io/writeups/android-crackme-native_cyberspacectf/</link>
+      <pubDate>Tue, 11 Jan 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/android-crackme-native_cyberspacectf/</guid>
+      <description>Fichier(s) Android App Nécessaires Ghidra Python3 Jdax Apktool Flag HL{J4v4.nativ3.d0.n0t.c4r3} Solution détaillée La première chose est de décompiler l&amp;rsquo;apk pour en retrouver le code Java . J&amp;rsquo;ai utilisé Apktool pour extraire le code smali et avoir tous les fichiers natifs :
+apktool d CrackMe.apk Puis j&amp;rsquo;ai passé l&amp;rsquo;apk dans Jadx, un outil très utilisé pour le reverse de code Java :
+J&amp;rsquo;ai installé l&amp;rsquo;apk sur mon appareil après avoir vérifié l&amp;rsquo;absence de virus et voici la page d&amp;rsquo;accueil :</description>
+    </item>
+    
+    <item>
+      <title>Malware Analysis d&#39;une Virus Télégram</title>
+      <link>https://vozec.github.io/posts/analyse-telegram-stealer/</link>
+      <pubDate>Sat, 08 Jan 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/posts/analyse-telegram-stealer/</guid>
+      <description>Introduction Je suis tombé sur ce .exe et j&amp;rsquo;ai décidé de l&amp;rsquo;analyser. Voici le fichier : ici Attention à ne pas l&amp;rsquo;executer !
+Commencement Comme le dernier analyse de malware , j&amp;rsquo;ai regardé sur Dnspy si le code était obfusqué . A notre plus grande surprise il ne l&amp;rsquo;était pas ! Regardons de quoi est composé notre payload :
+La Première chose qui saute aux yeux et que c&amp;rsquo;est un malware !</description>
+    </item>
+    
+    <item>
+      <title>Execution de ShellCode grâce au Dll Hidjacking</title>
+      <link>https://vozec.github.io/posts/pourquoi-vous-devez-securiser-vos-dll-2/</link>
+      <pubDate>Sun, 05 Dec 2021 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/posts/pourquoi-vous-devez-securiser-vos-dll-2/</guid>
+      <description>Introduction Nous avons déjà parlé du DLL Hidjacking dans un article précédent. Nous avions détourné la Bibliothèque LeafXnet.dll. Nous aurions pu utiliser une autre, comme Newtonsoft.Json.dll ou encore Colorful.Console.dll . Voici le résultat que nous avions la dernière fois :
+Nous récupérions juste les requêtes pour les écrire dans un fichier texte.
+Petit Rappel Le Dll Hidjacking consiste à modifier une bibliothèque appelée par un programme et ainsi ajouter du code exécuter.</description>
+    </item>
+    
+    <item>
+      <title>Writeup Crackity | TFC CTF 2021 | Catégorie reverse</title>
+      <link>https://vozec.github.io/writeups/crackity-tfc-ctf-2021/</link>
+      <pubDate>Fri, 03 Dec 2021 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/crackity-tfc-ctf-2021/</guid>
+      <description>Unknown 2 | GrabCon CTF 2021 Fichier(s) Crackity.jar Nécessaires jd-gui Python3 Flag TFCCTF{j4v4_0bfusc4t10n_1s_pr3tty_n0t_pr3tty} Solution détaillée La solution n&amp;rsquo;est pas très longue mais elle permet d&amp;rsquo;introduire le reverse de fichier .jar avec un exemple assez basique.
+Nous avons donc un fichier java à reverse pour trouver le Flag. J&amp;rsquo;ai d&amp;rsquo;abord essayé d&amp;rsquo;exécuter le fichier mais il semble cassé, et je ne peux le lancer.
+root@DESKTOP-HNQJECB: /c ➜ java crackity.jar Error: Could not find or load main class crackity.</description>
+    </item>
+    
+    <item>
+      <title>Malware Analysis d&#39;un Fake Cheat</title>
+      <link>https://vozec.github.io/posts/analyse-fake-cheat-valorant/</link>
+      <pubDate>Thu, 25 Nov 2021 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/posts/analyse-fake-cheat-valorant/</guid>
+      <description>Introduction Je suis tombé sur ce prétendu Cheat Valorant et j&amp;rsquo;ai décidé de l&amp;rsquo;analyser. Voici le fichier : ici Attention à ne pas l&amp;rsquo;exécuter !
+Commencement Après avoir téléchargé le .exe, je lui supprime tout de suite son extension .exe pour éviter de le lancer par erreur en cliquant dessus.
+Je lance DetectItEasy et je me rends compte qu&amp;rsquo;il est compilé en .Net
+Je vais donc utiliser Dnspy pour explorer le code.</description>
+    </item>
+    
+    <item>
+      <title>Comment contourner le SSL Pinning sur android</title>
+      <link>https://vozec.github.io/posts/contourner-le-ssl-pinning-sur-android/</link>
+      <pubDate>Thu, 04 Nov 2021 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/posts/contourner-le-ssl-pinning-sur-android/</guid>
+      <description>Introduction Pour un projet personnel, j&amp;rsquo;ai dû récupérer une requête provenant d&amp;rsquo;une application de mon téléphone. Après de nombreuses recherches j&amp;rsquo;ai trouvé comment faire et j&amp;rsquo;ai compris toutes les méthodes pour y parvenir. La principale difficulté pour récupérer le traffic réseau de votre téléphone est de déchiffrer les requêtes https.
+HttpS , c&amp;rsquo;est quoi ? &amp;ldquo;HyperText Transfer Protocol Secure&amp;rdquo; est un Protocol qui succède à l&amp;rsquo;http . En effet il reprend l&amp;rsquo;http en y rajoutant une couche de chiffrement comme SSL ou TLS .</description>
+    </item>
+    
+    <item>
+      <title>Pourquoi il faut sécuriser vos DLL P1</title>
+      <link>https://vozec.github.io/posts/pourquoi-vous-devez-securiser-vos-dll/</link>
+      <pubDate>Mon, 25 Oct 2021 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/posts/pourquoi-vous-devez-securiser-vos-dll/</guid>
+      <description>Introduction Une DLL (Dynamic Link Library) est une bibliothèque logicielle qui permet le partage, par des programmes, de codes. Pour résumer, c&amp;rsquo;est une bibliothèque avec plusieurs fonctions à l&amp;rsquo;intérieur. C&amp;rsquo;est très utile pour ne pas toujours coder la même chose. On code une fois la DLL et on a plus qu&amp;rsquo;a appelé ses fonctions dans tous ses projets. L&amp;rsquo;avantage du C# est qu&amp;rsquo;il existe un grand nombre de bibliothèques, et la plupart sont Open-Source, sur GitHub principalement</description>
+    </item>
+    
+    <item>
+      <title>Comment Reverse du .Net facilement</title>
+      <link>https://vozec.github.io/posts/comment-reverse-du-.net-facilement/</link>
+      <pubDate>Sun, 24 Oct 2021 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/posts/comment-reverse-du-.net-facilement/</guid>
+      <description>[//]: &amp;lt;&amp;gt; (Created By Vozec 23/10/2021) Nécessaires Ce pack complet pour l&amp;rsquo;obfuscation C# Introduction .Net est un langage assez facile à reverse en général. Grâce à de simples outils comme JetBrain Dotpeek , DnSpy ou Ilspy , on peut facilement débugger , éditer , patcher un assembly sans soucis . La principale difficulté et la multitude de protection qui existe autour du Framework de Microsoft (.Net Framework/Core). Nous allons donc voir quelles sont les principales sécurités et comment les contourner.</description>
+    </item>
+    
+    <item>
+      <title>Writeup Unknown 2 | GrabCon 2021 | Catégorie reverse</title>
+      <link>https://vozec.github.io/writeups/unknown2-grabcon-ctf-2021/</link>
+      <pubDate>Sun, 17 Oct 2021 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/unknown2-grabcon-ctf-2021/</guid>
+      <description>Unknown 2 | GrabCon CTF 2021 Fichier(s) Unknow_2 Nécessaires Ghidra + Kali
+Flag GrabCON{626C61636B647261676F6E} Solution détaillée La première chose que j’ai fait et de faire un ltrace mais cela n’a rien donné
+J’ai donc fait : strings med_re_2 et en cherchant un petit peu j’ai trouvé ceci :
+Si vous ne connaissez pas,UPX est un packer qui ici compresse le binaire . Nativement, le fichier ne peut pas être analysé avec ghidra .</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>aes on </title>
+    <link>https://vozec.github.io/tags/aes/</link>
+    <description>Recent content in aes on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 07 May 2023 12:00:00 +0000</lastBuildDate><atom:link href="https://vozec.github.io/tags/aes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Like a Whispering Entropy | PWNME CTF 2023</title>
+      <link>https://vozec.github.io/writeups/like_a_whispering_entropy-pwnme-2023/</link>
+      <pubDate>Sun, 07 May 2023 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/like_a_whispering_entropy-pwnme-2023/</guid>
+      <description>Introduction du challenge: I don&amp;#39;t trust those who wrote crypto implementations, so I had to write my own ...I created everything from scratch so I know it is safe ! No one backdoored my Diffie-Hellman implementation !Btw, I gave you an output of a connection to my service, but anyway you won&amp;#39;t be able to get back the secret message Like a Whispering Entropy Avec le challenge sont fournis 2 fichiers :</description>
+    </item>
+    
+  </channel>
+</rss>

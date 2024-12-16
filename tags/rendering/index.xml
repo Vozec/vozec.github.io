@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rendering on </title>
+    <link>https://vozec.github.io/tags/rendering/</link>
+    <description>Recent content in rendering on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 28 Apr 2023 12:00:00 +0000</lastBuildDate><atom:link href="https://vozec.github.io/tags/rendering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Peculiar Caterpillar | FCSC 2023</title>
+      <link>https://vozec.github.io/writeups/peculiar-caterpillar/</link>
+      <pubDate>Fri, 28 Apr 2023 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/peculiar-caterpillar/</guid>
+      <description>Introduction Alors qu&amp;#39;elle se promenait au Pays des merveilles, Alice tomba sur une chenille étrange. À sa grande surprise, cette dernière se vantait d&amp;#39;avoir construit son propre site web en utilisant Javascript. Bien que le site semblait simple, Alice ne pouvait s&amp;#39;empêcher de se demander s&amp;#39;il était vraiment sécurisé. Les sources de ce challenge sont fournies :
+public ├── docker-compose.yml ├── Dockerfile └── src ├── index.js ├── package.json ├── views │└── index.</description>
+    </item>
+    
+  </channel>
+</rss>

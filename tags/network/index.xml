@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>network on </title>
+    <link>https://vozec.github.io/tags/network/</link>
+    <description>Recent content in network on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 04 Jul 2022 12:00:00 +0000</lastBuildDate><atom:link href="https://vozec.github.io/tags/network/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Writeup All Reverse Challenges CTF 2022 | PwnMe 2022 Edition</title>
+      <link>https://vozec.github.io/writeups/reverse-challenge-ctf-pwnme2022/</link>
+      <pubDate>Mon, 04 Jul 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/reverse-challenge-ctf-pwnme2022/</guid>
+      <description>Description Le CTF propose 5 Challenges de reverse :
+2 de Bryton#2690 1 de express#7904 1 de kostadin#0792 Prérequis IDA Connaissances basiques de CTF It&amp;rsquo;s easy Nom : It&amp;rsquo;s easy Point : 50 Description : Can you find the secret in this binary ? File : ez Solution : On peut regarder les strings présentes dans le binaire :
+[writeup/file]$ rabin2 -z ez [Strings] nth paddr vaddr len size section type string ――――――――――――――――――――――――――――――――――――――――――――――――――――――― 0 0x00002008 0x00002008 37 38 .</description>
+    </item>
+    
+    <item>
+      <title>Intrinsec CTF 2022 | leHack 2022 Edition</title>
+      <link>https://vozec.github.io/writeups/intrinsec-ctf-lehack2022/</link>
+      <pubDate>Thu, 30 Jun 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/intrinsec-ctf-lehack2022/</guid>
+      <description>Description Ce CTF est proposé par Intrinsec , crée par Th1b4ud et est constitué de 12 Challenges. On évolue tout au long des objectifs dans un réseau afin de compromettre toutes les machines les unes après les autres.
+Thèmes Web Pivoting Blockchain (SmartContract) Forensic Prérequis Du temps Un vps de préférence Connaissance basique de CTF *J&amp;rsquo;ai appris beaucoup de choses pendant la compétition et c&amp;rsquo;est assez facile à comprendre en faisant les challenges en parallèles.</description>
+    </item>
+    
+  </channel>
+</rss>

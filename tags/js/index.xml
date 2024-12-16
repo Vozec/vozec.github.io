@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>js on </title>
+    <link>https://vozec.github.io/tags/js/</link>
+    <description>Recent content in js on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 06 May 2023 12:00:00 +0000</lastBuildDate><atom:link href="https://vozec.github.io/tags/js/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Beat me! | PWNME CTF 2023</title>
+      <link>https://vozec.github.io/writeups/beat_me-pwnme-2023/</link>
+      <pubDate>Sat, 06 May 2023 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/beat_me-pwnme-2023/</guid>
+      <description>Introduction du challenge : A pro player challenge you to a new game. He spent a huge amount of time on it, and did an extremely good score.Your goal is to beat him.. by any wayIf the game doesn&amp;#39;t start, try an other nagivator Tree Viewer Les sources de ce challenge ne sont pas fournies. A première vue, ce challenge est un jeu ou nous devons battre l&amp;rsquo;utilisateur Eteck.</description>
+    </item>
+    
+  </channel>
+</rss>

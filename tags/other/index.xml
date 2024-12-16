@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>other on </title>
+    <link>https://vozec.github.io/tags/other/</link>
+    <description>Recent content in other on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 20 Dec 2022 12:00:00 +0000</lastBuildDate><atom:link href="https://vozec.github.io/tags/other/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Feal &amp; it&#39;s variants</title>
+      <link>https://vozec.github.io/other/feal-cipher/</link>
+      <pubDate>Tue, 20 Dec 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/other/feal-cipher/</guid>
+      <description>Introduction Feal est un algorithme de chiffrement présenté dans la fin des année 80 par Akihiro Shimizu et Shoji Miyaguchi. C&amp;rsquo;est un chiffrement par bloc qui à concurrencé le DES et qui est aujourd&amp;rsquo;hui obsolète.
+Feal (Fast Data Encipherment Algorithm) est un chiffrement de type réseau de Feistel. Il a connu plusieurs variations que nous allons voir ici.
+Par la suite , des illustrations seront issue du blog de Jon King</description>
+    </item>
+    
+    <item>
+      <title>Shamir&#39;s Secret Sharing Sheme (SSSS)</title>
+      <link>https://vozec.github.io/other/explanation--attack-on-shamirs-shared-secret/</link>
+      <pubDate>Tue, 20 Dec 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/other/explanation--attack-on-shamirs-shared-secret/</guid>
+      <description>Introduction Adi Shamir , né le 6 juillet 1952 à Tel Aviv, est un mathématicien et un cryptologue israélien reconnu comme l&amp;rsquo;un des experts les plus éminents en cryptanalyse. Il a créé un algorithme de cryptographie utilisant le concept de partage de clé secrète.
+L&amp;rsquo;idée principal de son chiffrement est de partagé la clé de déchiffrement d&amp;rsquo;un algorithme quelconque en plusieurs parties. Seul la réunion de celles-ci conduiront au texte déchiffré.</description>
+    </item>
+    
+  </channel>
+</rss>

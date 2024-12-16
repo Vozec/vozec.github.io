@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>android on </title>
+    <link>https://vozec.github.io/tags/android/</link>
+    <description>Recent content in android on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 11 Jan 2022 12:00:00 +0000</lastBuildDate><atom:link href="https://vozec.github.io/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android CrackMe Native | CyberSpace CTF 2022 | Catégorie Reverse | [Vozec/FR] </title>
+      <link>https://vozec.github.io/writeups/android-crackme-native_cyberspacectf/</link>
+      <pubDate>Tue, 11 Jan 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/android-crackme-native_cyberspacectf/</guid>
+      <description>Fichier(s) Android App Nécessaires Ghidra Python3 Jdax Apktool Flag HL{J4v4.nativ3.d0.n0t.c4r3} Solution détaillée La première chose est de décompiler l&amp;rsquo;apk pour en retrouver le code Java . J&amp;rsquo;ai utilisé Apktool pour extraire le code smali et avoir tous les fichiers natifs :
+apktool d CrackMe.apk Puis j&amp;rsquo;ai passé l&amp;rsquo;apk dans Jadx, un outil très utilisé pour le reverse de code Java :
+J&amp;rsquo;ai installé l&amp;rsquo;apk sur mon appareil après avoir vérifié l&amp;rsquo;absence de virus et voici la page d&amp;rsquo;accueil :</description>
+    </item>
+    
+  </channel>
+</rss>

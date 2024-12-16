@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>php on </title>
+    <link>https://vozec.github.io/tags/php/</link>
+    <description>Recent content in php on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Apr 2024 12:00:00 +0000</lastBuildDate><atom:link href="https://vozec.github.io/tags/php/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pong [EN]| FCSC 2024</title>
+      <link>https://vozec.github.io/writeups/pong-fcsc2024-en/</link>
+      <pubDate>Fri, 12 Apr 2024 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/pong-fcsc2024-en/</guid>
+      <description>Introduction Ping.Note : l&amp;#39;infra n&amp;#39;a pas accès à internet. The sources for this challenge are provided:
+. ├── docker-compose.yml └── src ├── backend │ ├── Dockerfile │ └── src │ ├── app.py │ ├── public │ │ ├── index.html │ │ └── js │ │ └── main.js │ └── requirements.txt ├── dns │ ├── Dockerfile │ └── src │ ├── dns_server.py │ └── requirements.txt ├── flag │ ├── Dockerfile │ └── src │ ├── app.</description>
+    </item>
+    
+    <item>
+      <title>QRDoor Code | PWNME CTF 2023</title>
+      <link>https://vozec.github.io/writeups/qrdoor_code-pwnme-2023/</link>
+      <pubDate>Sat, 06 May 2023 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/qrdoor_code-pwnme-2023/</guid>
+      <description>Introduction du challenge: A company needed a website, to generate QR Code. They asked for a freelance to do this jobSince the website is up, they&amp;#39;ve noticed weird behaviour on their serverThey need you to audit their code and help them to resolve their problemFlag is situed in /app/flag.txt Tree Viewer Les sources de ce challenge sont fournies :
+. ├── docker-compose.yml ├── Dockerfile ├── package.json ├── src │ └── index.</description>
+    </item>
+    
+    <item>
+      <title>Tree Viewer | PWNME CTF 2023</title>
+      <link>https://vozec.github.io/writeups/tree_viewer-pwnme-2023/</link>
+      <pubDate>Sat, 06 May 2023 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/tree_viewer-pwnme-2023/</guid>
+      <description>Introduction du challenge: Here, you can check the content of any directories present on the server.Find a way to abuse this functionality, and read the content of /home/flag.txt Tree Viewer Les sources de ce challenges ne sont pas fournies mais nous avons accès en /?source au code php du backend:
+http://13.37.17.31:51695/?source
+&amp;lt;?php $parsed = isset($_POST[&amp;#39;input&amp;#39;]) ? $_POST[&amp;#39;input&amp;#39;] : &amp;#34;/home/&amp;#34;; preg_match_all(&amp;#39;/[;|]/m&amp;#39;, $parsed, $illegals, PREG_SET_ORDER, 0); if($illegals){ echo &amp;#34;Illegals chars found&amp;#34;; $parsed = &amp;#34;/home/&amp;#34;; } if(isset($_GET[&amp;#39;source&amp;#39;])){ highlight_file(__FILE__); } ?</description>
+    </item>
+    
+  </channel>
+</rss>

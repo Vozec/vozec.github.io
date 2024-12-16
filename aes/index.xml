@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Aes on </title>
+    <link>https://vozec.github.io/aes/</link>
+    <description>Recent content in Aes on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 24 Feb 2023 12:00:00 +0000</lastBuildDate><atom:link href="https://vozec.github.io/aes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cryptanalyse Linéaire d&#39;un AES-128</title>
+      <link>https://vozec.github.io/aes/analyse-lineaire-aes/</link>
+      <pubDate>Fri, 24 Feb 2023 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/aes/analyse-lineaire-aes/</guid>
+      <description>Introduction AES est un chiffrement par bloc basé sur des opérations matricielles élémentaires. Avant de s&amp;rsquo;attaquer à tout ce système, il est important de les avoirs en tête. Voici donc une explication rapide sur le mode de fonctionnement d&amp;rsquo;AES.
+Présentation rapide d&amp;rsquo;AES On souhaite chiffrer un bloc se 16 bytes, la première étape est de l&amp;rsquo;exprimer sous la forme de matrice 4*4:
+$$ \begin{pmatrix} 1 &amp;amp; 2 &amp;amp; 3 &amp;amp; 4 \newline 5 &amp;amp; 6 &amp;amp; 7 &amp;amp; 8 \newline 9 &amp;amp; 10 &amp;amp; 11 &amp;amp; 12 \newline 13 &amp;amp; 14 &amp;amp; 15 &amp;amp; 16 \newline \end{pmatrix} $$ Cette matrice va subir plusieurs modifications.</description>
+    </item>
+    
+    <item>
+      <title>Présentation de l&#39;attaque &#39;Padding Oracle&#39; sur de l&#39;AES ECB</title>
+      <link>https://vozec.github.io/aes/attaque-oracle-padding-aes_ecb/</link>
+      <pubDate>Mon, 19 Sep 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/aes/attaque-oracle-padding-aes_ecb/</guid>
+      <description>Introduction AES (&amp;ldquo;Advanced Encryption Standard&amp;rdquo;) est un chiffrement symétrique par blocs. En effet, il repose sur le chiffrement de données découpées en plusieurs partie. Ainsi il en existe plusieurs modes :
+ECB CBC CFB OFB CTR CTS &amp;hellip; Aujourd’hui, nous allons aborder une attaque présente sur l&amp;rsquo;AES en mode ECB .
+Comprendre le mode ECB Comme présenté avant, ECB est un mode de chiffrement des blocs d’information.
+(ECB pour Electronic Code Book)</description>
+    </item>
+    
+    <item>
+      <title>Présentation de l&#39;attaque &#39;Bit Flipping&#39; sur de l&#39;AES CBC</title>
+      <link>https://vozec.github.io/aes/attaque-bit-flipping-aes_cbc/</link>
+      <pubDate>Wed, 25 May 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/aes/attaque-bit-flipping-aes_cbc/</guid>
+      <description>Introduction AES (&amp;ldquo;Advanced Encryption Standard&amp;rdquo;) est un chiffrement symétrique par blocs. En effet, il repose sur le chiffrement de données découpées en plusieurs partie. Ainsi il en existe plusieurs modes :
+ECB CBC CFB OFB CTR CTS &amp;hellip; Aujourd&amp;rsquo;hui , nous allons voir une attaque présente sur l&amp;rsquo;AES en mode CBC .
+Comprendre le mode CBC Comme présenté avant, CBC est un mode de chiffrement d&amp;rsquo;AES . CBC pour Chain By Chain Tout son fonctionnement peut être résumé dans le schéma suivant:</description>
+    </item>
+    
+  </channel>
+</rss>

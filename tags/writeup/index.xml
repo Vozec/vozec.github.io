@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>writeup on </title>
+    <link>https://vozec.github.io/tags/writeup/</link>
+    <description>Recent content in writeup on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Jan 2024 12:00:00 +0000</lastBuildDate><atom:link href="https://vozec.github.io/tags/writeup/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ChatterBox | RealWorld CTF 6th</title>
+      <link>https://vozec.github.io/writeups/chatterbox-realworld-ctf-2024/</link>
+      <pubDate>Sun, 28 Jan 2024 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/chatterbox-realworld-ctf-2024/</guid>
+      <description>Fichiers: ChatterBox_source.zip Description: I wanna inject sth in my Box what should i do？ nc &amp;lt;ip&amp;gt; 9999
+Solution détaillée: Voici les fichiers fournis par l&amp;rsquo;auteur:
+$ tree . . ├── ChatterBox-0.0.1-SNAPSHOT.jar ├── docker-compose.yml ├── Dockerfile ├── flag ├── init.sql ├── readflag └── start.sh En regardant rapidement le Dockerfile, on comprend que le flag est copié dans /flag et que le binaire /readflag va nous permettre de le lire. Un serveur web est unfichier jar et nous allons devoir l&amp;rsquo;exploiter pour avoir une execution de commande sur le serveur.</description>
+    </item>
+    
+    <item>
+      <title>Writeup 5Ways2XSS - DOJO #23 | YesWeHack</title>
+      <link>https://vozec.github.io/writeups/yeswehack_dojo_23/</link>
+      <pubDate>Mon, 15 May 2023 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/yeswehack_dojo_23/</guid>
+      <description>/Hint Concentrez-vous sur une section XSS à la fois pour éviter les maux de tête ! 😉
+Aussi&amp;hellip; les barres obliques (/) sont votre meilleur ami, qui a même besoin d&amp;rsquo;espaces de nos jours&amp;hellip; ?
+/ Rules Une solution valable doit répondre à toutes ces exigences :
+(1) XSS classique par l&amp;rsquo;utilisation de balises HTML (2) XSS en restant à l&amp;rsquo;intérieur des balises originales &amp;lt;script&amp;gt;. (3) XSS à l&amp;rsquo;intérieur de la valeur &amp;lsquo;src&amp;rsquo; (Ne pas sortir des guillemets) (4) XSS à l&amp;rsquo;intérieur de la balise &amp;lsquo;&amp;rsquo; (Ne créez pas une nouvelle balise HTML ou ne brisez pas la balise originale) (5) Exécuter une DOM XSS en restant à l&amp;rsquo;intérieur de la valeur d&amp;rsquo;entrée (Ne pas sortir des guillemets) /GOAL Suivre les règles et écrire une charge utile XSS unique qui s&amp;rsquo;exécute sur les cinq entrées différentes ($xss)</description>
+    </item>
+    
+    <item>
+      <title>Oracle Tranquille 1&amp;2 | hackademint CTF 2022 | Catégorie Crypto | [Vozec/FR]</title>
+      <link>https://vozec.github.io/writeups/oracle-rsa-hackademint/</link>
+      <pubDate>Mon, 19 Sep 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/oracle-rsa-hackademint/</guid>
+      <description>Oracle Tranquille 1&amp;amp;2 | Hackademint 2022 Nécessaires Python3 + Pwntools Descriptions : Challenge 1 : Nous avons trouvé un étrange service ouvert sur un de nos services hier. Complot des Illuminati? Prise de pouvoir des machines ? Opération marketing pour la sortie du prochain album de Justin Bieber ? Simple Oracle de déchiffrement RSA? Difficile de trancher. Pourriez-vous y jeter un coup d&amp;#39;œil? Challenge 2 : Le serveur semble avoir évolué depuis votre dernière enquête !</description>
+    </item>
+    
+    <item>
+      <title>Mod ctfauth | Bsidessf 2022 | Catégorie Reverse | [Vozec/FR]</title>
+      <link>https://vozec.github.io/writeups/mod_ctfauth-bsidessf-2022/</link>
+      <pubDate>Fri, 10 Jun 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/mod_ctfauth-bsidessf-2022/</guid>
+      <description>Mod ctfauth | Tjctf 2022 Fichier(s) Challenge files Challenge files Nécessaires Python3 + Ida + Ghidra Flag CTF{http_headers_amiright} Solution détaillée Partie 1: Découverte du challenge Ce challenge mélange un peu de Web et une majorité de reverse. Deux fichiers sont fournis,
+Une configuration apache2 Un fichier .so Le lien d&amp;rsquo;un site web (Hébergé en local pour le writeup) Voici ce que nous avons quand nous nous rendons sur le site :</description>
+    </item>
+    
+    <item>
+      <title>Eyes Closed | Hackrocks &amp; HackArmour CTF 2022 | Catégorie Pwn | [Vozec/FR] &amp; [Electro/FR]</title>
+      <link>https://vozec.github.io/writeups/eyes_closed-hackarmour-2022/</link>
+      <pubDate>Sun, 22 May 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/eyes_closed-hackarmour-2022/</guid>
+      <description>Eyes Closed | Hackrocks &amp;amp; HackArmour CTF 2022 Necessaires Netcat Python3 (+ pwntool) Flag flag{br0p0p0p0p0_with_f0rm4t_$7ringggg} Solution détaillée Le but du challenge est d&amp;rsquo;exploiter une format string puis d&amp;rsquo;utiliser un buffer overflow pour ainsi construire une ropchain et ainsi pouvoir prendre le contrôle du binaire grâce à une attaque ret2libc.
+Un peu d&amp;rsquo;explication : La méthode finale est la même que dans un de mes précédents article . Ce Writeup va donc se focaliser sur la partie Blind du challenge ainsi que l&amp;rsquo;exploitation des formats strings</description>
+    </item>
+    
+    <item>
+      <title>Factor Master | tjctf 2022 | Catégorie Crypto | [Vozec/FR] &#43; [Eletro/FR] </title>
+      <link>https://vozec.github.io/writeups/factormaster-tjctf-2022/</link>
+      <pubDate>Sun, 15 May 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/factormaster-tjctf-2022/</guid>
+      <description>Factor Master | Tjctf 2022 Fichier(s) Challenge files Necessaires Python3 + Pwntools Flag tjctf{S0_y0u_r34lly_c4n_F4c7t0r_4ny7th1nG_c36f63cfe73c} Solution détaillée Le challenge se décompose en 3 parties : 3 fois le serveur va nous fournir un nombre et nous allons devoir le factoriser en 2 produits de nombres premiers ; à la manière d&amp;rsquo;un chiffrement RSA.
+Commencons directement avec la première étape:
+Etape 1 : def challenge1(): p = getPrime(44) q = getPrime(1024) n = p * q return [p, q], n On remarque tous de suite de p est bien plus petit que q .</description>
+    </item>
+    
+    <item>
+      <title>Vacation2 | Tjctf 2022 | Catégorie Pwn</title>
+      <link>https://vozec.github.io/writeups/vacation2-tjctf-2022/</link>
+      <pubDate>Sun, 15 May 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/vacation2-tjctf-2022/</guid>
+      <description>Vacation2 | Tjctf 2022 Fichier(s) Challenge files Necessaires Netcat Python3 (+ pwntool) Flag tjctf{w3_g0_wher3_w3_w4nt_t0!_66f7020620e343ff} Solution détaillée Le but du challenge est d&amp;rsquo;exploiter un buffer overflow pour ainsi construire une ropchain et ainsi pouvoir prendre le contrôle du binaire grâce à une attaque ret2libc.
+Un peu d&amp;rsquo;explication : Voici la source du challenge :
+#include &amp;lt;stdio.h&amp;gt; #include &amp;lt;stdlib.h&amp;gt; void vacation() { char buf[16]; puts(&amp;#34;Where am I going today?&amp;#34;); fgets(buf, 64, stdin); } void main() { setbuf(stdout, NULL); vacation(); puts(&amp;#34;hmm.</description>
+    </item>
+    
+    <item>
+      <title>Lucky | TamuCtf 2022 | Catégorie Pwn | [Vozec/FR] </title>
+      <link>https://vozec.github.io/writeups/lucky-tamuctf-2022/</link>
+      <pubDate>Tue, 19 Apr 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/lucky-tamuctf-2022/</guid>
+      <description>Fichier(s) Lucky Lucky.c Nécessaires Python3 (+ pwntool) Flag gigem{un1n1t14l1z3d_m3m0ry_15_r4nd0m_r1ght} Solution détaillée Le but du challenge est de sauter dans une fonction Win qui fait pop le flag :
+void win() { char flag[64] = {0}; FILE* f = fopen(&amp;#34;flag.txt&amp;#34;, &amp;#34;r&amp;#34;); fread(flag, 1, sizeof(flag), f); printf(&amp;#34;Nice work! Here&amp;#39;s the flag: %s\n&amp;#34;, flag); } Malheureusement , un ret2win semble difficile à cause de :
+Un fget sécurisé : fgets(buf, sizeof(buf), stdin); La randomisation des adresses grâce à l&amp;rsquo;aslr Regardons le Main : int main() { setvbuf(stdout, NULL, _IONBF, 0); welcome(); srand(seed()); int key0 = rand() == 306291429; int key1 = rand() == 442612432; int key2 = rand() == 110107425; if (key0 &amp;amp;&amp;amp; key1 &amp;amp;&amp;amp; key2) { win(); } else { printf(&amp;#34;Looks like you weren&amp;#39;t lucky enough.</description>
+    </item>
+    
+    <item>
+      <title>Algorithm | DefCamp 2022 | Catégorie Crypto | [Vozec/FR] </title>
+      <link>https://vozec.github.io/writeups/algorithm-defcamp-2022/</link>
+      <pubDate>Sat, 12 Feb 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/algorithm-defcamp-2022/</guid>
+      <description>Fichier(s) Chall.py Flag_enc Nécessaires Python3 Flag CTF{267a4401ea64e7167168969743dcc708399e3823d40e4ae37c78d675e281cb14} Description Hello friends. Just a regular algorithm Flag format: CTF{sha256(message_decrypt)}
+Solution détaillée Dans Flag_enc on retrouve le flag chiffré : 242712673639869973827786401934639193473972235217215301
+Analysons le chiffrement dans chall.py :
+flag = &amp;#39; [test]&amp;#39; hflag = flag.encode(&amp;#39;hex&amp;#39;) iflag = int(hflag[2:], 16) def polinom(n, m): i = 0 z = [] s = 0 while n &amp;gt; 0: if n % 2 != 0: z.append(2 - (n % 4)) else: z.</description>
+    </item>
+    
+    <item>
+      <title>Android CrackMe Native | CyberSpace CTF 2022 | Catégorie Reverse | [Vozec/FR] </title>
+      <link>https://vozec.github.io/writeups/android-crackme-native_cyberspacectf/</link>
+      <pubDate>Tue, 11 Jan 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/android-crackme-native_cyberspacectf/</guid>
+      <description>Fichier(s) Android App Nécessaires Ghidra Python3 Jdax Apktool Flag HL{J4v4.nativ3.d0.n0t.c4r3} Solution détaillée La première chose est de décompiler l&amp;rsquo;apk pour en retrouver le code Java . J&amp;rsquo;ai utilisé Apktool pour extraire le code smali et avoir tous les fichiers natifs :
+apktool d CrackMe.apk Puis j&amp;rsquo;ai passé l&amp;rsquo;apk dans Jadx, un outil très utilisé pour le reverse de code Java :
+J&amp;rsquo;ai installé l&amp;rsquo;apk sur mon appareil après avoir vérifié l&amp;rsquo;absence de virus et voici la page d&amp;rsquo;accueil :</description>
+    </item>
+    
+    <item>
+      <title>TweetyBirb | KillerQueen 2021 | Catégorie Pwn</title>
+      <link>https://vozec.github.io/writeups/tweetybirb-killerqueenctf-2021/</link>
+      <pubDate>Thu, 25 Nov 2021 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/tweetybirb-killerqueenctf-2021/</guid>
+      <description>TweetyBirb | KillerQueen 2021 Fichier(s) Tweetybirb Necessaires Netcat Python3 (+ pwntool) Flag kqctf{tweet_tweet_did_you_leak_or_bruteforce_..._plz_dont_say_you_tried_bruteforce} Solution détaillée Le but du challenge est de contourner une protection anti-smashing du binaire : Canary
+Nous devons d&amp;rsquo;abord voir si un BOF est possible. Ici il n&amp;rsquo;y a que 2 input donc sans grande surprise, on trouve notre point d&amp;rsquo;entré :
+Le but est de faire leak la protection Canary dans le premier input pour ensuite exploiter un Buffer Over Flow dans le second.</description>
+    </item>
+    
+    <item>
+      <title>I want to break free 1/2 | KillerQueen 2021 | Catégorie Pwn</title>
+      <link>https://vozec.github.io/writeups/python-jail-killerqueenctf-2021/</link>
+      <pubDate>Mon, 01 Nov 2021 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/python-jail-killerqueenctf-2021/</guid>
+      <description>I want to break free 1/2 | KillerQueen 2021 Fichier(s) Jail blacklist.txt Necessaires Netcat Python3 Flag kqctf{0h_h0w_1_w4n7_70_br34k_fr33_2398d89vj3nsoicifh3bdoq1b39049v} Solution détaillée Le but du challenge est d&amp;rsquo;escape la jail python pour afficher le contenu d&amp;rsquo;un Fichier txt et d&amp;rsquo;avoir le flag.
+Analyse de Jail.py #!/usr/bin/env python3 def server(): message = &amp;#34;&amp;#34;&amp;#34; You are in jail. Can you escape? &amp;#34;&amp;#34;&amp;#34; print(message) while True: try: data = input(&amp;#34;&amp;gt; &amp;#34;) safe = True for char in data: if not (ord(char)&amp;gt;=33 and ord(char)&amp;lt;=126): safe = False with open(&amp;#34;blacklist.</description>
+    </item>
+    
+  </channel>
+</rss>

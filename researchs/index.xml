@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Researchs on </title>
+    <link>https://vozec.github.io/researchs/</link>
+    <description>Recent content in Researchs on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 04 Sep 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://vozec.github.io/researchs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spip Preauth RCE 2024, my First CVE !</title>
+      <link>https://vozec.github.io/researchs/spip-preauth-rce-2024-big-upload/</link>
+      <pubDate>Wed, 04 Sep 2024 00:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/researchs/spip-preauth-rce-2024-big-upload/</guid>
+      <description>Some Context A month ago, TheLaluka suggested finding his preauth RCE in SPIP as a challenge. The challenge was very nice and I had nothing to do, so I decided to take a look at this CMS.
+He gave us a hint to narrow down the attack surface, as the project is substantial. So, with Worty, we found the vulnerability and won the challenge!
+Above is a screenshot from the barbhack rump we gave to release the yet-another-spip-rce-challenge: the one we&amp;rsquo;re disclosing today</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>web on </title>
+    <link>https://vozec.github.io/tags/web/</link>
+    <description>Recent content in web on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Dec 2024 12:00:00 +0000</lastBuildDate><atom:link href="https://vozec.github.io/tags/web/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>EncoDecept [EN] | HTB University CTF 2024</title>
+      <link>https://vozec.github.io/writeups/encodecept-htb-university-2024/</link>
+      <pubDate>Sun, 15 Dec 2024 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/encodecept-htb-university-2024/</guid>
+      <description>Introduction This challenge is one of the 4 challenges in the WEB category published at the University CTF 2024. It is rated medium despite having the lowest resolution in the category. It is therefore considered the hardest web challenge of this edition.
+Description The Frontier Board’s iron grip on the galaxy rests on one secret: the location of the legendary Starry Spur, hidden deep within their Intergalactic Contract System (ICMS. With rebellion brewing, Jack Colt is humanity’s last hope.</description>
+    </item>
+    
+    <item>
+      <title>ChatterBox | RealWorld CTF 6th</title>
+      <link>https://vozec.github.io/writeups/chatterbox-realworld-ctf-2024/</link>
+      <pubDate>Sun, 28 Jan 2024 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/chatterbox-realworld-ctf-2024/</guid>
+      <description>Fichiers: ChatterBox_source.zip Description: I wanna inject sth in my Box what should i do？ nc &amp;lt;ip&amp;gt; 9999
+Solution détaillée: Voici les fichiers fournis par l&amp;rsquo;auteur:
+$ tree . . ├── ChatterBox-0.0.1-SNAPSHOT.jar ├── docker-compose.yml ├── Dockerfile ├── flag ├── init.sql ├── readflag └── start.sh En regardant rapidement le Dockerfile, on comprend que le flag est copié dans /flag et que le binaire /readflag va nous permettre de le lire. Un serveur web est unfichier jar et nous allons devoir l&amp;rsquo;exploiter pour avoir une execution de commande sur le serveur.</description>
+    </item>
+    
+  </channel>
+</rss>

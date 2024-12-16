@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ssrf on </title>
+    <link>https://vozec.github.io/tags/ssrf/</link>
+    <description>Recent content in ssrf on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 12 Apr 2024 12:00:00 +0000</lastBuildDate><atom:link href="https://vozec.github.io/tags/ssrf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pong [EN]| FCSC 2024</title>
+      <link>https://vozec.github.io/writeups/pong-fcsc2024-en/</link>
+      <pubDate>Fri, 12 Apr 2024 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/pong-fcsc2024-en/</guid>
+      <description>Introduction Ping.Note : l&amp;#39;infra n&amp;#39;a pas accès à internet. The sources for this challenge are provided:
+. ├── docker-compose.yml └── src ├── backend │ ├── Dockerfile │ └── src │ ├── app.py │ ├── public │ │ ├── index.html │ │ └── js │ │ └── main.js │ └── requirements.txt ├── dns │ ├── Dockerfile │ └── src │ ├── dns_server.py │ └── requirements.txt ├── flag │ ├── Dockerfile │ └── src │ ├── app.</description>
+    </item>
+    
+  </channel>
+</rss>

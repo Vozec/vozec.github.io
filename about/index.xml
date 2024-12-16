@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>About on </title>
+    <link>https://vozec.github.io/about/</link>
+    <description>Recent content in About on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="https://vozec.github.io/about/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Homepage</title>
+      <link>https://vozec.github.io/about/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/about/about/</guid>
+      <description>Hello 👋 Welcome to my personal website !
+My name is Arthur, better known under the nickname Vozec and I am passionate about computer science, more precisely about cybersecurity. I learn new things in autodidacts in parallel to my post-baccalaureate studies and this GitHub contains many projects that I did by myself. I participate to many CTF and many of the new tools I create allow me to save time during these competitions.</description>
+    </item>
+    
+  </channel>
+</rss>

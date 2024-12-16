@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>articles on </title>
+    <link>https://vozec.github.io/categories/articles/</link>
+    <description>Recent content in articles on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 15 Dec 2024 12:00:00 +0000</lastBuildDate><atom:link href="https://vozec.github.io/categories/articles/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>EncoDecept [EN] | HTB University CTF 2024</title>
+      <link>https://vozec.github.io/writeups/encodecept-htb-university-2024/</link>
+      <pubDate>Sun, 15 Dec 2024 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/writeups/encodecept-htb-university-2024/</guid>
+      <description>Introduction This challenge is one of the 4 challenges in the WEB category published at the University CTF 2024. It is rated medium despite having the lowest resolution in the category. It is therefore considered the hardest web challenge of this edition.
+Description The Frontier Board’s iron grip on the galaxy rests on one secret: the location of the legendary Starry Spur, hidden deep within their Intergalactic Contract System (ICMS. With rebellion brewing, Jack Colt is humanity’s last hope.</description>
+    </item>
+    
+    <item>
+      <title>Introduction aux réseaux euclidiens</title>
+      <link>https://vozec.github.io/other/lattice-introduction/</link>
+      <pubDate>Sun, 30 Jul 2023 09:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/other/lattice-introduction/</guid>
+      <description>Introduction Les réseaux euclidiens (Lattice en anglais) jouent un rôle essentiel en cryptographie moderne.
+Dans cet article, nous allons explorer l&amp;rsquo;historique des réseaux euclidiens en cryptographie, leur utilisation dans les systèmes de chiffrement, ainsi que les problèmes mathématiques auxquels ils sont confrontés.
+Nous nous concentrerons en particulier sur le Closest Vector Problem (CVP) et le Small Vector Problem (SVP), qui sont des problèmes centraux dans ce domaine.
+Petit point Historique L&amp;rsquo;étude des réseaux euclidiens en mathématiques remonte au XVIIIe siècle, lorsque Leonhard Euler a commencé à examiner les structures géométriques des points dans l&amp;rsquo;espace.</description>
+    </item>
+    
+    <item>
+      <title>From ECC to Diffie-Hellman</title>
+      <link>https://vozec.github.io/other/ecc-diffie-hellman/</link>
+      <pubDate>Fri, 14 Apr 2023 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/other/ecc-diffie-hellman/</guid>
+      <description>Introduction L&amp;rsquo;échange de clé de Diffie-Hellman est une méthode pour partager un secret entre 2 individus de manière sécurisé, même si leurs transmissions sont sur écoute.
+Présentation des courbes elliptiques : Avant de s&amp;rsquo;attaquer à la partie cryptographique, il est nécessaire de comprendre le fonctionnement global des courbes elliptiques.
+Une courbe elliptique est un ensemble de points $(x,y)$ vérifiant une équation du type: $y^2=x^3+ax+b$, autrement dit , on définit une courbe elliptique comme :</description>
+    </item>
+    
+    <item>
+      <title>Cryptanalyse Linéaire d&#39;un AES-128</title>
+      <link>https://vozec.github.io/aes/analyse-lineaire-aes/</link>
+      <pubDate>Fri, 24 Feb 2023 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/aes/analyse-lineaire-aes/</guid>
+      <description>Introduction AES est un chiffrement par bloc basé sur des opérations matricielles élémentaires. Avant de s&amp;rsquo;attaquer à tout ce système, il est important de les avoirs en tête. Voici donc une explication rapide sur le mode de fonctionnement d&amp;rsquo;AES.
+Présentation rapide d&amp;rsquo;AES On souhaite chiffrer un bloc se 16 bytes, la première étape est de l&amp;rsquo;exprimer sous la forme de matrice 4*4:
+$$ \begin{pmatrix} 1 &amp;amp; 2 &amp;amp; 3 &amp;amp; 4 \newline 5 &amp;amp; 6 &amp;amp; 7 &amp;amp; 8 \newline 9 &amp;amp; 10 &amp;amp; 11 &amp;amp; 12 \newline 13 &amp;amp; 14 &amp;amp; 15 &amp;amp; 16 \newline \end{pmatrix} $$ Cette matrice va subir plusieurs modifications.</description>
+    </item>
+    
+    <item>
+      <title>Présentation de l&#39;attaque &#39;Padding Oracle&#39; sur de l&#39;AES ECB</title>
+      <link>https://vozec.github.io/aes/attaque-oracle-padding-aes_ecb/</link>
+      <pubDate>Mon, 19 Sep 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/aes/attaque-oracle-padding-aes_ecb/</guid>
+      <description>Introduction AES (&amp;ldquo;Advanced Encryption Standard&amp;rdquo;) est un chiffrement symétrique par blocs. En effet, il repose sur le chiffrement de données découpées en plusieurs partie. Ainsi il en existe plusieurs modes :
+ECB CBC CFB OFB CTR CTS &amp;hellip; Aujourd’hui, nous allons aborder une attaque présente sur l&amp;rsquo;AES en mode ECB .
+Comprendre le mode ECB Comme présenté avant, ECB est un mode de chiffrement des blocs d’information.
+(ECB pour Electronic Code Book)</description>
+    </item>
+    
+    <item>
+      <title>Lutter contre la triche en CTF ?</title>
+      <link>https://vozec.github.io/posts/anti-cheat-ctf/</link>
+      <pubDate>Tue, 23 Aug 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/posts/anti-cheat-ctf/</guid>
+      <description>Introduction Dans cet article, je vais présenter les différentes possibilités pour empêcher la triche en compétition, notamment sur des CTF basés sur CTFd. Je précise que ces techniques permettent de mettre en avant les comptes suspects. Il y a plusieurs façons de repérer les tricheurs en suivant ces critères, et inversement, il y a malheureusement plusieurs façons de contourner ces protections. Tout ce que je vais expliquer ici sert donc à mettre en avant un compte ou une équipe afin que des admins procèdent à une vérification manuelle et agissent en conséquence.</description>
+    </item>
+    
+    <item>
+      <title>Présentation de l&#39;attaque &#39;Bit Flipping&#39; sur de l&#39;AES CBC</title>
+      <link>https://vozec.github.io/aes/attaque-bit-flipping-aes_cbc/</link>
+      <pubDate>Wed, 25 May 2022 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/aes/attaque-bit-flipping-aes_cbc/</guid>
+      <description>Introduction AES (&amp;ldquo;Advanced Encryption Standard&amp;rdquo;) est un chiffrement symétrique par blocs. En effet, il repose sur le chiffrement de données découpées en plusieurs partie. Ainsi il en existe plusieurs modes :
+ECB CBC CFB OFB CTR CTS &amp;hellip; Aujourd&amp;rsquo;hui , nous allons voir une attaque présente sur l&amp;rsquo;AES en mode CBC .
+Comprendre le mode CBC Comme présenté avant, CBC est un mode de chiffrement d&amp;rsquo;AES . CBC pour Chain By Chain Tout son fonctionnement peut être résumé dans le schéma suivant:</description>
+    </item>
+    
+    <item>
+      <title>Execution de ShellCode grâce au Dll Hidjacking</title>
+      <link>https://vozec.github.io/posts/pourquoi-vous-devez-securiser-vos-dll-2/</link>
+      <pubDate>Sun, 05 Dec 2021 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/posts/pourquoi-vous-devez-securiser-vos-dll-2/</guid>
+      <description>Introduction Nous avons déjà parlé du DLL Hidjacking dans un article précédent. Nous avions détourné la Bibliothèque LeafXnet.dll. Nous aurions pu utiliser une autre, comme Newtonsoft.Json.dll ou encore Colorful.Console.dll . Voici le résultat que nous avions la dernière fois :
+Nous récupérions juste les requêtes pour les écrire dans un fichier texte.
+Petit Rappel Le Dll Hidjacking consiste à modifier une bibliothèque appelée par un programme et ainsi ajouter du code exécuter.</description>
+    </item>
+    
+    <item>
+      <title>Comment contourner le SSL Pinning sur android</title>
+      <link>https://vozec.github.io/posts/contourner-le-ssl-pinning-sur-android/</link>
+      <pubDate>Thu, 04 Nov 2021 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/posts/contourner-le-ssl-pinning-sur-android/</guid>
+      <description>Introduction Pour un projet personnel, j&amp;rsquo;ai dû récupérer une requête provenant d&amp;rsquo;une application de mon téléphone. Après de nombreuses recherches j&amp;rsquo;ai trouvé comment faire et j&amp;rsquo;ai compris toutes les méthodes pour y parvenir. La principale difficulté pour récupérer le traffic réseau de votre téléphone est de déchiffrer les requêtes https.
+HttpS , c&amp;rsquo;est quoi ? &amp;ldquo;HyperText Transfer Protocol Secure&amp;rdquo; est un Protocol qui succède à l&amp;rsquo;http . En effet il reprend l&amp;rsquo;http en y rajoutant une couche de chiffrement comme SSL ou TLS .</description>
+    </item>
+    
+    <item>
+      <title>Comment utiliser l&#39;OCR pour résoudre des captchas</title>
+      <link>https://vozec.github.io/posts/les-captchas-sont-inutiles-part3/</link>
+      <pubDate>Fri, 29 Oct 2021 08:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/posts/les-captchas-sont-inutiles-part3/</guid>
+      <description>Introduction Dans des articles précédent, nous avons vu comment bypass 2 types de catpcha . Nous allons voir comment bypass d&amp;rsquo;une autre manière ces captchas grâce à l&amp;rsquo;OCR
+HCaptha Hcaptcha est un concurrent à google de plus en plus connu :
+Il existe deux manières de le contourner :
+Avec un script JS Avec ce lien : https://dashboard.hcaptcha.com/signup?type=accessibility En effet , on peut recevoir un cookie par mail qui bypass tous les captcha !</description>
+    </item>
+    
+    <item>
+      <title>Comment Isoler un Recaptcha</title>
+      <link>https://vozec.github.io/posts/les-captchas-sont-inutiles-part2/</link>
+      <pubDate>Thu, 28 Oct 2021 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/posts/les-captchas-sont-inutiles-part2/</guid>
+      <description>Introduction Nous avons vu dans un précédent comment bypass les reCAPTCHA Silencieux, ceux en arrière-plan. Mais comment faire quand ces captchas nécessitent une interaction humaine ?
+Le problème Dans un captcha silencieux, il n&amp;rsquo;y pas d&amp;rsquo;interactions entre l&amp;rsquo;utilisateur et le captcha. On peut donc le contourner en simulant des actions identiques au script natif. En revanche dans un captcha visible, les choses changent &amp;hellip;
+Le payload généré et envoyé dépend des images cliquées.</description>
+    </item>
+    
+    <item>
+      <title>Comment Bypass un Silent Recaptcha V3</title>
+      <link>https://vozec.github.io/posts/les-captchas-sont-inutiles-part1/</link>
+      <pubDate>Wed, 27 Oct 2021 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/posts/les-captchas-sont-inutiles-part1/</guid>
+      <description>Introduction Les Captchas sont des petits programmes web qui servent à déterminer si leur interlocuteur est un humain ou un robot. Ce n&amp;rsquo;est généralement pas dérangeant pour les gens normaux mais cela devient ennuyeux pour les développeur qui souhaitent faire du scraping web ou juste se connecter à un service depuis le site-Web. Dans cet article nous allons nous concentrer sur les recaptchas de google et particulièrement ceux en mode Silent en version 2</description>
+    </item>
+    
+    <item>
+      <title>Comment casser un mot de passe Wifi</title>
+      <link>https://vozec.github.io/posts/pourquoi-votre-wifi-est-vuln%C3%A9rable/</link>
+      <pubDate>Tue, 26 Oct 2021 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/posts/pourquoi-votre-wifi-est-vuln%C3%A9rable/</guid>
+      <description>Introduction La sécurité WPA2 (Wi-Fi Protected Access Version 2) est la sécurité la plus courante sur votre box internet. Il est pris en charge depuis 2005 sur Windows XP et il est encore utilisé de nos jours. WPA2 reprend la technologie WPA en y rajoutant la norme 802.11 qui assure la prise en charge de nouveaux protocols (ex:CCMP) et qui améliore la sécurité de celui-ci ( AES ).
+Il existe deux types de WPA2 :</description>
+    </item>
+    
+    <item>
+      <title>Pourquoi il faut sécuriser vos DLL P1</title>
+      <link>https://vozec.github.io/posts/pourquoi-vous-devez-securiser-vos-dll/</link>
+      <pubDate>Mon, 25 Oct 2021 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/posts/pourquoi-vous-devez-securiser-vos-dll/</guid>
+      <description>Introduction Une DLL (Dynamic Link Library) est une bibliothèque logicielle qui permet le partage, par des programmes, de codes. Pour résumer, c&amp;rsquo;est une bibliothèque avec plusieurs fonctions à l&amp;rsquo;intérieur. C&amp;rsquo;est très utile pour ne pas toujours coder la même chose. On code une fois la DLL et on a plus qu&amp;rsquo;a appelé ses fonctions dans tous ses projets. L&amp;rsquo;avantage du C# est qu&amp;rsquo;il existe un grand nombre de bibliothèques, et la plupart sont Open-Source, sur GitHub principalement</description>
+    </item>
+    
+    <item>
+      <title>Comment Reverse du .Net facilement</title>
+      <link>https://vozec.github.io/posts/comment-reverse-du-.net-facilement/</link>
+      <pubDate>Sun, 24 Oct 2021 12:00:00 +0000</pubDate>
+      
+      <guid>https://vozec.github.io/posts/comment-reverse-du-.net-facilement/</guid>
+      <description>[//]: &amp;lt;&amp;gt; (Created By Vozec 23/10/2021) Nécessaires Ce pack complet pour l&amp;rsquo;obfuscation C# Introduction .Net est un langage assez facile à reverse en général. Grâce à de simples outils comme JetBrain Dotpeek , DnSpy ou Ilspy , on peut facilement débugger , éditer , patcher un assembly sans soucis . La principale difficulté et la multitude de protection qui existe autour du Framework de Microsoft (.Net Framework/Core). Nous allons donc voir quelles sont les principales sécurités et comment les contourner.</description>
+    </item>
+    
+  </channel>
+</rss>
