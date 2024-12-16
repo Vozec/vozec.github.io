@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rsa on </title>
+    <link>//localhost:1313/tags/rsa/</link>
+    <description>Recent content in Rsa on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 10 Dec 2022 14:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/rsa/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RSA n°10 | Oracle tell me the True</title>
+      <link>//localhost:1313/rsa/rsa-10-oracle-tell-me-the-true/</link>
+      <pubDate>Sat, 10 Dec 2022 14:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-10-oracle-tell-me-the-true/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction-&#34;&gt;Introduction :&lt;/h1&gt;&#xA;&lt;p&gt;Généralement, dans un contexte de CTF , il est possible de tomber sur un oracle de déchiffrement RSA , on nous donne accès :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;à un oracle permettant de déchiffrer des messages sauf le flag chiffré&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;le flag chiffré&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Voici donc plusieurs méthodes pour trouver le flag en clair :&lt;/p&gt;&#xA;&lt;h2 id=&#34;méthode-1&#34;&gt;Méthode 1:&lt;/h2&gt;&#xA;&lt;p&gt;La première méthode est de Factoriser le message $c$ .&#xA;On peut ainsi demander de déchiffrer les facteurs du flag puis re-multiplier les clairs entre eux pour récupérer le message original:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°9 | Breaking Signature Shema</title>
+      <link>//localhost:1313/rsa/rsa-9-breaking-signature-shema/</link>
+      <pubDate>Fri, 09 Dec 2022 14:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-9-breaking-signature-shema/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction-&#34;&gt;Introduction :&lt;/h1&gt;&#xA;&lt;p&gt;Le chiffrement RSA permet l&amp;rsquo;utilisation d&amp;rsquo;un système de signature des messages lors de la transmission de ceux-ci.&lt;br&gt;&#xA;Ainsi, un message chiffré peut être accompagné de sa signature qui atteste de son intégrité au prêt du serveur.&lt;br&gt;&#xA;Voici un message chiffré &amp;amp; signé :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;$&amp;lt;s,c&amp;gt;$&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;fonctionnement-global&#34;&gt;Fonctionnement global.&lt;/h2&gt;&#xA;&lt;p&gt;Le chiffrement RSA se compose :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;un exposant de chiffrement&lt;/li&gt;&#xA;&lt;li&gt;une clé publique&lt;/li&gt;&#xA;&lt;li&gt;une clé privée&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;On va réutiliser les propriétés arithmétiques du chiffrement pour inventer la signature noté $s$ .&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°8 | CopperSmith saves you</title>
+      <link>//localhost:1313/rsa/rsa-8-coppersmith-saves-you/</link>
+      <pubDate>Thu, 08 Dec 2022 14:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-8-coppersmith-saves-you/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction-&#34;&gt;Introduction :&lt;/h1&gt;&#xA;&lt;p&gt;Don Coppersmith est un mathématicien et cryptologue américain né en 1950.&#xA;Il a contribué dans de nombreux domaines de la &lt;code&gt;Cryptographie&lt;/code&gt; et en particulier le chiffrement RSA.&lt;br&gt;&#xA;Il s&amp;rsquo;intéresse particulièrement aux liens possibles entre des &lt;strong&gt;notions d&amp;rsquo;algèbres&lt;/strong&gt; et les mathématiques arithmétiques du chiffrement RSA&lt;/p&gt;&#xA;&lt;h1 id=&#34;papier-de-recherche&#34;&gt;Papier de recherche:&lt;/h1&gt;&#xA;&lt;p&gt;CopperSmith présente un papier de recherche mathématique nommé : &lt;a href=&#34;https://cr.yp.to/bib/2001/coppersmith.pdf&#34; target=&#34;_blank&#34;&gt;&lt;em&gt;Finding Small Solutions to Small Degree Polynomials&lt;/em&gt;&lt;/a&gt;&lt;br&gt;&#xA;Il y explique comment trouver les racines de polynômes à &lt;code&gt;1&lt;/code&gt; et &lt;code&gt;2&lt;/code&gt; variables , modulo un entier &lt;strong&gt;n&lt;/strong&gt;  grâce à la réduction de base via des matrices et l&amp;rsquo;algorithme &lt;code&gt;Lenstra–Lenstra–Lovász&lt;/code&gt; &lt;em&gt;(LLL)&lt;/em&gt;.&#xA;C&amp;rsquo;est racines sont appelées &lt;em&gt;Small Roots&lt;/em&gt; et la technique de Coppersmith a été optimisée par &lt;code&gt;Howgrave-Graham&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°7 | Hey this is Franklin (Reiter)</title>
+      <link>//localhost:1313/rsa/rsa-7-hey-this-is-franklin/</link>
+      <pubDate>Sun, 04 Dec 2022 14:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-7-hey-this-is-franklin/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;L&amp;rsquo;attaque Franklin-Reiter sur le chiffrement RSA requiert d&amp;rsquo;avoir deux messages chiffrés avec une relation linéaire connu entre les deux messages.&lt;/p&gt;&#xA;&lt;h1 id=&#34;contextualisation&#34;&gt;Contextualisation&lt;/h1&gt;&#xA;&lt;p&gt;Exemple :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;$m_1 = 100000000000$&lt;/li&gt;&#xA;&lt;li&gt;$m_2 = 100000000999$&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Ici , si la relation entre les deux messages est linéaire puisque  $m_1 + 999 == m_2$.&#xA;Il est alors possible de retrouver le message à partir de :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;$c_1 = m_1^e \pmod n$&lt;/li&gt;&#xA;&lt;li&gt;$c_2 = m_2^e \pmod n$&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;A l’origine, cet attaque était faisable pour $e=3$ puis elle a était généralisée pour n&amp;rsquo;importe quel $e$ .&lt;br&gt;&#xA;(&lt;em&gt;Plus e est grand, plus l&amp;rsquo;attaque est longue&lt;/em&gt;)&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°6 | Message for all</title>
+      <link>//localhost:1313/rsa/rsa-6-message-for-all/</link>
+      <pubDate>Sat, 03 Dec 2022 14:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-6-message-for-all/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;Il est courant d&amp;rsquo;envoyer le même message à plusieurs personnes et cela pose un gros problème de sécurité pour l&amp;rsquo;intégrité du message si une personne arrive à intercepter plusieurs communications.&lt;br&gt;&#xA;Nous allons ici parler de l&amp;rsquo;&lt;code&gt;attaque Hastads-Broadcast&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;h1 id=&#34;contextualisation&#34;&gt;Contextualisation&lt;/h1&gt;&#xA;&lt;p&gt;On sait qu&amp;rsquo;un message chiffré par &lt;strong&gt;RSA&lt;/strong&gt; est de la forme :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;$c = m^e \pmod n$&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Nous avions vu &lt;a href=&#34;https://vozec.fr/crypto-rsa/rsa-2-first-attacks/&#34; target=&#34;_blank&#34;&gt;ici&lt;/a&gt; que si $m$ était petit, on pouvait déchiffrer le message en appliquant une racine $3^{ième}$ au texte chiffré.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°5 | E takes confidence</title>
+      <link>//localhost:1313/rsa/rsa-5-e-takes-confidence/</link>
+      <pubDate>Wed, 30 Nov 2022 14:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-5-e-takes-confidence/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;Nous allons ici voir &lt;code&gt;3&lt;/code&gt; vulnérabilités sur RSA liées à un mauvais choix de l&amp;rsquo;exposant $e$.&lt;/p&gt;&#xA;&lt;h1 id=&#34;contextualisation&#34;&gt;Contextualisation&lt;/h1&gt;&#xA;&lt;p&gt;On sait que $d$ , clé privée du chiffrement &lt;strong&gt;RSA&lt;/strong&gt; est généré de la sorte:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;$d = e^{-1} \pmod \Phi(n)$&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Par convention, on utilise souvent $e=3$ ou $e=65537$ .&lt;/p&gt;&#xA;&lt;h2 id=&#34;pourquoi-&#34;&gt;Pourquoi ?&lt;/h2&gt;&#xA;&lt;p&gt;Ces nombres présentes plusieurs propriétés intéressante, d&amp;rsquo;abord :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;ils sont &lt;code&gt;premiers&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;ils sont &lt;code&gt;petits&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;C&amp;rsquo;est $2$ premières propriétés sont majeures , elles permettent un temps de calcul raisonnable pour le chiffrement/déchiffrement des messages .&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°4 | Fermat is Watching U</title>
+      <link>//localhost:1313/rsa/rsa-4-fermat-to-the-rescue/</link>
+      <pubDate>Tue, 29 Nov 2022 14:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-4-fermat-to-the-rescue/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;Nous allons ici voir une vulnérabilité sur RSA liée à une mauvaise génération de clé publique.&lt;/p&gt;&#xA;&lt;h1 id=&#34;vulnérabilité-&#34;&gt;Vulnérabilité :&lt;/h1&gt;&#xA;&lt;p&gt;On rappelle que $n$ et généré avec $p$ et $q$ très grands:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;$n = p*q$ .&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;On se place dans un cas idéal ou $p$ et $q$ sont cryptographiques et que donc $n$ n&amp;rsquo;est pas cassable par force brute .&lt;/p&gt;&#xA;&lt;p&gt;La vulnérabilités réside dans le fait que $p$ et $q$ &lt;code&gt;sont très proches&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°3 | Module/Premier commun</title>
+      <link>//localhost:1313/rsa/rsa-3-all-in-common/</link>
+      <pubDate>Tue, 29 Nov 2022 13:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-3-all-in-common/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;Nous allons ici voir &lt;code&gt;2&lt;/code&gt; vulnérabilités sur RSA liés à une mauvaise gestion des clés publiques .&lt;/p&gt;&#xA;&lt;h1 id=&#34;common-modulus-&#34;&gt;Common Modulus .&lt;/h1&gt;&#xA;&lt;p&gt;On suppose le schéma suivant :&lt;/p&gt;&#xA;&lt;p&gt;On dispose de &lt;code&gt;2&lt;/code&gt; chiffrés différents à partir d&amp;rsquo;un même &lt;code&gt;message&lt;/code&gt; et d&amp;rsquo;une clé commune &lt;em&gt;(n)&lt;/em&gt;:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;$c_1 = e_1^{-1} \pmod {\Phi(n)}$&lt;/li&gt;&#xA;&lt;li&gt;$c_2 = e_2^{-1} \pmod {\Phi(n)}$&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Alors &lt;code&gt;si&lt;/code&gt; on a les égalité suivantes, &lt;code&gt;alors&lt;/code&gt; on peut décoder le message $c_1$ &lt;em&gt;( = $c_2$)&lt;/em&gt;:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°2 | Premières attaques</title>
+      <link>//localhost:1313/rsa/rsa-2-first-attacks/</link>
+      <pubDate>Tue, 29 Nov 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-2-first-attacks/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;Nous avons vu précédemment &lt;em&gt;(&lt;a href=&#34;https://vozec.fr/crypto-rsa/rsa-1-basis/&#34; target=&#34;_blank&#34;&gt;ici&lt;/a&gt;)&lt;/em&gt; que le chiffrement RSA reposait sur &lt;code&gt;2&lt;/code&gt; nombres premiers , notés $p$ et $q$.&#xA;Grâce à ces deux nombres cryptographiquement grands, il était ainsi possible de générer une paires de clé $(publique/privée)$ et chiffrer des messages grâce à celle-ci.&lt;/p&gt;&#xA;&lt;p&gt;Nous allons voir ici quelques premières vulnérabilités sur le chiffrement RSA.&lt;/p&gt;&#xA;&lt;h1 id=&#34;1-p-et-q-trop-petits&#34;&gt;1) $P$ et $Q$ trop petits.&lt;/h1&gt;&#xA;&lt;p&gt;On rappelle que la clé privée est :&lt;br&gt;&#xA;$d = e^{-1} \pmod {\Phi(n)}$&lt;br&gt;&#xA;Avec $\Phi(n) = (p-1)(q-1)$&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°1 | Principes Fondamentaux</title>
+      <link>//localhost:1313/rsa/rsa-1-basis/</link>
+      <pubDate>Sat, 26 Nov 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-1-basis/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;Le chiffrement RSA est utilisé pour chiffrer des communications, il est aujourd&amp;rsquo;hui souvent utilisé pour les certificats SSL sur internet ou encore les clés de connections via le protocole &lt;strong&gt;ssh&lt;/strong&gt;.&#xA;Il est dit &lt;code&gt;asymétrique&lt;/code&gt; car il fonctionne par paires de clés. Toute la sécurité de ce chiffrement repose sur le fait qu&amp;rsquo;il est aujourd&amp;rsquo;hui infiniment long de factoriser un nombre cryptographique rapidement .&lt;br&gt;&#xA;&lt;em&gt;Ronald Rivest&lt;/em&gt;, &lt;em&gt;Adi Shamir&lt;/em&gt; et &lt;em&gt;Leonard Adleman&lt;/em&gt; ont ainsi crée un chiffrement basé sur l&amp;rsquo;arithmétique modulaire, encore d&amp;rsquo;actualité aujourd&amp;rsquo;hui.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°0 | Bases Mathématiques</title>
+      <link>//localhost:1313/rsa/rsa-0-maths-basis/</link>
+      <pubDate>Fri, 25 Nov 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-0-maths-basis/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Voici les différents théorèmes et application pour comprendre le chiffrement RSA&lt;/p&gt;&#xA;&lt;h2 id=&#34;opération-modulaires&#34;&gt;Opération Modulaires&lt;/h2&gt;&#xA;&lt;p&gt;L&amp;rsquo;opérateur modulo et une opération qui retourne le reste de la division euclidienne d&amp;rsquo;un nombre A par B:&lt;/p&gt;&#xA;&lt;p&gt;$a \equiv r \pmod b$&lt;br&gt;&#xA;$\Rightarrow~\exists&lt;del&gt;k \in N&lt;/del&gt;|~a = b*k + r$&lt;/p&gt;&#xA;&lt;p&gt;Si r = 0 , on dit que &lt;code&gt;n divise a&lt;/code&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;pgcd&#34;&gt;Pgcd&lt;/h2&gt;&#xA;&lt;p&gt;Le &lt;code&gt;PGCD&lt;/code&gt; &lt;em&gt;(ou gcd)&lt;/em&gt; de 2 nombres est le plus grand diviseur commun de ces deux nombres :&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

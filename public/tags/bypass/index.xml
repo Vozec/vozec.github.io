@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bypass on </title>
+    <link>//localhost:1313/tags/bypass/</link>
+    <description>Recent content in Bypass on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 29 Oct 2021 08:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/bypass/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Comment utiliser l&#39;OCR pour résoudre des captchas</title>
+      <link>//localhost:1313/posts/les-captchas-sont-inutiles-part3/</link>
+      <pubDate>Fri, 29 Oct 2021 08:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/les-captchas-sont-inutiles-part3/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Dans des articles précédent, nous avons vu comment bypass 2 types de catpcha .&#xA;Nous allons voir comment bypass d&amp;rsquo;une autre manière ces captchas grâce à l&amp;rsquo;OCR&lt;/p&gt;&#xA;&lt;h1 id=&#34;hcaptha&#34;&gt;HCaptha&lt;/h1&gt;&#xA;&lt;p&gt;Hcaptcha est un concurrent à google de plus en plus connu :&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;./img/hcaptcha.png&#34; alt=&#34;Alt text&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Il existe deux manières de le contourner :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Avec un script JS&lt;/li&gt;&#xA;&lt;li&gt;Avec ce lien : &lt;a href=&#34;https://dashboard.hcaptcha.com/signup?type=accessibility&#34; target=&#34;_blank&#34;&gt;https://dashboard.hcaptcha.com/signup?type=accessibility&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;En effet , on peut recevoir un cookie par mail qui bypass tous les captcha !&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Comment Isoler un Recaptcha</title>
+      <link>//localhost:1313/posts/les-captchas-sont-inutiles-part2/</link>
+      <pubDate>Thu, 28 Oct 2021 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/les-captchas-sont-inutiles-part2/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Nous avons vu dans un précédent comment bypass les reCAPTCHA Silencieux, ceux en arrière-plan.&#xA;Mais comment faire quand ces captchas nécessitent une interaction humaine ?&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;./img/robot.png&#34; alt=&#34;Alt text&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;le-problème&#34;&gt;Le problème&lt;/h2&gt;&#xA;&lt;p&gt;Dans un captcha silencieux, il n&amp;rsquo;y pas d&amp;rsquo;interactions entre l&amp;rsquo;utilisateur et le captcha. On peut donc le contourner en simulant des actions identiques au script natif.&#xA;En revanche dans un captcha visible, les choses changent &amp;hellip;&lt;br&gt;&#xA;Le payload généré et envoyé dépend des images cliquées. On ne peut donc pas générer une template de post-data comme précédemment. (Voir &lt;a href=&#34;http://vozec.fr/articles/les-captchas-sont-inutiles-part1&#34; target=&#34;_blank&#34;&gt;ici&lt;/a&gt;)&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Comment Bypass un Silent Recaptcha V3</title>
+      <link>//localhost:1313/posts/les-captchas-sont-inutiles-part1/</link>
+      <pubDate>Wed, 27 Oct 2021 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/les-captchas-sont-inutiles-part1/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Les Captchas sont des petits programmes web qui servent à déterminer si leur interlocuteur est un humain ou un robot. Ce n&amp;rsquo;est généralement pas dérangeant pour les gens normaux mais cela devient ennuyeux pour les développeur qui souhaitent faire du scraping web ou juste se connecter à un service depuis le site-Web.&#xA;Dans cet article nous allons nous concentrer sur les recaptchas de google et particulièrement ceux en mode &lt;strong&gt;Silent&lt;/strong&gt; en version 2&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

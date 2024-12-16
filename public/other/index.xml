@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Other on </title>
+    <link>//localhost:1313/other/</link>
+    <description>Recent content in Other on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 30 Jul 2023 09:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/other/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction aux réseaux euclidiens</title>
+      <link>//localhost:1313/other/lattice-introduction/</link>
+      <pubDate>Sun, 30 Jul 2023 09:00:00 +0000</pubDate>
+      <guid>//localhost:1313/other/lattice-introduction/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Les &lt;strong&gt;réseaux euclidiens&lt;/strong&gt; &lt;em&gt;(Lattice en anglais)&lt;/em&gt; jouent un rôle &lt;strong&gt;essentiel&lt;/strong&gt; en cryptographie moderne.&lt;br&gt;&#xA;Dans cet article, nous allons explorer l&amp;rsquo;historique des réseaux euclidiens en cryptographie, leur utilisation dans les systèmes de chiffrement, ainsi que les problèmes mathématiques auxquels ils sont confrontés.&lt;br&gt;&#xA;Nous nous concentrerons en particulier sur le &lt;code&gt;Closest Vector Problem&lt;/code&gt; &lt;em&gt;(CVP)&lt;/em&gt; et le &lt;code&gt;Small Vector Problem&lt;/code&gt; &lt;em&gt;(SVP)&lt;/em&gt;, qui sont des problèmes centraux dans ce domaine.&lt;/p&gt;&#xA;&lt;h2 id=&#34;petit-point-historique&#34;&gt;Petit point Historique&lt;/h2&gt;&#xA;&lt;p&gt;L&amp;rsquo;étude des réseaux euclidiens en mathématiques remonte au &lt;em&gt;XVIIIe&lt;/em&gt; siècle, lorsque Leonhard Euler a commencé à examiner les structures géométriques des points dans l&amp;rsquo;espace.&lt;br&gt;&#xA;Cependant, ce n&amp;rsquo;est qu&amp;rsquo;au &lt;em&gt;XXe&lt;/em&gt; siècle que le concept de réseaux euclidiens a été appliqué à la cryptographie.&lt;br&gt;&#xA;Dans les années &lt;em&gt;1990&lt;/em&gt;, &lt;strong&gt;Ajtai&lt;/strong&gt;, &lt;strong&gt;Dwork&lt;/strong&gt;, &lt;strong&gt;Regev&lt;/strong&gt; et autres ont introduit la notion de réseaux euclidiens comme base de problèmes difficiles en cryptographie, ouvrant la voie à de nouvelles constructions cryptographiques.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>From ECC to Diffie-Hellman</title>
+      <link>//localhost:1313/other/ecc-diffie-hellman/</link>
+      <pubDate>Fri, 14 Apr 2023 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/other/ecc-diffie-hellman/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;L&amp;rsquo;échange de clé de Diffie-Hellman est une méthode pour partager un secret entre 2 individus de manière sécurisé, même si leurs transmissions sont sur écoute.&lt;/p&gt;&#xA;&lt;h3 id=&#34;présentation-des-courbes-elliptiques-&#34;&gt;Présentation des courbes elliptiques :&lt;/h3&gt;&#xA;&lt;p&gt;Avant de s&amp;rsquo;attaquer à la partie cryptographique, il est nécessaire de comprendre le fonctionnement global des courbes elliptiques.&lt;/p&gt;&#xA;&lt;p&gt;Une courbe elliptique est un ensemble de points $(x,y)$ vérifiant une équation du type: $y^2=x^3+ax+b$, autrement dit , on définit une courbe elliptique comme :&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Feal &amp; it&#39;s variants</title>
+      <link>//localhost:1313/other/feal-cipher/</link>
+      <pubDate>Tue, 20 Dec 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/other/feal-cipher/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Feal&lt;/strong&gt; est un algorithme de chiffrement présenté dans la fin des année 80 par &lt;em&gt;Akihiro Shimizu&lt;/em&gt; et &lt;em&gt;Shoji Miyaguchi&lt;/em&gt;. C&amp;rsquo;est un chiffrement par bloc qui à concurrencé le &lt;strong&gt;DES&lt;/strong&gt; et qui est aujourd&amp;rsquo;hui obsolète.&lt;/p&gt;&#xA;&lt;p&gt;Feal &lt;em&gt;(Fast Data Encipherment Algorithm)&lt;/em&gt; est un chiffrement de type &lt;strong&gt;réseau de Feistel&lt;/strong&gt;. Il a connu plusieurs variations que nous allons voir ici.&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;Par la suite , des illustrations seront issue du blog de &lt;a href=&#34;http://www.theamazingking.com&#34; target=&#34;_blank&#34;&gt;Jon King&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Shamir&#39;s Secret Sharing Sheme (SSSS)</title>
+      <link>//localhost:1313/other/explanation--attack-on-shamirs-shared-secret/</link>
+      <pubDate>Tue, 20 Dec 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/other/explanation--attack-on-shamirs-shared-secret/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://fr.wikipedia.org/wiki/Adi_Shamir&#34; target=&#34;_blank&#34;&gt;Adi Shamir&lt;/a&gt; , né le 6 juillet 1952 à Tel Aviv, est un mathématicien et un cryptologue israélien reconnu comme l&amp;rsquo;un des experts les plus éminents en cryptanalyse. Il a créé un algorithme de cryptographie utilisant le concept de partage de clé secrète.&lt;br&gt;&#xA;L&amp;rsquo;idée principal de son chiffrement est de partagé la clé de déchiffrement d&amp;rsquo;un algorithme quelconque en plusieurs parties. Seul la réunion de celles-ci conduiront au texte déchiffré.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

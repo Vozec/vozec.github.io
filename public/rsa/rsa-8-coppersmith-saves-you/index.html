@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - RSA n°8 | CopperSmith saves you</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;RSA&#32;n°8&#32;|&#32;CopperSmith&#32;saves&#32;you />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;RSA&#32;n°8&#32;|&#32;CopperSmith&#32;saves&#32;you />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;RSA&#32;n°8&#32;|&#32;CopperSmith&#32;saves&#32;you />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;RSA&#32;n°8&#32;|&#32;CopperSmith&#32;saves&#32;you />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Attaques de CopperSmith sur le chiffrement RSA" />
+<meta itemprop="description" content="Attaques de CopperSmith sur le chiffrement RSA" />
+<meta property="og:description" content="Attaques de CopperSmith sur le chiffrement RSA" />
+<meta name="twitter:description" content="Attaques de CopperSmith sur le chiffrement RSA" />
+
+
+<base href="//localhost:1313/rsa/rsa-8-coppersmith-saves-you/" />
+<link rel="canonical" href="//localhost:1313/rsa/rsa-8-coppersmith-saves-you/" itemprop="url" />
+<meta name="url" content="//localhost:1313/rsa/rsa-8-coppersmith-saves-you/" />
+<meta name="twitter:url" content="//localhost:1313/rsa/rsa-8-coppersmith-saves-you/" />
+<meta property="og:url" content="//localhost:1313/rsa/rsa-8-coppersmith-saves-you/" />
+
+
+<meta property="og:updated_time" content="2022-12-08T14:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/rsa/rsa-8-coppersmith-saves-you/">RSA n°8 | CopperSmith saves you</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2022-12-08T14:00:00Z" class="post-date">
+        December 8, 2022
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>4 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-rsa">
+        <a href="//localhost:1313/tags/rsa">rsa</a>
+      </li>
+      
+      <li class="tag-cryptographie">
+        <a href="//localhost:1313/tags/cryptographie">cryptographie</a>
+      </li>
+      
+      <li class="tag-crypto">
+        <a href="//localhost:1313/tags/crypto">crypto</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <hr>
+<h1 id="introduction-">Introduction :</h1>
+<p>Don Coppersmith est un mathématicien et cryptologue américain né en 1950.
+Il a contribué dans de nombreux domaines de la <code>Cryptographie</code> et en particulier le chiffrement RSA.<br>
+Il s&rsquo;intéresse particulièrement aux liens possibles entre des <strong>notions d&rsquo;algèbres</strong> et les mathématiques arithmétiques du chiffrement RSA</p>
+<h1 id="papier-de-recherche">Papier de recherche:</h1>
+<p>CopperSmith présente un papier de recherche mathématique nommé : <a href="https://cr.yp.to/bib/2001/coppersmith.pdf" target="_blank"><em>Finding Small Solutions to Small Degree Polynomials</em></a><br>
+Il y explique comment trouver les racines de polynômes à <code>1</code> et <code>2</code> variables , modulo un entier <strong>n</strong>  grâce à la réduction de base via des matrices et l&rsquo;algorithme <code>Lenstra–Lenstra–Lovász</code> <em>(LLL)</em>.
+C&rsquo;est racines sont appelées <em>Small Roots</em> et la technique de Coppersmith a été optimisée par <code>Howgrave-Graham</code>.</p>
+<h1 id="application-au-rsa">Application au RSA:</h1>
+<h2 id="premier-cas--clair-connu">Premier cas : <em>Clair connu</em></h2>
+<p>On suppose qu&rsquo;on soit en présence d&rsquo;un message chiffré classiquement ainsi qu&rsquo;une partie de texte déchiffré.</p>
+<ul>
+<li>Exemple:
+c = <em>Bonjours , voici votre clé privée : XXXXXX&quot;</em><br>
+Ici <em>&ldquo;Bonjours , voici votre clé privée :&rdquo;</em> est une clair connu et on peut l&rsquo;exploiter pour retrouver le message d&rsquo;origine , complet.</li>
+</ul>
+<h3 id="condition--mise-en-équation-">Condition &amp; Mise en équation :</h3>
+<p>On a d&rsquo;habitude :</p>
+<ul>
+<li>$\begin{cases}
+n = p*q \newline
+c = m^e \pmod n
+\end{cases}$</li>
+</ul>
+<p>Ici , on peut écrire <code>M</code> la partie connu et <code>m</code> la fin du message :</p>
+<ul>
+<li>$\begin{cases}
+n = p*q \newline
+c = (M+m)^e \pmod n
+\end{cases}$</li>
+</ul>
+<h3 id="condition">Condition:</h3>
+<p><em>(Cas e=3)</em> CopperSmith a montré que cette attaque était efficace si :</p>
+<ul>
+<li>$x &lt; \dfrac{1}{2} N^{\dfrac{1}{δ}-e}$<br>
+$\implies x &lt; 0.167$</li>
+</ul>
+<p>On se place ici dans <strong>$Z/nZ$</strong>  , on pose le polynôme <em>(e=3)</em>:</p>
+<ul>
+<li>$f:x \rightarrow (m+x)^e - c$<br>
+$\implies f(x) = x^3+3mx^2+3m^2x+m^3-c$<br>
+$\implies δ=3$</li>
+</ul>
+<p>On cherche $x$ tel que <strong>$f(x) = 0 \pmod n$</strong>.
+Ce $x$ correspond au bits manquants du message, la partie <code>m</code> du message complet.
+Cela est possible grâce à l&rsquo;algorithme LLL de réduction de base.</p>
+<h3 id="résolution-">Résolution :</h3>
+<p>On peut utiliser SageMath qui contient directement <em>Small Roots</em> d&rsquo;implémenté pour résoudre cette équation polynomiale:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">coppersmith</span>(msg,c,n,e,eps<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span><span style="color:#f92672">/</span><span style="color:#ae81ff">20</span>):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_limit</span>(msg):
+</span></span><span style="display:flex;"><span>		spl <span style="color:#f92672">=</span> msg<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>		x <span style="color:#f92672">=</span> max(len(spl[<span style="color:#ae81ff">0</span>]),<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>		x_2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">while</span>(x_2 <span style="color:#f92672">&lt;</span> x):
+</span></span><span style="display:flex;"><span>			x_2 <span style="color:#f92672">*=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>		y <span style="color:#f92672">=</span> max(len(spl[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]),<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> x_2,y
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	a,b <span style="color:#f92672">=</span> get_limit(msg)
+</span></span><span style="display:flex;"><span>	msg <span style="color:#f92672">=</span> int(msg<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;utf-8&#34;</span>)<span style="color:#f92672">.</span>hex(), <span style="color:#ae81ff">16</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	P<span style="color:#f92672">.&lt;</span>x<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> PolynomialRing(Zmod(n))
+</span></span><span style="display:flex;"><span>	f <span style="color:#f92672">=</span> (msg <span style="color:#f92672">+</span> (a<span style="color:#f92672">^</span>b)<span style="color:#f92672">*</span>x)<span style="color:#f92672">^</span>e <span style="color:#f92672">-</span> c
+</span></span><span style="display:flex;"><span>	f <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>monic()
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> f<span style="color:#f92672">.</span>small_roots(epsilon<span style="color:#f92672">=</span>eps)
+</span></span></code></pre></div><ul>
+<li>Exemple:
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>n <span style="color:#f92672">=</span> <span style="color:#ae81ff">805467500635696403604126524373650578882729068725582344971555936471728279008969317394226798274039587275908735628164913963756789131471531490012281262137708844664619411648776174742900969650281132608104486439462068493207388096754400356209191212924158917441463852311090597438686723680422989566039830705971272945580630621308622704812919416445637277433384864510484266136345300166188170847768250622904194100556098235897898548354386415341541887443486684297114240486341073977172459860420916964212739802004276614553755113124726331629822694410052832980560107812738167277181748569891715410067156205497753620739994002924247168259596220654379789860120944816884358006621854492232604827642867109476922149510767118658715534476782931763110787389666428593557178061972898056782926023179701767472969849999844288795597293792471883445525249025377326859655523448211020675915933552601140243332965620235850177872856558184848182439374292376522160931072677877590262080551636962148104050583711183119856867201924407132152091888936970437318064654447142605921825771487108398034919404885812834444299826080204996660391375038388918601615609593999711720104533648851576138805705999947802739408729788376315233147532770988216608571607302006681600662261521288802804512781133</span>
+</span></span><span style="display:flex;"><span>e <span style="color:#f92672">=</span> <span style="color:#ae81ff">5</span>
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> <span style="color:#ae81ff">321344338551168130701947757669249162791535374419225256466002854387287697945811581844875867845545337575193797350159207497966826027124926618458827324785590115214765980153475875175895244152171945352397663605222668892070894285036685408001675776259216704639659684767335997326195127379070104670798191048101430782486785148455557975065509824478935393935463232461294974471055239751453456270779997852527271795223623224696998441762750417393944955667837832299195592347653873362173157136283926817115042942127695355760288879165245940595259284499711202547364332122472169897570069773912201877037737474884548477516093671861643329899650704311880900221217905929830674467383904928054908475945599046498840246878554674443087280023564313470872269644230953001876937807402083390603760508851259383686896871724061532464374712413952574633098739843484563001012414107193262431117290853995664646176812763789444386869148000606985026530596652927567162641583951775993815884965569050328445927871220492529331846189285588168127051152438658813934744257031316581112434690871286836998078235766836485498780504037745116357109237384369621143931229920342036890494878183569174869563857473355851368119174926388706612127773670862261189669510108216517652686402185979222505401328291</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>msg <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;this challenge was supposed to be babyrsa but i screwed up and now i have to redo the challenge.</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">hopefully this challenge proves to be more worthy of 250 points compared to the 200 points i gave out for babyrsa :D :D :D</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">your super secret flag is: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">you know what i&#39;m going to add an extra line here just to make your life miserable so deal with it&#34;</span>
+</span></span><span style="display:flex;"><span>msg <span style="color:#f92672">=</span> msg<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#34;X&#34;</span>,<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>m <span style="color:#f92672">=</span> coppersmith(msg,c,n,e)
+</span></span></code></pre></div></li>
+</ul>
+<p><a href="https://github.com/hgarrereyn/Th3g3ntl3man-CTF-Writeups/tree/master/2017/UIUCTF/problems/Cryptography/papaRSA" target="_blank">Exemple du UIUCTF</a></p>
+<h2 id="deuxième-cas--shortpad-attack">Deuxième cas : <em>ShortPad Attack</em></h2>
+<p>Dans cette nouvelle attaque, on possède <em>2</em> fois le même message chiffré mais paddé de deux manières différentes .</p>
+<p><strong>CopperSmith</strong> nous indique qu&rsquo;il est possible , à condition que la padding ne soit pas trop grand , de trouver le contenu du message.</p>
+<p>Il utilise ses précédentes recherches sur la résolution polynomiale dans <strong>$Z/nZ$</strong> ainsi que les recherches sur la récupération de messages par lien affines. <em>(<a href="https://vozec.fr/crypto-rsa/rsa-7-hey-this-is-franklin/" target="_blank">voir franklin reiter ici</a>)</em>.</p>
+<h3 id="démonstration">Démonstration</h3>
+<ul>
+<li>$\begin{cases}
+g_1(x,y) = x^e - C_1 \newline
+g_2(x,y) = (x+y)^e - C_2 \pmod n
+\end{cases}$</li>
+</ul>
+<p>Alors quand $y = r_2 - r_1$ , alors $g_1$ et $g_2$ ont pour racine commune : $x=m_1$
+On pose <em>res</em> la <a href="https://en.wikipedia.org/wiki/Resultant" target="_blank">résultante</a> de 2 polynômes
+$\implies \begin{cases}
+\Delta = r_2-r_1 \newline
+h(y) = res_x(g1,g2) \in Z_n[y]\pmod n \newline
+h(\Delta) = 0 % n
+\end{cases}$</p>
+<ul>
+<li>$|\Delta| &lt; 2^m &lt; N^{\dfrac{1}{e^2}}$<br>
+D&rsquo;ou $\Delta$ est <em>small roots</em> de $h$ <em>$\pmod n$</em> et peut donc être retrouvé grâce à la méthode de Coppersmith.<br>
+Quand $\Delta$ est connu, <strong>Franklin–Reiter</strong> permet de retrouver $m_2$</li>
+</ul>
+<p><a href="https://en.wikipedia.org/wiki/Coppersmith%27s_attack" target="_blank">Référence: Wikipedia</a></p>
+<h3 id="implémentation-en-python-">Implémentation en python :</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">short_pad_attack</span>(c1, c2, e, n):
+</span></span><span style="display:flex;"><span>    PRxy<span style="color:#f92672">.&lt;</span>x,y<span style="color:#f92672">&gt;</span>   <span style="color:#f92672">=</span> PolynomialRing(Zmod(n))
+</span></span><span style="display:flex;"><span>    PRx<span style="color:#f92672">.&lt;</span>xn<span style="color:#f92672">&gt;</span>     <span style="color:#f92672">=</span> PolynomialRing(Zmod(n))
+</span></span><span style="display:flex;"><span>    PRZZ<span style="color:#f92672">.&lt;</span>xz,yz<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> PolynomialRing(Zmod(n))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    g1 <span style="color:#f92672">=</span> x<span style="color:#f92672">^</span>e <span style="color:#f92672">-</span> c1
+</span></span><span style="display:flex;"><span>    g2 <span style="color:#f92672">=</span> (x<span style="color:#f92672">+</span>y)<span style="color:#f92672">^</span>e <span style="color:#f92672">-</span> c2
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    q1 <span style="color:#f92672">=</span> g1<span style="color:#f92672">.</span>change_ring(PRZZ)
+</span></span><span style="display:flex;"><span>    q2 <span style="color:#f92672">=</span> g2<span style="color:#f92672">.</span>change_ring(PRZZ)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    h <span style="color:#f92672">=</span> q2<span style="color:#f92672">.</span>resultant(q1)
+</span></span><span style="display:flex;"><span>    h <span style="color:#f92672">=</span> h<span style="color:#f92672">.</span>univariate_polynomial()
+</span></span><span style="display:flex;"><span>    h <span style="color:#f92672">=</span> h<span style="color:#f92672">.</span>change_ring(PRx)<span style="color:#f92672">.</span>subs(y<span style="color:#f92672">=</span>xn)
+</span></span><span style="display:flex;"><span>    h <span style="color:#f92672">=</span> h<span style="color:#f92672">.</span>monic()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    kbits <span style="color:#f92672">=</span> n<span style="color:#f92672">.</span>nbits()<span style="color:#f92672">//</span>(<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>e<span style="color:#f92672">*</span>e)
+</span></span><span style="display:flex;"><span>    delta <span style="color:#f92672">=</span> h<span style="color:#f92672">.</span>small_roots(X<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span><span style="color:#f92672">^</span>kbits, beta<span style="color:#f92672">=</span><span style="color:#ae81ff">0.5</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> delta
+</span></span></code></pre></div><p><em>(Script SageMath)</em></p>
+<p>Un fois $\Delta$ retrouvé, on peut appliquer <a href="https://vozec.fr/crypto-rsa/rsa-7-hey-this-is-franklin/" target="_blank">Franklin Reiter</a> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">franklin_reiter</span>(c1,c2,e,n,delta):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gcd</span>(a, b):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">while</span> b:
+</span></span><span style="display:flex;"><span>            a, b <span style="color:#f92672">=</span> b, a <span style="color:#f92672">%</span> b
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> a<span style="color:#f92672">.</span>monic()
+</span></span><span style="display:flex;"><span>    P<span style="color:#f92672">.&lt;</span>x<span style="color:#f92672">&gt;</span> <span style="color:#f92672">=</span> PolynomialRing(Zmod(n))
+</span></span><span style="display:flex;"><span>    g1 <span style="color:#f92672">=</span> x<span style="color:#f92672">^</span>e <span style="color:#f92672">-</span> c1
+</span></span><span style="display:flex;"><span>    g2 <span style="color:#f92672">=</span> (x<span style="color:#f92672">+</span>delta)<span style="color:#f92672">^</span>e <span style="color:#f92672">-</span> c2
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> <span style="color:#f92672">-</span>gcd(g1, g2)<span style="color:#f92672">.</span>coefficients()[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> result
+</span></span></code></pre></div>
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/rsa/rsa-7-hey-this-is-franklin/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>RSA n°7 | Hey this is Franklin (Reiter)</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/rsa/rsa-9-breaking-signature-shema/?ref=footer"><span style="font-weight:bold;">Next »</span><br>RSA n°9 | Breaking Signature Shema</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#premier-cas--clair-connu">Premier cas : <em>Clair connu</em></a>
+      <ul>
+        <li><a href="#condition--mise-en-équation-">Condition &amp; Mise en équation :</a></li>
+        <li><a href="#condition">Condition:</a></li>
+        <li><a href="#résolution-">Résolution :</a></li>
+      </ul>
+    </li>
+    <li><a href="#deuxième-cas--shortpad-attack">Deuxième cas : <em>ShortPad Attack</em></a>
+      <ul>
+        <li><a href="#démonstration">Démonstration</a></li>
+        <li><a href="#implémentation-en-python-">Implémentation en python :</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

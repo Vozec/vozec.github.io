@@ -1,0 +1,1392 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - Lutter contre la triche en CTF ?</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Lutter&#32;contre&#32;la&#32;triche&#32;en&#32;CTF&#32;? />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Lutter&#32;contre&#32;la&#32;triche&#32;en&#32;CTF&#32;? />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Lutter&#32;contre&#32;la&#32;triche&#32;en&#32;CTF&#32;? />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Lutter&#32;contre&#32;la&#32;triche&#32;en&#32;CTF&#32;? />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Voici différentes techniques pour empêcher la triche pendant des CTF." />
+<meta itemprop="description" content="Voici différentes techniques pour empêcher la triche pendant des CTF." />
+<meta property="og:description" content="Voici différentes techniques pour empêcher la triche pendant des CTF." />
+<meta name="twitter:description" content="Voici différentes techniques pour empêcher la triche pendant des CTF." />
+
+
+<base href="//localhost:1313/posts/anti-cheat-ctf/" />
+<link rel="canonical" href="//localhost:1313/posts/anti-cheat-ctf/" itemprop="url" />
+<meta name="url" content="//localhost:1313/posts/anti-cheat-ctf/" />
+<meta name="twitter:url" content="//localhost:1313/posts/anti-cheat-ctf/" />
+<meta property="og:url" content="//localhost:1313/posts/anti-cheat-ctf/" />
+
+
+<meta property="og:updated_time" content="2022-08-23T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/posts/anti-cheat-ctf/">Lutter contre la triche en CTF ?</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2022-08-23T12:00:00Z" class="post-date">
+        August 23, 2022
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>12 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-tuto">
+        <a href="//localhost:1313/tags/tuto">tuto</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h1 id="introduction">Introduction</h1>
+<p>Dans cet article, je vais présenter les différentes possibilités pour empêcher la triche en compétition, notamment sur des CTF basés sur CTFd. Je précise que ces techniques permettent de mettre en avant les comptes suspects. Il y a plusieurs façons de repérer les tricheurs en suivant ces critères, et inversement, il y a malheureusement plusieurs façons de contourner ces protections. Tout ce que je vais expliquer ici sert donc à mettre en avant un compte ou une équipe afin que des admins procèdent à une vérification manuelle et agissent en conséquence.</p>
+<h2 id="le-flag-hoarding">Le Flag Hoarding</h2>
+<p>Commençons par les bases. Le &ldquo;flag Hoarding&rdquo; est le fait de garder tous les flags et de les soumettre au dernier moment pour remonter dans le scoreboard d&rsquo;un coup et surprendre tout le monde.</p>
+<h4 id="le-problème">Le problème</h4>
+<p>En rentrant tous les flags d&rsquo;un coup, il est impossible de différencier les challenges que l&rsquo;on a légitimement récupérés des challenges volés ou échangés avec d&rsquo;autres équipes.</p>
+<h4 id="comment-lempêcher-">Comment l&rsquo;empêcher ?</h4>
+<p>La manière la plus simple est de l&rsquo;<strong>interdire</strong>. C&rsquo;est peut-être évident, mais ce n&rsquo;est pas toujours spécifié dans les règles ! Il est trop courant que les admins de CTFs laissent passer des choses anormales. En effet, beaucoup d&rsquo;admins n&rsquo;osent pas <strong>bannir</strong> certaines équipes, même avec des preuves évidentes de tricheries.</p>
+<p>Plus sérieusement, il est assez aisé de détecter cette pratique car <strong>CTFd</strong> log toutes les heures de flag de chaque équipe ! On peut donc facilement scraper toutes les données du CTFd grâce à <a href="https://docs.ctfd.io/docs/api/redoc" target="_blank"><strong>leur formidable API</strong></a>. Pour chaque équipe, faire la moyenne des heures de flags et regarder si elle est dans le dernier 8ème du temps de la compétition, par exemple.</p>
+<p><em>Exemple</em>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;success&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;data&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;date&#34;</span>: <span style="color:#e6db74">&#34;2018-11-26T03:43:37+00:00&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;correct&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;team&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Viral574&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">5</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;challenge&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Too Many Puppers&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">2</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;category&#34;</span>: <span style="color:#e6db74">&#34;Forensics&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;value&#34;</span>: <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;user&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Tiffany&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;id&#34;</span>: <span style="color:#ae81ff">29</span>
+</span></span><span style="display:flex;"><span>      },
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;challenge_id&#34;</span>: <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>    }    
+</span></span><span style="display:flex;"><span>  ],
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;meta&#34;</span>: {
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&#34;count&#34;</span>: <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h2 id="le-partage-de-compte">Le Partage de compte</h2>
+<p>Une autre forme de triche est le partage de compte. En effet, dans la plupart des CTFs, <strong>le nombre de personnes par équipe est limité</strong> pour éviter un trop gros écart entre toutes les équipes.</p>
+<p>Cela n&rsquo;empêche en rien la triche malheureusement&hellip;
+Chaque équipe n&rsquo;a qu&rsquo;à créer un <strong>compte de team</strong> et le partager à toute son équipe.</p>
+<p>On se retrouve ainsi impuissants contre une équipe de 20 personnes cachées derrière un unique compte&hellip;</p>
+<h4 id="comment-lempêcher--1">Comment l&rsquo;empêcher ?</h4>
+<h6 id="méthode-1">Méthode 1:</h6>
+<p>Il est théoriquement facile de l&rsquo;empêcher , en tous cas dans la plupart des cas .<br>
+<em>(Si on suppose que l&rsquo;équipe malveillante n&rsquo;utilise pas de vpn commun)</em><br>
+Chaque personne a une ip différente et par chance, <strong>CTFd</strong> log toutes les ips pour chaque compte !</p>
+<p>On peut donc facilement avec une vérification manuelle , détecter les multicomptes .
+Encore une fois , tous dépend de l&rsquo;implication des admins dans la lutte contre les tricheurs &hellip;</p>
+<p><img src="./img/ip.png" alt="Alt text"></p>
+<p><em>(Le développement d&rsquo;un plugin pour CTFd semble assez documenté donc je garde l&rsquo;idée de faire une auto-détections des multicomptes dans un projet futur)</em></p>
+<h6 id="méthode-2">Méthode 2:</h6>
+<p>La deuxième technique est bien plus basique&hellip; .<br>
+Il suffit de bannir toutes les équipes avec le même nom ou un nom similaire à leurs utilisateurs:</p>
+<p>Exemple:</p>
+<ul>
+<li><strong>Team</strong>: SuperFlag_Team</li>
+<li><strong>User</strong>: SuperFlag</li>
+</ul>
+<p>Il est courant que des équipes partagent leur compte de cette manière. Cela devrait être interdit et, encore une fois, inscrit dans les règles. L&rsquo;API de CTFd peut encore nous permettre de scraper toutes les données rapidement et proprement.</p>
+<h2 id="les-doubles-comptes">Les doubles comptes</h2>
+<h3 id="sur-discord">Sur Discord</h3>
+<p>La plupart des CTF se déroule avec un <code>serveur DISCORD</code> lié pour pouvoir contacter les admins / partager des informations avec les joueurs.</p>
+<p>De plus, il est aisé d&rsquo;avoir plusieurs comptes sur cette plateforme et il n&rsquo;est donc pas rare que certaines personnes se créent d&rsquo;autres comptes secondaires pour <strong>échanger/voler les solutions d&rsquo;autres équipes à leur insu</strong> &hellip;</p>
+<p>Je peux conseiller à tous les chefs d&rsquo;équipes de CTFs de bien gérer les permissions sur les salons de leurs serveurs personnels et de faire attention à qui a accès aux messages de l&rsquo;équipe .</p>
+<p>Un autre souci est que grâce à ces doubles comptes, les tricheurs n&rsquo;hésitent pas à aller demander de l&rsquo;aide à d&rsquo;autres personnes en message privés en échange <strong>d&rsquo;informations</strong> ou même parfois <strong>de flag</strong> directement &hellip;</p>
+<p>J&rsquo;invite encore une fois tout le monde à bloquer ses messages privés lors de CTF en dehors de vos amis discord , cela vous évitera de vous faire harceler durant la compétition.
+Vous pouvez aussi choisir un nom différent de votre pseudo Discord lors de l&rsquo;inscription au CTF pour ne pas être repéré sur le serveur commun à tous.</p>
+<h4 id="comment-empêcher-les-doubles-compte-discord-">Comment empêcher les doubles compte discord ?</h4>
+<p>On peut d&rsquo;après moi faire 3 choses pour empêcher les doubles comptes discord.</p>
+<ul>
+<li>
+<p>La première chose est de faire un bot qui interdit l&rsquo;accès au serveur si la date de création du compte est inférieur à une *<em>date minimum</em> , par exemple 1 semaine.</p>
+</li>
+<li>
+<p>La seconde est de n&rsquo;<code>accepter que les comptes</code> ayant un <strong>email</strong> et un <strong>numéro de téléphone vérifié</strong> .</p>
+</li>
+<li>
+<p>La dernière est d&rsquo;utilisé une sorte captcha de vérification :</p>
+</li>
+</ul>
+<p>On peut supposer que si une personne utilise 2 comptes, elle utilisera le même pc .
+Se basant sur ça, je vois 2 cas possibles .</p>
+<ul>
+<li>
+<p><code>Cas 1</code>: La personne utilise la fonctionnalité nouvelle de discord pour avoir plusieurs comptes sur le même pc .</p>
+</li>
+<li>
+<p><code>Cas 2</code>: La personne utilise une version modifié de Discord pour avoir son deuxième compte dessus . Je parle ici des versions béta de Discord comme : <code>Discord Canary</code> par exemple :</p>
+</li>
+</ul>
+<h6 id="dans-le-premier-cas-">Dans le premier cas :</h6>
+<p>On peut utiliser un serveur http pour récupérer l&rsquo;<code>adresse ip</code> et le <code>user-agent</code> de la personne qui rejoins le serveur.</p>
+<ul>
+<li>Pourquoi ?<br>
+On va simplement créer une base de données ou l&rsquo;on va renseigner le nombre d&rsquo;entrée et de sortie d&rsquo;un utilisateur.</li>
+</ul>
+<p>Je m&rsquo;explique :<br>
+Pour chaque entrée, un bot discord envoie un lien vers un équivalent à <code>pipedream.com</code>.<br>
+Les admins récupèrent donc l&rsquo;adresse IP ainsi que le User-Agent .<br>
+Ce même bot incrémente un indice dans une base de Donnée à la clé <code>sha1(ua+ip)</code></p>
+<p>Si on considère que le tricheur clique sur le lien depuis discord , ce sera le navigateur par default qui ouvrira ce lien . Ainsi, 2 comptes sur un même pc auront probablement la même pseudo-&ldquo;signature&rdquo; et le score dans la base de donnée sera supérieur à 1 .</p>
+<h6 id="dans-le-second-cas-">Dans le second cas :</h6>
+<p>Un bot discord peut envoyer un message quelconque dans un channel spécialisé et demander a l&rsquo;utilisateur de copier le lien discord correspondant à ce message.<br>
+On peut en backend, associé l&rsquo;<strong>id</strong> du message a l&rsquo;utilisateur pour ainsi vérifier son entrée.
+Celui-ci doit ensuite lui renvoyer ce dit <strong>id</strong>.
+Si on regarde le lien d&rsquo;un même message copié depuis différents discord, on se rend vite compte de la version de discord que la personne utilise .</p>
+<pre tabindex="0"><code>https://discord.com/channels/590691085420986369/780222038974922754/1011944062661689374
+https://canary.discord.com/channels/590691085420986369/780222038974922754/1011944062661689374
+</code></pre><p>Cette technique joue sur la naïveté des joueurs et cela nous permet donc de déterminer si cette personne utilise une application tierce pour discord.</p>
+<p>En liant toutes ces techniques dans un unique bot Discord . On peut aussi ajouter d&rsquo;autres paramètres tel que :</p>
+<ul>
+<li>L&rsquo;existence d&rsquo;une photo de profil.</li>
+<li>Le Type de Pseudo</li>
+</ul>
+<p>Et enfin obtenir un <code>score de double-compte</code></p>
+<p>J&rsquo;ai écris un bot discord qui fait ca: <a href="https://github.com/Vozec/Discord-Multi-Account-Detector" target="_blank">Discord Multi Account Detector</a></p>
+<h3 id="sur-ctfd">Sur CTFd</h3>
+<p>Qu&rsquo;en est-il de CTFd ? On peut prendre le cas d&rsquo;une équipe qui cherche à avoir un <code>Hint</code> mais refuse de payer des points pour l&rsquo;obtenir.<br>
+Le fait de <code>créer un second compte CTFd</code> pour <strong>récupérer les Hints</strong> est interdit.</p>
+<p>Le problème le plus évident et que même si on arrive à détecter un double compte . Il est surement déjà trop tard pour le bannir car la personne à déjà récupéré son HINT.
+Nous verrons après comment empêcher cela .</p>
+<ul>
+<li>
+<p><code>La première méthode</code> est bien-sur l&rsquo;<strong>ip</strong>. Même si c&rsquo;est facilement bypassable , c&rsquo;est l&rsquo;enchainement de protection qui feront décourager les tricheurs.</p>
+</li>
+<li>
+<p><code>La seconde méthode</code> sur le comportement d&rsquo;un compte.<br>
+Un tricheur aura souvent un comportement similaire :</p>
+<ul>
+<li>Création d&rsquo;un compte en plein ctf</li>
+<li>Flag de 2/3 challenges rapidement</li>
+<li>Récupération d&rsquo;un Hint.</li>
+<li>Plus de Flag</li>
+</ul>
+</li>
+</ul>
+<p>Dans un premier temps , si on considère qu&rsquo;on veut bannir ces comptes . Il &ldquo;<em>suffit</em>&rdquo; de <strong>contrôler les temps de flags</strong> pour les comptes crée après le lancement du CTF.<br>
+<em>(On détecte les joueurs qui flag rapidement 3 challenges puis prennent un Hint .)</em></p>
+<p>Mais on peut aussi mettre plus de contraintes sur la <code>récupération des Hints</code>.<br>
+La manière la plus simple est d&rsquo;<strong>empêcher la création de compte après le début du CTF.</strong></p>
+<p>On peut aussi par exemple :</p>
+<ul>
+<li>
+<p><code>Mettre une limite temporaire</code> :<br>
+<em>(Pas de Hint pendant 5h aprés la création d&rsquo;un compte pendant la compétition)</em>.</p>
+</li>
+<li>
+<p><code>Mettre une limite de point minimum</code> pour obtenir un Hint .<br>
+<em>(Cela pousserai le tricheur à rentrer beaucoup de flag d&rsquo;un coup et le système précédent détecterai rapidement l’anomalie)</em></p>
+</li>
+</ul>
+<h2 id="le-share-flag">Le Share flag</h2>
+<p>Ici, rien de bien nouveau. Il est bien difficile de savoir si une personne a réellement solutionné un challenge.<br>
+On peut voir 2 manières de <code>détecter le Share flag</code>:</p>
+<ul>
+<li>Se baser sur les temps de flags</li>
+<li>Se baser sur les Flags dupliqués.</li>
+</ul>
+<p>Ici</p>
+<ul>
+<li>
+<p><code>La première méthode</code> est expliqué par <a href="https://twitter.com/_worty?lang=fr" target="_blank"><strong>Worty</strong></a> dans <a href="https://youtu.be/zaUwKm6TqRI?t=327" target="_blank">cette vidéo</a>
+Il explique que l&rsquo;on peut calculer le temps qu&rsquo;un utilisateur prend pour résoudre un challenge.<br>
+On peut avec quelques modifications de CTFd , récupérer l&rsquo;heure de téléchargement/ouverture d&rsquo;instance d&rsquo;un challenge et ainsi calculer la différence avec l&rsquo;heure à laquelle une équipe flag .</p>
+<p>Cette différence de temps et ensuite comparé à un temps référence inscrit manuellement par l&rsquo;auteur du challenge et si le temps de flag est nettement inférieur au temps normalement requis. On peut considérer l&rsquo;utilisateur comme suspect.</p>
+</li>
+<li>
+<p><code>La seconde méthode</code> est basé sur l&rsquo;<strong>unicité</strong> des flags .
+Pour les challenges dynamiques notamment. On peut baser la génération des flags sur l&rsquo;<code>ip</code> du joueur
+De plus, CTFd accepte les regexs comme vérification de flag !<br>
+On peut donc imaginer le cas suivant :</p>
+<ul>
+<li>Je me connecte en TCP à un challenge avec l&rsquo;ip : <code>192.168.1.48</code></li>
+<li>Le challenge modifie sont flag de base:
+<ul>
+<li><code>flag{Th1s_i5_@_Flag}</code> devient <code>flag{Th1s_i5_@_Flag_</code>+ SHA1(192.168.1.48) +<code>}</code><br>
+<em>(libre à vous de modifier pour avoir une fin de flag non prédictible)</em></li>
+</ul>
+</li>
+<li>Je résous mon challenge et je récupère mon flag personnalisé</li>
+<li>Je le submit, il est accepté :
+<ul>
+<li>Le regex vérifie uniquement : <code>Th1s_i5_@_Flag</code><br>
+Le serveur effectue via un plugin une vérification : Il hash l&rsquo;ip du joueurs et la compare à la fin du flag.</li>
+</ul>
+</li>
+</ul>
+<p>Là où cette méthode est intéressante est qu&rsquo;on peut rapidement détecter si un autre utilisateur à déjà soumit ce flag et ainsi trouvé 2 tricheurs</p>
+<p>La subtilité ici est que l&rsquo;on peut évaluer un <code>score de triche</code> . En effet, on peut imaginer que si le SHA1 du flag ne correspond pas au SHA1 de l&rsquo;ip qui submit le flag , on incrémente un <code>score de triche</code>.
+On se retrouve à la fin du CTF et on a une idée de qui est le plus susceptible de tricher.</p>
+<p>Malheureusement, une personne peut souvent submit un flag qu&rsquo;un de ses collègue a trouvé . Il est donc important de relativiser ce <code>score de triche</code> et de le mettre en corrélation avec les autres techniques.</p>
+</li>
+</ul>
+<h2 id="le-team-up">Le Team up</h2>
+<p>On devine assez facilement quand 2 équipes jouent ensemble :</p>
+<ul>
+<li>Même ordre de challenge résolus.</li>
+<li>Heures qui coïncident</li>
+<li>Etc&hellip;</li>
+</ul>
+<p>Le problème est que ce team-up est visible quand on trace le graphique du scoreboard et seules les 10 premières équipes sont inspectés !</p>
+<p>J&rsquo;ai 2 idées pour détecter l&rsquo;entraide entre équipes.</p>
+<h3 id="méthode-1-1">Méthode 1:</h3>
+<p><em>(Cette méthode s&rsquo;applique à la fin du CTF.)</em><br>
+Pour chaque challenge, on va récupérer :</p>
+<ul>
+<li>L&rsquo;ordre et les heures de flags</li>
+<li>Le nombre de points</li>
+<li>Le nombre de solves</li>
+<li>Le pourcentages de solves sur tous le ctf</li>
+</ul>
+<p>Nous allons créer un graph avec des <code>score inter-équipe</code>.</p>
+<p>Imaginons le challenge ci-dessous:</p>
+<ul>
+<li>Point 400</li>
+<li>Solves : 5%</li>
+<li>Ordre :<br>
+Equipe 1 |  12h<br>
+Equipe 2 |  13h<br>
+Equipe 3 |  14h<br>
+Equipe 4 |  15h<br>
+Equipe 5 |  16h<br>
+Equipe 6 |  16h02<br>
+Equipe 7 |  17h</li>
+</ul>
+<p>Pour chaque équipe , on va <code>récupérer les N équipes qui ont flag avant nous</code> . <em>(Posons X=5)</em><br>
+Puis, on va évaluer entre chaque paire , <code>un score</code> en fonction :</p>
+<ul>
+<li>Du nombre de point <em>(La difficulté du challenge)</em></li>
+<li>Le % de solves <em>(Était-il vraiment si difficile ?)</em></li>
+<li>Le nombre de personnes</li>
+<li>La différences de temps entre les 2 équipes qui flags.</li>
+</ul>
+<p>Ainsi, pour ce challenge , dans cet exemple ; <code>l'équipe 6</code> aura un plus gros score avec <code>l'équipe 5</code> que <code>l'équipe 1</code>
+car <code>l'équipe 6</code> a flag ce chalenge 2min après <code>l'équipe 5</code>.</p>
+<p>Rien d&rsquo;anormale jusqu&rsquo;ici mais en <strong>additionnant tous les scores inter-équipes sur tous les challenges</strong> , on peut ainsi rapprocher différentes équipes et visualiser lesquelles sont proches des autres .</p>
+<p><em>La technique fonctionne aussi en rapprochant les utilisateurs qui flag , des équipes précédentes</em><br>
+*Cela permettrai de détecter si un utilisateur copie les flags d&rsquo;une autre équipe en cachette. *</p>
+<h3 id="méthode-2-1">Méthode 2:</h3>
+<p>On va utiliser l&rsquo;algorithme <code>KNN</code> pour encore une fois, regrouper les différentes équipes.<br>
+On va créer un espace à <code>N dimensions</code> , avec <code>N le nombre de challenges</code><br>
+Pour chaque solve de chaque équipe, on va créer <code>un vecteur</code> qui a pour norme : <strong>Le temps de flag</strong> du challenge.<br>
+Grâce à l&rsquo;algorithme <code>KNN</code> , on va pouvoir former des groupes et ainsi voir qui flag quel challenges en même temps.</p>
+<h5 id="illustration">Illustration</h5>
+<p>On peut considérer un CTF avec 3 challenges uniquement. Ainsi, on forme un espace à <code>3 dimensions</code><br>
+Pour chaque challenge, on renseigne les dates de flag de chaque équipe :</p>
+<ul>
+<li><em>En rouge</em> , l&rsquo;équipe 1</li>
+<li><em>En bleu</em> , l&rsquo;équipe 2</li>
+<li><em>En violet</em> , l&rsquo;équipe 3</li>
+</ul>
+<p>Voici à quoi cela peut ressembler :</p>
+<p><img src="./img/knn.png" alt="Alt text"></p>
+<p><code>Les équipe 1 et 2</code> ont flag les 3 challenges dans la même période, contrairement à <code>l'équipe 3</code><br>
+Ainsi, l&rsquo;algorithme est capable de faire des groupes et ainsi de lier plusieurs équipes / joueurs entre eux !</p>
+<h2 id="finalement">Finalement</h2>
+<p>Il est indispensable pour garantir un déroulement sain d&rsquo;un de mettre en place des techniques contre les tricheurs .Cela va de la vérification manuelle à l&rsquo;automatisation de certaines tâches .</p>
+<p>J&rsquo;ai donc sorti mon outils pour mettre en place certains des poins évoqués plus haut: <a href="https://github.com/Vozec/CTFd-Tracker" target="_blank">CTFd Tracker</a></p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/posts/analyse-telegram-stealer/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Malware Analysis d&#39;une Virus Télégram</a>
+        
+	    
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#le-flag-hoarding">Le Flag Hoarding</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#le-partage-de-compte">Le Partage de compte</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#les-doubles-comptes">Les doubles comptes</a>
+      <ul>
+        <li><a href="#sur-discord">Sur Discord</a></li>
+        <li><a href="#sur-ctfd">Sur CTFd</a></li>
+      </ul>
+    </li>
+    <li><a href="#le-share-flag">Le Share flag</a></li>
+    <li><a href="#le-team-up">Le Team up</a>
+      <ul>
+        <li><a href="#méthode-1-1">Méthode 1:</a></li>
+        <li><a href="#méthode-2-1">Méthode 2:</a></li>
+      </ul>
+    </li>
+    <li><a href="#finalement">Finalement</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

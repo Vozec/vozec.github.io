@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Prng on </title>
+    <link>//localhost:1313/tags/prng/</link>
+    <description>Recent content in Prng on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 07 May 2023 12:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/prng/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Like a Whispering Entropy | PWNME CTF 2023</title>
+      <link>//localhost:1313/writeups/like_a_whispering_entropy-pwnme-2023/</link>
+      <pubDate>Sun, 07 May 2023 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/writeups/like_a_whispering_entropy-pwnme-2023/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction-du-challenge&#34;&gt;Introduction du challenge:&lt;/h1&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;I don&amp;#39;t trust those who wrote crypto implementations, so I had to write my own ...&#xD;&#xA;I created everything from scratch so I know it is safe ! No one backdoored my Diffie-Hellman implementation !&#xD;&#xA;&#xD;&#xA;Btw, I gave you an output of a connection to my service, but anyway you won&amp;#39;t be able to get back the secret message&#xA;&lt;/code&gt;&lt;/pr</description>
+    </item>
+  </channel>
+</rss>

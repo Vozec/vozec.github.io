@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Reverse on </title>
+    <link>//localhost:1313/tags/reverse/</link>
+    <description>Recent content in Reverse on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 26 Jun 2022 12:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/reverse/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RustyTheClown | leHack 2022 | Catégorie reverse</title>
+      <link>//localhost:1313/writeups/rustytheclown-lehack2022/</link>
+      <pubDate>Sun, 26 Jun 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/writeups/rustytheclown-lehack2022/</guid>
+      <description>&lt;h1 id=&#34;rustytheclown-2--lehack-ctf-2022&#34;&gt;RustyTheClown 2 | leHack CTF 2022&lt;/h1&gt;&#xA;&lt;h2 id=&#34;fichiers&#34;&gt;Fichier(s)&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;./files/rustyTheClown&#34;&gt;RustyTheClown&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;nécessaires&#34;&gt;Nécessaires&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://hex-rays.com/ida-free/&#34; target=&#34;_blank&#34;&gt;IDA&lt;/a&gt;/&lt;a href=&#34;https://ghidra-sre.org/&#34; target=&#34;_blank&#34;&gt;Ghidra&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;Python3&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;flag&#34;&gt;Flag&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;lh_68eca3c515dbefd71ec8fec3849ba0083af806447d9f9f7cdca2a5cc&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;solution-détaillée&#34;&gt;Solution détaillée&lt;/h2&gt;&#xA;&lt;h3 id=&#34;analyse-statique&#34;&gt;Analyse Statique&lt;/h3&gt;&#xA;&lt;p&gt;Le challenge est un crackme . On nous demande un mot de passe et celui est modifié puis comparé avant de nous donner ou non le flag .&lt;/p&gt;&#xA;&lt;p&gt;Désassemblons le binaire dans IDA :&lt;/p&gt;&#xA;&lt;p&gt;Dans &lt;code&gt;void rustyTheClown::main::hecc4c87ee1b9aeab()&lt;/code&gt; voici ce qu&amp;rsquo;on trouve d&amp;rsquo;important :&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Mod ctfauth | Bsidessf 2022 | Catégorie Reverse | [Vozec/FR]</title>
+      <link>//localhost:1313/writeups/mod_ctfauth-bsidessf-2022/</link>
+      <pubDate>Fri, 10 Jun 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/writeups/mod_ctfauth-bsidessf-2022/</guid>
+      <description>&lt;h1 id=&#34;mod-ctfauth--tjctf-2022&#34;&gt;Mod ctfauth | Tjctf 2022&lt;/h1&gt;&#xA;&lt;h2 id=&#34;fichiers&#34;&gt;Fichier(s)&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;./files/httpd.conf&#34;&gt;Challenge files&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;./files/ctfauth.so&#34;&gt;Challenge files&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;nécessaires&#34;&gt;Nécessaires&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Python3 + Ida + Ghidra&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;flag&#34;&gt;Flag&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;CTF{http_headers_amiright}&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;solution-détaillée&#34;&gt;Solution détaillée&lt;/h2&gt;&#xA;&lt;h3 id=&#34;partie-1-découverte-du-challenge&#34;&gt;Partie 1: Découverte du challenge&lt;/h3&gt;&#xA;&lt;p&gt;Ce challenge mélange un peu de Web et une majorité de reverse.&#xA;Deux fichiers sont fournis,&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Une configuration apache2&lt;/li&gt;&#xA;&lt;li&gt;Un fichier &lt;code&gt;.so&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;Le lien d&amp;rsquo;un site web (Hébergé en local pour le writeup)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Voici ce que nous avons quand nous nous rendons sur le site :&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Writeup Herald | Insomnihack 2022 | Catégorie reverse | [Vozec/FR] </title>
+      <link>//localhost:1313/writeups/herald-insomnihack-ctf-2022/</link>
+      <pubDate>Sun, 30 Jan 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/writeups/herald-insomnihack-ctf-2022/</guid>
+      <description>&lt;h2 id=&#34;fichiers&#34;&gt;Fichier(s)&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;./files/Original.apk&#34;&gt;Herald.apk&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;nécessaires&#34;&gt;Nécessaires&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Un téléphone Android&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://play.google.com/store/apps/details?id=com.haibison.apksigner&#34; target=&#34;_blank&#34;&gt;Apk-signer&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://ibotpeaches.github.io/Apktool/&#34; target=&#34;_blank&#34;&gt;Apktool&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/skylot/jadx&#34; target=&#34;_blank&#34;&gt;Jdax&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;flag&#34;&gt;Flag&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;INS{Y0u_Kn0W_aB0uT_Th3_Her4ld_0F_the_G0ds?}&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;description&#34;&gt;Description&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Our lab administrator has just passed out from a strange virus. Please help us find the password to his messaging app so we can identify what he was working on and save his life.&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;solution-détaillée&#34;&gt;Solution détaillée&lt;/h2&gt;&#xA;&lt;p&gt;La première chose que j&amp;rsquo;ai faite et de mettre mon fichier apk dans &lt;em&gt;Jdax&lt;/em&gt; pour voir le code source est commencé à reverse :&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Android CrackMe Native | CyberSpace CTF 2022 | Catégorie Reverse | [Vozec/FR] </title>
+      <link>//localhost:1313/writeups/android-crackme-native_cyberspacectf/</link>
+      <pubDate>Tue, 11 Jan 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/writeups/android-crackme-native_cyberspacectf/</guid>
+      <description>&lt;h2 id=&#34;fichiers&#34;&gt;Fichier(s)&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;./files/CrackMe.apk&#34;&gt;Android App&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;nécessaires&#34;&gt;Nécessaires&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Ghidra&lt;/li&gt;&#xA;&lt;li&gt;Python3&lt;/li&gt;&#xA;&lt;li&gt;Jdax&lt;/li&gt;&#xA;&lt;li&gt;Apktool&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;flag&#34;&gt;Flag&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;HL{J4v4.nativ3.d0.n0t.c4r3}&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;solution-détaillée&#34;&gt;Solution détaillée&lt;/h2&gt;&#xA;&lt;p&gt;La première chose est de décompiler l&amp;rsquo;apk pour en retrouver le code Java .&#xA;J&amp;rsquo;ai utilisé Apktool pour extraire le code smali et avoir tous les fichiers natifs :&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;apktool d CrackMe.apk&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Puis j&amp;rsquo;ai passé l&amp;rsquo;apk dans Jadx, un outil très utilisé pour le reverse de code Java  :&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Malware Analysis d&#39;une Virus Télégram</title>
+      <link>//localhost:1313/posts/analyse-telegram-stealer/</link>
+      <pubDate>Sat, 08 Jan 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/analyse-telegram-stealer/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Je suis tombé sur ce .exe et j&amp;rsquo;ai décidé de l&amp;rsquo;analyser.&#xA;Voici le fichier : &lt;a href=&#34;./files/Do_Not_Execute&#34;&gt;ici&lt;/a&gt;&#xA;&lt;em&gt;Attention à ne pas l&amp;rsquo;executer !&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;commencement&#34;&gt;Commencement&lt;/h2&gt;&#xA;&lt;p&gt;Comme le dernier analyse de malware , j&amp;rsquo;ai regardé sur Dnspy si le code était obfusqué .&#xA;A notre plus grande surprise il ne l&amp;rsquo;était pas !&#xA;Regardons de quoi est composé notre payload :&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;./img/dnspy.png&#34; alt=&#34;All text&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;La Première chose qui saute aux yeux et que c&amp;rsquo;est un malware !&#xA;Regardons la Class &lt;code&gt;Client&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Execution de ShellCode grâce au Dll Hidjacking</title>
+      <link>//localhost:1313/posts/pourquoi-vous-devez-securiser-vos-dll-2/</link>
+      <pubDate>Sun, 05 Dec 2021 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/pourquoi-vous-devez-securiser-vos-dll-2/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Nous avons déjà parlé du DLL Hidjacking dans un article précédent. Nous avions détourné la Bibliothèque &lt;em&gt;LeafXnet.dll&lt;/em&gt;.&#xA;Nous aurions pu utiliser une autre, comme &lt;em&gt;Newtonsoft.Json.dll&lt;/em&gt; ou encore &lt;em&gt;Colorful.Console.dll&lt;/em&gt; .&#xA;Voici le résultat que nous avions la dernière fois :&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;./img/hijacked.png&#34; alt=&#34;Alt text&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Nous récupérions juste les requêtes pour les écrire dans un fichier texte.&lt;/p&gt;&#xA;&lt;h3 id=&#34;petit-rappel&#34;&gt;Petit Rappel&lt;/h3&gt;&#xA;&lt;p&gt;Le Dll Hidjacking consiste à modifier une bibliothèque appelée par un programme et ainsi ajouter du code exécuter.&#xA;Ainsi la fonction qui est appelée exécutera ce qu&amp;rsquo;elle est censée faire pour que le programme continue de fonctionner mais elle exécutera des actions en plus.&#xA;Voir &lt;a href=&#34;http://vozec.fr/articles/pourquoi-vous-devez-s%C3%A9curiser-vos-dll/&#34; target=&#34;_blank&#34;&gt;mon ancien article ici&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Writeup Crackity | TFC CTF 2021 | Catégorie reverse</title>
+      <link>//localhost:1313/writeups/crackity-tfc-ctf-2021/</link>
+      <pubDate>Fri, 03 Dec 2021 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/writeups/crackity-tfc-ctf-2021/</guid>
+      <description>&lt;h1 id=&#34;unknown-2--grabcon-ctf-2021&#34;&gt;Unknown 2 | GrabCon CTF 2021&lt;/h1&gt;&#xA;&lt;h2 id=&#34;fichiers&#34;&gt;Fichier(s)&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;./files/crackity.jar&#34;&gt;Crackity.jar&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;nécessaires&#34;&gt;Nécessaires&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;http://java-decompiler.github.io/&#34; target=&#34;_blank&#34;&gt;jd-gui&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;Python3&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;flag&#34;&gt;Flag&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;TFCCTF{j4v4_0bfusc4t10n_1s_pr3tty_n0t_pr3tty}&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;solution-détaillée&#34;&gt;Solution détaillée&lt;/h2&gt;&#xA;&lt;p&gt;La solution n&amp;rsquo;est pas très longue mais elle permet d&amp;rsquo;introduire le reverse de fichier .jar avec un exemple assez basique.&lt;/p&gt;&#xA;&lt;p&gt;Nous avons donc un fichier &lt;code&gt;java&lt;/code&gt; à reverse pour trouver le Flag.&#xA;J&amp;rsquo;ai d&amp;rsquo;abord essayé d&amp;rsquo;exécuter le fichier mais il semble cassé, et je ne peux le lancer.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Malware Analysis d&#39;un Fake Cheat</title>
+      <link>//localhost:1313/posts/analyse-fake-cheat-valorant/</link>
+      <pubDate>Thu, 25 Nov 2021 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/analyse-fake-cheat-valorant/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Je suis tombé sur ce prétendu Cheat Valorant et j&amp;rsquo;ai décidé de l&amp;rsquo;analyser.&#xA;Voici le fichier : &lt;a href=&#34;./files/Do_Not_Execute&#34;&gt;ici&lt;/a&gt;&#xA;Attention à ne pas l&amp;rsquo;exécuter !&lt;/p&gt;&#xA;&lt;h2 id=&#34;commencement&#34;&gt;Commencement&lt;/h2&gt;&#xA;&lt;p&gt;Après avoir téléchargé le .exe, je lui supprime tout de suite son extension &lt;em&gt;.exe&lt;/em&gt; pour éviter de le lancer par erreur en cliquant dessus.&lt;/p&gt;&#xA;&lt;p&gt;Je lance DetectItEasy et je me rends compte qu&amp;rsquo;il est compilé en .Net&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;./img/die.png&#34; alt=&#34;All text&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Comment contourner le SSL Pinning sur android</title>
+      <link>//localhost:1313/posts/contourner-le-ssl-pinning-sur-android/</link>
+      <pubDate>Thu, 04 Nov 2021 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/contourner-le-ssl-pinning-sur-android/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Pour un projet personnel, j&amp;rsquo;ai dû récupérer une requête provenant d&amp;rsquo;une application de mon téléphone. Après de nombreuses recherches j&amp;rsquo;ai trouvé comment faire et j&amp;rsquo;ai compris toutes les méthodes pour y parvenir.&#xA;La principale difficulté pour récupérer le traffic réseau de votre téléphone est de déchiffrer les requêtes https.&lt;/p&gt;&#xA;&lt;h3 id=&#34;https--cest-quoi-&#34;&gt;Http&lt;strong&gt;S&lt;/strong&gt; , c&amp;rsquo;est quoi ?&lt;/h3&gt;&#xA;&lt;p&gt;&amp;ldquo;HyperText Transfer Protocol Secure&amp;rdquo; est un Protocol qui succède à l&amp;rsquo;http . En effet il reprend l&amp;rsquo;http en y rajoutant une couche de chiffrement comme SSL ou TLS .&#xA;&lt;code&gt;Un certificat&lt;/code&gt; assure l&amp;rsquo;intégrité de la destination et empêche à un Tier de se plaçant entre votre machine et votre site web pour contrôler votre requête web .&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Pourquoi il faut sécuriser vos DLL P1</title>
+      <link>//localhost:1313/posts/pourquoi-vous-devez-securiser-vos-dll/</link>
+      <pubDate>Mon, 25 Oct 2021 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/pourquoi-vous-devez-securiser-vos-dll/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Une DLL (Dynamic Link Library) est une bibliothèque logicielle qui permet le partage, par des programmes, de codes.&#xA;Pour résumer, c&amp;rsquo;est une bibliothèque avec plusieurs fonctions à l&amp;rsquo;intérieur. C&amp;rsquo;est très utile pour ne pas toujours coder la même chose.&#xA;On code une fois la DLL et on a plus qu&amp;rsquo;a appelé ses fonctions dans tous ses projets.&#xA;L&amp;rsquo;avantage du C# est qu&amp;rsquo;il existe un grand nombre de bibliothèques, et la plupart sont Open-Source, sur GitHub principalement&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Comment Reverse du .Net facilement</title>
+      <link>//localhost:1313/posts/comment-reverse-du-.net-facilement/</link>
+      <pubDate>Sun, 24 Oct 2021 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/comment-reverse-du-.net-facilement/</guid>
+      <description>&lt;h2 id=&#34;--created-by-vozec-23102021&#34;&gt;&#xA;&#xD;&#xA;&lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js&#34;&gt;&lt;/script&gt;&#xD;&#xA;&lt;script&gt;&#xD;&#xA;$(document).ready(function() {&#xD;&#xA;    var ctrlDown = false,&#xD;&#xA;        ctrlKey = 17,&#xD;&#xA;        cmdKey = 91,&#xD;&#xA;        vKey = 86,&#xD;&#xA;        cKey = 67;&#xD;&#xA;&#xD;&#xA;    $(document).keydown(function(e) {&#xD;&#xA;        if (e.keyCode == ctrlKey || e.keyCode == cmdKey) ctrlDown = true;&#xD;&#xA;    }).keyup(function(e) {&#xD;&#xA;        if (e.keyCode == ctrlKey || e.keyCode == cmdKey) ctrlDown = false;&#xD;&#xA;    });&#xD;&#xA;    $(document).keydown(function(e) {&#xD;&#xA;        if (ctrlDown &amp;&amp; (e.keyCode == cKey)) window.location.href = &#34;https://www.youtube.com/watch?v=cvh0nX08nRw&#34;;&#xD;&#xA;        if (ctrlDown &amp;&amp; (e.keyCode == vKey)) window.location.href = &#34;https://www.youtube.com/watch?v=cvh0nX08nRw&#34;;&#xD;&#xA;    });&#xD;&#xA;});&#xD;&#xA;&lt;/script&gt;&#xD;&#xA;&#xA;&#xA;[//]: &amp;lt;&amp;gt; (Created By Vozec 23/10/2021)&lt;/h2&gt;&#xA;&lt;h2 id=&#34;nécessaires&#34;&gt;Nécessaires&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;./files/DotNetPack.rar&#34;&gt;Ce pack complet pour l&amp;rsquo;obfuscation C#&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;.Net est un langage assez facile à reverse en général. Grâce à de simples outils comme JetBrain Dotpeek , DnSpy ou Ilspy , on peut facilement débugger , éditer , patcher un assembly sans soucis .&#xA;La principale difficulté et la multitude de protection qui existe autour du Framework de Microsoft (.Net Framework/Core).&#xA;Nous allons donc voir quelles sont les principales sécurités et comment les contourner.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Writeup Unknown 2 | GrabCon 2021 | Catégorie reverse</title>
+      <link>//localhost:1313/writeups/unknown2-grabcon-ctf-2021/</link>
+      <pubDate>Sun, 17 Oct 2021 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/writeups/unknown2-grabcon-ctf-2021/</guid>
+      <description>&lt;h1 id=&#34;unknown-2--grabcon-ctf-2021&#34;&gt;Unknown 2 | GrabCon CTF 2021&lt;/h1&gt;&#xA;&lt;h2 id=&#34;fichiers&#34;&gt;Fichier(s)&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;./files/med_re_2&#34;&gt;Unknow_2&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;nécessaires&#34;&gt;Nécessaires&lt;/h2&gt;&#xA;&lt;p&gt;Ghidra + Kali&lt;/p&gt;&#xA;&lt;h2 id=&#34;flag&#34;&gt;Flag&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;GrabCON{626C61636B647261676F6E}&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;solution-détaillée&#34;&gt;Solution détaillée&lt;/h2&gt;&#xA;&lt;p&gt;La première chose que j’ai fait et de faire un &lt;code&gt;ltrace&lt;/code&gt; mais cela n’a rien donné&lt;/p&gt;&#xA;&lt;p&gt;J’ai donc fait : &lt;code&gt;strings med_re_2&lt;/code&gt; et en cherchant un petit peu j’ai trouvé ceci :&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;./img/strings.png&#34; alt=&#34;Alt text&#34; title=&#34;strings&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Si vous ne connaissez pas,&lt;strong&gt;UPX&lt;/strong&gt; est un packer qui ici compresse le binaire . Nativement, le fichier ne peut pas être analysé avec ghidra .&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

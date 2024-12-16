@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Network on </title>
+    <link>//localhost:1313/tags/network/</link>
+    <description>Recent content in Network on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 04 Jul 2022 12:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/network/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Writeup All Reverse Challenges CTF 2022 | PwnMe 2022 Edition</title>
+      <link>//localhost:1313/writeups/reverse-challenge-ctf-pwnme2022/</link>
+      <pubDate>Mon, 04 Jul 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/writeups/reverse-challenge-ctf-pwnme2022/</guid>
+      <description>&lt;p&gt;&lt;img src=&#34;https://img.shields.io/badge/date-29.06.2022-brightgreen.svg&#34; alt=&#34;date&#34;&gt;&lt;br&gt;&#xA;&lt;img src=&#34;https://img.shields.io/badge/solved-in%20time%20of%20CTF-brightgreen.svg&#34; alt=&#34;solved in time of CTF&#34;&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;description&#34;&gt;Description&lt;/h1&gt;&#xA;&lt;p&gt;Le CTF propose &lt;strong&gt;5 Challenges&lt;/strong&gt; de reverse :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;2 de  &lt;strong&gt;Bryton#2690&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;1 de  &lt;strong&gt;express#7904&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;1 de &lt;strong&gt;kostadin#0792&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;prérequis&#34;&gt;Prérequis&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;IDA&lt;/li&gt;&#xA;&lt;li&gt;Connaissances basiques de CTF&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;its-easy&#34;&gt;It&amp;rsquo;s easy&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Nom&lt;/strong&gt;  : It&amp;rsquo;s easy&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Point&lt;/strong&gt; : 50&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;Description&lt;/strong&gt; : Can you find the secret in this binary ?&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;File&lt;/strong&gt; : &lt;a href=&#34;./file/ez&#34;&gt;ez&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h6 id=&#34;solution-&#34;&gt;Solution :&lt;/h6&gt;&#xA;&lt;p&gt;On peut regarder les &lt;strong&gt;strings&lt;/strong&gt; présentes dans le binaire :&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Intrinsec CTF 2022 | leHack 2022 Edition</title>
+      <link>//localhost:1313/writeups/intrinsec-ctf-lehack2022/</link>
+      <pubDate>Thu, 30 Jun 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/writeups/intrinsec-ctf-lehack2022/</guid>
+      <description>&lt;h1 id=&#34;description&#34;&gt;Description&lt;/h1&gt;&#xA;&lt;p&gt;Ce CTF est proposé par &lt;a href=&#34;https://www.intrinsec.com/&#34; target=&#34;_blank&#34;&gt;Intrinsec&lt;/a&gt; , crée par &lt;a href=&#34;https://twitter.com/th1b4ud&#34; target=&#34;_blank&#34;&gt;Th1b4ud&lt;/a&gt; et est constitué de &lt;code&gt;12 Challenges&lt;/code&gt;.&#xA;On évolue tout au long des objectifs dans un réseau afin de compromettre toutes les machines les unes après les autres.&lt;/p&gt;&#xA;&lt;h1 id=&#34;thèmes&#34;&gt;Thèmes&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Web&lt;/li&gt;&#xA;&lt;li&gt;Pivoting&lt;/li&gt;&#xA;&lt;li&gt;Blockchain (SmartContract)&lt;/li&gt;&#xA;&lt;li&gt;Forensic&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;prérequis&#34;&gt;Prérequis&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Du temps&lt;/li&gt;&#xA;&lt;li&gt;Un vps de préférence&lt;/li&gt;&#xA;&lt;li&gt;Connaissance basique de CTF&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;*J&amp;rsquo;ai appris beaucoup de choses pendant la compétition et c&amp;rsquo;est assez facile à comprendre en faisant les challenges en parallèles. *&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

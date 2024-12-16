@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Aes on </title>
+    <link>//localhost:1313/aes/</link>
+    <description>Recent content in Aes on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 24 Feb 2023 12:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/aes/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cryptanalyse Linéaire d&#39;un AES-128</title>
+      <link>//localhost:1313/aes/analyse-lineaire-aes/</link>
+      <pubDate>Fri, 24 Feb 2023 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/aes/analyse-lineaire-aes/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;AES est un chiffrement par bloc basé sur des opérations matricielles élémentaires. Avant de s&amp;rsquo;attaquer à tout ce système, il est important de les avoirs en tête. Voici donc une explication rapide sur le mode de fonctionnement d&amp;rsquo;AES.&lt;/p&gt;&#xA;&lt;h1 id=&#34;présentation-rapide-daes&#34;&gt;Présentation rapide d&amp;rsquo;AES&lt;/h1&gt;&#xA;&lt;p&gt;On souhaite chiffrer un bloc se &lt;em&gt;16 bytes&lt;/em&gt;, la première étape est de l&amp;rsquo;exprimer sous la forme de matrice 4*4:&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;\begin{pmatrix}&#xA;1 &amp;amp; 2 &amp;amp; 3 &amp;amp; 4 \newline&#xA;5 &amp;amp; 6 &amp;amp; 7 &amp;amp; 8 \newline&#xA;9 &amp;amp; 10 &amp;amp; 11 &amp;amp; 12 \newline&#xA;13 &amp;amp; 14 &amp;amp; 15 &amp;amp; 16 \newline&#xA;\end{pmatrix}&#xA;$$&#xA;Cette matrice va subir plusieurs modifications.&#xA;On définit un &lt;em&gt;round&lt;/em&gt; par l&amp;rsquo;enchainement des opérations :&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Présentation de l&#39;attaque &#39;Padding Oracle&#39; sur de l&#39;AES ECB</title>
+      <link>//localhost:1313/aes/attaque-oracle-padding-aes_ecb/</link>
+      <pubDate>Mon, 19 Sep 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/aes/attaque-oracle-padding-aes_ecb/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;AES (&amp;ldquo;Advanced Encryption Standard&amp;rdquo;) est un chiffrement symétrique par blocs. En effet, il repose sur le chiffrement de données découpées en plusieurs partie. Ainsi il en &lt;strong&gt;existe plusieurs modes&lt;/strong&gt; :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;ECB&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;CBC&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;CFB&lt;/li&gt;&#xA;&lt;li&gt;OFB&lt;/li&gt;&#xA;&lt;li&gt;CTR&lt;/li&gt;&#xA;&lt;li&gt;CTS&lt;/li&gt;&#xA;&lt;li&gt;&amp;hellip;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Aujourd’hui, nous allons aborder &lt;strong&gt;une attaque présente sur l&amp;rsquo;AES en mode ECB&lt;/strong&gt; .&lt;/p&gt;&#xA;&lt;h2 id=&#34;comprendre-le-mode-ecb&#34;&gt;Comprendre le mode &lt;code&gt;ECB&lt;/code&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Comme présenté avant, &lt;code&gt;ECB&lt;/code&gt; est un mode de chiffrement des blocs d’information.&lt;br&gt;&#xA;&lt;em&gt;(&lt;code&gt;ECB&lt;/code&gt; pour &lt;code&gt;Electronic Code Book&lt;/code&gt;)&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Présentation de l&#39;attaque &#39;Bit Flipping&#39; sur de l&#39;AES CBC</title>
+      <link>//localhost:1313/aes/attaque-bit-flipping-aes_cbc/</link>
+      <pubDate>Wed, 25 May 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/aes/attaque-bit-flipping-aes_cbc/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;AES (&amp;ldquo;Advanced Encryption Standard&amp;rdquo;) est un chiffrement symétrique par blocs. En effet, il repose sur le chiffrement de données découpées en plusieurs partie. Ainsi il en &lt;strong&gt;existe plusieurs modes&lt;/strong&gt; :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;ECB&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;CBC&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;CFB&lt;/li&gt;&#xA;&lt;li&gt;OFB&lt;/li&gt;&#xA;&lt;li&gt;CTR&lt;/li&gt;&#xA;&lt;li&gt;CTS&lt;/li&gt;&#xA;&lt;li&gt;&amp;hellip;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Aujourd&amp;rsquo;hui , nous allons voir &lt;strong&gt;une attaque présente sur l&amp;rsquo;AES en mode CBC&lt;/strong&gt; .&lt;/p&gt;&#xA;&lt;h2 id=&#34;comprendre-le-mode-cbc&#34;&gt;Comprendre le mode &lt;code&gt;CBC&lt;/code&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Comme présenté avant, &lt;code&gt;CBC&lt;/code&gt; est un mode de chiffrement d&amp;rsquo;AES . &lt;code&gt;CBC&lt;/code&gt; pour &lt;code&gt;Chain By Chain&lt;/code&gt;&#xA;Tout son fonctionnement peut être résumé dans le schéma suivant:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

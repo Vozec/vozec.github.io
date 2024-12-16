@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Xss on </title>
+    <link>//localhost:1313/tags/xss/</link>
+    <description>Recent content in Xss on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 May 2023 12:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/xss/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Writeup 5Ways2XSS - DOJO #23 | YesWeHack</title>
+      <link>//localhost:1313/writeups/yeswehack_dojo_23/</link>
+      <pubDate>Mon, 15 May 2023 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/writeups/yeswehack_dojo_23/</guid>
+      <description>&lt;h2 id=&#34;hint&#34;&gt;/Hint&lt;/h2&gt;&#xA;&lt;p&gt;Concentrez-vous sur une section XSS à la fois pour éviter les maux de tête ! 😉&lt;br&gt;&#xA;Aussi&amp;hellip; les barres obliques &lt;strong&gt;(/)&lt;/strong&gt; sont votre meilleur ami, qui a même besoin d&amp;rsquo;espaces de nos jours&amp;hellip; ?&lt;/p&gt;&#xA;&lt;h2 id=&#34;-rules&#34;&gt;/ Rules&lt;/h2&gt;&#xA;&lt;p&gt;Une solution valable doit répondre à toutes ces exigences :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;(1) XSS classique par l&amp;rsquo;utilisation de balises HTML&lt;/li&gt;&#xA;&lt;li&gt;(2) XSS en restant à l&amp;rsquo;intérieur des balises originales &lt;em&gt;&amp;lt;script&amp;gt;&lt;/em&gt;.&lt;/li&gt;&#xA;&lt;li&gt;(3) XSS à l&amp;rsquo;intérieur de la valeur &amp;lsquo;src&amp;rsquo; &lt;em&gt;(Ne pas sortir des guillemets)&lt;/em&gt;&lt;/li&gt;&#xA;&lt;li&gt;(4) XSS à l&amp;rsquo;intérieur de la balise &amp;lsquo;&lt;!-- raw HTML omitted --&gt;&amp;rsquo; &lt;em&gt;(Ne créez pas une nouvelle balise HTML ou ne brisez pas la balise originale)&lt;/em&gt;&lt;/li&gt;&#xA;&lt;li&gt;(5)  Exécuter une DOM XSS en restant à l&amp;rsquo;intérieur de la valeur d&amp;rsquo;entrée &lt;em&gt;(Ne pas sortir des guillemets)&lt;/em&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;goal&#34;&gt;/GOAL&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Suivre les règles et écrire une charge utile XSS unique qui s&amp;rsquo;exécute sur les cinq entrées différentes ($xss)&lt;/strong&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

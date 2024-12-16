@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hacking on </title>
+    <link>//localhost:1313/tags/hacking/</link>
+    <description>Recent content in Hacking on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 04 Nov 2021 12:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/hacking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Comment contourner le SSL Pinning sur android</title>
+      <link>//localhost:1313/posts/contourner-le-ssl-pinning-sur-android/</link>
+      <pubDate>Thu, 04 Nov 2021 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/contourner-le-ssl-pinning-sur-android/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Pour un projet personnel, j&amp;rsquo;ai dû récupérer une requête provenant d&amp;rsquo;une application de mon téléphone. Après de nombreuses recherches j&amp;rsquo;ai trouvé comment faire et j&amp;rsquo;ai compris toutes les méthodes pour y parvenir.&#xA;La principale difficulté pour récupérer le traffic réseau de votre téléphone est de déchiffrer les requêtes https.&lt;/p&gt;&#xA;&lt;h3 id=&#34;https--cest-quoi-&#34;&gt;Http&lt;strong&gt;S&lt;/strong&gt; , c&amp;rsquo;est quoi ?&lt;/h3&gt;&#xA;&lt;p&gt;&amp;ldquo;HyperText Transfer Protocol Secure&amp;rdquo; est un Protocol qui succède à l&amp;rsquo;http . En effet il reprend l&amp;rsquo;http en y rajoutant une couche de chiffrement comme SSL ou TLS .&#xA;&lt;code&gt;Un certificat&lt;/code&gt; assure l&amp;rsquo;intégrité de la destination et empêche à un Tier de se plaçant entre votre machine et votre site web pour contrôler votre requête web .&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Comment casser un mot de passe Wifi</title>
+      <link>//localhost:1313/posts/pourquoi-votre-wifi-est-vuln%C3%A9rable/</link>
+      <pubDate>Tue, 26 Oct 2021 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/pourquoi-votre-wifi-est-vuln%C3%A9rable/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;La sécurité WPA2 (&lt;em&gt;Wi-Fi Protected Access Version 2&lt;/em&gt;) est la sécurité la plus courante sur votre box internet.&#xA;Il est pris en charge depuis 2005 sur Windows XP et il est encore utilisé de nos jours.&#xA;WPA2 reprend la technologie WPA en y rajoutant la &lt;a href=&#34;https://fr.wikipedia.org/wiki/IEEE_802.11&#34; target=&#34;_blank&#34;&gt;norme 802.11&lt;/a&gt; qui assure la prise en charge de nouveaux protocols (&lt;em&gt;ex:CCMP&lt;/em&gt;) et qui améliore la sécurité de celui-ci ( &lt;a href=&#34;https://fr.wikipedia.org/wiki/Advanced_Encryption_Standard&#34; target=&#34;_blank&#34;&gt;&lt;em&gt;AES&lt;/em&gt;&lt;/a&gt; ).&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

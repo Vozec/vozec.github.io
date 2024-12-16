@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Format-String on </title>
+    <link>//localhost:1313/tags/format-string/</link>
+    <description>Recent content in Format-String on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 27 Apr 2023 12:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/format-string/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tweedle Dum &amp; Dee | FCSC 2023</title>
+      <link>//localhost:1313/writeups/tweedle-dum-dee/</link>
+      <pubDate>Thu, 27 Apr 2023 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/writeups/tweedle-dum-dee/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction-des-deux-challenges&#34;&gt;Introduction des deux challenges:&lt;/h1&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Au cours de ses aventures au Pays des merveilles, Alice a rencontré une curieuse paire de jumeaux : Tweedledee et Tweedledum. Les deux avaient créé un site web simpliste en utilisant Flask, une réalisation qui a suscité l&amp;#39;intérêt d&amp;#39;Alice. Avec son esprit curieux et son penchant pour la technologie, Alice ne pouvait s&amp;#39;empêcher de se demander si elle pouvait pirater leur création et en découvrir les secrets.&#xA;&lt;/code&gt;&lt;/pr</description>
+    </item>
+  </channel>
+</rss>

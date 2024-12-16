@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - RSA n°5 | E takes confidence</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;RSA&#32;n°5&#32;|&#32;E&#32;takes&#32;confidence />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;RSA&#32;n°5&#32;|&#32;E&#32;takes&#32;confidence />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;RSA&#32;n°5&#32;|&#32;E&#32;takes&#32;confidence />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;RSA&#32;n°5&#32;|&#32;E&#32;takes&#32;confidence />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Attaques Wiener et Boneh Durfee sur le chiffrement RSA" />
+<meta itemprop="description" content="Attaques Wiener et Boneh Durfee sur le chiffrement RSA" />
+<meta property="og:description" content="Attaques Wiener et Boneh Durfee sur le chiffrement RSA" />
+<meta name="twitter:description" content="Attaques Wiener et Boneh Durfee sur le chiffrement RSA" />
+
+
+<base href="//localhost:1313/rsa/rsa-5-e-take-confidence/" />
+<link rel="canonical" href="//localhost:1313/rsa/rsa-5-e-take-confidence/" itemprop="url" />
+<meta name="url" content="//localhost:1313/rsa/rsa-5-e-take-confidence/" />
+<meta name="twitter:url" content="//localhost:1313/rsa/rsa-5-e-take-confidence/" />
+<meta property="og:url" content="//localhost:1313/rsa/rsa-5-e-take-confidence/" />
+
+
+<meta property="og:updated_time" content="2022-11-30T14:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/rsa/rsa-5-e-take-confidence/">RSA n°5 | E takes confidence</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2022-11-30T14:00:00Z" class="post-date">
+        November 30, 2022
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>5 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-rsa">
+        <a href="//localhost:1313/tags/rsa">rsa</a>
+      </li>
+      
+      <li class="tag-cryptographie">
+        <a href="//localhost:1313/tags/cryptographie">cryptographie</a>
+      </li>
+      
+      <li class="tag-crypto">
+        <a href="//localhost:1313/tags/crypto">crypto</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <hr>
+<h1 id="introduction">Introduction</h1>
+<p>Nous allons ici voir <code>3</code> vulnérabilités sur RSA liés à un mauvais choix de l&rsquo;exposant $e$.</p>
+<h2 id="contextualisation">Contextualisation</h2>
+<p>On sait que $d$ , clé privée du chiffrement <strong>RSA</strong> est généré de la sorte:</p>
+<ul>
+<li>$d = e^{-1} \pmod \Phi(n)$</li>
+</ul>
+<p>Par convention, on utilise souvent $e=3$ ou $e=65537$ .</p>
+<h4 id="mais-pourquoi-">Mais pourquoi ?</h4>
+<p>Ces nombres présentes plusieurs propriétés intéressante, d&rsquo;abord :</p>
+<ul>
+<li>ils sont <code>premiers</code></li>
+<li>ils sont <code>petits</code></li>
+</ul>
+<p>C&rsquo;est $2$ premières propriétés sont majeures , elles permettent un temps de calcul raisonnable pour le chiffrement/déchiffrement des messages .</p>
+<p>De plus , ils sont de la forme $e = 2*k + 1$ . <em>( 65537 = 2^16+1)</em> .<br>
+Ils sont appelé <code>nombres premiers de Fermat</code> et surtout, ils vérifient la propriété :</p>
+<p>$gcd(p-1,e) = 1$<br>
+$\implies p \not\equiv 1 \pmod e$</p>
+<p>A la liste peuvent donc s&rsquo;ajouter : <code>5</code>,<code>17</code>,<code>257</code>.</p>
+<h2 id="problème">Problème</h2>
+<p>Que se passe t&rsquo;il si on décide de choisir un exposant $e$ très grand ?<br>
+On pourrait de dire que intuitivement, le chiffrement n&rsquo;en serait que plus robuste et plus long en calcul. En réalité, <strong>il n&rsquo;en ai rien et vous faites une grosse erreur en pensant cela .</strong></p>
+<p>En augmentant $e$ , vous pouvez influencer la taille de la clé privée $d=e^{-1} \pmod \Phi$ et <code>2</code> attaques permettent de retrouver cette si précieuse clé privée .</p>
+<h2 id="attaque-de-wiener">Attaque de Wiener</h2>
+<h3 id="conditions-">Conditions :</h3>
+<p>L&rsquo;attaque requiert <code>2</code> conditions :
+$\begin{cases}
+d &lt; \dfrac{1}{3}*N^{\dfrac{1}{4}} \newline
+q &lt; p &lt; 2*q \newline
+\end{cases}$</p>
+<h5 id="théorème-de-wiener-">Théorème de Wiener :</h5>
+<p>Si $\begin{cases}
+d &lt; \dfrac{1}{3}*N^{\dfrac{1}{4}} \newline
+q &lt; p &lt; 2*q \newline
+\end{cases}$</p>
+<p>Alors <strong>d</strong> peut être retrouver en cherchant la bonne fraction $\dfrac{k}{d}$ parmi les convergentes de $\dfrac{e}{n}$</p>
+<h3 id="démonstration">Démonstration:</h3>
+<p><em>On sait que</em> :</p>
+<p>$d=e^{-1} \pmod \Phi$<br>
+$\implies e*d \equiv 1 \pmod \Phi$<br>
+$\implies\exists k <del>tel</del>que : e*d = k*\Phi(n)+1$<br>
+$\implies\exists k <del>tel</del>que : |e*d-k*\Phi(n)| = 1$<br>
+$\implies\exists k <del>tel</del>que : |\dfrac{e}{\Phi(n)} - \dfrac{k}{d} = | \dfrac{1}{d*\Phi(n)}$</p>
+<p><em>De plus</em> :<br>
+$\Phi(n)=(p-1)*(q-1)$<br>
+$\implies\Phi(n)=n-q-p+1$<br>
+$\implies |n - \Phi(n)| = p+q-1 &lt; 3 \sqrt n$  <em>(car q&lt;p&lt;2q)</em></p>
+<p><em>Finalement</em> :<br>
+$\exists k <del>tel</del>que : |\dfrac{e}{n} - \dfrac{k}{d} = | \dfrac{e*d - k*n}{n*d}| $<br>
+$ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~= | \dfrac{e*d - k*n -k*\Phi(n) +k*\Phi(n)}{n*d}| $<br>
+$ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~= | \dfrac{1-k*(n-\Phi(n))}{n*d}| $<br>
+$ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~&lt; | \dfrac{3*k*\sqrt n}{n*d}| $</p>
+<p><em>Or</em> :
+$k*e &lt; k*\Phi(n) = d*e-1 &lt; d*e$<br>
+$\implies k  &lt; d &lt; \frac{1}{3}*n^{\frac{1}{4}}$</p>
+<p><em>D&rsquo;où</em> :<br>
+$\exists k <del>tel</del>que : |\dfrac{e}{n} - \dfrac{k}{d} &lt; | \dfrac{3*\frac{1}{3}*n^{\frac{1}{4}}*\sqrt n}{n*d}|$<br>
+$ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~&lt; | \dfrac{1}{d*n^{\dfrac{1}{4}}*\sqrt n}| $<br>
+$ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~&lt; | \dfrac{1}{d*n^{\dfrac{1}{4}}}| $<br>
+$ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~&lt; | \dfrac{1}{3*d^3}| $</p>
+<p><em>(<a href="https://sagi.io/crypto-classics-wieners-rsa-attack/" target="_blank">Reference: Sage.io</a>)</em></p>
+<h3 id="polynôme-phinn">Polynôme $\Phi(n)/n$:</h3>
+<p><em>On sait que</em> :<br>
+$\Phi(n) = (p-1)*(q-1)$
+$\implies \Phi(n) = N-q-p + 1$<br>
+$\implies \Phi(n) =  N - p - \dfrac{N}{p} + 1$<br>
+<strong>$\implies p^2 + p*(\Phi(n)-n-1)-n = 0$</strong></p>
+<h3 id="algorithme-de-factorisation-">Algorithme de factorisation :</h3>
+<p>Voici les étapes à suivre :</p>
+<ul>
+<li>Déterminer les <a href="https://fr.wikipedia.org/wiki/Fraction_continue" target="_blank">fractions continues</a> de $\dfrac{e}{n}$</li>
+<li>Déterminer les approximation des $\dfrac{e}{n}$ qu&rsquo;on note $\dfrac{k}{d}$</li>
+<li>Pour chaque $\dfrac{k}{d}$ , on calcule $\Phi(n) = \dfrac{e*d-1}{k}$ avant de résoudre l&rsquo;équation polynomial évoqué plus haut .</li>
+<li>Les racines du polynôme peuvent être les facteurs $p$ et $q$. Il suffit de recalculer $n$ et comparer le résultat avec sa valeur connue.</li>
+</ul>
+<h3 id="implémentation-python">Implémentation Python:</h3>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> sympy <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">convergents</span>(e):
+</span></span><span style="display:flex;"><span>    n,d <span style="color:#f92672">=</span> [e[<span style="color:#ae81ff">0</span>],e[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">*</span>e[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>],[<span style="color:#ae81ff">1</span>,e[<span style="color:#ae81ff">1</span>]]
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">yield</span> (n[<span style="color:#ae81ff">0</span>], n[<span style="color:#ae81ff">0</span>]);<span style="color:#66d9ef">yield</span> (n[<span style="color:#ae81ff">1</span>], n[<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>,len(e)):
+</span></span><span style="display:flex;"><span>        ni,di <span style="color:#f92672">=</span> e[i]<span style="color:#f92672">*</span>n[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> n[i<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>],e[i]<span style="color:#f92672">*</span>d[i<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">+</span> d[i<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>        [x<span style="color:#f92672">.</span>append(y) <span style="color:#66d9ef">for</span> x,y <span style="color:#f92672">in</span> [(n,ni),(d,di)]]
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">yield</span> (ni, di)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>continued_frac <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> e,n: list(continued_fraction_iterator(Rational(e,n)))     
+</span></span><span style="display:flex;"><span>validity_check <span style="color:#f92672">=</span> <span style="color:#66d9ef">lambda</span> r,n: len(r) <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">and</span> n <span style="color:#f92672">==</span> r[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">*</span>r[<span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">Wiener</span>(e,n):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">solver</span>(phi,n):
+</span></span><span style="display:flex;"><span>        p <span style="color:#f92672">=</span> Symbol(<span style="color:#e6db74">&#39;p&#39;</span>, integer<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> solve(p<span style="color:#f92672">**</span><span style="color:#ae81ff">2</span> <span style="color:#f92672">+</span> (phi <span style="color:#f92672">-</span> n <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)<span style="color:#f92672">*</span>p <span style="color:#f92672">+</span> n, p)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> pk, pd <span style="color:#f92672">in</span> convergents(continued_frac(e, n)):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> pk <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">continue</span>;
+</span></span><span style="display:flex;"><span>        roots <span style="color:#f92672">=</span> solver((e<span style="color:#f92672">*</span>pd <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>)<span style="color:#f92672">//</span>pk,n)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> validity_check(roots,n):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> roots
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> (<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">0</span>)
+</span></span></code></pre></div><h2 id="attaque-de-boneh-durfee">Attaque de Boneh Durfee</h2>
+<p>Cette attaque est dans la continuité de l&rsquo;attaque Wiener et est possible dans des conditions similaires :</p>
+<ul>
+<li>$d &lt; n^{\dfrac{1}{2}*{(2-\sqrt{2})}}  \approx n^{0,292}$</li>
+</ul>
+<p>On sait que :</p>
+<p>$e*d \equiv 1 \pmod{\Phi{(n)}}$<br>
+$\implies e*d = k*\Phi{(n)} +1$<br>
+$\implies 1 = e*d + \dfrac{k&rsquo;*\Phi{(n)}}{2}$<br>
+$\implies 1 = e*d + \dfrac{k&rsquo;*(p-1)*(q-1)}{2}$<br>
+$\implies 1 = e*d + \dfrac{k&rsquo;*(n-q-p+1)}{2}$<br>
+$\implies 1 = e*d + k&rsquo;*\bigg(\dfrac{(n+1)}{2}+\dfrac{(-p-q)}{2}\bigg)$<br>
+$\implies 1 = e*d + k&rsquo;*(x+y)$</p>
+<p>avec :</p>
+<ul>
+<li>$x = \dfrac{(n+1)}{2}$</li>
+<li>$y = \dfrac{(-p-q)}{2}$</li>
+</ul>
+<p>On peut réécrire l&rsquo;équation comme :</p>
+<ul>
+<li>$\mathbf{2*k&rsquo;&rsquo;*(x+y)+1 \equiv 0 \pmod e}$</li>
+</ul>
+<p><a href="https://twitter.com/cryptodavidw" target="_blank">David Wong</a> explique <a href="https://github.com/mimoo/RSA-and-LLL-attacks/blob/master/survey_final.pdf" target="_blank">ici</a> que cette équation peut être reformulée sous la forme :</p>
+<p>$\mathbf{f(x,y) = x*(A+y)}$<br>
+et :</p>
+<ul>
+<li>$a=n+1$</li>
+<li>$y = -q-p$</li>
+</ul>
+<p>Ainsi , les racines de ce polynôme nous permettent de calculer la clé privée $d$.<br>
+Pour les trouver , on peut utiliser la méthode de <code>Coppersmith's</code> pour les polynômes à plusieurs variables ainsi que le théorème de <code>Howgrave-Graham</code> pour les <em>polynômes bivariants</em></p>
+<p>Voici une implémentation efficace de cette attaque : <a href="https://github.com/mimoo/RSA-and-LLL-attacks/blob/master/boneh_durfee.sage" target="_blank">ici</a></p>
+<h2 id="attaque-dun-rsa-avec-e-de-la-forme-2k">Attaque d&rsquo;un RSA avec e de la forme 2^k</h2>
+<p>Quand <code>e</code> est une puissance de <em>2</em>, il est possible de calculer la racine carré modulaire <em>k</em> fois grâce à l&rsquo;algorithme de Tonelli Shanks et retrouver le message déchiffré !</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Util.number <span style="color:#f92672">import</span> long_to_bytes
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>n <span style="color:#f92672">=</span> <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>e <span style="color:#f92672">=</span> <span style="color:#ae81ff">64</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">legendre</span>(a, p):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> pow(a, (p <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>, p)
+</span></span><span style="display:flex;"><span> 
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">tonelli</span>(n, p):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">assert</span> legendre(n, p) <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>, <span style="color:#e6db74">&#34;not a square (mod p)&#34;</span>
+</span></span><span style="display:flex;"><span>    q <span style="color:#f92672">=</span> p <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    s <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> q <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        q <span style="color:#f92672">//=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>        s <span style="color:#f92672">+=</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> s <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> pow(n, (p <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">//</span> <span style="color:#ae81ff">4</span>, p)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> z <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">2</span>, p):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> p <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">==</span> legendre(z, p):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>    c <span style="color:#f92672">=</span> pow(z, q, p)
+</span></span><span style="display:flex;"><span>    r <span style="color:#f92672">=</span> pow(n, (q <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">//</span> <span style="color:#ae81ff">2</span>, p)
+</span></span><span style="display:flex;"><span>    t <span style="color:#f92672">=</span> pow(n, q, p)
+</span></span><span style="display:flex;"><span>    m <span style="color:#f92672">=</span> s
+</span></span><span style="display:flex;"><span>    t2 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span> (t <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> p <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>        t2 <span style="color:#f92672">=</span> (t <span style="color:#f92672">*</span> t) <span style="color:#f92672">%</span> p
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>, m):
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span> (t2 <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">%</span> p <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>            t2 <span style="color:#f92672">=</span> (t2 <span style="color:#f92672">*</span> t2) <span style="color:#f92672">%</span> p
+</span></span><span style="display:flex;"><span>        b <span style="color:#f92672">=</span> pow(c, <span style="color:#ae81ff">1</span> <span style="color:#f92672">&lt;&lt;</span> (m <span style="color:#f92672">-</span> i <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>), p)
+</span></span><span style="display:flex;"><span>        r <span style="color:#f92672">=</span> (r <span style="color:#f92672">*</span> b) <span style="color:#f92672">%</span> p
+</span></span><span style="display:flex;"><span>        c <span style="color:#f92672">=</span> (b <span style="color:#f92672">*</span> b) <span style="color:#f92672">%</span> p
+</span></span><span style="display:flex;"><span>        t <span style="color:#f92672">=</span> (t <span style="color:#f92672">*</span> c) <span style="color:#f92672">%</span> p
+</span></span><span style="display:flex;"><span>        m <span style="color:#f92672">=</span> i
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> r
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">find_square_roots</span>(c, e):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> e <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        plaintext <span style="color:#f92672">=</span> long_to_bytes(c)
+</span></span><span style="display:flex;"><span>        print(plaintext)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">elif</span> pow(c,(n<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>,n) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">1</span>:
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>        rt1 <span style="color:#f92672">=</span> tonelli(c, n)
+</span></span><span style="display:flex;"><span>        find_square_roots(rt1, e<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>        rt2 <span style="color:#f92672">=</span> n <span style="color:#f92672">-</span> rt1
+</span></span><span style="display:flex;"><span>        find_square_roots(rt2, e<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>find_square_roots(c, e)
+</span></span></code></pre></div><p>Sagemath est aussi capable de le faire automatiquement:</p>
+<pre tabindex="0"><code>n = ...
+c = ...
+e = 2**5
+
+X = GF(n, &#39;X&#39;).gen()
+for r, _ in (X^e - c).roots():
+    print(bytes.fromhex(hex(r)[2:]))
+</code></pre>
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/rsa/rsa-5-e-takes-confidence/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>RSA n°5 | E takes confidence</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/rsa/rsa-6-message-for-all/?ref=footer"><span style="font-weight:bold;">Next »</span><br>RSA n°6 | Message for all</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#contextualisation">Contextualisation</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#problème">Problème</a></li>
+    <li><a href="#attaque-de-wiener">Attaque de Wiener</a>
+      <ul>
+        <li><a href="#conditions-">Conditions :</a></li>
+        <li><a href="#démonstration">Démonstration:</a></li>
+        <li><a href="#polynôme-phinn">Polynôme $\Phi(n)/n$:</a></li>
+        <li><a href="#algorithme-de-factorisation-">Algorithme de factorisation :</a></li>
+        <li><a href="#implémentation-python">Implémentation Python:</a></li>
+      </ul>
+    </li>
+    <li><a href="#attaque-de-boneh-durfee">Attaque de Boneh Durfee</a></li>
+    <li><a href="#attaque-dun-rsa-avec-e-de-la-forme-2k">Attaque d&rsquo;un RSA avec e de la forme 2^k</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

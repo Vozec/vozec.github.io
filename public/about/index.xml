@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>About on </title>
+    <link>//localhost:1313/about/</link>
+    <description>Recent content in About on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <atom:link href="//localhost:1313/about/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Homepage</title>
+      <link>//localhost:1313/about/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/about/about/</guid>
+      <description>&lt;h1 id=&#34;hello-&#34;&gt;Hello 👋&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;Welcome to my personal website !&lt;/strong&gt;&lt;/p&gt;&#xA;&lt;p&gt;My name is &lt;em&gt;Arthur&lt;/em&gt;, better known under the nickname &lt;code&gt;Vozec&lt;/code&gt; and I am passionate about computer science, more precisely about &lt;em&gt;cybersecurity&lt;/em&gt;. I learn new things in autodidacts in parallel to my post-baccalaureate studies and this GitHub contains many projects that I did by myself. I participate to many &lt;strong&gt;CTF&lt;/strong&gt; and many of the new tools I create allow me to save time during these competitions.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

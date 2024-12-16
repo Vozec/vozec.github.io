@@ -1,0 +1,1360 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - Comment contourner le SSL Pinning sur android</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Comment&#32;contourner&#32;le&#32;SSL&#32;Pinning&#32;sur&#32;android />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Comment&#32;contourner&#32;le&#32;SSL&#32;Pinning&#32;sur&#32;android />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Comment&#32;contourner&#32;le&#32;SSL&#32;Pinning&#32;sur&#32;android />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Comment&#32;contourner&#32;le&#32;SSL&#32;Pinning&#32;sur&#32;android />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Comment peut on récupérer le contenue des requètes https dans une application android" />
+<meta itemprop="description" content="Comment peut on récupérer le contenue des requètes https dans une application android" />
+<meta property="og:description" content="Comment peut on récupérer le contenue des requètes https dans une application android" />
+<meta name="twitter:description" content="Comment peut on récupérer le contenue des requètes https dans une application android" />
+
+
+<base href="//localhost:1313/posts/contourner-le-ssl-pinning-sur-android/" />
+<link rel="canonical" href="//localhost:1313/posts/contourner-le-ssl-pinning-sur-android/" itemprop="url" />
+<meta name="url" content="//localhost:1313/posts/contourner-le-ssl-pinning-sur-android/" />
+<meta name="twitter:url" content="//localhost:1313/posts/contourner-le-ssl-pinning-sur-android/" />
+<meta property="og:url" content="//localhost:1313/posts/contourner-le-ssl-pinning-sur-android/" />
+
+
+<meta property="og:updated_time" content="2021-11-04T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/posts/contourner-le-ssl-pinning-sur-android/">Comment contourner le SSL Pinning sur android</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2021-11-04T12:00:00Z" class="post-date">
+        November 4, 2021
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>9 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-hacking">
+        <a href="//localhost:1313/tags/hacking">hacking</a>
+      </li>
+      
+      <li class="tag-tuto">
+        <a href="//localhost:1313/tags/tuto">tuto</a>
+      </li>
+      
+      <li class="tag-reverse">
+        <a href="//localhost:1313/tags/reverse">reverse</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h2 id="introduction">Introduction</h2>
+<p>Pour un projet personnel, j&rsquo;ai dû récupérer une requête provenant d&rsquo;une application de mon téléphone. Après de nombreuses recherches j&rsquo;ai trouvé comment faire et j&rsquo;ai compris toutes les méthodes pour y parvenir.
+La principale difficulté pour récupérer le traffic réseau de votre téléphone est de déchiffrer les requêtes https.</p>
+<h3 id="https--cest-quoi-">Http<strong>S</strong> , c&rsquo;est quoi ?</h3>
+<p>&ldquo;HyperText Transfer Protocol Secure&rdquo; est un Protocol qui succède à l&rsquo;http . En effet il reprend l&rsquo;http en y rajoutant une couche de chiffrement comme SSL ou TLS .
+<code>Un certificat</code> assure l&rsquo;intégrité de la destination et empêche à un Tier de se plaçant entre votre machine et votre site web pour contrôler votre requête web .</p>
+<p>Voici une attaque type de l&rsquo;homme du milieu <code>(&quot;Man in the middle&quot;)</code> :</p>
+<p><img src="./img/mitm.png" alt="Alt text">
+Un attaquant détourne vos requêtes vers sa machine et peut ainsi contrôler tous ce que vous faites sur le réseau.
+C&rsquo;est un attaque courante sur les wifi publique (Fastfoods/Hotels)</p>
+<p>Une fois un certificat SSL initialisé, l&rsquo;attaquant ne peut plus rien intercepter :</p>
+<p><img src="./img/mitm2.png" alt="Alt text"></p>
+<h3 id="quel-est-le-lien-avec-notre-application-">Quel est le lien avec notre application ?</h3>
+<p>La plupart des applications utilise les certificats pour sécuriser leurs connexions et empêche donc la récupération de leurs requêtes en clair.</p>
+<h3 id="comment-récupérer-le-flux-wifi-dun-smartphone-">Comment récupérer le flux wifi d&rsquo;un smartphone ?</h3>
+<p>Et oui, avant de vouloir déchiffrer <em>HTTPS</em> , il faudrait déjà avoir les requètes <em>HTTP</em> , celles non sécurisées !
+On peut utiliser plusieurs logiciels :</p>
+<ul>
+<li><a href="https://www.telerik.com/download/fiddler" target="_blank">Fiddler</a></li>
+<li><a href="https://www.wireshark.org/download.html" target="_blank">Wireshark</a></li>
+<li><a href="https://portswigger.net/burp/communitydownload" target="_blank">Burpsuite</a></li>
+<li><a href="https://www.charlesproxy.com/download/latest-release/" target="_blank">Charles</a></li>
+<li><a href="https://m.apkpure.com/fr/httpcanary-%E2%80%94-http-sniffer-capture-analysis/com.guoshi.httpcanary" target="_blank">HttpCanary</a></li>
+</ul>
+<p>Personnellement, je vais utiliser fiddler mais le fonctionnement est identiques pour les autres outils.</p>
+<p>On doit se rendre dans les options de connexion et activer la connexion à distance.
+Tuto pour Fiddler <a href="https://docs.telerik.com/fiddler/configure-fiddler/tasks/configureforandroid" target="_blank">ici</a></p>
+<p>Ajoutons ensuite l’IP de notre pc en tant que proxy sur notre smartphone.</p>
+<pre tabindex="0"><code>Paramètres &gt; Wifi &gt; Options+ de notre wifi &gt; Proxy :
+- Hostname = IP local du pc (192.168.1.X)
+- Proxy port = Port utilisé par le logiciel (Fiddler:8888 | Burpsuite:8080)
+</code></pre><p>Il faut ensuite installer le certificat du logiciel sur le smartphone.<br>
+On peut :</p>
+<ul>
+<li>Exporter le certificat (fichier .cer ou .crt) et l&rsquo;installer en cliquant dessus depuis notre gestionnaire de fichier. - Directement utilisé l&rsquo;option du sniffer si elle est disponible.</li>
+</ul>
+<p>Fiddler : Rendez-vous sur <code>http://ipv4.fiddler:8888/</code> une fois le proxy configuré et cliquez sur <code>FiddlerRoot Certificate</code><br>
+<img src="./img/fiddler.png" alt="Alt text"></p>
+<p>Là vous pouvez cliquer dessus une fois télécharger.
+Voici un tuto pour fiddler qui résume bien : <a href="https://www.youtube.com/watch?v=mFJX8ETk2Mc" target="_blank">ici</a></p>
+<p>Normalement si tout est bon, vous devriez recevoir les requêtes HTTPS du navigateur.
+<img src="./img/https.png" alt="Alt text"></p>
+<h3 id="comment-bypass-le-ssl-pining-">Comment bypass le ssl-Pining ?</h3>
+<p>On arrive à la partie délicate ; les requêtes https provenant d’applications.
+Il existe plusieurs méthodes :</p>
+<h3 id="méthode-1-">Méthode 1 :</h3>
+<p>La première est la plus courante. Pour faire simple, les application ne font pas confiance aux certificat installés par l&rsquo;utilisateur , <strong>en d&rsquo;autre termes le certificat installé précédemment n&rsquo;est pas considéré comme fiable par les applications.</strong></p>
+<p>La première technique est donc de passé ce certificat en tant que certificat système et non utilisateur. En effet la plupart des applications se base sur les certificats système, ceux de google par exemple.</p>
+<p>Pour passer notre certificat précédent (celui de fiddler) en tant que système, <strong>il faut que notre appareil Android soit rooté</strong> .
+On supprime celui installé précédent et on va venir le réinstallé avec <a href="https://play.google.com/store/apps/details?id=net.jolivier.cert.Importer" target="_blank">cette application</a> : <em>&ldquo;Root Certificat Manager&rdquo;</em>
+Une fois fait , après un redémarrage , on devrait apercevoir les requêtes déchiffrées .</p>
+<p>Si vous n&rsquo;êtes pas équipé d&rsquo;un téléphone root , peut être avez-vous un vieux téléphone qui ne sert plus .
+Dans les anciens smartphone <strong>(version d’Android &lt; 5)</strong> , les applications acceptent les certificats utilisateurs .On peut donc se passer de l&rsquo;étape précédente et directement récupérer le traffic.
+<strong>Attention</strong> il est possible que l&rsquo;application refuse votre version d’Android trop ancienne. J&rsquo;explique comment contourner cette vérification dans la suite de l&rsquo;article.</p>
+<h3 id="méthode-2-">Méthode 2 :</h3>
+<p>Si la technique précédent n&rsquo;a pas marché, on va devoir faire l’inverse. Au lieu de passer notre certificat en tant que certificat système, on va forcer l&rsquo;application à autoriser les certificats utilisateurs.</p>
+<p>La première étape est de récupérer l&rsquo;<code>apk</code> de notre application ainsi que tu logiciel <strong><a href="https://ibotpeaches.github.io/Apktool/" target="_blank">APKTOOl</a></strong></p>
+<p>On va décompiler notre apk , allez dans votre invite de commande (cmd/powershell) et rendez-vous dans votre dossier apktool , vous y aurez placer votre apk dans ce même dossier au préalable.</p>
+<p>On a :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apktool d application.apk
+</span></span></code></pre></div><p><img src="./img/apktool.png" alt="Alt text"></p>
+<p>Un dossier au nom de notre application s&rsquo;est créé .</p>
+<p>Nous devons rajouter ce code dans le fichier <code>AndroidManifest.xml</code> aprés <code>&lt;application</code>:</p>
+<pre tabindex="0"><code>android:networkSecurityConfig=&#34;@xml/network_security_config&#34;
+</code></pre><p>et</p>
+<pre tabindex="0"><code>android:extractNativeLibs=&#34;true&#34;
+</code></pre><p><em>(OU mettre &rsquo;true&rsquo; à la place de &lsquo;false&rsquo; si &rsquo;extractNativeLibs&rsquo; est déja présent)</em></p>
+<p>De cette manière :
+<img src="./img/apktool2.png" alt="Alt text"></p>
+<p>Puis on doit créer/modifier un fichier dans le dossier <code>res/xml</code> du nom de <code>network_security_config.xml</code>
+Voici son contenu :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#75715e">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;network-security-config&gt;</span>  
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;base-config&gt;</span>  
+</span></span><span style="display:flex;"><span>            <span style="color:#f92672">&lt;trust-anchors&gt;</span>  
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">&lt;!-- Trust preinstalled CAs --&gt;</span>  
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;certificates</span> <span style="color:#a6e22e">src=</span><span style="color:#e6db74">&#34;system&#34;</span> <span style="color:#f92672">/&gt;</span>  
+</span></span><span style="display:flex;"><span>                <span style="color:#75715e">&lt;!-- Additionally trust user added CAs --&gt;</span>  
+</span></span><span style="display:flex;"><span>                <span style="color:#f92672">&lt;certificates</span> <span style="color:#a6e22e">src=</span><span style="color:#e6db74">&#34;user&#34;</span> <span style="color:#f92672">/&gt;</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#f92672">&lt;/trust-anchors&gt;</span>  
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&lt;/base-config&gt;</span>  
+</span></span><span style="display:flex;"><span> <span style="color:#f92672">&lt;/network-security-config&gt;</span>
+</span></span></code></pre></div><p>A vous d&rsquo;adapter si le fichier existe déjà , <code>&lt;certificates src=&quot;user&quot; /&gt;</code> est la ligne important dans les balises <code>trust-anchors</code> .<br>
+Vous pouvez aussi ajouter cette ligne par exemple :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-xml" data-lang="xml"><span style="display:flex;"><span><span style="color:#f92672">&lt;certificates</span> <span style="color:#a6e22e">src=</span><span style="color:#e6db74">&#34;@raw/fiddler&#34;</span><span style="color:#f92672">/&gt;</span>
+</span></span></code></pre></div><p>Et ensuite crée un dossier res/raw en ajoutant le certificat fiddler.cer
+<img src="./img/apktool3.png" alt="Alt text"></p>
+<hr>
+<h6 id="comment-changer-la-version-minimale-de-lapplication">Comment changer la version minimale de l&rsquo;application</h6>
+<p>Il est possible que votre application refuse de s&rsquo;exécuter sur votre téléphone s’il est trop vieux.
+Pour changer la version minimale, modifiez la valeur de <code>minSdkVersion</code> dans le fichier <strong>apktool.yml</strong>
+<em>(23 correspond à Android 6.0</em>)
+Tout est résumé <a href="https://developer.android.com/studio/releases/platforms" target="_blank">ici</a></p>
+<hr>
+<p>Maintenant que nous avons modifié notre APK, il faut le recompiler :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apktool b nomdudossier -o fichierdesortie.apk
+</span></span></code></pre></div><p>Vous devriez avoir un fichier apk qui vient de se créer :
+<img src="./img/apktool4.png" alt="Alt text"></p>
+<p>Enfin pour installer notre nouvelle apk nous devons le signer.
+Pour installer une application, Android doit vérifier la provenance et c&rsquo;est pour cela que nous devons appliqué une signature à notre nouvelle application patchée .</p>
+<p>On peut utiliser <a href="https://github.com/Jamling/jarsigner" target="_blank">jarsigner</a> ou <a href="https://developer.android.com/studio/command-line/apksigner" target="_blank">apksigner</a>
+Je préfère utiliser apksigner car il est plus récent et supporte les dernières version et algorithmes de signatures.</p>
+<p>On génère d&rsquo;abord un keystore</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>keytool -genkey -v -keystore key.keystore -alias app -keyalg RSA -keysize <span style="color:#ae81ff">2048</span> -validity <span style="color:#ae81ff">10000</span>
+</span></span></code></pre></div><p>On doit ensuite aligner notre .apk</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>zipalign -c <span style="color:#ae81ff">4</span> application.modifie.apk
+</span></span></code></pre></div><p>Enfin, on signe l&rsquo;apk avec notre keystore :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apksigner sign sign -v --out final.apk --ks key.keystore --ks-key-alias app application.modifie.apk
+</span></span><span style="display:flex;"><span>apksigner verify final.apk
+</span></span></code></pre></div><p>Et voilà !Vous pouvez installer final.apk sans souci.</p>
+<h3 id="méthode-3-">Méthode 3 :</h3>
+<p>On va ici s&rsquo;intéresse au Hooking <em>(Root non requis)</em>. On va à nouveau modifier l&rsquo;application mais cette fois avec <strong><a href="https://github.com/frida" target="_blank">le Framework Frida</a></strong> .<br>
+Frida va injecter du code dans notre apk et une fois installé, quand celle-ci sera lancée, elle <strong>se connectera à un serveur sur notre pc où nous pourrons désactiver le sslpining de l&rsquo;application souhaitée</strong></p>
+<p>La première étape est de décompiler l&rsquo;apk comme dans la méthode 2 :
+On a :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apktool d application.apk
+</span></span></code></pre></div><p>Il faut télécharger la bonne version de <a href="https://github.com/frida/frida/releases/tag/15.1.9" target="_blank">frida-gadget</a></p>
+<p>Renommer la librairie en : <code>libfrida-gadget.so</code></p>
+<p>Et placer la dans le dossier lib/architecture:
+<code>exemple : /lib/arm64-v8a/libfrida-gadget.so</code></p>
+<p>Maintenant, on doit modifier l&rsquo;application pour qu&rsquo;elle lance Frida au démarrage. Nous l&rsquo;avons ajouter dans l&rsquo;app , maintenant nous devons l&rsquo;activer .</p>
+<p>Voici un schéma du fonctionnement de Frida :
+<img src="./img/resumefrida.png" alt="Alt text"></p>
+<p>On doit installer Frida :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>python -m pip install Frida
+</span></span><span style="display:flex;"><span>python -m pip install objection
+</span></span><span style="display:flex;"><span>python -m pip install frida-tools
+</span></span><span style="display:flex;"><span>ou
+</span></span><span style="display:flex;"><span>pip install Frida
+</span></span><span style="display:flex;"><span>pip install objection
+</span></span><span style="display:flex;"><span>pip install frida-tools
+</span></span></code></pre></div><h6 id="méthode-1--modifier-la-librairie-de-base-et-y-ajouter-celles-ce-frida">Méthode 1 : Modifier la librairie de base et y ajouter celles ce frida</h6>
+<p>On peut injecter avec ce script notre librairie Frida dans celle qui existe déjà :</p>
+<p>(lief doit être installé : <code>python3 -m pip install lief</code> )</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env python3</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> lief
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>libnative <span style="color:#f92672">=</span> lief<span style="color:#f92672">.</span>parse(<span style="color:#e6db74">&#34;target/lib/arm64-v8a/libconscrypt_jni.so&#34;</span>)
+</span></span><span style="display:flex;"><span>libnative<span style="color:#f92672">.</span>add_library(<span style="color:#e6db74">&#34;libfrida-gadget.so&#34;</span>) <span style="color:#75715e"># Injection!</span>
+</span></span><span style="display:flex;"><span>libnative<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;target/lib/arm64-v8a/libconscrypt_jni.so&#34;</span>)
+</span></span></code></pre></div><p><em>(Vous devez remplacer libconscrypt_jni.so par le nom de la Lib d&rsquo;origine. Pour moi : libconscrypt_jni.so)</em></p>
+<p>On execute:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>python3 inject-gadget.py
+</span></span></code></pre></div><p>Sur linux on peut vérifier que ça a fonctionné :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>readelf -d target/lib/arm64-v8a/libfromapk.so
+</span></span></code></pre></div><p><img src="./img/readelf.png" alt="Alt text"></p>
+<h6 id="méthode-2--modifier-le-code-smali-pour-charger-notre-librairie">Méthode 2 : Modifier le code Smali pour charger notre librairie.</h6>
+<p>Cette fois, on cherche à injecter du code <strong>SMALI</strong> dans notre app.
+Voici le code à injecter, il permet de charger notre librairie :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">const</span><span style="color:#f92672">-</span>string v0, <span style="color:#e6db74">&#34;frida-gadget&#34;</span>
+</span></span><span style="display:flex;"><span>invoke<span style="color:#f92672">-</span><span style="color:#66d9ef">static</span> {v0}, Ljava<span style="color:#f92672">/</span>lang<span style="color:#f92672">/</span>System;<span style="color:#f92672">-&gt;</span>loadLibrary(Ljava<span style="color:#f92672">/</span>lang<span style="color:#f92672">/</span>String;)V
+</span></span></code></pre></div><p>Pour trouver ou le mettre, on cherche un fichier smali avec : <code>MainActivity</code>
+On peut chercher dans <em>AndroidManifest.xml</em> dans les tags <code>&lt;application</code> et <code>&lt;activity</code>.</p>
+<p>Finalement :
+<img src="./img/patchfrida.png" alt="Alt text"></p>
+<h5 id="_important_"><em>Important</em></h5>
+<p>Il ne faut pas oublier de mettre <code>android:extractNativeLibs</code> sur <strong>true</strong> si elle est sur false sinon il faut rajouter <code>android:extractNativeLibs=&quot;true&quot;</code> après <code>&lt;application </code>
+*(Comme dans la méthode 2) *</p>
+<p>Il faut aussi ajouter dans le même fichier : <code>&lt;uses-permission android:name=&quot;android.permission.INTERNET&quot;/&gt;</code> dans les premières lignes du fichier.</p>
+<p>Cette étape de patch peut être automatisée avec <a href="https://github.com/badadaf/apkpatcher" target="_blank">ce tool</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apkpatcher -a application.apk
+</span></span></code></pre></div><p><em>(On peut aussi utiliser <code>Objection</code> pour patcher l&rsquo;apk : Voici une très bonne vidéo : <a href="https://www.youtube.com/watch?v=mstW4dWokF8" target="_blank">ici</a>)</em></p>
+<p>Quel que soit la méthode , <strong>il faut recompiler et re signer notre apk</strong> .
+On suivra les mêmes étapes que dans la <strong>méthode 2</strong></p>
+<h6 id="dernière-étape-">Dernière étape !</h6>
+<p>Il faut maintenant installer l&rsquo;apk et activer Frida, injecté dans l&rsquo;application.</p>
+<p>Pour ce faire on va utiliser ADB. Il faut activer dans les options développer le débogage et l&rsquo;installation d&rsquo;application via USB:
+<img src="./img/adb.jpg" alt="Alt text"></p>
+<p>On doit brancher son téléphone au pc et télécharger le pack de développement <a href="https://androidsdkmanager.azurewebsites.net/Platformtools" target="_blank">ADB</a> <a href="https://dl.google.com/android/repository/platform-tools-latest-windows.zip" target="_blank">(autre lien)</a> et <a href="https://adbdriver.com/downloads/" target="_blank">ses drivers</a></p>
+<p>Une fois le téléphone branché et ADB téléchargé, on se rend dans le dossier de adb.exe avec cmd et on vérifie que l&rsquo;on est bien est connecté à notre appareil :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>adb devices
+</span></span></code></pre></div><p>Normalement, on devrait avoir notre téléphone dans la liste.</p>
+<p>Là, on peut installer l&rsquo;apk <em>(Il doit être dans le dossier de adb.exe)</em></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>adb install -r application.modifie.apk
+</span></span></code></pre></div><p>Une fois installé, vous pouvez naviguer dans l&rsquo;application quelques secondes et explorer le maximum d’options, Le but est que la fonction que vous avez modifié plus haut soit activé et que donc frida-gadget se lance. Normalement dès qu&rsquo;il se lance, l&rsquo;application se fige.</p>
+<p>A ce moment on peut faire :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>frida-ps -U
+</span></span></code></pre></div><p>Vous devriez avoir ca :<br>
+<img src="./img/frida2.png" alt="Alt text"></p>
+<p>Finalement pour se connecter au serveur :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>frida-trace -U Gadget
+</span></span></code></pre></div><p>On peut télécharger ce script : <a href="./files/fridascript.js">fridascript.js</a>
+Et enfin on désactive le ssl pinning avec cette commande :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>frida -f fridascript.js -U Gadget
+</span></span></code></pre></div><h3 id="patch">Patch</h3>
+<p>Dans certain cas rare, l&rsquo;application vérifie le hash du certificat.
+Il faut donc supprimer cette vérification pour que notre certificat soit accepté.
+Voici un exemple de code qui empêche la bonne exécution de notre code :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">k</span>(X509TrustManagerExtensions x509TrustManagerExtensions, HttpsURLConnection httpsURLConnection) {
+</span></span><span style="display:flex;"><span>       HashSet hashSet <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet(NetworkConstants.<span style="color:#a6e22e">d</span>);
+</span></span><span style="display:flex;"><span>       HashSet hashSet2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet(NetworkConstants.<span style="color:#a6e22e">e</span>);
+</span></span><span style="display:flex;"><span>       HashSet hashSet3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> HashSet(NetworkConstants.<span style="color:#a6e22e">f</span>);
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">try</span> {
+</span></span><span style="display:flex;"><span>           MessageDigest instance <span style="color:#f92672">=</span> MessageDigest.<span style="color:#a6e22e">getInstance</span>(MessageDigestAlgorithms.<span style="color:#a6e22e">SHA_256</span>);
+</span></span><span style="display:flex;"><span>           String str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;</span>;
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">boolean</span> z <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">boolean</span> z2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">boolean</span> z3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">for</span> (X509Certificate next : h(x509TrustManagerExtensions, httpsURLConnection)) {
+</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> encoded <span style="color:#f92672">=</span> next.<span style="color:#a6e22e">getPublicKey</span>().<span style="color:#a6e22e">getEncoded</span>();
+</span></span><span style="display:flex;"><span>               instance.<span style="color:#a6e22e">update</span>(encoded, 0, encoded.<span style="color:#a6e22e">length</span>);
+</span></span><span style="display:flex;"><span>               String encodeToString <span style="color:#f92672">=</span> Base64.<span style="color:#a6e22e">encodeToString</span>(instance.<span style="color:#a6e22e">digest</span>(), 2);
+</span></span><span style="display:flex;"><span>               str <span style="color:#f92672">=</span> str <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;    sha256/&#34;</span> <span style="color:#f92672">+</span> encodeToString <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34; : &#34;</span> <span style="color:#f92672">+</span> next.<span style="color:#a6e22e">getSubjectDN</span>().<span style="color:#a6e22e">toString</span>() <span style="color:#f92672">+</span> StringUtils.<span style="color:#a6e22e">LF</span>;
+</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">if</span> (hashSet2.<span style="color:#a6e22e">contains</span>(encodeToString)) {
+</span></span><span style="display:flex;"><span>                   z <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>               }
+</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">if</span> (hashSet.<span style="color:#a6e22e">contains</span>(encodeToString)) {
+</span></span><span style="display:flex;"><span>                   z2 <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>               }
+</span></span><span style="display:flex;"><span>               <span style="color:#66d9ef">if</span> (hashSet3.<span style="color:#a6e22e">contains</span>(encodeToString)) {
+</span></span><span style="display:flex;"><span>                   z3 <span style="color:#f92672">=</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>               }
+</span></span><span style="display:flex;"><span>           }
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">return</span> z <span style="color:#f92672">&amp;&amp;</span> z2 <span style="color:#f92672">&amp;&amp;</span> z3;
+</span></span><span style="display:flex;"><span>       } <span style="color:#66d9ef">catch</span> (NoSuchAlgorithmException e2) {
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> SSLException(e2);
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>   }
+</span></span></code></pre></div><p>On va donc modifier le code smali pour avoir une fonction qui renvoie <code>True</code> à chaque appel .
+Comme ceci :</p>
+<pre tabindex="0"><code>const/4 v9, 0x1
+move p2, v9
+return p2
+</code></pre><p>(code : <em>return true;</em>)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-java" data-lang="java"><span style="display:flex;"><span><span style="color:#66d9ef">private</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">k</span>(X509TrustManagerExtensions x509TrustManagerExtensions, HttpsURLConnection httpsURLConnection) {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div>
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/posts/les-captchas-sont-inutiles-part3/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Comment utiliser l&#39;OCR pour résoudre des captchas</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/posts/analyse-fake-cheat-valorant/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Malware Analysis d&#39;un Fake Cheat</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#https--cest-quoi-">Http<strong>S</strong> , c&rsquo;est quoi ?</a></li>
+        <li><a href="#quel-est-le-lien-avec-notre-application-">Quel est le lien avec notre application ?</a></li>
+        <li><a href="#comment-récupérer-le-flux-wifi-dun-smartphone-">Comment récupérer le flux wifi d&rsquo;un smartphone ?</a></li>
+        <li><a href="#comment-bypass-le-ssl-pining-">Comment bypass le ssl-Pining ?</a></li>
+        <li><a href="#méthode-1-">Méthode 1 :</a></li>
+        <li><a href="#méthode-2-">Méthode 2 :</a></li>
+        <li><a href="#méthode-3-">Méthode 3 :</a></li>
+        <li><a href="#patch">Patch</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

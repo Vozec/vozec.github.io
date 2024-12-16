@@ -1,0 +1,1367 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - RustyTheClown | leHack 2022 | Catégorie reverse</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;RustyTheClown&#32;|&#32;leHack&#32;2022&#32;|&#32;Catégorie&#32;reverse />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;RustyTheClown&#32;|&#32;leHack&#32;2022&#32;|&#32;Catégorie&#32;reverse />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;RustyTheClown&#32;|&#32;leHack&#32;2022&#32;|&#32;Catégorie&#32;reverse />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;RustyTheClown&#32;|&#32;leHack&#32;2022&#32;|&#32;Catégorie&#32;reverse />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="RustyTheClown , Rust Reverse | leHack 2022" />
+<meta itemprop="description" content="RustyTheClown , Rust Reverse | leHack 2022" />
+<meta property="og:description" content="RustyTheClown , Rust Reverse | leHack 2022" />
+<meta name="twitter:description" content="RustyTheClown , Rust Reverse | leHack 2022" />
+
+
+<base href="//localhost:1313/writeups/rustytheclown-lehack2022/" />
+<link rel="canonical" href="//localhost:1313/writeups/rustytheclown-lehack2022/" itemprop="url" />
+<meta name="url" content="//localhost:1313/writeups/rustytheclown-lehack2022/" />
+<meta name="twitter:url" content="//localhost:1313/writeups/rustytheclown-lehack2022/" />
+<meta property="og:url" content="//localhost:1313/writeups/rustytheclown-lehack2022/" />
+
+
+<meta property="og:updated_time" content="2022-06-26T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/writeups/rustytheclown-lehack2022/">RustyTheClown | leHack 2022 | Catégorie reverse</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2022-06-26T12:00:00Z" class="post-date">
+        June 26, 2022
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>5 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-reverse">
+        <a href="//localhost:1313/tags/reverse">reverse</a>
+      </li>
+      
+      <li class="tag-tuto">
+        <a href="//localhost:1313/tags/tuto">tuto</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h1 id="rustytheclown-2--lehack-ctf-2022">RustyTheClown 2 | leHack CTF 2022</h1>
+<h2 id="fichiers">Fichier(s)</h2>
+<ul>
+<li><a href="./files/rustyTheClown">RustyTheClown</a></li>
+</ul>
+<h2 id="nécessaires">Nécessaires</h2>
+<ul>
+<li><a href="https://hex-rays.com/ida-free/" target="_blank">IDA</a>/<a href="https://ghidra-sre.org/" target="_blank">Ghidra</a></li>
+<li>Python3</li>
+</ul>
+<h2 id="flag">Flag</h2>
+<pre tabindex="0"><code>lh_68eca3c515dbefd71ec8fec3849ba0083af806447d9f9f7cdca2a5cc
+</code></pre><h2 id="solution-détaillée">Solution détaillée</h2>
+<h3 id="analyse-statique">Analyse Statique</h3>
+<p>Le challenge est un crackme . On nous demande un mot de passe et celui est modifié puis comparé avant de nous donner ou non le flag .</p>
+<p>Désassemblons le binaire dans IDA :</p>
+<p>Dans <code>void rustyTheClown::main::hecc4c87ee1b9aeab()</code> voici ce qu&rsquo;on trouve d&rsquo;important :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>std<span style="color:#f92672">::</span>io<span style="color:#f92672">::</span>stdio<span style="color:#f92672">::</span>Stdin<span style="color:#f92672">::</span>read_line<span style="color:#f92672">::</span><span style="color:#a6e22e">hd0723957e63cf850</span>();
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">if</span> ( <span style="color:#f92672">&amp;</span>unk_52408 )
+</span></span><span style="display:flex;"><span>   core<span style="color:#f92672">::</span>ptr<span style="color:#f92672">::</span>drop_in_place<span style="color:#960050;background-color:#1e0010">$</span>LT<span style="color:#960050;background-color:#1e0010">$</span>std..io..error..Error<span style="color:#960050;background-color:#1e0010">$</span>GT<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#f92672">::</span><span style="color:#a6e22e">h815d6777c4f5f9e1</span>(<span style="color:#f92672">*</span>((_QWORD <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>dest <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>));
+</span></span><span style="display:flex;"><span> v4 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0LL</span>;
+</span></span><span style="display:flex;"><span> v3 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1uLL</span>;
+</span></span><span style="display:flex;"><span> _<span style="color:#960050;background-color:#1e0010">$</span>LT<span style="color:#960050;background-color:#1e0010">$</span>core..iter..adapters..map..Map<span style="color:#960050;background-color:#1e0010">$</span>LT<span style="color:#960050;background-color:#1e0010">$</span>I<span style="color:#960050;background-color:#1e0010">$</span>C<span style="color:#960050;background-color:#1e0010">$</span>F<span style="color:#960050;background-color:#1e0010">$</span>GT<span style="color:#960050;background-color:#1e0010">$$</span>u20<span style="color:#960050;background-color:#1e0010">$</span>as<span style="color:#960050;background-color:#1e0010">$</span>u20<span style="color:#960050;background-color:#1e0010">$</span>core..iter..traits..iterator..Iterator<span style="color:#960050;background-color:#1e0010">$</span>GT<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#f92672">::</span>fold<span style="color:#f92672">::</span><span style="color:#a6e22e">h77524fc9083f58e3</span>(
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1LL</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1LL</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&amp;</span>v3);
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">if</span> ( v4 <span style="color:#f92672">==</span> <span style="color:#ae81ff">17</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&amp;&amp;</span> <span style="color:#f92672">!</span>(<span style="color:#f92672">*</span>(_QWORD <span style="color:#f92672">*</span>)v3 <span style="color:#f92672">^</span> <span style="color:#ae81ff">0x6F686F6F686F6F48LL</span> <span style="color:#f92672">|</span> <span style="color:#f92672">*</span>(_QWORD <span style="color:#f92672">*</span>)(v3 <span style="color:#f92672">+</span> <span style="color:#ae81ff">8</span>) <span style="color:#f92672">^</span> <span style="color:#ae81ff">0x216168616861686FLL</span> <span style="color:#f92672">|</span> <span style="color:#f92672">*</span>(<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">__int8</span> <span style="color:#f92672">*</span>)(v3 <span style="color:#f92672">+</span> <span style="color:#ae81ff">16</span>) <span style="color:#f92672">^</span> <span style="color:#ae81ff">0xALL</span>) )
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span>   dest <span style="color:#f92672">=</span> v3;
+</span></span><span style="display:flex;"><span>   v10 <span style="color:#f92672">=</span> v4;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">20</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">21</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">18</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">19</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">16</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">17</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">14</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">15</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">12</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">13</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">10</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">11</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">8</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">9</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">6</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">7</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">5</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   src[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0u</span>;
+</span></span><span style="display:flex;"><span>   sha3<span style="color:#f92672">::</span>Keccak224<span style="color:#f92672">::</span>absorb<span style="color:#f92672">::</span><span style="color:#a6e22e">h29f13918aa92cc08</span>(src, v3);
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">if</span> ( <span style="color:#f92672">*</span>((_QWORD <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>dest <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) )
+</span></span><span style="display:flex;"><span>     <span style="color:#a6e22e">_rust_dealloc</span>();
+</span></span><span style="display:flex;"><span>   v7[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0LL</span>;
+</span></span><span style="display:flex;"><span>   v7[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0LL</span>;
+</span></span><span style="display:flex;"><span>   v8 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>   v7[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">=</span> <span style="color:#ae81ff">0LL</span>;
+</span></span><span style="display:flex;"><span>   <span style="color:#a6e22e">memcpy</span>(<span style="color:#f92672">&amp;</span>dest, src, <span style="color:#ae81ff">0x160uLL</span>);
+</span></span><span style="display:flex;"><span>   _<span style="color:#960050;background-color:#1e0010">$</span>LT<span style="color:#960050;background-color:#1e0010">$</span>sha3..Sha3_224<span style="color:#960050;background-color:#1e0010">$</span>u20<span style="color:#960050;background-color:#1e0010">$</span>as<span style="color:#960050;background-color:#1e0010">$</span>u20<span style="color:#960050;background-color:#1e0010">$</span>digest..fixed..FixedOutputDirty<span style="color:#960050;background-color:#1e0010">$</span>GT<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#f92672">::</span>finalize_into_dirty<span style="color:#f92672">::</span><span style="color:#a6e22e">h6affdc907d7bd5a0</span>(
+</span></span><span style="display:flex;"><span>     <span style="color:#f92672">&amp;</span>dest,
+</span></span><span style="display:flex;"><span>     v7);
+</span></span><span style="display:flex;"><span>   v10 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0LL</span>;
+</span></span><span style="display:flex;"><span>   v11 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0LL</span>;
+</span></span><span style="display:flex;"><span>   v6[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">=</span> (<span style="color:#66d9ef">__int64</span>)v7;
+</span></span><span style="display:flex;"><span>   v6[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> (<span style="color:#66d9ef">__int64</span>)generic_array<span style="color:#f92672">::</span>hex<span style="color:#f92672">::</span>_<span style="color:#960050;background-color:#1e0010">$</span>LT<span style="color:#960050;background-color:#1e0010">$</span>impl<span style="color:#960050;background-color:#1e0010">$</span>u20<span style="color:#960050;background-color:#1e0010">$</span>core..fmt..LowerHex<span style="color:#960050;background-color:#1e0010">$</span>u20<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#66d9ef">for</span><span style="color:#960050;background-color:#1e0010">$</span>u20<span style="color:#960050;background-color:#1e0010">$</span>generic_array..GenericArray<span style="color:#960050;background-color:#1e0010">$</span>LT<span style="color:#960050;background-color:#1e0010">$</span>u8<span style="color:#960050;background-color:#1e0010">$</span>C<span style="color:#960050;background-color:#1e0010">$</span>T<span style="color:#960050;background-color:#1e0010">$</span>GT<span style="color:#960050;background-color:#1e0010">$$</span>GT<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#f92672">::</span>fmt<span style="color:#f92672">::</span>h66b0e2e11014508f;
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">*</span>(_QWORD <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>dest <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>unk_52428;
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">*</span>((_QWORD <span style="color:#f92672">*</span>)<span style="color:#f92672">&amp;</span>dest <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>) <span style="color:#f92672">=</span> <span style="color:#ae81ff">2LL</span>;
+</span></span><span style="display:flex;"><span>   v12 <span style="color:#f92672">=</span> v6;
+</span></span><span style="display:flex;"><span>   v13 <span style="color:#f92672">=</span> <span style="color:#ae81ff">1LL</span>;
+</span></span><span style="display:flex;"><span>   std<span style="color:#f92672">::</span>io<span style="color:#f92672">::</span>stdio<span style="color:#f92672">::</span>_print<span style="color:#f92672">::</span><span style="color:#a6e22e">h99789c75449e1f7a</span>();
+</span></span><span style="display:flex;"><span> }
+</span></span><span style="display:flex;"><span> <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span> {
+</span></span><span style="display:flex;"><span> }
+</span></span></code></pre></div><p>On peut simplifier le code en pseudo-python :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>v3 <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#39;password : &#39;</span>)
+</span></span><span style="display:flex;"><span>v3 <span style="color:#f92672">=</span> weirdfunction(v3)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>(len(v3)<span style="color:#f92672">==</span><span style="color:#ae81ff">17</span> <span style="color:#f92672">and</span> xor(v3[:<span style="color:#ae81ff">8</span>],<span style="color:#ae81ff">0x6F686F6F686F6F48</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">*</span><span style="color:#ae81ff">8</span> <span style="color:#f92672">and</span> xor(v3[<span style="color:#ae81ff">8</span>:<span style="color:#ae81ff">16</span>],<span style="color:#ae81ff">0x216168616861686F</span>) <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span><span style="color:#f92672">*</span><span style="color:#ae81ff">8</span>):
+</span></span><span style="display:flex;"><span>  print(<span style="color:#e6db74">&#39;Flag is : </span><span style="color:#e6db74">%s</span><span style="color:#e6db74">&#39;</span><span style="color:#f92672">%</span>sha3(v3))
+</span></span></code></pre></div><p>La première chose à faire est d&rsquo;expliciter les valeurs :</p>
+<ul>
+<li><code>0x6F686F6F686F6F48</code></li>
+<li><code>0x216168616861686F</code></li>
+</ul>
+<p>Avec <a href="https://hex-rays.com/ida-free/" target="_blank">IDA</a> ou <em>binascii.unhexlify</em>  , on obtient respéctivement :</p>
+<ul>
+<li><code>ohoohooH</code></li>
+<li><code>!ahahaho</code></li>
+</ul>
+<p>Pour conclure l&rsquo;analyse statique ; on sait que d&rsquo;après les <a href="https://fr.wikipedia.org/wiki/Fonction_OU_exclusif" target="_blank"><code>propriétés du Xor</code></a>: <em>A ^ A = 0</em></p>
+<p>On veut donc que :</p>
+<ul>
+<li>v3[:8] == ohoohooH</li>
+<li>v3[8:16] == !ahahaho</li>
+</ul>
+<h3 id="analyse-dynamique">Analyse Dynamique:</h3>
+<p>Juste après notre entrée dans <code>stdin</code> , notre buffer stocké dans <code>v3</code> et appelé dans une fonction</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span> _<span style="color:#960050;background-color:#1e0010">$</span>LT<span style="color:#960050;background-color:#1e0010">$</span>core..iter..adapters..map..Map<span style="color:#960050;background-color:#1e0010">$</span>LT<span style="color:#960050;background-color:#1e0010">$</span>I<span style="color:#960050;background-color:#1e0010">$</span>C<span style="color:#960050;background-color:#1e0010">$</span>F<span style="color:#960050;background-color:#1e0010">$</span>GT<span style="color:#960050;background-color:#1e0010">$$</span>u20<span style="color:#960050;background-color:#1e0010">$</span>as<span style="color:#960050;background-color:#1e0010">$</span>u20<span style="color:#960050;background-color:#1e0010">$</span>core..iter..traits..iterator..Iterator<span style="color:#960050;background-color:#1e0010">$</span>GT<span style="color:#960050;background-color:#1e0010">$</span><span style="color:#f92672">::</span>fold<span style="color:#f92672">::</span><span style="color:#a6e22e">h77524fc9083f58e3</span>(
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1LL</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#ae81ff">1LL</span>,
+</span></span><span style="display:flex;"><span>   <span style="color:#f92672">&amp;</span>v3);
+</span></span></code></pre></div><p>Quand on décompile cette fonction. On voit tout de suite qu&rsquo;elle sort  des enfers ..</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-c" data-lang="c"><span style="display:flex;"><span>v6 <span style="color:#f92672">=</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">__int8</span>)<span style="color:#f92672">*</span>v5;
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">if</span> ( (<span style="color:#f92672">*</span>v5 <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x80000000</span>) <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span> )
+</span></span><span style="display:flex;"><span>     {
+</span></span><span style="display:flex;"><span>       v9 <span style="color:#f92672">=</span> v5[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x3F</span>;
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">if</span> ( v6 <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0xDF</span> )
+</span></span><span style="display:flex;"><span>       {
+</span></span><span style="display:flex;"><span>         v5 <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span>;
+</span></span><span style="display:flex;"><span>         v7 <span style="color:#f92672">=</span> v9 <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xFFFFF83F</span> <span style="color:#f92672">|</span> ((v6 <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x1F</span>) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">6</span>);
+</span></span><span style="display:flex;"><span>         v8 <span style="color:#f92672">=</span> v7 <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xFFFFFFDF</span>;
+</span></span><span style="display:flex;"><span>         <span style="color:#66d9ef">if</span> ( (v7 <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xFFFFFFDF</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">65</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0xC</span> )
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">goto</span> LABEL_15;
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>       {
+</span></span><span style="display:flex;"><span>         v10 <span style="color:#f92672">=</span> v5[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x3F</span> <span style="color:#f92672">|</span> ((v5[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x3F</span>) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">6</span>);
+</span></span><span style="display:flex;"><span>         <span style="color:#66d9ef">if</span> ( v6 <span style="color:#f92672">&lt;</span> <span style="color:#ae81ff">0xF0</span> )
+</span></span><span style="display:flex;"><span>         {
+</span></span><span style="display:flex;"><span>           v5 <span style="color:#f92672">+=</span> <span style="color:#ae81ff">3</span>;
+</span></span><span style="display:flex;"><span>           v7 <span style="color:#f92672">=</span> v10 <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xFFFE0FFF</span> <span style="color:#f92672">|</span> ((v6 <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x1F</span>) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">12</span>);
+</span></span><span style="display:flex;"><span>           v8 <span style="color:#f92672">=</span> v7 <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xFFFFFFDF</span>;
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">if</span> ( (v7 <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xFFFFFFDF</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">65</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0xC</span> )
+</span></span><span style="display:flex;"><span>             <span style="color:#66d9ef">goto</span> LABEL_15;
+</span></span><span style="display:flex;"><span>         }
+</span></span><span style="display:flex;"><span>         <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>         {
+</span></span><span style="display:flex;"><span>           v7 <span style="color:#f92672">=</span> (v5[<span style="color:#ae81ff">3</span>] <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0x3F</span> <span style="color:#f92672">|</span> ((v10 <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xFFF</span>) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">6</span>)) <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xFFE3FFFF</span> <span style="color:#f92672">|</span> ((v6 <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">7</span>) <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">18</span>);
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">if</span> ( v7 <span style="color:#f92672">==</span> <span style="color:#ae81ff">1114112</span> )
+</span></span><span style="display:flex;"><span>             <span style="color:#66d9ef">return</span> result;
+</span></span><span style="display:flex;"><span>           v5 <span style="color:#f92672">+=</span> <span style="color:#ae81ff">4</span>;
+</span></span><span style="display:flex;"><span>           v8 <span style="color:#f92672">=</span> v7 <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xFFFFFFDF</span>;
+</span></span><span style="display:flex;"><span>           <span style="color:#66d9ef">if</span> ( (v7 <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xFFFFFFDF</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">65</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0xC</span> )
+</span></span><span style="display:flex;"><span>           {
+</span></span><span style="display:flex;"><span>LABEL_15:
+</span></span><span style="display:flex;"><span>             <span style="color:#66d9ef">if</span> ( v8 <span style="color:#f92672">-</span> <span style="color:#ae81ff">78</span> <span style="color:#f92672">&lt;=</span> <span style="color:#ae81ff">0xC</span> )
+</span></span><span style="display:flex;"><span>               v7 <span style="color:#f92672">=</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">__int8</span>)(v7 <span style="color:#f92672">-</span> <span style="color:#ae81ff">13</span>);
+</span></span><span style="display:flex;"><span>             <span style="color:#66d9ef">goto</span> LABEL_17;
+</span></span><span style="display:flex;"><span>           }
+</span></span><span style="display:flex;"><span>         }
+</span></span><span style="display:flex;"><span>       }
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>     <span style="color:#66d9ef">else</span>
+</span></span><span style="display:flex;"><span>     {
+</span></span><span style="display:flex;"><span>       v7 <span style="color:#f92672">=</span> (<span style="color:#66d9ef">unsigned</span> <span style="color:#66d9ef">__int8</span>)<span style="color:#f92672">*</span>v5<span style="color:#f92672">++</span>;
+</span></span><span style="display:flex;"><span>       v8 <span style="color:#f92672">=</span> v6 <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xFFFFFFDF</span>;
+</span></span><span style="display:flex;"><span>       <span style="color:#66d9ef">if</span> ( (v6 <span style="color:#f92672">&amp;</span> <span style="color:#ae81ff">0xFFFFFFDF</span>) <span style="color:#f92672">-</span> <span style="color:#ae81ff">65</span> <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0xC</span> )
+</span></span><span style="display:flex;"><span>         <span style="color:#66d9ef">goto</span> LABEL_15;
+</span></span><span style="display:flex;"><span>     }
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>     ....
+</span></span></code></pre></div><p>On va donc devoir utiliser un debugger pour comprendre le fonctionnement de cette fonction et ainsi passer le bon mot de passe qui vérifie les 3 conditions précédentes.</p>
+<h5 id="mise-en-place-dun-environnement-de-debug-">Mise en place d&rsquo;un environnement de debug .</h5>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /c
+</span></span><span style="display:flex;"><span>➜   file rustyTheClown
+</span></span><span style="display:flex;"><span>rustyTheClown: ELF 64-bit LSB pie executable, ARM aarch64, version <span style="color:#ae81ff">1</span> <span style="color:#f92672">(</span>SYSV<span style="color:#f92672">)</span>, dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, <span style="color:#66d9ef">for</span> GNU/Linux 3.7.0, BuildID<span style="color:#f92672">[</span>sha1<span style="color:#f92672">]=</span>59299c846572d2809876d380f7710f0d1735429e, with debug_info, not stripped
+</span></span></code></pre></div><p>Le binaire est un binaire codé en <code>Rust</code> et compilé en <code>ARM aarch64</code> . Il n&rsquo;est donc pas exécutable facilement :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /c
+</span></span><span style="display:flex;"><span>➜   ./rustyTheClown
+</span></span><span style="display:flex;"><span>zsh: exec format error: ./rustyTheClown
+</span></span></code></pre></div><p>Pour résoudre ce soucis , on peut soit :</p>
+<ul>
+<li>Utiliser une machine avec un processeur adapté (Raspberry)</li>
+<li>Utiliser une machine Qemu.</li>
+</ul>
+<p>Nous allons ici utiliser la 2nd option même si elle reste la plus compliquée.</p>
+<h6 id="installation-">Installation :</h6>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>sudo apt install qemu-user qemu-user-static gcc-aarch64-linux-gnu binutils-aarch64-linux-gnu binutils-aarch64-linux-gnu-dbg build-essential
+</span></span></code></pre></div><h6 id="lancement-">Lancement :</h6>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qemu-aarch64 -L /usr/aarch64-linux-gnu ./rustyTheClown
+</span></span></code></pre></div><p>Résultat:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>                                              <span style="color:#e6db74">`</span>.:<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>                                            .:ooy.
+</span></span><span style="display:flex;"><span>                          ./+///..      <span style="color:#e6db74">`</span>..-/+osso
+</span></span><span style="display:flex;"><span>                          .-/ssooo:.   <span style="color:#e6db74">`</span>-<span style="color:#e6db74">`````</span>..-:-          <span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>                             -ssssso:.<span style="color:#e6db74">`</span>:<span style="color:#e6db74">``````````</span>.:    <span style="color:#e6db74">`</span>://+++:.
+</span></span><span style="display:flex;"><span>                              /ssssssso.......---<span style="color:#e6db74">`</span>./ <span style="color:#e6db74">``</span>:+osssss+/<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>                              .sssssss:-<span style="color:#e6db74">`</span> .-<span style="color:#e6db74">`</span> <span style="color:#e6db74">`</span>.-.oo/ooossssy/.
+</span></span><span style="display:flex;"><span>                               ossssso:-/:+:<span style="color:#e6db74">`</span> :<span style="color:#e6db74">`</span>-osssssssssy-
+</span></span><span style="display:flex;"><span>                               <span style="color:#e6db74">`</span>ssss/---/+o+/:::<span style="color:#e6db74">`</span>++ssssssss/
+</span></span><span style="display:flex;"><span>                                .osy+:-.......::-/yssssssy<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>                                  <span style="color:#e6db74">`</span>syy/ys/+::+///+yssssy:<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>                                    <span style="color:#e6db74">`</span>o-NMMMNNs:/hysys/:.
+</span></span><span style="display:flex;"><span>                                     +:yshhd+/.:<span style="color:#e6db74">``</span>
+</span></span><span style="display:flex;"><span>                                   <span style="color:#e6db74">`</span>/+soo+++s//+<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>               .--<span style="color:#e6db74">`</span>           <span style="color:#e6db74">`</span>....+/oossssoy/:+:
+</span></span><span style="display:flex;"><span>               --<span style="color:#e6db74">`</span>-..<span style="color:#e6db74">`</span>...----:/:::/+:///::/+++o++/++:.
+</span></span><span style="display:flex;"><span>           ....-<span style="color:#e6db74">`</span> -.+--------+:::/+::::::::::+/::o/::/:---..<span style="color:#e6db74">`</span>   <span style="color:#e6db74">`</span>-.-
+</span></span><span style="display:flex;"><span>          --.-  <span style="color:#e6db74">`</span>./<span style="color:#e6db74">`</span>+--------+:::+::::::::::/o::++:---------::::.<span style="color:#e6db74">`</span>.:
+</span></span><span style="display:flex;"><span>           -:.<span style="color:#e6db74">`</span>   ../::::::::/+///::::::::::/o+/o/::-------:-:.<span style="color:#e6db74">`</span>  ::<span style="color:#e6db74">``</span>
+</span></span><span style="display:flex;"><span>           :.--- <span style="color:#e6db74">``</span>:-:.<span style="color:#e6db74">```</span>   .//:::::::::::::/+ooso+/::::--::<span style="color:#e6db74">`</span> ..  <span style="color:#e6db74">`</span>..-.<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>           <span style="color:#e6db74">``</span> :<span style="color:#e6db74">`</span>.-<span style="color:#e6db74">``</span>        ::::::::::::::::::://+o:  <span style="color:#e6db74">`</span>..-/::      .-.<span style="color:#e6db74">`</span>-:
+</span></span><span style="display:flex;"><span>              ..<span style="color:#e6db74">`</span>          :::::::::::::::::::::///+:      <span style="color:#e6db74">`</span>--.  .<span style="color:#e6db74">``</span>--..<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>                          ./:::::::::::::::::::::///+-        :. /--<span style="color:#e6db74">`</span>-.
+</span></span><span style="display:flex;"><span>                          /-:::::::::::::::::::::////+        <span style="color:#e6db74">`</span>:<span style="color:#e6db74">`</span>:<span style="color:#e6db74">``</span>..
+</span></span><span style="display:flex;"><span>                          :o+///////////+///+//://///o         <span style="color:#e6db74">`</span>.<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>                           <span style="color:#e6db74">`</span>/--------------:::://+++o+
+</span></span><span style="display:flex;"><span>                           -/::-----------------::/+-<span style="color:#e6db74">`</span>
+</span></span><span style="display:flex;"><span>Hey hey, kids!
+</span></span><span style="display:flex;"><span>What<span style="color:#960050;background-color:#1e0010">&#39;</span>s your answer? :
+</span></span><span style="display:flex;"><span>Vozec
+</span></span><span style="display:flex;"><span>Hoohoohoohahaha!
+</span></span></code></pre></div><p>On va utiliser <code>gdb-mutliarch</code>:</p>
+<ul>
+<li>Dans un premier shell :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>gdb-multiarch rustyTheClown
+</span></span><span style="display:flex;"><span>set architecture aarch64
+</span></span></code></pre></div><ul>
+<li>Dans un deuxième shell :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>qemu-aarch64 -g <span style="color:#ae81ff">1337</span> -L /usr/aarch64-linux-gnu ./rustyTheClown
+</span></span></code></pre></div><ul>
+<li>Dans le premier shell :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>target remote :1337
+</span></span></code></pre></div><p>Maintenant que notre GDB est lié à notre binaire , nous pouvons placer un breakpoint à la sortie de la fonction mystère .
+On va essayer de trouver cette instruction :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ldr     x8, <span style="color:#f92672">[</span>sp, <span style="color:#75715e">#40]</span>
+</span></span></code></pre></div><p><img src="./img/call.png" alt="Alt text"></p>
+<p>Elle se situe juste après le call de la fonction <code>_ZN13rustyTheClown4main17hecc4c87ee1b9aeabE</code></p>
+<ul>
+<li>Dans le deuxième shell :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>disas _ZN13rustyTheClown4main17hecc4c87ee1b9aeabE
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Ici on va chercher l&#39;instruction</span>
+</span></span><span style="display:flex;"><span>b* 0x0000005500006ea8
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">continue</span>
+</span></span></code></pre></div><p><img src="./img/bp.png" alt="Alt text"></p>
+<p>On peut ainsi entrer un mot de passe de 16 charactères aléatoire, ici <code>HelloFromVozec!!</code>
+Une fois ceci fait, notre premier shell avec GDB à atteint le breakpoint: <strong>Affichons les registres</strong> !</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>X<span style="color:#f92672">(</span>gdb<span style="color:#f92672">)</span> x/s $x0
+</span></span><span style="display:flex;"><span>0x5500058b10:   <span style="color:#e6db74">&#34;UryybSebzIbmrp!!\n&#34;</span>
+</span></span></code></pre></div><p><img src="./img/resume.png" alt="Alt text"></p>
+<p>Et oui, tout de suite cela devient évident &hellip; C&rsquo;est un <strong>Rot13</strong> Banal ! Toutes les lettres sont décalés de 13 dans l&rsquo;alphabet .</p>
+<p>On peut donc former le mot de passe :</p>
+<p><code>Ubbubbubbununun!</code> qui sortant de la fonction aura pour valeur : <code>Hoohoohoohahaha!</code> et validera le challenge :</p>
+<p><img src="./img/flag.png" alt="Alt text"></p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/writeups/mod_ctfauth-bsidessf-2022/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Mod ctfauth | Bsidessf 2022 | Catégorie Reverse |...</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/writeups/intrinsec-ctf-lehack2022/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Intrinsec CTF 2022 | leHack 2022 Edition</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#fichiers">Fichier(s)</a></li>
+    <li><a href="#nécessaires">Nécessaires</a></li>
+    <li><a href="#flag">Flag</a></li>
+    <li><a href="#solution-détaillée">Solution détaillée</a>
+      <ul>
+        <li><a href="#analyse-statique">Analyse Statique</a></li>
+        <li><a href="#analyse-dynamique">Analyse Dynamique:</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

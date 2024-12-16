@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - From ECC to Diffie-Hellman</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;From&#32;ECC&#32;to&#32;Diffie-Hellman />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;From&#32;ECC&#32;to&#32;Diffie-Hellman />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;From&#32;ECC&#32;to&#32;Diffie-Hellman />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;From&#32;ECC&#32;to&#32;Diffie-Hellman />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Introduction aux courbes elliptiques et présentation de l&#39;échange de clé de Diffie-Hellman" />
+<meta itemprop="description" content="Introduction aux courbes elliptiques et présentation de l&#39;échange de clé de Diffie-Hellman" />
+<meta property="og:description" content="Introduction aux courbes elliptiques et présentation de l&#39;échange de clé de Diffie-Hellman" />
+<meta name="twitter:description" content="Introduction aux courbes elliptiques et présentation de l&#39;échange de clé de Diffie-Hellman" />
+
+
+<base href="//localhost:1313/other/ecc-diffie-hellman/" />
+<link rel="canonical" href="//localhost:1313/other/ecc-diffie-hellman/" itemprop="url" />
+<meta name="url" content="//localhost:1313/other/ecc-diffie-hellman/" />
+<meta name="twitter:url" content="//localhost:1313/other/ecc-diffie-hellman/" />
+<meta property="og:url" content="//localhost:1313/other/ecc-diffie-hellman/" />
+
+
+<meta property="og:updated_time" content="2023-04-14T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/other/ecc-diffie-hellman/">From ECC to Diffie-Hellman</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2023-04-14T12:00:00Z" class="post-date">
+        April 14, 2023
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>4 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-crypto">
+        <a href="//localhost:1313/tags/crypto">crypto</a>
+      </li>
+      
+      <li class="tag-tuto">
+        <a href="//localhost:1313/tags/tuto">tuto</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h2 id="introduction">Introduction</h2>
+<p>L&rsquo;échange de clé de Diffie-Hellman est une méthode pour partager un secret entre 2 individus de manière sécurisé, même si leurs transmissions sont sur écoute.</p>
+<h3 id="présentation-des-courbes-elliptiques-">Présentation des courbes elliptiques :</h3>
+<p>Avant de s&rsquo;attaquer à la partie cryptographique, il est nécessaire de comprendre le fonctionnement global des courbes elliptiques.</p>
+<p>Une courbe elliptique est un ensemble de points $(x,y)$ vérifiant une équation du type: $y^2=x^3+ax+b$, autrement dit , on définit une courbe elliptique comme :</p>
+<ul>
+<li>
+<p><strong>$E = {(x,y) \in K ~|~y^2=x^3+ax+b} \cup { O }$</strong></p>
+</li>
+<li>
+<p>avec $\begin{cases}
+K \in {R,Q,C,Z/nZ }  \newline
+(a,b) \in K  \newline
+\Theta~,<del>un</del>point<del>à</del>l&rsquo;infini  \newline
+4a^3+27b^2 \not = 0
+\end{cases}$</p>
+</li>
+</ul>
+<p>Une chose notable est que les opérations élémentaires sont toutes modifiés.<br>
+<em>En effet, si on prend deux points A et B de la courbe, il faut trouver un moyen pour que A+B le soit aussi.</em></p>
+<p><strong>On peut prendre l&rsquo;exemple du corp des Réels: $K = R$</strong></p>
+<p>Voici une courbe elliptique: <em>$a = -b = -1$</em></p>
+<p><img src="./img/curve.png" alt="Alt text"></p>
+<p>On y place 2 points <em>P</em> et <em>Q</em> :
+<img src="./img/curve2.png" alt="Alt text"></p>
+<p>On définit donc le point $R$ tel que :
+<img src="./img/curve3.png" alt="Alt text"></p>
+<p>et enfin : $P+Q$ :
+<img src="./img/curve4.png" alt="Alt text"></p>
+<h4 id="de-manière-algébrique-">De manière algébrique :</h4>
+<p>On distingue 4 possibilités pour l&rsquo;addition sur les courbes elliptiques :</p>
+<ul>
+<li>
+<p>$x_P \not = x_Q$ :<br>
+alors , on a :
+$\begin{cases}
+s = \dfrac{y_p-y_q}{x_p-x_q}  \newline
+x_{P+Q} = s^2 - (x_P+x_Q)  \newline
+y_{P+Q} = s*(-s^2+x_P+x_Q)-t
+\end{cases}$</p>
+</li>
+<li>
+<p>$x_P = x_Q$ et $y_P \not = y_Q$ :<br>
+alors, on a $P+P=2P=O$ , un point à l&rsquo;infini</p>
+</li>
+<li>
+<p>$P = Q$ et $y_P = y_Q \not = 0$ :<br>
+alors, on a :
+$\begin{cases}
+s = \dfrac{3x_{P}^2+a}{2y_P}  \newline
+x_{P+Q} = s^2 - (2x_P)  \newline
+y_{P+Q} = s(x_P-x_{2P}) -y_P
+\end{cases}$</p>
+</li>
+<li>
+<p>$P = Q$ et $y_P = y_Q  = 0$ :<br>
+Alors, on a $P+P=2P=O$ , un point à l&rsquo;infini</p>
+</li>
+</ul>
+<p><strong>La multiplication dans ce groupe est elle aussi changé:</strong></p>
+<p>Ainsi, si on pose:</p>
+<p>$\begin{cases}
+P \in E  \newline
+k \in Z  \newline
+Q = k*P  \newline
+\end{cases}$</p>
+<p>alors, <strong>$Q =P+P+.k fois..+P$</strong></p>
+<h2 id="problème-du-logarithme-discret">Problème du logarithme discret.</h2>
+<h4 id="forme-générale-">Forme générale :</h4>
+<p>On choisit un groupe $G$ <em>(cyclique)</em> d&rsquo;ordre $n$ engendré par un entier $g$.</p>
+<p>Alors on a :<br>
+$\forall x \in G~,~ \exists ~ \alpha \in [0,n[ ~et ~~ x=g^{\alpha}$<br>
+Alors <strong>$\alpha$</strong> est noté $log_g(x)$ , c&rsquo;est le <strong>logarithme discret de $x$ en base $g$</strong></p>
+<p><strong>La difficulté de ce problème réside dans le fait de retrouver ce $\alpha$ connaissant x et g</strong>
+Celle ci dépend du groupe $G$ dans lequel on travail.</p>
+<p><em>Exemple</em>: Avec G=$Z/nZ$ engendré par $g$<br>
+Alors trouver $\alpha$ revient à résoudre: $\alpha*g=x \pmod n$<br>
+ce qui est ici facilement faisable avec l&rsquo;algorithme d&rsquo;euclide étendu.<br>
+<a href="https://www.youtube.com/watch?v=Ds-kHs6yb5E" target="_blank">Source ici</a></p>
+<h4 id="appliqué-aux-courbes-elliptiques-ecdlp">Appliqué aux courbes elliptiques <em>(ECDLP)</em></h4>
+<p>On cherche ici à trouver $\alpha$ tel que $\alpha*g=b$ avec les propriétés évoqués précédemment .<br>
+De nombreux algorithme existe pour tenter de résoudre cette équation :</p>
+<ul>
+<li>Baby-Step / Giant-Step</li>
+<li>Pohlig Hellman</li>
+<li>Rho Pollard</li>
+<li>Kangaroo Pollard</li>
+<li>&hellip;</li>
+</ul>
+<h2 id="application-à-la-cryptographie">Application à la cryptographie.</h2>
+<p>On se place dans une situation ou 2 individus :</p>
+<ul>
+<li>Alice</li>
+<li>Bob<br>
+Souhaitent s&rsquo;échanger une clé secrète afin de pouvoir chiffrer leurs futures communications.<br>
+Afin d&rsquo;empêcher un leak de leur clé secrète, ils décident d&rsquo;utiliser l&rsquo;échange de clé inventé par Diffie-Helhman.</li>
+</ul>
+<h3 id="paramétrage-">Paramétrage :</h3>
+<p>Alice et Bob se sont mis d&rsquo;accord au préalable sur deux choses :</p>
+<ul>
+<li>Un nombre premier $p$</li>
+<li>Un point $G \in E(Z/pZ)$</li>
+</ul>
+<p>Ainsi, chacun choisi un entier dans $[0,p[$ et le multiplie par G , le point générateur.</p>
+<p><em>Pour Bob</em>:<br>
+$\begin{cases}
+a \in [0,p[  \newline
+A = a*G  \newline
+\end{cases}$</p>
+<p><em>Pour Alice</em>:<br>
+$\begin{cases}
+b \in [0,p[  \newline
+B = b*G  \newline
+\end{cases}$</p>
+<p>A et B sont les <strong>clés publiques</strong> de Alice et Bob.</p>
+<h3 id="echange-des-clés-">Echange des clés :</h3>
+<ul>
+<li>Alice envoie B à Bob.</li>
+<li>Bob envoie A à Alice.</li>
+</ul>
+<h3 id="calcul-de-la-clé-privée-">Calcul de la clé privée :</h3>
+<ul>
+<li>Alice calcul $A*b$</li>
+<li>Bob calcul $B*a$</li>
+</ul>
+<p>On a ainsi :<br>
+<strong>$K = A*b = B*a = G*(b*a)$</strong></p>
+<p>Voici un schéma qui représente l&rsquo;échange de clés:</p>
+<p><img src="./img/diffie_hellman.png" alt="Alt text"></p>
+<h2 id="sécurité">Sécurité</h2>
+<p>Toute la sécurité de cet échange de clé réside dans la difficulté à retrouver $a$ ou $b$ à partir de A, B et p. C&rsquo;est à dire, résoudre le problème du logarithme discret.</p>
+<h2 id="implémentation-en-python-sagemath">Implémentation en python <em>(SageMath)</em></h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> random <span style="color:#f92672">import</span> randint
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## SETUP</span>
+</span></span><span style="display:flex;"><span>Curve_A <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">35</span>
+</span></span><span style="display:flex;"><span>Curve_B <span style="color:#f92672">=</span> <span style="color:#ae81ff">98</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Prime Number</span>
+</span></span><span style="display:flex;"><span>P <span style="color:#f92672">=</span> <span style="color:#ae81ff">434252269029337012720086440207</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Define a curve</span>
+</span></span><span style="display:flex;"><span>E <span style="color:#f92672">=</span> EllipticCurve(Zmod(P),[Curve_A,Curve_B])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Generator G</span>
+</span></span><span style="display:flex;"><span>G <span style="color:#f92672">=</span> E([
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">16378704336066569231287640165</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">377857010369614774097663166640</span>
+</span></span><span style="display:flex;"><span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Alice</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> randint(<span style="color:#ae81ff">0</span>,P<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>A <span style="color:#f92672">=</span> a<span style="color:#f92672">*</span>G
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Bob</span>
+</span></span><span style="display:flex;"><span>b <span style="color:#f92672">=</span> randint(<span style="color:#ae81ff">0</span>,P<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>B <span style="color:#f92672">=</span> b<span style="color:#f92672">*</span>G
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Alice sent A to Bob &amp; Bob sent B to Alice</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Alice</span>
+</span></span><span style="display:flex;"><span>k1 <span style="color:#f92672">=</span> a<span style="color:#f92672">*</span>B
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Bob</span>
+</span></span><span style="display:flex;"><span>k2 <span style="color:#f92672">=</span> b<span style="color:#f92672">*</span>A
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Check if keys are equals</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">assert</span> k1 <span style="color:#f92672">==</span> k2
+</span></span></code></pre></div><h4 id="attaque-en-utilisant-la-methode-discrete_log-de-sagemath-">Attaque en utilisant la methode discrete_log de SageMath :</h4>
+<p>On peut imaginer qu&rsquo;une troisième personne intercepte l&rsquo;échange de clé publique, celle-ci peut tenter de retrouver une dés clé privée :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">steal_DLP_A</span>(A,B):
+</span></span><span style="display:flex;"><span>	a <span style="color:#f92672">=</span> G<span style="color:#f92672">.</span>discrete_log(A)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> B<span style="color:#f92672">*</span>a
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ou
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">steal_DLP_B</span>(A,B):
+</span></span><span style="display:flex;"><span>	b <span style="color:#f92672">=</span> G<span style="color:#f92672">.</span>discrete_log(B)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> A<span style="color:#f92672">*</span>b
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>k3 <span style="color:#f92672">=</span> steal_DLP_A(A,B)
+</span></span><span style="display:flex;"><span>k3 <span style="color:#f92672">=</span> steal_DLP_B(A,B)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">assert</span> k1 <span style="color:#f92672">==</span> k2 <span style="color:#f92672">==</span> k3 <span style="color:#f92672">==</span> k4
+</span></span></code></pre></div>
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/other/feal-cipher/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Feal &amp; it&#39;s variants</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/other/lattice-introduction/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Introduction aux réseaux euclidiens</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a>
+      <ul>
+        <li><a href="#présentation-des-courbes-elliptiques-">Présentation des courbes elliptiques :</a></li>
+      </ul>
+    </li>
+    <li><a href="#problème-du-logarithme-discret">Problème du logarithme discret.</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+    <li><a href="#application-à-la-cryptographie">Application à la cryptographie.</a>
+      <ul>
+        <li><a href="#paramétrage-">Paramétrage :</a></li>
+        <li><a href="#echange-des-clés-">Echange des clés :</a></li>
+        <li><a href="#calcul-de-la-clé-privée-">Calcul de la clé privée :</a></li>
+      </ul>
+    </li>
+    <li><a href="#sécurité">Sécurité</a></li>
+    <li><a href="#implémentation-en-python-sagemath">Implémentation en python <em>(SageMath)</em></a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

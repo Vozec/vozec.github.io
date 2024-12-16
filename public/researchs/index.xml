@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Researchs on </title>
+    <link>//localhost:1313/researchs/</link>
+    <description>Recent content in Researchs on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 04 Sep 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/researchs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spip Preauth RCE 2024, my First CVE !</title>
+      <link>//localhost:1313/researchs/spip-preauth-rce-2024-big-upload/</link>
+      <pubDate>Wed, 04 Sep 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/researchs/spip-preauth-rce-2024-big-upload/</guid>
+      <description>&lt;h2 id=&#34;some-context&#34;&gt;Some Context&lt;/h2&gt;&#xA;&lt;p&gt;A month ago, &lt;a href=&#34;https://x.com/TheLaluka/&#34; target=&#34;_blank&#34;&gt;TheLaluka&lt;/a&gt; &lt;a href=&#34;https://x.com/TheLaluka/status/1821821709499961817&#34; target=&#34;_blank&#34;&gt;suggested&lt;/a&gt; finding his preauth RCE in SPIP as a challenge.&#xA;The challenge was very nice and I had nothing to do, so I decided to take a look at this CMS.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;./img/tweet1.png&#34; alt=&#34;tweet1&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;He gave us a hint to narrow down the attack surface, as the project is substantial.&#xA;So, with &lt;a href=&#34;https://x.com/_Worty&#34; target=&#34;_blank&#34;&gt;Worty&lt;/a&gt;, we found the vulnerability and &lt;a href=&#34;https://x.com/TheLaluka/status/1824357306433253480&#34; target=&#34;_blank&#34;&gt;won the challenge&lt;/a&gt;!&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

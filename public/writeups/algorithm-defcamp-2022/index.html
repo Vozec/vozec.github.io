@@ -1,0 +1,1410 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - Algorithm | DefCamp 2022 | Catégorie Crypto | [Vozec/FR] </title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Algorithm&#32;|&#32;DefCamp&#32;2022&#32;|&#32;Catégorie&#32;Crypto&#32;|&#32;[Vozec/FR]&#32; />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Algorithm&#32;|&#32;DefCamp&#32;2022&#32;|&#32;Catégorie&#32;Crypto&#32;|&#32;[Vozec/FR]&#32; />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Algorithm&#32;|&#32;DefCamp&#32;2022&#32;|&#32;Catégorie&#32;Crypto&#32;|&#32;[Vozec/FR]&#32; />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Algorithm&#32;|&#32;DefCamp&#32;2022&#32;|&#32;Catégorie&#32;Crypto&#32;|&#32;[Vozec/FR]&#32; />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Algorithm | D-CTF 2022" />
+<meta itemprop="description" content="Algorithm | D-CTF 2022" />
+<meta property="og:description" content="Algorithm | D-CTF 2022" />
+<meta name="twitter:description" content="Algorithm | D-CTF 2022" />
+
+
+<base href="//localhost:1313/writeups/algorithm-defcamp-2022/" />
+<link rel="canonical" href="//localhost:1313/writeups/algorithm-defcamp-2022/" itemprop="url" />
+<meta name="url" content="//localhost:1313/writeups/algorithm-defcamp-2022/" />
+<meta name="twitter:url" content="//localhost:1313/writeups/algorithm-defcamp-2022/" />
+<meta property="og:url" content="//localhost:1313/writeups/algorithm-defcamp-2022/" />
+
+
+<meta property="og:updated_time" content="2022-02-12T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/writeups/algorithm-defcamp-2022/">Algorithm | DefCamp 2022 | Catégorie Crypto | [Vozec/FR] </a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2022-02-12T12:00:00Z" class="post-date">
+        February 12, 2022
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>7 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-pwn">
+        <a href="//localhost:1313/tags/pwn">pwn</a>
+      </li>
+      
+      <li class="tag-tuto">
+        <a href="//localhost:1313/tags/tuto">tuto</a>
+      </li>
+      
+      <li class="tag-writeup">
+        <a href="//localhost:1313/tags/writeup">writeup</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h2 id="fichiers">Fichier(s)</h2>
+<ul>
+<li><a href="./files/chall.py">Chall.py</a></li>
+<li><a href="./files/flag_enc.txt">Flag_enc</a></li>
+</ul>
+<h2 id="nécessaires">Nécessaires</h2>
+<ul>
+<li>Python3</li>
+</ul>
+<h2 id="flag">Flag</h2>
+<pre tabindex="0"><code>CTF{267a4401ea64e7167168969743dcc708399e3823d40e4ae37c78d675e281cb14}
+</code></pre><h2 id="description">Description</h2>
+<p>Hello friends. Just a regular algorithm
+Flag format: CTF{sha256(message_decrypt)}</p>
+<h2 id="solution-détaillée">Solution détaillée</h2>
+<p>Dans <code>Flag_enc</code> on retrouve le flag chiffré : <code>242712673639869973827786401934639193473972235217215301</code></p>
+<p>Analysons le chiffrement dans <code>chall.py</code> :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span>flag <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39; [test]&#39;</span>
+</span></span><span style="display:flex;"><span>hflag <span style="color:#f92672">=</span> flag<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;hex&#39;</span>)
+</span></span><span style="display:flex;"><span>iflag <span style="color:#f92672">=</span> int(hflag[<span style="color:#ae81ff">2</span>:], <span style="color:#ae81ff">16</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">polinom</span>(n, m):
+</span></span><span style="display:flex;"><span>   i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>   z <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>   s <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">while</span> n <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>   	<span style="color:#66d9ef">if</span> n <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>   		z<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> (n <span style="color:#f92672">%</span> <span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span>   	<span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>   		z<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>   	n <span style="color:#f92672">=</span> (n <span style="color:#f92672">-</span> z[i])<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>   	i <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>   z <span style="color:#f92672">=</span> z[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>   l <span style="color:#f92672">=</span> len(z)
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, l):
+</span></span><span style="display:flex;"><span>       s <span style="color:#f92672">+=</span> z[i] <span style="color:#f92672">*</span> m <span style="color:#f92672">**</span> (l <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> i)
+</span></span><span style="display:flex;"><span>   <span style="color:#66d9ef">return</span> s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>r <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">while</span> i <span style="color:#f92672">&lt;</span> len(str(iflag)):
+</span></span><span style="display:flex;"><span>   d <span style="color:#f92672">=</span> str(iflag)[i:i<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>   nf <span style="color:#f92672">=</span> polinom(int(d), <span style="color:#ae81ff">3</span>)
+</span></span><span style="display:flex;"><span>   r <span style="color:#f92672">+=</span> str(nf)
+</span></span><span style="display:flex;"><span>   i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print r
+</span></span></code></pre></div><p>Le flag est d&rsquo;abord encodé en <a href="https://fr.wikipedia.org/wiki/Syst%C3%A8me_hexad%C3%A9cimal" target="_blank">Hexadécimal</a> , puis , convertit en nombre .</p>
+<p>Une chose qui saute aux yeux et que c&rsquo;est un chiffrement par block. Les charactères sont donc chiffrés par <em>block de 2</em>.
+Ici chaque block est stocké dans la variable <strong>d</strong></p>
+<p>Puis le block est passé dans la fonction <strong>polinom</strong> et le résultat est concaténé a <strong>r</strong> , la variable renvoyée à la fin du script.</p>
+<p>La fonction <strong>polinom</strong> semble complexe et l&rsquo;approche suivante va permettre de ne pas s&rsquo;en occuper beaucoup. Nous n&rsquo;allons donc pas tenter de l’inverser.</p>
+<p>J&rsquo;ai quand même simplifié la fonction un tout petit peu en supprimant le paramètre <strong>m</strong> qui reste constant :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">polinom</span>(n):
+</span></span><span style="display:flex;"><span>	i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>	z <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>	s <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> n <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> n <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>			z<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> (n <span style="color:#f92672">%</span> <span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>			z<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>		n <span style="color:#f92672">=</span> (n <span style="color:#f92672">-</span> z[i])<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>		i <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>	z <span style="color:#f92672">=</span> z[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>	l <span style="color:#f92672">=</span> len(z)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, l):
+</span></span><span style="display:flex;"><span>		 s <span style="color:#f92672">+=</span> z[i] <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">**</span> (l <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> i)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> s
+</span></span></code></pre></div><p>Une chose notable est que la fonction polinom est statique, elle prend une entrée et renvoie une sortie ; aucun autre paramètre influe sur le résultat . Ainsi, chaque entrée aura sa sortie correspondante.</p>
+<p>On peut donc générer un mapping de tous les blocs de 2 nombres avec leurs résultats correspondants :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">mapping</span>():
+</span></span><span style="display:flex;"><span>	mapping <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">10</span>):
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">10</span>):
+</span></span><span style="display:flex;"><span>				block <span style="color:#f92672">=</span> str(i)<span style="color:#f92672">+</span>str(j)
+</span></span><span style="display:flex;"><span>				val <span style="color:#f92672">=</span> int(polinom(int(block)))
+</span></span><span style="display:flex;"><span>				mapping[str(block)]<span style="color:#f92672">=</span>str(val)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> mapping
+</span></span></code></pre></div><p>Résultat :</p>
+<pre tabindex="0"><code>{&#39;00&#39;: &#39;0&#39;, &#39;01&#39;: &#39;1&#39;, &#39;02&#39;: &#39;3&#39;, &#39;03&#39;: &#39;8&#39;, &#39;04&#39;: &#39;9&#39;, &#39;05&#39;: &#39;10&#39;, &#39;06&#39;: &#39;24&#39;, &#39;07&#39;: &#39;26&#39;, &#39;08&#39;: &#39;27&#39;, &#39;09&#39;: &#39;28&#39;, &#39;10&#39;: &#39;30&#39;, &#39;11&#39;: &#39;71&#39;, &#39;12&#39;: &#39;72&#39;, &#39;13&#39;: &#39;73&#39;, &#39;14&#39;: &#39;78&#39;, &#39;15&#39;: &#39;80&#39;, &#39;16&#39;: &#39;81&#39;, &#39;17&#39;: &#39;82&#39;, &#39;18&#39;: &#39;84&#39;, &#39;19&#39;: &#39;89&#39;, &#39;20&#39;: &#39;90&#39;, &#39;21&#39;: &#39;91&#39;, &#39;22&#39;: &#39;213&#39;, &#39;23&#39;: &#39;215&#39;, &#39;24&#39;: &#39;216&#39;, &#39;25&#39;: &#39;217&#39;, &#39;26&#39;: &#39;219&#39;, &#39;27&#39;: &#39;233&#39;, &#39;28&#39;: &#39;234&#39;, &#39;29&#39;: &#39;235&#39;, &#39;30&#39;: &#39;240&#39;, &#39;31&#39;: &#39;242&#39;, &#39;32&#39;: &#39;243&#39;, &#39;33&#39;: &#39;244&#39;, &#39;34&#39;: &#39;246&#39;, &#39;35&#39;: &#39;251&#39;, &#39;36&#39;: &#39;252&#39;, &#39;37&#39;: &#39;253&#39;, &#39;38&#39;: &#39;267&#39;, &#39;39&#39;: &#39;269&#39;, &#39;40&#39;: &#39;270&#39;, &#39;41&#39;: &#39;271&#39;, &#39;42&#39;: &#39;273&#39;, &#39;43&#39;: &#39;638&#39;, &#39;44&#39;: &#39;639&#39;, &#39;45&#39;: &#39;640&#39;, &#39;46&#39;: &#39;645&#39;, &#39;47&#39;: &#39;647&#39;, &#39;48&#39;: &#39;648&#39;, &#39;49&#39;: &#39;649&#39;, &#39;50&#39;: &#39;651&#39;, &#39;51&#39;: &#39;656&#39;, &#39;52&#39;: &#39;657&#39;, &#39;53&#39;: &#39;658&#39;, &#39;54&#39;: &#39;699&#39;, &#39;55&#39;: &#39;701&#39;, &#39;56&#39;: &#39;702&#39;, &#39;57&#39;: &#39;703&#39;, &#39;58&#39;: &#39;705&#39;, &#39;59&#39;: &#39;719&#39;, &#39;60&#39;: &#39;720&#39;, &#39;61&#39;: &#39;721&#39;, &#39;62&#39;: &#39;726&#39;, &#39;63&#39;: &#39;728&#39;, &#39;64&#39;: &#39;729&#39;, &#39;65&#39;: &#39;730&#39;, &#39;66&#39;: &#39;732&#39;, &#39;67&#39;: &#39;737&#39;, &#39;68&#39;: &#39;738&#39;, &#39;69&#39;: &#39;739&#39;, &#39;70&#39;: &#39;753&#39;, &#39;71&#39;: &#39;755&#39;, &#39;72&#39;: &#39;756&#39;, &#39;73&#39;: &#39;757&#39;, &#39;74&#39;: &#39;759&#39;, &#39;75&#39;: &#39;800&#39;, &#39;76&#39;: &#39;801&#39;, &#39;77&#39;: &#39;802&#39;, &#39;78&#39;: &#39;807&#39;, &#39;79&#39;: &#39;809&#39;, &#39;80&#39;: &#39;810&#39;, &#39;81&#39;: &#39;811&#39;, &#39;82&#39;: &#39;813&#39;, &#39;83&#39;: &#39;818&#39;, &#39;84&#39;: &#39;819&#39;, &#39;85&#39;: &#39;820&#39;, &#39;86&#39;: &#39;1914&#39;, &#39;87&#39;: &#39;1916&#39;, &#39;88&#39;: &#39;1917&#39;, &#39;89&#39;: &#39;1918&#39;, &#39;90&#39;: &#39;1920&#39;, &#39;91&#39;: &#39;1934&#39;, &#39;92&#39;: &#39;1935&#39;, &#39;93&#39;: &#39;1936&#39;, &#39;94&#39;: &#39;1941&#39;, &#39;95&#39;: &#39;1943&#39;, &#39;96&#39;: &#39;1944&#39;, &#39;97&#39;: &#39;1945&#39;, &#39;98&#39;: &#39;1947&#39;, &#39;99&#39;: &#39;1952&#39;}
+</code></pre><p>Maintenant, nous savons que chaque résultat est concaténé à la variable <strong>r</strong> donc nous allons tester toutes les possibilités pour obtenir bloc par bloc le nombre qui donne le flag fourni.</p>
+<p>Exemple :
+Si on essaye de chiffrer la chaine : <code>baa</code> , on obtient la sortie : <strong>72964764026</strong></p>
+<p>Si on en suit le mapping précédent, on peut décomposer le début de la chaine comme :</p>
+<ul>
+<li>72 + quelque chose
+ou</li>
+<li>729 +  quelque chose</li>
+</ul>
+<p>C&rsquo;est là que les problèmes commencent, certain nombre du mapping contiennent eux-mêmes d&rsquo;autres nombre !</p>
+<p>Ainsi, le résultat <strong>739</strong> qui donnerai <code>60</code> peut être décomposé comme <strong>73+9</strong> qui sont aussi dans le mapping est qui donnerai <code>1304</code></p>
+<p>On doit donc tester le block suivant s’il peut être décomposé avec les nombres présent dans le mapping.</p>
+<p>Reprenons l&rsquo;exemple précédent, on décompose les block un par un</p>
+<p>(Rappel | Valeur attendue : <strong>72964764026</strong> )</p>
+<ul>
+<li>ETAPE 1:</li>
+</ul>
+<pre tabindex="0"><code>Décomposition n°1 : 72      | Résultat : 12
+Décomposition n°2 : 729     | Résultat : 64
+</code></pre><ul>
+<li>ETAPE 2:</li>
+</ul>
+<pre tabindex="0"><code>Décomposition n°1 : 72 + 9    | Résultat : 1204
+Décomposition n°2 : 729 + 647 | Résultat : 6447
+</code></pre><ul>
+<li>ETAPE 2:</li>
+</ul>
+<pre tabindex="0"><code>Décomposition n°1 : 72 + 9 + 647  | Résultat : 120447
+Décomposition n°2 : 729 + 647 | Résultat : 6447
+</code></pre><ul>
+<li>ECT</li>
+</ul>
+<p>Ici on aura 2 décompositions qui donnent <code>72964764026</code> mais une seule donne la bonne sortie !</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;64&#39;</span>, <span style="color:#e6db74">&#39;47&#39;</span>, <span style="color:#e6db74">&#39;45&#39;</span>, <span style="color:#e6db74">&#39;07&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">(</span>64474507<span style="color:#f92672">)</span> -&gt; <span style="color:#ae81ff">72964764026</span> -&gt; b<span style="color:#e6db74">&#39;baa&#39;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;12&#39;</span>, <span style="color:#e6db74">&#39;04&#39;</span>, <span style="color:#e6db74">&#39;47&#39;</span>, <span style="color:#e6db74">&#39;45&#39;</span>, <span style="color:#e6db74">&#39;07&#39;</span><span style="color:#f92672">]</span> <span style="color:#f92672">(</span>1204474507<span style="color:#f92672">)</span> -&gt; <span style="color:#ae81ff">72964764026</span> -&gt; None
+</span></span></code></pre></div><h5 id="notre-flag">Notre Flag</h5>
+<p>J&rsquo;ai donc tenté à la main de décomposer le flag fourni :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>c1 <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;242&#34;</span>,<span style="color:#e6db74">&#34;71&#34;</span>,<span style="color:#e6db74">&#34;267&#34;</span>,<span style="color:#e6db74">&#34;3&#34;</span>,<span style="color:#e6db74">&#34;639&#34;</span>,<span style="color:#e6db74">&#34;8&#34;</span>,<span style="color:#e6db74">&#34;699&#34;</span>,<span style="color:#e6db74">&#34;738&#34;</span>,<span style="color:#e6db74">&#34;27&#34;</span>,<span style="color:#e6db74">&#34;78&#34;</span>,<span style="color:#e6db74">&#34;640&#34;</span>,<span style="color:#e6db74">&#34;1934&#34;</span>,<span style="color:#e6db74">&#34;639&#34;</span>,<span style="color:#e6db74">&#34;1934&#34;</span>,<span style="color:#e6db74">&#34;739&#34;</span>,<span style="color:#e6db74">&#34;72&#34;</span>,<span style="color:#e6db74">&#34;235&#34;</span>,<span style="color:#e6db74">&#34;217&#34;</span>,<span style="color:#e6db74">&#34;215&#34;</span>,<span style="color:#e6db74">&#34;3&#34;</span>,<span style="color:#e6db74">&#34;0&#34;</span>,<span style="color:#e6db74">&#34;1&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>c2 <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;242&#34;</span>,<span style="color:#e6db74">&#34;71&#34;</span>,<span style="color:#e6db74">&#34;267&#34;</span>,<span style="color:#e6db74">&#34;3&#34;</span>,<span style="color:#e6db74">&#34;639&#34;</span>,<span style="color:#e6db74">&#34;8&#34;</span>,<span style="color:#e6db74">&#34;699&#34;</span>,<span style="color:#e6db74">&#34;738&#34;</span>,<span style="color:#e6db74">&#34;27&#34;</span>,<span style="color:#e6db74">&#34;78&#34;</span>,<span style="color:#e6db74">&#34;640&#34;</span>,<span style="color:#e6db74">&#34;1934&#34;</span>,<span style="color:#e6db74">&#34;639&#34;</span>,<span style="color:#e6db74">&#34;1934&#34;</span>,<span style="color:#e6db74">&#34;73&#34;</span>,<span style="color:#e6db74">&#34;9&#34;</span>,<span style="color:#e6db74">&#34;72&#34;</span>,<span style="color:#e6db74">&#34;235&#34;</span>,<span style="color:#e6db74">&#34;217&#34;</span>,<span style="color:#e6db74">&#34;215&#34;</span>,<span style="color:#e6db74">&#34;3&#34;</span>,<span style="color:#e6db74">&#34;0&#34;</span>,<span style="color:#e6db74">&#34;1&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>c3 <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;242&#34;</span>,<span style="color:#e6db74">&#34;71&#34;</span>,<span style="color:#e6db74">&#34;267&#34;</span>,<span style="color:#e6db74">&#34;3&#34;</span>,<span style="color:#e6db74">&#34;639&#34;</span>,<span style="color:#e6db74">&#34;8&#34;</span>,<span style="color:#e6db74">&#34;699&#34;</span>,<span style="color:#e6db74">&#34;738&#34;</span>,<span style="color:#e6db74">&#34;27&#34;</span>,<span style="color:#e6db74">&#34;78&#34;</span>,<span style="color:#e6db74">&#34;640&#34;</span>,<span style="color:#e6db74">&#34;1934&#34;</span>,<span style="color:#e6db74">&#34;639&#34;</span>,<span style="color:#e6db74">&#34;1934&#34;</span>,<span style="color:#e6db74">&#34;739&#34;</span>,<span style="color:#e6db74">&#34;72&#34;</span>,<span style="color:#e6db74">&#34;235&#34;</span>,<span style="color:#e6db74">&#34;217&#34;</span>,<span style="color:#e6db74">&#34;215&#34;</span>,<span style="color:#e6db74">&#34;30&#34;</span>,<span style="color:#e6db74">&#34;1&#34;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>c4 <span style="color:#f92672">=</span> <span style="color:#f92672">[</span><span style="color:#e6db74">&#34;242&#34;</span>,<span style="color:#e6db74">&#34;71&#34;</span>,<span style="color:#e6db74">&#34;267&#34;</span>,<span style="color:#e6db74">&#34;3&#34;</span>,<span style="color:#e6db74">&#34;639&#34;</span>,<span style="color:#e6db74">&#34;8&#34;</span>,<span style="color:#e6db74">&#34;699&#34;</span>,<span style="color:#e6db74">&#34;738&#34;</span>,<span style="color:#e6db74">&#34;27&#34;</span>,<span style="color:#e6db74">&#34;78&#34;</span>,<span style="color:#e6db74">&#34;640&#34;</span>,<span style="color:#e6db74">&#34;1934&#34;</span>,<span style="color:#e6db74">&#34;639&#34;</span>,<span style="color:#e6db74">&#34;1934&#34;</span>,<span style="color:#e6db74">&#34;73&#34;</span>,<span style="color:#e6db74">&#34;9&#34;</span>,<span style="color:#e6db74">&#34;72&#34;</span>,<span style="color:#e6db74">&#34;235&#34;</span>,<span style="color:#e6db74">&#34;217&#34;</span>,<span style="color:#e6db74">&#34;215&#34;</span>,<span style="color:#e6db74">&#34;30&#34;</span>,<span style="color:#e6db74">&#34;1&#34;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>Malheureusement , aucune des décompositions n&rsquo;a fonctionnés :(</p>
+<pre tabindex="0"><code>Iflag: 31113824435468814459144916912292523201
+Recovered : b&#39;\x17hM\xfbXFtU\xdch\xbe\xb1\x840l\xc1&#39;
+
+Iflag: 311138244354688144591449113412292523201
+Recovered : b&#39;\xea\x13\x0b\xd1r\xc0\x8bZ\x9c\x17@D\x05k4\xc1&#39;
+
+Iflag: 31113824435468814459144916912292523101
+Recovered : b&#39;\x17hM\xfbXFtU\xdch\xbe\xb1\x840l]&#39;
+
+Iflag: 311138244354688144591449113412292523101
+Recovered : b&#39;\xea\x13\x0b\xd1r\xc0\x8bZ\x9c\x17@D\x05k4]&#39;
+</code></pre><p>J&rsquo;ai donc écrit ce script qui test tous les possibilités et qui supprimes les chemins impossible sous forme d&rsquo;arbres de combinaisons :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Python" data-lang="Python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">brute</span>():
+</span></span><span style="display:flex;"><span>	flag <span style="color:#f92672">=</span> [[<span style="color:#e6db74">&#39;&#39;</span>]]
+</span></span><span style="display:flex;"><span>	final <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,len(out)<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>):
+</span></span><span style="display:flex;"><span>		allposs <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> possibility <span style="color:#f92672">in</span> flag:
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">10</span>):
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">10</span>):
+</span></span><span style="display:flex;"><span>					block <span style="color:#f92672">=</span> str(i)<span style="color:#f92672">+</span>str(j)
+</span></span><span style="display:flex;"><span>					current <span style="color:#f92672">=</span> calc(<span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(possibility)<span style="color:#f92672">+</span>block)
+</span></span><span style="display:flex;"><span>					<span style="color:#66d9ef">if</span>(out<span style="color:#f92672">.</span>startswith(current)):
+</span></span><span style="display:flex;"><span>						newlist <span style="color:#f92672">=</span> possibility[:]
+</span></span><span style="display:flex;"><span>						<span style="color:#66d9ef">if</span> newlist <span style="color:#f92672">==</span> [<span style="color:#e6db74">&#39;&#39;</span>]:
+</span></span><span style="display:flex;"><span>							newlist <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>						newlist<span style="color:#f92672">.</span>append(block)
+</span></span><span style="display:flex;"><span>						allposs<span style="color:#f92672">.</span>append(newlist)
+</span></span><span style="display:flex;"><span>						<span style="color:#66d9ef">if</span>(possibility <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> final):
+</span></span><span style="display:flex;"><span>							<span style="color:#66d9ef">if</span>(current <span style="color:#f92672">==</span> out):
+</span></span><span style="display:flex;"><span>								final<span style="color:#f92672">.</span>append(possibility<span style="color:#f92672">+</span>[block])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		flag <span style="color:#f92672">=</span> allposs
+</span></span><span style="display:flex;"><span>		allposs <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		print(out)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> possibility <span style="color:#f92672">in</span> flag:
+</span></span><span style="display:flex;"><span>			print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>possibility<span style="color:#e6db74">}</span><span style="color:#e6db74"> -&gt; </span><span style="color:#e6db74">{</span>calc(<span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">.</span>join(possibility))<span style="color:#e6db74">}</span><span style="color:#e6db74"> -&gt; </span><span style="color:#e6db74">{</span>decrypt(<span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">.</span>join(possibility))<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>		print(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;#&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">50</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>	print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34; [*] </span><span style="color:#e6db74">{</span>str(len(final))<span style="color:#e6db74">}</span><span style="color:#e6db74"> combinaisons trouvés !</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> goodcombi <span style="color:#f92672">in</span> final:
+</span></span><span style="display:flex;"><span>		print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34; </span><span style="color:#e6db74">{</span>goodcombi<span style="color:#e6db74">}</span><span style="color:#e6db74"> (</span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(goodcombi)<span style="color:#e6db74">}</span><span style="color:#e6db74">) -&gt; </span><span style="color:#e6db74">{</span>calc(<span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(possibility))<span style="color:#e6db74">}</span><span style="color:#e6db74"> -&gt; </span><span style="color:#e6db74">{</span>decrypt(<span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(goodcombi))<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>	print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;#&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">50</span>)
+</span></span></code></pre></div><p>Une fois tous assemblé, voici le code final :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> binascii
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">polinom</span>(n):
+</span></span><span style="display:flex;"><span>	i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>	z <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>	s <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> n <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> n <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span> <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>:
+</span></span><span style="display:flex;"><span>			z<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">2</span> <span style="color:#f92672">-</span> (n <span style="color:#f92672">%</span> <span style="color:#ae81ff">4</span>))
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>			z<span style="color:#f92672">.</span>append(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span>		n <span style="color:#f92672">=</span> (n <span style="color:#f92672">-</span> z[i])<span style="color:#f92672">/</span><span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>		i <span style="color:#f92672">=</span> i <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>	z <span style="color:#f92672">=</span> z[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>	l <span style="color:#f92672">=</span> len(z)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>, l):
+</span></span><span style="display:flex;"><span>		 s <span style="color:#f92672">+=</span> z[i] <span style="color:#f92672">*</span> <span style="color:#ae81ff">3</span> <span style="color:#f92672">**</span> (l <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span> <span style="color:#f92672">-</span> i)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> s
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">calc</span>(iflag):
+</span></span><span style="display:flex;"><span>	i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>	r <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> i <span style="color:#f92672">&lt;</span> len(str(iflag)):
+</span></span><span style="display:flex;"><span>		d <span style="color:#f92672">=</span> str(iflag)[i:i<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>		nf <span style="color:#f92672">=</span> int(polinom(int(d)))
+</span></span><span style="display:flex;"><span>		r <span style="color:#f92672">+=</span> str(nf)
+</span></span><span style="display:flex;"><span>		i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> r
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decrypt</span>(input):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">try</span>:		
+</span></span><span style="display:flex;"><span>		hexa <span style="color:#f92672">=</span> hex(int(input[:len(input)<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>]<span style="color:#f92672">+</span>input[len(input)<span style="color:#f92672">-</span><span style="color:#ae81ff">2</span>:]<span style="color:#f92672">.</span>replace(<span style="color:#e6db74">&#39;0&#39;</span>,<span style="color:#e6db74">&#39;&#39;</span>)))
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> binascii<span style="color:#f92672">.</span>unhexlify(bytes(hexa[<span style="color:#ae81ff">2</span>:],<span style="color:#e6db74">&#34;utf-8&#34;</span>))
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">except</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">exemple</span>(flag):
+</span></span><span style="display:flex;"><span>	decomposition1 <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>	decomposition2 <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>	hflag <span style="color:#f92672">=</span> binascii<span style="color:#f92672">.</span>hexlify(flag)<span style="color:#f92672">.</span>decode()
+</span></span><span style="display:flex;"><span>	iflag <span style="color:#f92672">=</span> int(hflag[<span style="color:#ae81ff">2</span>:], <span style="color:#ae81ff">16</span>)
+</span></span><span style="display:flex;"><span>	i <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>	r <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> i <span style="color:#f92672">&lt;</span> len(str(iflag)):
+</span></span><span style="display:flex;"><span>		d <span style="color:#f92672">=</span> str(iflag)[i:i<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>		nf <span style="color:#f92672">=</span> int(polinom(int(d)))
+</span></span><span style="display:flex;"><span>		decomposition1<span style="color:#f92672">.</span>append(str(nf))
+</span></span><span style="display:flex;"><span>		decomposition2<span style="color:#f92672">.</span>append(d)
+</span></span><span style="display:flex;"><span>		r <span style="color:#f92672">+=</span> str(nf)
+</span></span><span style="display:flex;"><span>		i <span style="color:#f92672">+=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> r,[[decomposition1]<span style="color:#f92672">+</span>[decomposition2]]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">brute</span>():
+</span></span><span style="display:flex;"><span>	flag <span style="color:#f92672">=</span> [[<span style="color:#e6db74">&#39;&#39;</span>]]
+</span></span><span style="display:flex;"><span>	final <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> k <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,len(out)<span style="color:#f92672">//</span><span style="color:#ae81ff">2</span>):
+</span></span><span style="display:flex;"><span>		allposs <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> possibility <span style="color:#f92672">in</span> flag:
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">10</span>):
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">10</span>):
+</span></span><span style="display:flex;"><span>					block <span style="color:#f92672">=</span> str(i)<span style="color:#f92672">+</span>str(j)
+</span></span><span style="display:flex;"><span>					current <span style="color:#f92672">=</span> calc(<span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(possibility)<span style="color:#f92672">+</span>block)
+</span></span><span style="display:flex;"><span>					<span style="color:#66d9ef">if</span>(out<span style="color:#f92672">.</span>startswith(current)):
+</span></span><span style="display:flex;"><span>						newlist <span style="color:#f92672">=</span> possibility[:]
+</span></span><span style="display:flex;"><span>						<span style="color:#66d9ef">if</span> newlist <span style="color:#f92672">==</span> [<span style="color:#e6db74">&#39;&#39;</span>]:
+</span></span><span style="display:flex;"><span>							newlist <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>						newlist<span style="color:#f92672">.</span>append(block)
+</span></span><span style="display:flex;"><span>						allposs<span style="color:#f92672">.</span>append(newlist)
+</span></span><span style="display:flex;"><span>						<span style="color:#66d9ef">if</span>(possibility <span style="color:#f92672">not</span> <span style="color:#f92672">in</span> final):
+</span></span><span style="display:flex;"><span>							<span style="color:#66d9ef">if</span>(current <span style="color:#f92672">==</span> out):
+</span></span><span style="display:flex;"><span>								final<span style="color:#f92672">.</span>append(possibility<span style="color:#f92672">+</span>[block])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		flag <span style="color:#f92672">=</span> allposs
+</span></span><span style="display:flex;"><span>		allposs <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		print(out)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">for</span> possibility <span style="color:#f92672">in</span> flag:
+</span></span><span style="display:flex;"><span>			print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#e6db74">{</span>possibility<span style="color:#e6db74">}</span><span style="color:#e6db74"> -&gt; </span><span style="color:#e6db74">{</span>calc(<span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">.</span>join(possibility))<span style="color:#e6db74">}</span><span style="color:#e6db74"> -&gt; </span><span style="color:#e6db74">{</span>decrypt(<span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">.</span>join(possibility))<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>		print(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;#&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">50</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>	print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34; [*] </span><span style="color:#e6db74">{</span>str(len(final))<span style="color:#e6db74">}</span><span style="color:#e6db74"> combinaisons trouvés !</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> goodcombi <span style="color:#f92672">in</span> final:
+</span></span><span style="display:flex;"><span>		print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34; </span><span style="color:#e6db74">{</span>goodcombi<span style="color:#e6db74">}</span><span style="color:#e6db74"> (</span><span style="color:#e6db74">{</span><span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(goodcombi)<span style="color:#e6db74">}</span><span style="color:#e6db74">) -&gt; </span><span style="color:#e6db74">{</span>calc(<span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(possibility))<span style="color:#e6db74">}</span><span style="color:#e6db74"> -&gt; </span><span style="color:#e6db74">{</span>decrypt(<span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(goodcombi))<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>	print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span><span style="color:#f92672">+</span><span style="color:#e6db74">&#34;#&#34;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">50</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#out,decomposition = exemple(b&#39;abaa&#39;)</span>
+</span></span><span style="display:flex;"><span>out,decomposition <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;242712673639869973827786401934639193473972235217215301&#34;</span>,<span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>brute()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">mapping</span>():
+</span></span><span style="display:flex;"><span>	mapping <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">10</span>):
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">for</span> j <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">0</span>,<span style="color:#ae81ff">10</span>):
+</span></span><span style="display:flex;"><span>				block <span style="color:#f92672">=</span> str(i)<span style="color:#f92672">+</span>str(j)
+</span></span><span style="display:flex;"><span>				val <span style="color:#f92672">=</span> int(polinom(int(block)))
+</span></span><span style="display:flex;"><span>				mapping[str(block)]<span style="color:#f92672">=</span>str(val)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> mapping
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(decomposition)
+</span></span></code></pre></div><p>Voici le résultat :</p>
+<p><img src="./img/out.png" alt="Alt text" title="out">
+(<a href="./files/out.txt">Sortie Complète</a>)</p>
+<p>Aprés analyse des résultats, on obtient un message en clair : <code>[ola_th1s_1s_p0l]</code> !</p>
+<p>Une fois passé en sha256 ; on obtient le flag :</p>
+<pre tabindex="0"><code>CTF{267a4401ea64e7167168969743dcc708399e3823d40e4ae37c78d675e281cb14}
+</code></pre>
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/writeups/herald-insomnihack-ctf-2022/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Writeup Herald | Insomnihack 2022 | Catégorie...</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/writeups/lucky-tamuctf-2022/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Lucky | TamuCtf 2022 | Catégorie Pwn | [Vozec/FR] </a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#fichiers">Fichier(s)</a></li>
+    <li><a href="#nécessaires">Nécessaires</a></li>
+    <li><a href="#flag">Flag</a></li>
+    <li><a href="#description">Description</a></li>
+    <li><a href="#solution-détaillée">Solution détaillée</a>
+      <ul>
+        <li></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

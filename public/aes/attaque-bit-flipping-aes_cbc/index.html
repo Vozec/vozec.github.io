@@ -1,0 +1,1438 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - Présentation de l&#39;attaque &#39;Bit Flipping&#39; sur de l&#39;AES CBC</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Présentation&#32;de&#32;l&#39;attaque&#32;&#39;Bit&#32;Flipping&#39;&#32;sur&#32;de&#32;l&#39;AES&#32;CBC />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Présentation&#32;de&#32;l&#39;attaque&#32;&#39;Bit&#32;Flipping&#39;&#32;sur&#32;de&#32;l&#39;AES&#32;CBC />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Présentation&#32;de&#32;l&#39;attaque&#32;&#39;Bit&#32;Flipping&#39;&#32;sur&#32;de&#32;l&#39;AES&#32;CBC />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Présentation&#32;de&#32;l&#39;attaque&#32;&#39;Bit&#32;Flipping&#39;&#32;sur&#32;de&#32;l&#39;AES&#32;CBC />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Comment fonctionne l&#39;attaque BitFlipping sur le chiffrement AES (CBC)" />
+<meta itemprop="description" content="Comment fonctionne l&#39;attaque BitFlipping sur le chiffrement AES (CBC)" />
+<meta property="og:description" content="Comment fonctionne l&#39;attaque BitFlipping sur le chiffrement AES (CBC)" />
+<meta name="twitter:description" content="Comment fonctionne l&#39;attaque BitFlipping sur le chiffrement AES (CBC)" />
+
+
+<base href="//localhost:1313/aes/attaque-bit-flipping-aes_cbc/" />
+<link rel="canonical" href="//localhost:1313/aes/attaque-bit-flipping-aes_cbc/" itemprop="url" />
+<meta name="url" content="//localhost:1313/aes/attaque-bit-flipping-aes_cbc/" />
+<meta name="twitter:url" content="//localhost:1313/aes/attaque-bit-flipping-aes_cbc/" />
+<meta property="og:url" content="//localhost:1313/aes/attaque-bit-flipping-aes_cbc/" />
+
+
+<meta property="og:updated_time" content="2022-05-25T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/aes/attaque-bit-flipping-aes_cbc/">Présentation de l&#39;attaque &#39;Bit Flipping&#39; sur de l&#39;AES CBC</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2022-05-25T12:00:00Z" class="post-date">
+        May 25, 2022
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>6 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-crypto">
+        <a href="//localhost:1313/tags/crypto">crypto</a>
+      </li>
+      
+      <li class="tag-tuto">
+        <a href="//localhost:1313/tags/tuto">tuto</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h2 id="introduction">Introduction</h2>
+<p>AES (&ldquo;Advanced Encryption Standard&rdquo;) est un chiffrement symétrique par blocs. En effet, il repose sur le chiffrement de données découpées en plusieurs partie. Ainsi il en <strong>existe plusieurs modes</strong> :</p>
+<ul>
+<li>ECB</li>
+<li><strong>CBC</strong></li>
+<li>CFB</li>
+<li>OFB</li>
+<li>CTR</li>
+<li>CTS</li>
+<li>&hellip;</li>
+</ul>
+<p>Aujourd&rsquo;hui , nous allons voir <strong>une attaque présente sur l&rsquo;AES en mode CBC</strong> .</p>
+<h2 id="comprendre-le-mode-cbc">Comprendre le mode <code>CBC</code></h2>
+<p>Comme présenté avant, <code>CBC</code> est un mode de chiffrement d&rsquo;AES . <code>CBC</code> pour <code>Chain By Chain</code>
+Tout son fonctionnement peut être résumé dans le schéma suivant:</p>
+<p><img src="./img/cbc.png" alt="Alt text"></p>
+<p>On voit que chaque bloc est chiffré grâce à :</p>
+<ul>
+<li>Une Clef</li>
+<li>Le block précédent (chiffré)</li>
+</ul>
+<p>Par Exemple, le <strong>block N°4</strong> sera chiffré avec le <strong>bloc N°3</strong> et celui-ci sera lui aussi chiffré avec le <strong>N°2</strong> etc ..</p>
+<p>Pour information, le premier bloc, n&rsquo;ayant pas bloc précédent , utilisera ce qu&rsquo;on appelle l&rsquo;<strong>IV</strong> , le <strong>Vecteur d&rsquo;initialisation</strong>.</p>
+<p>Par convention, la taille des blocs sont de <strong>16</strong> , l&rsquo;<strong>l&rsquo;iv</strong> et la <strong>clef</strong> auront donc la même taille.</p>
+<h2 id="lattaque-bitflipping">L&rsquo;attaque BitFlipping</h2>
+<p>Ici , contrairement à d&rsquo;autres attaques sur d&rsquo;autres chiffrements , nous n&rsquo;allons pas essayer de récupérer <strong>la clé et l&rsquo;iv</strong> de chiffrement , nous allons directement modifié un message chiffré pour impacter le contenu du message déchiffré .</p>
+<p>Supposons le schéma suivant :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Cipher <span style="color:#f92672">import</span> AES
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Random <span style="color:#f92672">import</span> get_random_bytes
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Util.Padding <span style="color:#f92672">import</span> pad, unpad
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> binascii <span style="color:#f92672">import</span> hexlify, unhexlify
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>flag <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;flag</span><span style="color:#e6db74">{YoU_F1iiiPM3}</span><span style="color:#e6db74">&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>key <span style="color:#f92672">=</span> get_random_bytes(<span style="color:#ae81ff">16</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>badword <span style="color:#f92672">=</span> [<span style="color:#e6db74">&#39;admin&#39;</span>,<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\&#39;</span><span style="color:#e6db74">&#39;</span>,<span style="color:#e6db74">&#39;true&#39;</span>,<span style="color:#e6db74">&#39;false&#39;</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>message <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">    _________       _________     </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">   / ____/ (_)___  / ____/ (_)___ </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">  / /_  / / / __ </span><span style="color:#ae81ff">\\</span><span style="color:#e6db74">/ /_  / / / __ </span><span style="color:#ae81ff">\\\n</span><span style="color:#e6db74"> / __/ / / / /_/ / __/ / / / /_/ /</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">/_/   /_/_/ .___/_/   /_/_/ .___/ </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">         /_/             /_/      </span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">encrypt</span>(data):
+</span></span><span style="display:flex;"><span>    iv <span style="color:#f92672">=</span> get_random_bytes(AES<span style="color:#f92672">.</span>block_size)
+</span></span><span style="display:flex;"><span>    cipher <span style="color:#f92672">=</span> AES<span style="color:#f92672">.</span>new(key, AES<span style="color:#f92672">.</span>MODE_CBC, iv)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> hexlify(iv <span style="color:#f92672">+</span> cipher<span style="color:#f92672">.</span>encrypt(pad(data<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;utf-8&#39;</span>),AES<span style="color:#f92672">.</span>block_size)))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decrypt</span>(data):
+</span></span><span style="display:flex;"><span>    raw <span style="color:#f92672">=</span> unhexlify(data)
+</span></span><span style="display:flex;"><span>    cipher <span style="color:#f92672">=</span> AES<span style="color:#f92672">.</span>new(key, AES<span style="color:#f92672">.</span>MODE_CBC, raw[:AES<span style="color:#f92672">.</span>block_size])
+</span></span><span style="display:flex;"><span>    dec <span style="color:#f92672">=</span> unpad(cipher<span style="color:#f92672">.</span>decrypt(raw[AES<span style="color:#f92672">.</span>block_size:]), AES<span style="color:#f92672">.</span>block_size)
+</span></span><span style="display:flex;"><span>    print(dec)
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> dec
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">menu</span>():
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span>(<span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>		print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74"> 		Menu&#34;</span>)
+</span></span><span style="display:flex;"><span>		print(<span style="color:#e6db74">&#34;[&gt;1] Get Token&#34;</span>)
+</span></span><span style="display:flex;"><span>		print(<span style="color:#e6db74">&#34;[&gt;2] Submit Token&#34;</span>)
+</span></span><span style="display:flex;"><span>		input_ <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34; &gt;&#34;</span>)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span>(input_ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;1&#34;</span>):
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">elif</span>(input_ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;2&#34;</span>):
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">createToken</span>(username):
+</span></span><span style="display:flex;"><span>	token <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;username=&#34;</span><span style="color:#f92672">+</span>str(username)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;&amp;admin=false&amp;time=&#34;</span><span style="color:#f92672">+</span>str(datetime<span style="color:#f92672">.</span>timestamp(datetime<span style="color:#f92672">.</span>now()))
+</span></span><span style="display:flex;"><span>	print(token)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> encrypt(token)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;latin1&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">check</span>(token):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">try</span>:
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span>(<span style="color:#e6db74">&#34;admin=true&#34;</span> <span style="color:#f92672">in</span> decrypt(token)<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;latin1&#39;</span>)):
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">GG , here is your flag : </span><span style="color:#e6db74">{</span>flag<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">You are not Admin !&#39;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">except</span> <span style="color:#a6e22e">Exception</span> <span style="color:#66d9ef">as</span> ex:
+</span></span><span style="display:flex;"><span>		print(ex)
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> <span style="color:#e6db74">&#34;Error&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>	print(message)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span>(<span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span>(menu()<span style="color:#f92672">==</span><span style="color:#ae81ff">1</span>):
+</span></span><span style="display:flex;"><span>			username <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34; &gt; Username : &#34;</span>)
+</span></span><span style="display:flex;"><span>			isbad <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">for</span> element <span style="color:#f92672">in</span> badword:
+</span></span><span style="display:flex;"><span>				<span style="color:#66d9ef">if</span>(element <span style="color:#f92672">in</span> username):
+</span></span><span style="display:flex;"><span>					isbad <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>					<span style="color:#66d9ef">break</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">if</span>(isbad <span style="color:#f92672">==</span> <span style="color:#66d9ef">True</span>):
+</span></span><span style="display:flex;"><span>				print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">BadWord !!! &#34;</span><span style="color:#e6db74">{</span>element<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;&#39;</span>)
+</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>				print(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Token : &#34;</span><span style="color:#f92672">+</span>createToken(username))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">else</span>:
+</span></span><span style="display:flex;"><span>			token <span style="color:#f92672">=</span> input(<span style="color:#e6db74">&#34; &gt; Token : &#34;</span>)
+</span></span><span style="display:flex;"><span>			print(check(token))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span>( __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#34;__main__&#34;</span>):
+</span></span><span style="display:flex;"><span>	main()
+</span></span></code></pre></div><p>Le système est simple, on peut <strong>créer des tokens d&rsquo;authentifications</strong> pour un utilisateur choisi et si celui-ci est <strong>&lsquo;admin&rsquo;</strong> on obtient le flag.
+Malheureusement , on ne peut que créer des <code>tokens</code> utilisateur et non admin.</p>
+<p>Voici ce que nous allons faire :</p>
+<ul>
+<li>Créer un token qui va nous aider pour récrire <code>admin=false</code></li>
+<li>Effectuer un <strong>Flip</strong> pour que le déchiffrement rendre <code>admin=true;</code> au lieu de <code>admin=false</code></li>
+<li>Envoyer le nouveau token et récupérer le flag</li>
+</ul>
+<h2 id="approche-extérieur-du-challenge">Approche Extérieur du challenge</h2>
+<p><img src="./img/1.png" alt="Alt text"></p>
+<p>Nous avons donc le token suivant :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>5b8861a90ac560dfb2a0a7b99752d827cb79b8f3444ac7b14c85601128681782621e916a05027ad2a09a4326cf503d10702ba1b6c3f9267a8abfe7e123bc4789e65c150518af17ab1493ab76fda00abd
+</span></span></code></pre></div><p>qui correspond à</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>username<span style="color:#f92672">=</span>vozec&amp;admin<span style="color:#f92672">=</span>false&amp;time<span style="color:#f92672">=</span>1653558714.62664
+</span></span></code></pre></div><p>On découpe le token en blocs de <strong>32 caractères</strong> (16*2 car le token est en hexadécimal)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">split</span>(plain,ciphered,IVgive):
+</span></span><span style="display:flex;"><span>	clearBlock,cipherBlock <span style="color:#f92672">=</span> [],[]
+</span></span><span style="display:flex;"><span>	plain <span style="color:#f92672">=</span> (blocksize<span style="color:#f92672">//</span><span style="color:#ae81ff">4</span>)<span style="color:#f92672">*</span><span style="color:#e6db74">&#34;_IV_&#34;</span> <span style="color:#f92672">+</span> plain <span style="color:#66d9ef">if</span>(IVgive <span style="color:#f92672">==</span> <span style="color:#66d9ef">True</span>) <span style="color:#66d9ef">else</span> plain
+</span></span><span style="display:flex;"><span>	plain <span style="color:#f92672">=</span> padRDN(plain)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range((len(plain)<span style="color:#f92672">//</span>(blocksize))):
+</span></span><span style="display:flex;"><span>		clearBlock<span style="color:#f92672">.</span>append(plain[i<span style="color:#f92672">*</span>blocksize:blocksize<span style="color:#f92672">*</span>(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)])
+</span></span><span style="display:flex;"><span>		cipherBlock<span style="color:#f92672">.</span>append(ciphered[(i<span style="color:#f92672">*</span>blocksize)<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>:(blocksize<span style="color:#f92672">*</span>(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>))<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> clearBlock,cipherBlock
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">padRDN</span>(str_):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (len(str_)<span style="color:#f92672">%</span>blocksize <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>):
+</span></span><span style="display:flex;"><span>		str_<span style="color:#f92672">+=</span><span style="color:#e6db74">&#34;_&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> str_
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>token <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;5b8861a90ac560dfb2a0a7b99752d827cb79b8f3444ac7b14c85601128681782621e916a05027ad2a09a4326cf503d10702ba1b6c3f9267a8abfe7e123bc4789e65c150518af17ab1493ab76fda00abd&#39;</span>
+</span></span><span style="display:flex;"><span>cleartext <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;username=vozec&amp;admin=false&amp;time=1653558714.62664&#39;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>blocksize <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>lblock , CiBlock <span style="color:#f92672">=</span> split(cleartext,token,<span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>print(lblock , CiBlock)
+</span></span></code></pre></div><p>Sortie :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜   python3 solve.py
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;_IV__IV__IV__IV_&#39;</span>, <span style="color:#e6db74">&#39;username=vozec&amp;a&#39;</span>, <span style="color:#e6db74">&#39;dmin=false&amp;time=&#39;</span>, <span style="color:#e6db74">&#39;1653558714.62664&#39;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;5b8861a90ac560dfb2a0a7b99752d827&#39;</span>, <span style="color:#e6db74">&#39;cb79b8f3444ac7b14c85601128681782&#39;</span>, <span style="color:#e6db74">&#39;621e916a05027ad2a09a4326cf503d10&#39;</span>, <span style="color:#e6db74">&#39;702ba1b6c3f9267a8abfe7e123bc4789&#39;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>Ainsi, ici le <code>d</code> de <code>dmin=false&amp;time=</code> correspond au byte <code>62 (0x62)</code> du 3ème bloc</p>
+<p><strong>Or</strong> , on sait que chaque bloc est chiffré à partir du précédent .
+Ainsi, si je modifie le <code>u</code> de username <code>(0xcb)</code> , le déchiffrement du block suivant : <code>dmin=false&amp;time=</code> donnera <code>Xmin=false&amp;time=</code> avec <code>X</code> une lettre autre que <code>d</code></p>
+<p>Vous l&rsquo;aurez compris, <code>grâce au bloc précédent , on peut modifier le texte déchiffré du bloc suivant !</code></p>
+<p>Dans nôtre challenge, nous pouvons rentrer un <strong>nom d&rsquo;utilisateur</strong> de la taille que l&rsquo;on veut . On sait aussi que la <strong>taille de chaque bloc est de 16</strong></p>
+<p>On peut créer le token suivant :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>username<span style="color:#f92672">=</span>AAAAAAAAAAAAAAAAAAAAAAA&amp;admin<span style="color:#f92672">=</span>false&amp;time<span style="color:#f92672">=</span>1653559752.826288
+</span></span></code></pre></div><p>Ici , avec <code>AAAAAAAAAAAAAAAAAAAAAAA</code> , on crée un bloc complet de <strong>A</strong>.<br>
+On va pouvoir <em>sacrifier</em> ce bloc pour modifier le suivant :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;_IV__IV__IV__IV_&#39;</span>, <span style="color:#e6db74">&#39;username=AAAAAAA&#39;</span>, <span style="color:#e6db74">&#39;AAAAAAAAAAAAAAAA&#39;</span>, <span style="color:#e6db74">&#39;&amp;admin=false&amp;tim&#39;</span>, <span style="color:#e6db74">&#39;e=1653559752.826&#39;</span>, <span style="color:#e6db74">&#39;288_____________&#39;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;3b85f168d58e1fafbe9cb8ddd3e158d6&#39;</span>, <span style="color:#e6db74">&#39;5fcc51ae90264e510adb56853e82d127&#39;</span>, <span style="color:#e6db74">&#39;638456a6b304a8c89ab4b1ec0a16a674&#39;</span>, <span style="color:#e6db74">&#39;2b974fbdd420e49d080ef512e03a2068&#39;</span>, <span style="color:#e6db74">&#39;f722d7f7d16356dd6d07530271f40945&#39;</span>, <span style="color:#e6db74">&#39;5610a062fb2cc4c1a9f143c82c2e3995&#39;</span><span style="color:#f92672">]</span>
+</span></span></code></pre></div><p>Essayons de modifier le bloc 3 <code>AAAAAAAAAAAAAAAA</code> = <code>638456a6b304a8c89ab4b1ec0a16a674</code> pour que le suivant : <code>&amp;admin=false&amp;tim</code> devienne <code>&amp;admin=true&amp;atim</code></p>
+<p>Ainsi , le déchiffrement donnera :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>username<span style="color:#f92672">=</span>AAAAAAAu + Le reste du bloc sacrifié  +&amp;admin<span style="color:#f92672">=</span>true&amp;ttime<span style="color:#f92672">=</span>1653560081.31627
+</span></span></code></pre></div><h2 id="comment-obtenir-le-bon-byte-pour-chaque-caractère-">Comment obtenir le bon byte pour chaque caractère ?</h2>
+<p>Pour obtenir le byte à placer dans le 3ème bloc, on a besoin de :</p>
+<ul>
+<li>Le byte actuel non modifié (ici: <code>2b974fbdd420e49d080ef512e03a2068</code>)</li>
+<li>Le plain text actuel (ici: <code>&amp;admin=false&amp;tim</code>)</li>
+<li>Le plain text visé  (ici: <code>&amp;admin=true&amp;atim</code>)</li>
+</ul>
+<p>Pour chaque lettre , on va <strong>Xor</strong> les 3 informations lettres par lettres :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_bitflip</span>(currentBit , Letter_Spotted , Letter_edited):
+</span></span><span style="display:flex;"><span>	result <span style="color:#f92672">=</span> int(currentBit,<span style="color:#ae81ff">16</span>) <span style="color:#f92672">^</span> ord(Letter_Spotted) <span style="color:#f92672">^</span> ord(Letter_edited)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> chr(result)<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;latin1&#39;</span>)<span style="color:#f92672">.</span>hex()
+</span></span></code></pre></div><p>Enfin, on peut écrire une fonction qui fait tous ce travail à notre place :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">flipBlock</span>(indexBlock,indexLetter,newletter):
+</span></span><span style="display:flex;"><span>	indexChar <span style="color:#f92672">=</span> indexLetter<span style="color:#f92672">%</span>blocksize
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	hex_spotted <span style="color:#f92672">=</span> CiBlock[indexBlock<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][indexChar<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>:(indexChar<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>)<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>	letter_spotted <span style="color:#f92672">=</span> Clblock[indexBlock][indexChar:indexChar<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	flipped <span style="color:#f92672">=</span> get_bitflip(hex_spotted ,letter_spotted, newletter)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	CiBlock[indexBlock<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> CiBlock[indexBlock<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][:indexChar<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>]  <span style="color:#f92672">+</span> flipped <span style="color:#f92672">+</span> CiBlock[indexBlock<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][(indexChar<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>)<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>:]
+</span></span><span style="display:flex;"><span>	Clblock[indexBlock] <span style="color:#f92672">=</span>  Clblock[indexBlock][:indexChar]  <span style="color:#f92672">+</span> newletter <span style="color:#f92672">+</span> Clblock[indexBlock][(indexChar)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>:]
+</span></span></code></pre></div><p>On peut donc l&rsquo;utiliser ainsi :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>flipBlock(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">7</span>,<span style="color:#e6db74">&#34;t&#34;</span>)
+</span></span><span style="display:flex;"><span>flipBlock(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">8</span>,<span style="color:#e6db74">&#34;r&#34;</span>)
+</span></span><span style="display:flex;"><span>flipBlock(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">9</span>,<span style="color:#e6db74">&#34;u&#34;</span>)
+</span></span><span style="display:flex;"><span>flipBlock(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">10</span>,<span style="color:#e6db74">&#34;e&#34;</span>)
+</span></span><span style="display:flex;"><span>flipBlock(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">11</span>,<span style="color:#e6db74">&#34;&amp;&#34;</span>)
+</span></span><span style="display:flex;"><span>flipBlock(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">12</span>,<span style="color:#e6db74">&#34;t&#34;</span>)
+</span></span></code></pre></div><p>Ainsi, le token qui sera déchiffré ressemblera à ceci :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>username<span style="color:#f92672">=</span>AAAAAAAu<span style="color:#ae81ff">\x</span>b1<span style="color:#ae81ff">\x</span>e9<span style="color:#ae81ff">\n</span>M.<span style="color:#ae81ff">\x</span>ad1N<span style="color:#ae81ff">\x</span>89<span style="color:#ae81ff">\x</span>fe<span style="color:#ae81ff">\x</span>f9<span style="color:#ae81ff">\x</span>ca<span style="color:#ae81ff">\x</span>8a<span style="color:#ae81ff">\x</span>e7<span style="color:#ae81ff">\x</span>98&amp;admin<span style="color:#f92672">=</span>true&amp;ttime<span style="color:#f92672">=</span>1653560081.31627
+</span></span></code></pre></div><p>La partie avec les <code>16*A</code> a était modifié donc la suite a était mal déchiffré, le bloc suivant est celui voulu.</p>
+<p>Toute la difficulté de cette attaque est de bien padder ses blocs pour pouvoir modifier son token aisément.
+De plus , dans le challenge , aucun <strong>parsing</strong> sur <code>time</code> n&rsquo;est effectué donc changer <code>time</code> en <code>ttime</code> n&rsquo;impact pas le résultat !</p>
+<h2 id="lexploit-final">L&rsquo;exploit final</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> datetime <span style="color:#f92672">import</span> datetime, timedelta
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">split</span>(plain,ciphered,IVgive):
+</span></span><span style="display:flex;"><span>	clearBlock,cipherBlock <span style="color:#f92672">=</span> [],[]
+</span></span><span style="display:flex;"><span>	plain <span style="color:#f92672">=</span> (blocksize<span style="color:#f92672">//</span><span style="color:#ae81ff">4</span>)<span style="color:#f92672">*</span><span style="color:#e6db74">&#34;_IV_&#34;</span> <span style="color:#f92672">+</span> plain <span style="color:#66d9ef">if</span>(IVgive <span style="color:#f92672">==</span> <span style="color:#66d9ef">True</span>) <span style="color:#66d9ef">else</span> plain
+</span></span><span style="display:flex;"><span>	plain <span style="color:#f92672">=</span> padRDN(plain)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range((len(plain)<span style="color:#f92672">//</span>(blocksize))):
+</span></span><span style="display:flex;"><span>		clearBlock<span style="color:#f92672">.</span>append(plain[i<span style="color:#f92672">*</span>blocksize:blocksize<span style="color:#f92672">*</span>(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)])
+</span></span><span style="display:flex;"><span>		cipherBlock<span style="color:#f92672">.</span>append(ciphered[(i<span style="color:#f92672">*</span>blocksize)<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>:(blocksize<span style="color:#f92672">*</span>(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>))<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> clearBlock,cipherBlock
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">padRDN</span>(str_):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">while</span> (len(str_)<span style="color:#f92672">%</span>blocksize <span style="color:#f92672">!=</span> <span style="color:#ae81ff">0</span>):
+</span></span><span style="display:flex;"><span>		str_<span style="color:#f92672">+=</span><span style="color:#e6db74">&#34;_&#34;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> str_
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">get_bitflip</span>(currentBit , Letter_Spotted , Letter_edited):
+</span></span><span style="display:flex;"><span>	result <span style="color:#f92672">=</span> int(currentBit,<span style="color:#ae81ff">16</span>) <span style="color:#f92672">^</span> ord(Letter_Spotted) <span style="color:#f92672">^</span> ord(Letter_edited)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> chr(result)<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;latin1&#39;</span>)<span style="color:#f92672">.</span>hex()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">flipBlock</span>(indexBlock,indexLetter,newletter):
+</span></span><span style="display:flex;"><span>	indexChar <span style="color:#f92672">=</span> indexLetter<span style="color:#f92672">%</span>blocksize
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	hex_spotted <span style="color:#f92672">=</span> CiBlock[indexBlock<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][indexChar<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>:(indexChar<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>)<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>]
+</span></span><span style="display:flex;"><span>	letter_spotted <span style="color:#f92672">=</span> Clblock[indexBlock][indexChar:indexChar<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	flipped <span style="color:#f92672">=</span> get_bitflip(hex_spotted ,letter_spotted, newletter)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	CiBlock[indexBlock<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>] <span style="color:#f92672">=</span> CiBlock[indexBlock<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][:indexChar<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>]  <span style="color:#f92672">+</span> flipped <span style="color:#f92672">+</span> CiBlock[indexBlock<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][(indexChar<span style="color:#f92672">*</span><span style="color:#ae81ff">2</span>)<span style="color:#f92672">+</span><span style="color:#ae81ff">2</span>:]
+</span></span><span style="display:flex;"><span>	Clblock[indexBlock] <span style="color:#f92672">=</span>  Clblock[indexBlock][:indexChar]  <span style="color:#f92672">+</span> newletter <span style="color:#f92672">+</span> Clblock[indexBlock][(indexChar)<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>:]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>url <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;127.0.0.1&#39;</span>
+</span></span><span style="display:flex;"><span>port <span style="color:#f92672">=</span> <span style="color:#ae81ff">1337</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>blocksize <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>payload <span style="color:#f92672">=</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;A&#39;</span><span style="color:#f92672">*</span><span style="color:#ae81ff">7</span> <span style="color:#f92672">+</span> <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;A&#39;</span><span style="color:#f92672">*</span>blocksize
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>proc <span style="color:#f92672">=</span> remote(url,port)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>proc<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39; &gt;&#39;</span>,<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;1&#39;</span>)
+</span></span><span style="display:flex;"><span>proc<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39; &gt; Username : &#39;</span>,payload)
+</span></span><span style="display:flex;"><span>proc<span style="color:#f92672">.</span>recvuntil(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;Token : &#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>token <span style="color:#f92672">=</span> proc<span style="color:#f92672">.</span>recv()<span style="color:#f92672">.</span>decode()<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>cleartext <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;username=&#34;</span><span style="color:#f92672">+</span>payload<span style="color:#f92672">.</span>decode(<span style="color:#e6db74">&#39;utf-8&#39;</span>)<span style="color:#f92672">+</span><span style="color:#e6db74">&#34;&amp;admin=false&amp;time=&#34;</span><span style="color:#f92672">+</span>str(datetime<span style="color:#f92672">.</span>timestamp(datetime<span style="color:#f92672">.</span>now()))<span style="color:#75715e">#+&#34;&#39;}&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">Token Received : </span><span style="color:#e6db74">{</span>token<span style="color:#e6db74">}</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>print(cleartext)
+</span></span><span style="display:flex;"><span>Clblock , CiBlock <span style="color:#f92672">=</span> split(cleartext,token,<span style="color:#66d9ef">True</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(Clblock)
+</span></span><span style="display:flex;"><span>print(CiBlock)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>flipBlock(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">7</span>,<span style="color:#e6db74">&#34;t&#34;</span>)
+</span></span><span style="display:flex;"><span>flipBlock(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">8</span>,<span style="color:#e6db74">&#34;r&#34;</span>)
+</span></span><span style="display:flex;"><span>flipBlock(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">9</span>,<span style="color:#e6db74">&#34;u&#34;</span>)
+</span></span><span style="display:flex;"><span>flipBlock(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">10</span>,<span style="color:#e6db74">&#34;e&#34;</span>)
+</span></span><span style="display:flex;"><span>flipBlock(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">11</span>,<span style="color:#e6db74">&#34;&amp;&#34;</span>)
+</span></span><span style="display:flex;"><span>flipBlock(<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">12</span>,<span style="color:#e6db74">&#34;t&#34;</span>)
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(Clblock)
+</span></span><span style="display:flex;"><span>print(CiBlock)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Final_Token <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(CiBlock)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n\n</span><span style="color:#e6db74">Crafted : </span><span style="color:#e6db74">{</span>Final_Token<span style="color:#e6db74">}</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>proc<span style="color:#f92672">.</span>sendline(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;2&#39;</span>)
+</span></span><span style="display:flex;"><span>proc<span style="color:#f92672">.</span>sendlineafter(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39; &gt; Token : &#39;</span>,Final_Token<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;utf-8&#39;</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>proc<span style="color:#f92672">.</span>interactive()
+</span></span></code></pre></div><p>Sortie finale :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>➜   python3 solve.py
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>+<span style="color:#f92672">]</span> Opening connection to 127.0.0.1 on port 1337: Done
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Token Received : 2db5fd2622fe952ff6e148fbe13eaa2ff26b2d4400ffe86c85fc13905fcf8f7525985cdad9e8275a0c498dac8ed1c02539057a6bc41035e7273ba3354b1caaa79b3f1d66676045ab849f628cc2d18959473beb8523cb6fb8610497f172748b40
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>username<span style="color:#f92672">=</span>AAAAAAAAAAAAAAAAAAAAAAA&amp;admin<span style="color:#f92672">=</span>false&amp;time<span style="color:#f92672">=</span>1653560893.271365
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;_IV__IV__IV__IV_&#39;</span>, <span style="color:#e6db74">&#39;username=AAAAAAA&#39;</span>, <span style="color:#e6db74">&#39;AAAAAAAAAAAAAAAA&#39;</span>, <span style="color:#e6db74">&#39;&amp;admin=false&amp;tim&#39;</span>, <span style="color:#e6db74">&#39;e=1653560893.271&#39;</span>, <span style="color:#e6db74">&#39;365_____________&#39;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;2db5fd2622fe952ff6e148fbe13eaa2f&#39;</span>, <span style="color:#e6db74">&#39;f26b2d4400ffe86c85fc13905fcf8f75&#39;</span>, <span style="color:#e6db74">&#39;25985cdad9e8275a0c498dac8ed1c025&#39;</span>, <span style="color:#e6db74">&#39;39057a6bc41035e7273ba3354b1caaa7&#39;</span>, <span style="color:#e6db74">&#39;9b3f1d66676045ab849f628cc2d18959&#39;</span>, <span style="color:#e6db74">&#39;473beb8523cb6fb8610497f172748b40&#39;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;_IV__IV__IV__IV_&#39;</span>, <span style="color:#e6db74">&#39;username=AAAAAAA&#39;</span>, <span style="color:#e6db74">&#39;AAAAAAAAAAAAAAAA&#39;</span>, <span style="color:#e6db74">&#39;&amp;admin=true&amp;ttim&#39;</span>, <span style="color:#e6db74">&#39;e=1653560893.271&#39;</span>, <span style="color:#e6db74">&#39;365_____________&#39;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span><span style="color:#e6db74">&#39;2db5fd2622fe952ff6e148fbe13eaa2f&#39;</span>, <span style="color:#e6db74">&#39;f26b2d4400ffe86c85fc13905fcf8f75&#39;</span>, <span style="color:#e6db74">&#39;25985cdad9e827481f509befdcd1c025&#39;</span>, <span style="color:#e6db74">&#39;39057a6bc41035e7273ba3354b1caaa7&#39;</span>, <span style="color:#e6db74">&#39;9b3f1d66676045ab849f628cc2d18959&#39;</span>, <span style="color:#e6db74">&#39;473beb8523cb6fb8610497f172748b40&#39;</span><span style="color:#f92672">]</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Crafted : 2db5fd2622fe952ff6e148fbe13eaa2ff26b2d4400ffe86c85fc13905fcf8f7525985cdad9e827481f509befdcd1c02539057a6bc41035e7273ba3354b1caaa79b3f1d66676045ab849f628cc2d18959473beb8523cb6fb8610497f172748b40
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Switching to interactive mode
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>GG , here is your flag : flag<span style="color:#f92672">{</span>XXXXXXXXXXX<span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>         Menu
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>&gt;1<span style="color:#f92672">]</span> Get Token
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>&gt;2<span style="color:#f92672">]</span> Submit Token
+</span></span><span style="display:flex;"><span> &gt;$
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Interrupted
+</span></span><span style="display:flex;"><span><span style="color:#f92672">[</span>*<span style="color:#f92672">]</span> Closed connection to 127.0.0.1 port <span style="color:#ae81ff">1337</span>
+</span></span></code></pre></div><p><code>25985cdad9e827481f509befdcd1c025</code> est devenu <code>25985cdad9e8275a0c498dac8ed1c025</code> !
+Et Bam , le flag !</p>
+<p>J&rsquo;ai écris un outil pour automatiser cette attaque: <a href="https://github.com/Vozec/AES-Flipper" target="_blank">AES Flipper</a></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>python3 AES<span style="color:#f92672">-</span>Flipper<span style="color:#f92672">.</span>py \
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">-</span>p <span style="color:#e6db74">&#39;username=AAAAAAAAAAAAAAAAAAAAAAA&amp;admin=false&amp;time=1653559752.826288&#39;</span> \
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">-</span>f <span style="color:#e6db74">&#39;username=AAAAAAAAAAAAAAAAAAAAAAA&amp;admin=true&amp;ttime=1653559752.826288&#39;</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">-</span>c <span style="color:#ae81ff">2</span>db5fd2622fe952ff6e148fbe13eaa2ff26b2d4400ffe86c85fc13905fcf8f7525985cdad9e8275a0c498dac8ed1c02539057a6bc41035e7273ba3354b1caaa79b3f1d66676045ab849f628cc2d18959473beb8523cb6fb8610497f172748b40 \
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">-</span>e hex \
+</span></span><span style="display:flex;"><span>	<span style="color:#f92672">-</span>iv
+</span></span></code></pre></div><p><img src="https://raw.githubusercontent.com/Vozec/AES-Flipper/main/img/example1.png" alt="Aes flipper"></p>
+
+  
+  <hr>
+<div class="footer">
+    
+	    
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/aes/attaque-oracle-padding-aes_ecb/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Présentation de l&#39;attaque &#39;Padding Oracle&#39; sur de...</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#introduction">Introduction</a></li>
+    <li><a href="#comprendre-le-mode-cbc">Comprendre le mode <code>CBC</code></a></li>
+    <li><a href="#lattaque-bitflipping">L&rsquo;attaque BitFlipping</a></li>
+    <li><a href="#approche-extérieur-du-challenge">Approche Extérieur du challenge</a></li>
+    <li><a href="#comment-obtenir-le-bon-byte-pour-chaque-caractère-">Comment obtenir le bon byte pour chaque caractère ?</a></li>
+    <li><a href="#lexploit-final">L&rsquo;exploit final</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

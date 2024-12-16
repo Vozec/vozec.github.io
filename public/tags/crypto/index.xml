@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Crypto on </title>
+    <link>//localhost:1313/tags/crypto/</link>
+    <description>Recent content in Crypto on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 30 Jul 2023 09:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/crypto/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Introduction aux réseaux euclidiens</title>
+      <link>//localhost:1313/other/lattice-introduction/</link>
+      <pubDate>Sun, 30 Jul 2023 09:00:00 +0000</pubDate>
+      <guid>//localhost:1313/other/lattice-introduction/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Les &lt;strong&gt;réseaux euclidiens&lt;/strong&gt; &lt;em&gt;(Lattice en anglais)&lt;/em&gt; jouent un rôle &lt;strong&gt;essentiel&lt;/strong&gt; en cryptographie moderne.&lt;br&gt;&#xA;Dans cet article, nous allons explorer l&amp;rsquo;historique des réseaux euclidiens en cryptographie, leur utilisation dans les systèmes de chiffrement, ainsi que les problèmes mathématiques auxquels ils sont confrontés.&lt;br&gt;&#xA;Nous nous concentrerons en particulier sur le &lt;code&gt;Closest Vector Problem&lt;/code&gt; &lt;em&gt;(CVP)&lt;/em&gt; et le &lt;code&gt;Small Vector Problem&lt;/code&gt; &lt;em&gt;(SVP)&lt;/em&gt;, qui sont des problèmes centraux dans ce domaine.&lt;/p&gt;&#xA;&lt;h2 id=&#34;petit-point-historique&#34;&gt;Petit point Historique&lt;/h2&gt;&#xA;&lt;p&gt;L&amp;rsquo;étude des réseaux euclidiens en mathématiques remonte au &lt;em&gt;XVIIIe&lt;/em&gt; siècle, lorsque Leonhard Euler a commencé à examiner les structures géométriques des points dans l&amp;rsquo;espace.&lt;br&gt;&#xA;Cependant, ce n&amp;rsquo;est qu&amp;rsquo;au &lt;em&gt;XXe&lt;/em&gt; siècle que le concept de réseaux euclidiens a été appliqué à la cryptographie.&lt;br&gt;&#xA;Dans les années &lt;em&gt;1990&lt;/em&gt;, &lt;strong&gt;Ajtai&lt;/strong&gt;, &lt;strong&gt;Dwork&lt;/strong&gt;, &lt;strong&gt;Regev&lt;/strong&gt; et autres ont introduit la notion de réseaux euclidiens comme base de problèmes difficiles en cryptographie, ouvrant la voie à de nouvelles constructions cryptographiques.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>From ECC to Diffie-Hellman</title>
+      <link>//localhost:1313/other/ecc-diffie-hellman/</link>
+      <pubDate>Fri, 14 Apr 2023 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/other/ecc-diffie-hellman/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;L&amp;rsquo;échange de clé de Diffie-Hellman est une méthode pour partager un secret entre 2 individus de manière sécurisé, même si leurs transmissions sont sur écoute.&lt;/p&gt;&#xA;&lt;h3 id=&#34;présentation-des-courbes-elliptiques-&#34;&gt;Présentation des courbes elliptiques :&lt;/h3&gt;&#xA;&lt;p&gt;Avant de s&amp;rsquo;attaquer à la partie cryptographique, il est nécessaire de comprendre le fonctionnement global des courbes elliptiques.&lt;/p&gt;&#xA;&lt;p&gt;Une courbe elliptique est un ensemble de points $(x,y)$ vérifiant une équation du type: $y^2=x^3+ax+b$, autrement dit , on définit une courbe elliptique comme :&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Cryptanalyse Linéaire d&#39;un AES-128</title>
+      <link>//localhost:1313/aes/analyse-lineaire-aes/</link>
+      <pubDate>Fri, 24 Feb 2023 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/aes/analyse-lineaire-aes/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;AES est un chiffrement par bloc basé sur des opérations matricielles élémentaires. Avant de s&amp;rsquo;attaquer à tout ce système, il est important de les avoirs en tête. Voici donc une explication rapide sur le mode de fonctionnement d&amp;rsquo;AES.&lt;/p&gt;&#xA;&lt;h1 id=&#34;présentation-rapide-daes&#34;&gt;Présentation rapide d&amp;rsquo;AES&lt;/h1&gt;&#xA;&lt;p&gt;On souhaite chiffrer un bloc se &lt;em&gt;16 bytes&lt;/em&gt;, la première étape est de l&amp;rsquo;exprimer sous la forme de matrice 4*4:&lt;/p&gt;&#xA;&lt;p&gt;$$&#xA;\begin{pmatrix}&#xA;1 &amp;amp; 2 &amp;amp; 3 &amp;amp; 4 \newline&#xA;5 &amp;amp; 6 &amp;amp; 7 &amp;amp; 8 \newline&#xA;9 &amp;amp; 10 &amp;amp; 11 &amp;amp; 12 \newline&#xA;13 &amp;amp; 14 &amp;amp; 15 &amp;amp; 16 \newline&#xA;\end{pmatrix}&#xA;$$&#xA;Cette matrice va subir plusieurs modifications.&#xA;On définit un &lt;em&gt;round&lt;/em&gt; par l&amp;rsquo;enchainement des opérations :&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Feal &amp; it&#39;s variants</title>
+      <link>//localhost:1313/other/feal-cipher/</link>
+      <pubDate>Tue, 20 Dec 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/other/feal-cipher/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;&lt;strong&gt;Feal&lt;/strong&gt; est un algorithme de chiffrement présenté dans la fin des année 80 par &lt;em&gt;Akihiro Shimizu&lt;/em&gt; et &lt;em&gt;Shoji Miyaguchi&lt;/em&gt;. C&amp;rsquo;est un chiffrement par bloc qui à concurrencé le &lt;strong&gt;DES&lt;/strong&gt; et qui est aujourd&amp;rsquo;hui obsolète.&lt;/p&gt;&#xA;&lt;p&gt;Feal &lt;em&gt;(Fast Data Encipherment Algorithm)&lt;/em&gt; est un chiffrement de type &lt;strong&gt;réseau de Feistel&lt;/strong&gt;. Il a connu plusieurs variations que nous allons voir ici.&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;Par la suite , des illustrations seront issue du blog de &lt;a href=&#34;http://www.theamazingking.com&#34; target=&#34;_blank&#34;&gt;Jon King&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Shamir&#39;s Secret Sharing Sheme (SSSS)</title>
+      <link>//localhost:1313/other/explanation--attack-on-shamirs-shared-secret/</link>
+      <pubDate>Tue, 20 Dec 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/other/explanation--attack-on-shamirs-shared-secret/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://fr.wikipedia.org/wiki/Adi_Shamir&#34; target=&#34;_blank&#34;&gt;Adi Shamir&lt;/a&gt; , né le 6 juillet 1952 à Tel Aviv, est un mathématicien et un cryptologue israélien reconnu comme l&amp;rsquo;un des experts les plus éminents en cryptanalyse. Il a créé un algorithme de cryptographie utilisant le concept de partage de clé secrète.&lt;br&gt;&#xA;L&amp;rsquo;idée principal de son chiffrement est de partagé la clé de déchiffrement d&amp;rsquo;un algorithme quelconque en plusieurs parties. Seul la réunion de celles-ci conduiront au texte déchiffré.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°10 | Oracle tell me the True</title>
+      <link>//localhost:1313/rsa/rsa-10-oracle-tell-me-the-true/</link>
+      <pubDate>Sat, 10 Dec 2022 14:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-10-oracle-tell-me-the-true/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction-&#34;&gt;Introduction :&lt;/h1&gt;&#xA;&lt;p&gt;Généralement, dans un contexte de CTF , il est possible de tomber sur un oracle de déchiffrement RSA , on nous donne accès :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;à un oracle permettant de déchiffrer des messages sauf le flag chiffré&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;le flag chiffré&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Voici donc plusieurs méthodes pour trouver le flag en clair :&lt;/p&gt;&#xA;&lt;h2 id=&#34;méthode-1&#34;&gt;Méthode 1:&lt;/h2&gt;&#xA;&lt;p&gt;La première méthode est de Factoriser le message $c$ .&#xA;On peut ainsi demander de déchiffrer les facteurs du flag puis re-multiplier les clairs entre eux pour récupérer le message original:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°9 | Breaking Signature Shema</title>
+      <link>//localhost:1313/rsa/rsa-9-breaking-signature-shema/</link>
+      <pubDate>Fri, 09 Dec 2022 14:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-9-breaking-signature-shema/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction-&#34;&gt;Introduction :&lt;/h1&gt;&#xA;&lt;p&gt;Le chiffrement RSA permet l&amp;rsquo;utilisation d&amp;rsquo;un système de signature des messages lors de la transmission de ceux-ci.&lt;br&gt;&#xA;Ainsi, un message chiffré peut être accompagné de sa signature qui atteste de son intégrité au prêt du serveur.&lt;br&gt;&#xA;Voici un message chiffré &amp;amp; signé :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;$&amp;lt;s,c&amp;gt;$&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;fonctionnement-global&#34;&gt;Fonctionnement global.&lt;/h2&gt;&#xA;&lt;p&gt;Le chiffrement RSA se compose :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;un exposant de chiffrement&lt;/li&gt;&#xA;&lt;li&gt;une clé publique&lt;/li&gt;&#xA;&lt;li&gt;une clé privée&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;On va réutiliser les propriétés arithmétiques du chiffrement pour inventer la signature noté $s$ .&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°8 | CopperSmith saves you</title>
+      <link>//localhost:1313/rsa/rsa-8-coppersmith-saves-you/</link>
+      <pubDate>Thu, 08 Dec 2022 14:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-8-coppersmith-saves-you/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction-&#34;&gt;Introduction :&lt;/h1&gt;&#xA;&lt;p&gt;Don Coppersmith est un mathématicien et cryptologue américain né en 1950.&#xA;Il a contribué dans de nombreux domaines de la &lt;code&gt;Cryptographie&lt;/code&gt; et en particulier le chiffrement RSA.&lt;br&gt;&#xA;Il s&amp;rsquo;intéresse particulièrement aux liens possibles entre des &lt;strong&gt;notions d&amp;rsquo;algèbres&lt;/strong&gt; et les mathématiques arithmétiques du chiffrement RSA&lt;/p&gt;&#xA;&lt;h1 id=&#34;papier-de-recherche&#34;&gt;Papier de recherche:&lt;/h1&gt;&#xA;&lt;p&gt;CopperSmith présente un papier de recherche mathématique nommé : &lt;a href=&#34;https://cr.yp.to/bib/2001/coppersmith.pdf&#34; target=&#34;_blank&#34;&gt;&lt;em&gt;Finding Small Solutions to Small Degree Polynomials&lt;/em&gt;&lt;/a&gt;&lt;br&gt;&#xA;Il y explique comment trouver les racines de polynômes à &lt;code&gt;1&lt;/code&gt; et &lt;code&gt;2&lt;/code&gt; variables , modulo un entier &lt;strong&gt;n&lt;/strong&gt;  grâce à la réduction de base via des matrices et l&amp;rsquo;algorithme &lt;code&gt;Lenstra–Lenstra–Lovász&lt;/code&gt; &lt;em&gt;(LLL)&lt;/em&gt;.&#xA;C&amp;rsquo;est racines sont appelées &lt;em&gt;Small Roots&lt;/em&gt; et la technique de Coppersmith a été optimisée par &lt;code&gt;Howgrave-Graham&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°7 | Hey this is Franklin (Reiter)</title>
+      <link>//localhost:1313/rsa/rsa-7-hey-this-is-franklin/</link>
+      <pubDate>Sun, 04 Dec 2022 14:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-7-hey-this-is-franklin/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;L&amp;rsquo;attaque Franklin-Reiter sur le chiffrement RSA requiert d&amp;rsquo;avoir deux messages chiffrés avec une relation linéaire connu entre les deux messages.&lt;/p&gt;&#xA;&lt;h1 id=&#34;contextualisation&#34;&gt;Contextualisation&lt;/h1&gt;&#xA;&lt;p&gt;Exemple :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;$m_1 = 100000000000$&lt;/li&gt;&#xA;&lt;li&gt;$m_2 = 100000000999$&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Ici , si la relation entre les deux messages est linéaire puisque  $m_1 + 999 == m_2$.&#xA;Il est alors possible de retrouver le message à partir de :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;$c_1 = m_1^e \pmod n$&lt;/li&gt;&#xA;&lt;li&gt;$c_2 = m_2^e \pmod n$&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;A l’origine, cet attaque était faisable pour $e=3$ puis elle a était généralisée pour n&amp;rsquo;importe quel $e$ .&lt;br&gt;&#xA;(&lt;em&gt;Plus e est grand, plus l&amp;rsquo;attaque est longue&lt;/em&gt;)&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°6 | Message for all</title>
+      <link>//localhost:1313/rsa/rsa-6-message-for-all/</link>
+      <pubDate>Sat, 03 Dec 2022 14:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-6-message-for-all/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;Il est courant d&amp;rsquo;envoyer le même message à plusieurs personnes et cela pose un gros problème de sécurité pour l&amp;rsquo;intégrité du message si une personne arrive à intercepter plusieurs communications.&lt;br&gt;&#xA;Nous allons ici parler de l&amp;rsquo;&lt;code&gt;attaque Hastads-Broadcast&lt;/code&gt;.&lt;/p&gt;&#xA;&lt;h1 id=&#34;contextualisation&#34;&gt;Contextualisation&lt;/h1&gt;&#xA;&lt;p&gt;On sait qu&amp;rsquo;un message chiffré par &lt;strong&gt;RSA&lt;/strong&gt; est de la forme :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;$c = m^e \pmod n$&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Nous avions vu &lt;a href=&#34;https://vozec.fr/crypto-rsa/rsa-2-first-attacks/&#34; target=&#34;_blank&#34;&gt;ici&lt;/a&gt; que si $m$ était petit, on pouvait déchiffrer le message en appliquant une racine $3^{ième}$ au texte chiffré.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°5 | E takes confidence</title>
+      <link>//localhost:1313/rsa/rsa-5-e-takes-confidence/</link>
+      <pubDate>Wed, 30 Nov 2022 14:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-5-e-takes-confidence/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;Nous allons ici voir &lt;code&gt;3&lt;/code&gt; vulnérabilités sur RSA liées à un mauvais choix de l&amp;rsquo;exposant $e$.&lt;/p&gt;&#xA;&lt;h1 id=&#34;contextualisation&#34;&gt;Contextualisation&lt;/h1&gt;&#xA;&lt;p&gt;On sait que $d$ , clé privée du chiffrement &lt;strong&gt;RSA&lt;/strong&gt; est généré de la sorte:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;$d = e^{-1} \pmod \Phi(n)$&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Par convention, on utilise souvent $e=3$ ou $e=65537$ .&lt;/p&gt;&#xA;&lt;h2 id=&#34;pourquoi-&#34;&gt;Pourquoi ?&lt;/h2&gt;&#xA;&lt;p&gt;Ces nombres présentes plusieurs propriétés intéressante, d&amp;rsquo;abord :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;ils sont &lt;code&gt;premiers&lt;/code&gt;&lt;/li&gt;&#xA;&lt;li&gt;ils sont &lt;code&gt;petits&lt;/code&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;C&amp;rsquo;est $2$ premières propriétés sont majeures , elles permettent un temps de calcul raisonnable pour le chiffrement/déchiffrement des messages .&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°4 | Fermat is Watching U</title>
+      <link>//localhost:1313/rsa/rsa-4-fermat-to-the-rescue/</link>
+      <pubDate>Tue, 29 Nov 2022 14:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-4-fermat-to-the-rescue/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;Nous allons ici voir une vulnérabilité sur RSA liée à une mauvaise génération de clé publique.&lt;/p&gt;&#xA;&lt;h1 id=&#34;vulnérabilité-&#34;&gt;Vulnérabilité :&lt;/h1&gt;&#xA;&lt;p&gt;On rappelle que $n$ et généré avec $p$ et $q$ très grands:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;$n = p*q$ .&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;On se place dans un cas idéal ou $p$ et $q$ sont cryptographiques et que donc $n$ n&amp;rsquo;est pas cassable par force brute .&lt;/p&gt;&#xA;&lt;p&gt;La vulnérabilités réside dans le fait que $p$ et $q$ &lt;code&gt;sont très proches&lt;/code&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°3 | Module/Premier commun</title>
+      <link>//localhost:1313/rsa/rsa-3-all-in-common/</link>
+      <pubDate>Tue, 29 Nov 2022 13:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-3-all-in-common/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;Nous allons ici voir &lt;code&gt;2&lt;/code&gt; vulnérabilités sur RSA liés à une mauvaise gestion des clés publiques .&lt;/p&gt;&#xA;&lt;h1 id=&#34;common-modulus-&#34;&gt;Common Modulus .&lt;/h1&gt;&#xA;&lt;p&gt;On suppose le schéma suivant :&lt;/p&gt;&#xA;&lt;p&gt;On dispose de &lt;code&gt;2&lt;/code&gt; chiffrés différents à partir d&amp;rsquo;un même &lt;code&gt;message&lt;/code&gt; et d&amp;rsquo;une clé commune &lt;em&gt;(n)&lt;/em&gt;:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;$c_1 = e_1^{-1} \pmod {\Phi(n)}$&lt;/li&gt;&#xA;&lt;li&gt;$c_2 = e_2^{-1} \pmod {\Phi(n)}$&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Alors &lt;code&gt;si&lt;/code&gt; on a les égalité suivantes, &lt;code&gt;alors&lt;/code&gt; on peut décoder le message $c_1$ &lt;em&gt;( = $c_2$)&lt;/em&gt;:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°2 | Premières attaques</title>
+      <link>//localhost:1313/rsa/rsa-2-first-attacks/</link>
+      <pubDate>Tue, 29 Nov 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-2-first-attacks/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;Nous avons vu précédemment &lt;em&gt;(&lt;a href=&#34;https://vozec.fr/crypto-rsa/rsa-1-basis/&#34; target=&#34;_blank&#34;&gt;ici&lt;/a&gt;)&lt;/em&gt; que le chiffrement RSA reposait sur &lt;code&gt;2&lt;/code&gt; nombres premiers , notés $p$ et $q$.&#xA;Grâce à ces deux nombres cryptographiquement grands, il était ainsi possible de générer une paires de clé $(publique/privée)$ et chiffrer des messages grâce à celle-ci.&lt;/p&gt;&#xA;&lt;p&gt;Nous allons voir ici quelques premières vulnérabilités sur le chiffrement RSA.&lt;/p&gt;&#xA;&lt;h1 id=&#34;1-p-et-q-trop-petits&#34;&gt;1) $P$ et $Q$ trop petits.&lt;/h1&gt;&#xA;&lt;p&gt;On rappelle que la clé privée est :&lt;br&gt;&#xA;$d = e^{-1} \pmod {\Phi(n)}$&lt;br&gt;&#xA;Avec $\Phi(n) = (p-1)(q-1)$&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°1 | Principes Fondamentaux</title>
+      <link>//localhost:1313/rsa/rsa-1-basis/</link>
+      <pubDate>Sat, 26 Nov 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-1-basis/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;Le chiffrement RSA est utilisé pour chiffrer des communications, il est aujourd&amp;rsquo;hui souvent utilisé pour les certificats SSL sur internet ou encore les clés de connections via le protocole &lt;strong&gt;ssh&lt;/strong&gt;.&#xA;Il est dit &lt;code&gt;asymétrique&lt;/code&gt; car il fonctionne par paires de clés. Toute la sécurité de ce chiffrement repose sur le fait qu&amp;rsquo;il est aujourd&amp;rsquo;hui infiniment long de factoriser un nombre cryptographique rapidement .&lt;br&gt;&#xA;&lt;em&gt;Ronald Rivest&lt;/em&gt;, &lt;em&gt;Adi Shamir&lt;/em&gt; et &lt;em&gt;Leonard Adleman&lt;/em&gt; ont ainsi crée un chiffrement basé sur l&amp;rsquo;arithmétique modulaire, encore d&amp;rsquo;actualité aujourd&amp;rsquo;hui.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>RSA n°0 | Bases Mathématiques</title>
+      <link>//localhost:1313/rsa/rsa-0-maths-basis/</link>
+      <pubDate>Fri, 25 Nov 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/rsa/rsa-0-maths-basis/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Voici les différents théorèmes et application pour comprendre le chiffrement RSA&lt;/p&gt;&#xA;&lt;h2 id=&#34;opération-modulaires&#34;&gt;Opération Modulaires&lt;/h2&gt;&#xA;&lt;p&gt;L&amp;rsquo;opérateur modulo et une opération qui retourne le reste de la division euclidienne d&amp;rsquo;un nombre A par B:&lt;/p&gt;&#xA;&lt;p&gt;$a \equiv r \pmod b$&lt;br&gt;&#xA;$\Rightarrow~\exists&lt;del&gt;k \in N&lt;/del&gt;|~a = b*k + r$&lt;/p&gt;&#xA;&lt;p&gt;Si r = 0 , on dit que &lt;code&gt;n divise a&lt;/code&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;pgcd&#34;&gt;Pgcd&lt;/h2&gt;&#xA;&lt;p&gt;Le &lt;code&gt;PGCD&lt;/code&gt; &lt;em&gt;(ou gcd)&lt;/em&gt; de 2 nombres est le plus grand diviseur commun de ces deux nombres :&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Présentation de l&#39;attaque &#39;Padding Oracle&#39; sur de l&#39;AES ECB</title>
+      <link>//localhost:1313/aes/attaque-oracle-padding-aes_ecb/</link>
+      <pubDate>Mon, 19 Sep 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/aes/attaque-oracle-padding-aes_ecb/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;AES (&amp;ldquo;Advanced Encryption Standard&amp;rdquo;) est un chiffrement symétrique par blocs. En effet, il repose sur le chiffrement de données découpées en plusieurs partie. Ainsi il en &lt;strong&gt;existe plusieurs modes&lt;/strong&gt; :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;ECB&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;CBC&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;CFB&lt;/li&gt;&#xA;&lt;li&gt;OFB&lt;/li&gt;&#xA;&lt;li&gt;CTR&lt;/li&gt;&#xA;&lt;li&gt;CTS&lt;/li&gt;&#xA;&lt;li&gt;&amp;hellip;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Aujourd’hui, nous allons aborder &lt;strong&gt;une attaque présente sur l&amp;rsquo;AES en mode ECB&lt;/strong&gt; .&lt;/p&gt;&#xA;&lt;h2 id=&#34;comprendre-le-mode-ecb&#34;&gt;Comprendre le mode &lt;code&gt;ECB&lt;/code&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Comme présenté avant, &lt;code&gt;ECB&lt;/code&gt; est un mode de chiffrement des blocs d’information.&lt;br&gt;&#xA;&lt;em&gt;(&lt;code&gt;ECB&lt;/code&gt; pour &lt;code&gt;Electronic Code Book&lt;/code&gt;)&lt;/em&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Présentation de l&#39;attaque &#39;Bit Flipping&#39; sur de l&#39;AES CBC</title>
+      <link>//localhost:1313/aes/attaque-bit-flipping-aes_cbc/</link>
+      <pubDate>Wed, 25 May 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/aes/attaque-bit-flipping-aes_cbc/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;AES (&amp;ldquo;Advanced Encryption Standard&amp;rdquo;) est un chiffrement symétrique par blocs. En effet, il repose sur le chiffrement de données découpées en plusieurs partie. Ainsi il en &lt;strong&gt;existe plusieurs modes&lt;/strong&gt; :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;ECB&lt;/li&gt;&#xA;&lt;li&gt;&lt;strong&gt;CBC&lt;/strong&gt;&lt;/li&gt;&#xA;&lt;li&gt;CFB&lt;/li&gt;&#xA;&lt;li&gt;OFB&lt;/li&gt;&#xA;&lt;li&gt;CTR&lt;/li&gt;&#xA;&lt;li&gt;CTS&lt;/li&gt;&#xA;&lt;li&gt;&amp;hellip;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Aujourd&amp;rsquo;hui , nous allons voir &lt;strong&gt;une attaque présente sur l&amp;rsquo;AES en mode CBC&lt;/strong&gt; .&lt;/p&gt;&#xA;&lt;h2 id=&#34;comprendre-le-mode-cbc&#34;&gt;Comprendre le mode &lt;code&gt;CBC&lt;/code&gt;&lt;/h2&gt;&#xA;&lt;p&gt;Comme présenté avant, &lt;code&gt;CBC&lt;/code&gt; est un mode de chiffrement d&amp;rsquo;AES . &lt;code&gt;CBC&lt;/code&gt; pour &lt;code&gt;Chain By Chain&lt;/code&gt;&#xA;Tout son fonctionnement peut être résumé dans le schéma suivant:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

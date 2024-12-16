@@ -1,0 +1,1828 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - Like a Whispering Entropy | PWNME CTF 2023</title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Like&#32;a&#32;Whispering&#32;Entropy&#32;|&#32;PWNME&#32;CTF&#32;2023 />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Like&#32;a&#32;Whispering&#32;Entropy&#32;|&#32;PWNME&#32;CTF&#32;2023 />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Like&#32;a&#32;Whispering&#32;Entropy&#32;|&#32;PWNME&#32;CTF&#32;2023 />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Like&#32;a&#32;Whispering&#32;Entropy&#32;|&#32;PWNME&#32;CTF&#32;2023 />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Voici un writeup complet du dernier challenge Crypto du pwnme ctf" />
+<meta itemprop="description" content="Voici un writeup complet du dernier challenge Crypto du pwnme ctf" />
+<meta property="og:description" content="Voici un writeup complet du dernier challenge Crypto du pwnme ctf" />
+<meta name="twitter:description" content="Voici un writeup complet du dernier challenge Crypto du pwnme ctf" />
+
+
+<base href="//localhost:1313/writeups/like_a_whispering_entropy-pwnme-2023/" />
+<link rel="canonical" href="//localhost:1313/writeups/like_a_whispering_entropy-pwnme-2023/" itemprop="url" />
+<meta name="url" content="//localhost:1313/writeups/like_a_whispering_entropy-pwnme-2023/" />
+<meta name="twitter:url" content="//localhost:1313/writeups/like_a_whispering_entropy-pwnme-2023/" />
+<meta property="og:url" content="//localhost:1313/writeups/like_a_whispering_entropy-pwnme-2023/" />
+
+
+<meta property="og:updated_time" content="2023-05-07T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/writeups/like_a_whispering_entropy-pwnme-2023/">Like a Whispering Entropy | PWNME CTF 2023</a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2023-05-07T12:00:00Z" class="post-date">
+        May 7, 2023
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>13 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-prng">
+        <a href="//localhost:1313/tags/prng">prng</a>
+      </li>
+      
+      <li class="tag-lcg">
+        <a href="//localhost:1313/tags/lcg">lcg</a>
+      </li>
+      
+      <li class="tag-aes">
+        <a href="//localhost:1313/tags/aes">aes</a>
+      </li>
+      
+      <li class="tag-lwe">
+        <a href="//localhost:1313/tags/lwe">lwe</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <hr>
+<h1 id="introduction-du-challenge">Introduction du challenge:</h1>
+<pre tabindex="0"><code>I don&#39;t trust those who wrote crypto implementations, so I had to write my own ...
+I created everything from scratch so I know it is safe ! No one backdoored my Diffie-Hellman implementation !
+
+Btw, I gave you an output of a connection to my service, but anyway you won&#39;t be able to get back the secret message
+</code></pre><h1 id="like-a-whispering-entropy">Like a Whispering Entropy</h1>
+<p>Avec le challenge sont fournis 2 fichiers :</p>
+<ul>
+<li>logs</li>
+<li>chall.sage</li>
+</ul>
+<p>Dans le premier, on a 100 fois ce groupe de lignes :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>-------------------------
+</span></span><span style="display:flex;"><span>Alice s public key: <span style="color:#ae81ff">303944725738104736773292818682761237676539243408422159733529747956894368678621645049645070627114278218945685944600948944992220099312948739268425436680143720194562111453986315120087316070223849151163596063751581483286506901176907235</span>
+</span></span><span style="display:flex;"><span>User <span style="color:#75715e">#99 public key: 809564025375502966704086026543808060813039551725974913290658576413572207289606703462020431496140057417889518191378472574633592651459369801336171048329445802174676004530841151781034766965662208992430242268851471075994293985371787031</span>
+</span></span><span style="display:flex;"><span>encrypt<span style="color:#f92672">(</span>shared_secret, iv, FLAG<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> <span style="color:#f92672">{</span><span style="color:#e6db74">&#34;iv&#34;</span>: <span style="color:#e6db74">&#34;17aa1262102cbb1ec366f7646e9ba610&#34;</span>, <span style="color:#e6db74">&#34;encrypted_msg&#34;</span>: <span style="color:#e6db74">&#34;587fd55183514a484382abf9bd79d882b10593de0b75782b1184b0ee38717c4f0570ed62780caf86f02c203e32c70d3c8f840f6b3e11b509cd422876fb8f1d550a8901db9ffa6204a8b7e947f7dde57a&#34;</span><span style="color:#f92672">}</span>
+</span></span><span style="display:flex;"><span>-------------------------
+</span></span></code></pre></div><p>Dans le second fichier, on a le challenge :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#!/bin/env sage</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Cipher <span style="color:#f92672">import</span> AES
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Util.Padding <span style="color:#f92672">import</span> pad, unpad
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Util.number <span style="color:#f92672">import</span> getStrongPrime, long_to_bytes, bytes_to_long
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hashlib
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> os <span style="color:#f92672">import</span> getenv, urandom
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> random <span style="color:#f92672">import</span> getrandbits
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>FLAG <span style="color:#f92672">=</span> getenv(<span style="color:#e6db74">&#34;FLAG&#34;</span>, <span style="color:#e6db74">&#34;PWNME</span><span style="color:#e6db74">{dummyflag}</span><span style="color:#e6db74">&#34;</span>)<span style="color:#f92672">.</span>encode()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PRNG</span>(object):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_seed <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>q <span style="color:#f92672">=</span> <span style="color:#ae81ff">279622638356169037213136872013126932777</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>n <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>A <span style="color:#f92672">=</span> Matrix(GF(self<span style="color:#f92672">.</span>q), <span style="color:#ae81ff">1</span>, self<span style="color:#f92672">.</span>n, [
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">19159356164385140466</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">19848194065535878410</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">33461959522325830456</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">12213590058439028697</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">35299014249932143965</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">13327781436808877193</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">20921178705527762622</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">9371898426952684667</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">9769023908222006322</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">28712160343104144896</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">32272228797175569095</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">14666990089233663894</span>
+</span></span><span style="display:flex;"><span>            ])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># LCG props</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>a <span style="color:#f92672">=</span> getrandbits(<span style="color:#ae81ff">32</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>c <span style="color:#f92672">=</span> getrandbits(<span style="color:#ae81ff">32</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_lcgseed <span style="color:#f92672">=</span> getrandbits(<span style="color:#ae81ff">32</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>mod <span style="color:#f92672">=</span> <span style="color:#ae81ff">2551431067</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@property</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">noise</span>(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_lcgseed <span style="color:#f92672">=</span> (self<span style="color:#f92672">.</span>a <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>_lcgseed <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>c) <span style="color:#f92672">%</span> self<span style="color:#f92672">.</span>mod
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_lcgseed
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@property</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">seed</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>_seed <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>_seed <span style="color:#f92672">=</span> Matrix(GF(self<span style="color:#f92672">.</span>q), self<span style="color:#f92672">.</span>n, <span style="color:#ae81ff">1</span>, [
+</span></span><span style="display:flex;"><span>                    getrandbits(<span style="color:#ae81ff">102</span>) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>n)
+</span></span><span style="display:flex;"><span>                ])
+</span></span><span style="display:flex;"><span>            print(<span style="color:#e6db74">&#39;#################&#39;</span>)
+</span></span><span style="display:flex;"><span>            print(self<span style="color:#f92672">.</span>_seed)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_seed
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">randint</span>(self):        
+</span></span><span style="display:flex;"><span>        b <span style="color:#f92672">=</span> (self<span style="color:#f92672">.</span>A <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>seed <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>noise)[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>A <span style="color:#f92672">=</span> Matrix(GF(self<span style="color:#f92672">.</span>q), <span style="color:#ae81ff">1</span>, self<span style="color:#f92672">.</span>n, [
+</span></span><span style="display:flex;"><span>                int(x <span style="color:#f92672">*</span> b<span style="color:#f92672">^</span>(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)) <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">^</span><span style="color:#ae81ff">65</span> <span style="color:#66d9ef">for</span> i, x <span style="color:#f92672">in</span> enumerate(self<span style="color:#f92672">.</span>A[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>            ])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> b
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">encrypt</span>(shared_secret: int, iv: bytes, msg: bytes):
+</span></span><span style="display:flex;"><span>    sha1 <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>sha1()
+</span></span><span style="display:flex;"><span>    sha1<span style="color:#f92672">.</span>update(str(shared_secret)<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;ascii&#39;</span>))
+</span></span><span style="display:flex;"><span>    key <span style="color:#f92672">=</span> sha1<span style="color:#f92672">.</span>digest()[:<span style="color:#ae81ff">16</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    cipher <span style="color:#f92672">=</span> AES<span style="color:#f92672">.</span>new(key, AES<span style="color:#f92672">.</span>MODE_CBC, iv)
+</span></span><span style="display:flex;"><span>    ciphertext <span style="color:#f92672">=</span> cipher<span style="color:#f92672">.</span>encrypt(pad(msg, <span style="color:#ae81ff">16</span>))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    data <span style="color:#f92672">=</span> {}
+</span></span><span style="display:flex;"><span>    data[<span style="color:#e6db74">&#39;iv&#39;</span>] <span style="color:#f92672">=</span> iv<span style="color:#f92672">.</span>hex()
+</span></span><span style="display:flex;"><span>    data[<span style="color:#e6db74">&#39;encrypted_msg&#39;</span>] <span style="color:#f92672">=</span> ciphertext<span style="color:#f92672">.</span>hex()
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> data
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">main</span>():
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Initialize PRNG:</span>
+</span></span><span style="display:flex;"><span>    rng <span style="color:#f92672">=</span> PRNG()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    g <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>    p <span style="color:#f92672">=</span> <span style="color:#ae81ff">1552518092300708935130918131258481755631334049434514313202351194902966239949102107258669453876591642442910007680288864229150803718918046342632727613031282983744380820890196288509170691316593175367469551763119843371637221007210577919</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    n <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    ivs <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>        long_to_bytes(int(rng<span style="color:#f92672">.</span>randint()))<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">16</span>, <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">&#39;</span>) <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(n)
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    secret_keys <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>        int(rng<span style="color:#f92672">.</span>randint()) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>            int(rng<span style="color:#f92672">.</span>randint() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">128</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>            int(rng<span style="color:#f92672">.</span>randint() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">256</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>            int(rng<span style="color:#f92672">.</span>randint() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">384</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>            int(rng<span style="color:#f92672">.</span>randint() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">512</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>            int(rng<span style="color:#f92672">.</span>randint() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">640</span>) <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(n)
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    public_keys <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>        pow(g, sk, p) <span style="color:#66d9ef">for</span> sk <span style="color:#f92672">in</span> secret_keys
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> i, e <span style="color:#f92672">in</span> enumerate(zip(ivs, secret_keys, public_keys)):
+</span></span><span style="display:flex;"><span>        iv, sk, pk <span style="color:#f92672">=</span> e
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;Alice&#39;s public key: </span><span style="color:#e6db74">{</span> pk <span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        pk2 <span style="color:#f92672">=</span> bytes_to_long(urandom(<span style="color:#ae81ff">0x60</span>))
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;User #</span><span style="color:#e6db74">{</span>i<span style="color:#e6db74">}</span><span style="color:#e6db74"> public key: </span><span style="color:#e6db74">{</span> pk2 <span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        shared_secret <span style="color:#f92672">=</span> pow(pk2, sk, p)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">f</span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">{</span>encrypt(shared_secret, iv, FLAG) <span style="color:#e6db74">= }</span><span style="color:#e6db74">&#34;</span>)
+</span></span><span style="display:flex;"><span>        print(shared_secret)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        print(<span style="color:#e6db74">&#34;-------------------------&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> __name__ <span style="color:#f92672">==</span> <span style="color:#e6db74">&#39;__main__&#39;</span>:
+</span></span><span style="display:flex;"><span>    main()
+</span></span></code></pre></div><h1 id="analyse-du-code">Analyse du code.</h1>
+<p>La première partie du code défini une <em>class</em> <code>PRNG</code> qui semble être un générateur de nombre.<br>
+Nous y reviendrons plus tard.</p>
+<p>Le code suivant fait ceci :</p>
+<ul>
+<li>Génère une liste d&rsquo;<code>ivs</code></li>
+<li>Génère une liste de clé <code>publique</code></li>
+<li>Génère une liste de clé <code>privée</code></li>
+<li>Génère 100 fois:
+<ul>
+<li>un nombre aléatoire <em>pk2</em></li>
+<li>$shared_{secret} = {pk2}^{sk} \pmod p$</li>
+<li>Une clé AES à partir de $shared_{secret}$</li>
+<li>Chiffre en <code>AES CBC</code> le flag avec cette clé.</li>
+</ul>
+</li>
+</ul>
+<p>Ainsi, si on arrive à récupérer une clé privée, on peut en utilisant la clé publique correspondante, présente dans le fichier <em>logs</em>, recalculer la clé <strong>AES</strong> et déchiffrer le flag chiffré !</p>
+<p>Les ivs sont présents dans fichier <em>logs</em>, ceux-ci sont générés juste après l&rsquo;initialisation de l&rsquo;objet <code>rng = PRNG()</code> ce qui veut dire que nous avons les <em>100</em> premières valeurs du PRNG.</p>
+<p>Si nous arrivons à récupérer l&rsquo;état interne du PRNG en utilisant ces 100 ivs, nous pourrons re-générer les clés privées et ainsi flag.</p>
+<h2 id="analyse-du-prng">Analyse du Prng</h2>
+<p>Voici le code du PRNG :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PRNG</span>(object):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_seed <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>q <span style="color:#f92672">=</span> <span style="color:#ae81ff">279622638356169037213136872013126932777</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>n <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>A <span style="color:#f92672">=</span> Matrix(GF(self<span style="color:#f92672">.</span>q), <span style="color:#ae81ff">1</span>, self<span style="color:#f92672">.</span>n, [
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">19159356164385140466</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">19848194065535878410</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">33461959522325830456</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">12213590058439028697</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">35299014249932143965</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">13327781436808877193</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">20921178705527762622</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">9371898426952684667</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">9769023908222006322</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">28712160343104144896</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">32272228797175569095</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#ae81ff">14666990089233663894</span>
+</span></span><span style="display:flex;"><span>            ])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e"># LCG props</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>a <span style="color:#f92672">=</span> getrandbits(<span style="color:#ae81ff">32</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>c <span style="color:#f92672">=</span> getrandbits(<span style="color:#ae81ff">32</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_lcgseed <span style="color:#f92672">=</span> getrandbits(<span style="color:#ae81ff">32</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>mod <span style="color:#f92672">=</span> <span style="color:#ae81ff">2551431067</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@property</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">noise</span>(self):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>_lcgseed <span style="color:#f92672">=</span> (self<span style="color:#f92672">.</span>a <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>_lcgseed <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>c) <span style="color:#f92672">%</span> self<span style="color:#f92672">.</span>mod
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_lcgseed
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">@property</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">seed</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>_seed <span style="color:#f92672">is</span> <span style="color:#66d9ef">None</span>:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>_seed <span style="color:#f92672">=</span> Matrix(GF(self<span style="color:#f92672">.</span>q), self<span style="color:#f92672">.</span>n, <span style="color:#ae81ff">1</span>, [
+</span></span><span style="display:flex;"><span>                    getrandbits(<span style="color:#ae81ff">102</span>) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(self<span style="color:#f92672">.</span>n)
+</span></span><span style="display:flex;"><span>                ])
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_seed
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">randint</span>(self):        
+</span></span><span style="display:flex;"><span>        b <span style="color:#f92672">=</span> (self<span style="color:#f92672">.</span>A <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>seed <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>noise)[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>A <span style="color:#f92672">=</span> Matrix(GF(self<span style="color:#f92672">.</span>q), <span style="color:#ae81ff">1</span>, self<span style="color:#f92672">.</span>n, [
+</span></span><span style="display:flex;"><span>                int(x <span style="color:#f92672">*</span> b<span style="color:#f92672">^</span>(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)) <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">^</span><span style="color:#ae81ff">65</span> <span style="color:#66d9ef">for</span> i, x <span style="color:#f92672">in</span> enumerate(self<span style="color:#f92672">.</span>A[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>            ])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> b
+</span></span></code></pre></div><p>A l&rsquo;initialisation de l&rsquo;objet, python génère 3 int de <code>32</code> bits:</p>
+<ul>
+<li>$a$</li>
+<li>$c$</li>
+<li>$lcgseed$</li>
+</ul>
+<p>De plus il définit:</p>
+<ul>
+<li>$q$ à 279622638356169037213136872013126932777</li>
+<li>$n$ à 12</li>
+<li>$A$ une matrice dans $GF(q)$ de 12 éléments</li>
+</ul>
+<p>A chaque appel à <code>noise</code>, celui si se re-définit de la sorte:</p>
+<ul>
+<li>$lcgseed = (a * lcgseed + c) % mod$</li>
+</ul>
+<p>Au premier appel à <code>seed</code>, on la génération d&rsquo;une matrice colonne de 12 composantes de 102 bits:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>_seed <span style="color:#f92672">=</span> Matrix(GF(q), n, <span style="color:#ae81ff">1</span>, [
+</span></span><span style="display:flex;"><span>    getrandbits(<span style="color:#ae81ff">102</span>) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(n)
+</span></span><span style="display:flex;"><span>])
+</span></span></code></pre></div><p>Par la suite, on notera $S_i$, la ième composante de la <em>seed</em>.</p>
+<p>Enfin, à chaque appel à la fonction <code>randint</code></p>
+<ul>
+<li>un nombre $b$ est calculé de la manière suivante :<br>
+$b = (A*seed + noise) \pmod q$</li>
+<li>La matrice $A$ est re-définit à partir de son statut actuel et du nombre généré $b$.
+Si on décompose la matrice $A$ au rang $i$ comme :
+<ul>
+<li>$A_i=(a_1,a_2,&hellip;,a_{12})$<br>
+alors nous avons:</li>
+<li>$A_{i+1}=(a_1*b^1,a_2*b^2,&hellip;,a_{12}*b^{12})$</li>
+</ul>
+</li>
+</ul>
+<p>Ainsi, à chaque appel à la fonction <code>randint</code>, si on note $N_i$ la valeur de <em>noise</em>; on a:</p>
+<ul>
+<li>$b = A_i*Seed + N_i$<br>
+$~= (a_{i,1},&hellip;,a_{i,12})*\begin{pmatrix}
+S_1  \newline
+S_2  \newline
+&hellip;  \newline
+S_{12}  \newline
+\end{pmatrix} + N_i$</li>
+</ul>
+<p>Ce type de générateur de nombre aléatoire ressemble à un <code>LCG</code> <em>(Linear Congruence Générator)</em> .<br>
+Pourtant on remarque une différence avec un LCG classique :</p>
+<ul>
+<li>Le 2nd terme <em>noise</em> n&rsquo;est pas constant !</li>
+</ul>
+<p>En effet, la forme classique d&rsquo;un <code>LCG</code> est :</p>
+<ul>
+<li>$state_{i+1} = state_{i}*m + c \pmod q$ avec c <strong>constant</strong> !</li>
+</ul>
+<p>Cette différence est primordiale pour la suite.</p>
+<h2 id="premières-recherches-sur-le-lcg">Premières recherches sur le LCG.</h2>
+<p>La première chose à faire est de recalculer toutes les matrices $A_i$ à partir de $A_0$ et des ivs générés:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Util.number <span style="color:#f92672">import</span> bytes_to_long,long_to_bytes
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> binascii <span style="color:#f92672">import</span> unhexlify
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hashlib
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Cipher <span style="color:#f92672">import</span> AES
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Util.Padding <span style="color:#f92672">import</span> pad, unpad
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Util.number <span style="color:#f92672">import</span> getStrongPrime, long_to_bytes, bytes_to_long
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decode_iv</span>(iv):
+</span></span><span style="display:flex;"><span>	b <span style="color:#f92672">=</span> unhexlify(bytes(iv,<span style="color:#e6db74">&#39;utf-8&#39;</span>))<span style="color:#f92672">.</span>strip(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> bytes_to_long(b)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">parser</span>(data):
+</span></span><span style="display:flex;"><span>	alice,user,iv,enc <span style="color:#f92672">=</span> [],[],[],[]
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> data<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>):
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;Alice&#39;</span> <span style="color:#f92672">in</span> line:
+</span></span><span style="display:flex;"><span>			alice<span style="color:#f92672">.</span>append(int(line<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;public key: &#34;</span>)[<span style="color:#ae81ff">1</span>]))
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;User&#39;</span> <span style="color:#f92672">in</span> line:
+</span></span><span style="display:flex;"><span>			user<span style="color:#f92672">.</span>append(int(line<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;public key: &#34;</span>)[<span style="color:#ae81ff">1</span>]))
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;encrypt&#39;</span> <span style="color:#f92672">in</span> line:
+</span></span><span style="display:flex;"><span>			info <span style="color:#f92672">=</span> eval(line<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;= &#34;</span>)[<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>			iv<span style="color:#f92672">.</span>append(decode_iv(info[<span style="color:#e6db74">&#39;iv&#39;</span>]))
+</span></span><span style="display:flex;"><span>			enc<span style="color:#f92672">.</span>append(info[<span style="color:#e6db74">&#39;encrypted_msg&#39;</span>])
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> alice,user,iv,enc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>alice,user,iv,enc <span style="color:#f92672">=</span> parser(open(<span style="color:#e6db74">&#39;logs&#39;</span>,<span style="color:#e6db74">&#39;r&#39;</span>)<span style="color:#f92672">.</span>read())
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>q <span style="color:#f92672">=</span> <span style="color:#ae81ff">279622638356169037213136872013126932777</span>
+</span></span><span style="display:flex;"><span>n <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>As <span style="color:#f92672">=</span> [Matrix(GF(q), <span style="color:#ae81ff">1</span>, n, [
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">19159356164385140466</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">19848194065535878410</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">33461959522325830456</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">12213590058439028697</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">35299014249932143965</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">13327781436808877193</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">20921178705527762622</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">9371898426952684667</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">9769023908222006322</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">28712160343104144896</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">32272228797175569095</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">14666990089233663894</span>
+</span></span><span style="display:flex;"><span>])]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> iv:
+</span></span><span style="display:flex;"><span>	As<span style="color:#f92672">.</span>append(Matrix(GF(q), <span style="color:#ae81ff">1</span>,n, [ int(x <span style="color:#f92672">*</span> b<span style="color:#f92672">^</span>(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)) <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">^</span><span style="color:#ae81ff">65</span> <span style="color:#66d9ef">for</span> i, x <span style="color:#f92672">in</span> enumerate(As[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>])]))
+</span></span></code></pre></div><p>Une méthode d&rsquo;attaque classique sur ce genre de PRNG serait de faire des combinaisons linéaires des nombres générés <em>(les ivs)</em> pour ainsi obtenir ce genre d&rsquo;équations:</p>
+<p>$b_{i+1}-b_{i} = A_{i+1}*Seed + c - (A_i*Seed + c) \pmod q$<br>
+$\qquad\qquad= (A_{i+1}-A_i)*Seed + c - c \pmod q$<br>
+$\qquad\qquad= (A_{i+1}-A_i)*Seed \pmod q$</p>
+<p>On peut ainsi retrouver la valeur de la <em>seed</em>.</p>
+<p>Ici, notre terme <code>c</code> n&rsquo;est pas constant ce qui donnerai :<br>
+$b_{i+1}-b_{i} = A_{i+1}*Seed + c - (A_i*Seed + c) \pmod q$<br>
+$b_{i+1}-b_{i} = (A_{i+1}-A_i)*Seed + (c_0 - c_1) \pmod{q}$</p>
+<p>On peut ainsi exprimer de façon polynomial les $c_i$ de cette manière:</p>
+<ul>
+<li>$b0 = A0*Seed + No$</li>
+<li>$b1 = A0*Seed + (N_0*A+C)$</li>
+</ul>
+<p><em>(En notant $N_0$, le state initial (lcgseed dans le code))</em></p>
+<p>On a:</p>
+<p>$b_1-b_0 = ((A_1-A_0)*Seed) \pmod{q} + (N_1 - N_0) \pmod{q_2}$<br>
+$\qquad\quad= ((A_1-A_0)*Seed) \pmod{q} + [ N0*a - N_0 + c] \pmod{q_2}$</p>
+<p>$b_2-b_1 = ((A_2-A_1)*Seed) \pmod{q} + (N_2 - N_1) \pmod{q_2}$<br>
+$\qquad\quad= ((A_2-A_1)*Seed) \pmod{q} + (N_2 - (N_0*a + c) ) \pmod{q_2}$<br>
+$\qquad\quad= ((A_2-A_1)*Seed) \pmod{q} + [((N_0*a + c)*a + c ) - (N_0*a + c)] \pmod{q_2}$<br>
+$\qquad\quad= ((A_2-A_1)*Seed) \pmod{q} + [(N_0*a^2 + c*a +c)  - (N_0*a + c)] \pmod{q_2}$<br>
+$\qquad\quad= ((A_2-A_1)*Seed) \pmod{q} + [N_0*a^2 + c*a + c - N_0*a - c] \pmod{q_2}$<br>
+$\qquad\quad= ((A_2-A_1)*Seed) \pmod{q} + [N_0*a^2 - N_0*a + c*a] \pmod{q_2}$<br>
+$\qquad\quad= ((A_2-A_1)*Seed) \pmod{q} + [N_0*a - N_0 + c] * a \pmod{q_2}$</p>
+<p>$b_3-b_2 = ((A_3-A_2)*Seed) \pmod{q} + (N_3 - N_2) \pmod{q_2}$<br>
+$\qquad\quad= ((A_3-A_2)*Seed) \pmod{q} + [N_3 - (N_0*a^2 + c*a +c)] \pmod{q_2}$<br>
+$\qquad\quad= ((A_3-A_2)*Seed) \pmod{q} + [(N_0*a^2 + c*a +c)*a+c - (N_0*a^2 + c*a + c )] \pmod{q_2}$<br>
+$\qquad\quad= ((A_3-A_2)*Seed) \pmod{q} + [N_0*a^3 + c*a^2 +c*a +c - N_0*a^2 - c*a - c] \pmod{q_2}$<br>
+$\qquad\quad= ((A_3-A_2)*Seed) \pmod{q} + [N_0*a^3 - N_0*a^2 + c*a^2] \pmod{q_2}$<br>
+$\qquad\quad= ((A_3-A_2)*Seed) \pmod{q} + [ N0*a - N_0 + c] * a^2 \pmod{q_2}$</p>
+<p>$b_4-b_3 = ((A_4-A_3)*Seed) \pmod{q} + (N_4 - N_3) \pmod{q_2}$<br>
+$\qquad\quad= ((A_4-A_3)*Seed) \pmod{q} + [N_4 - (N_0*a^3 + c*a^2 +c*a +c)] \pmod{q_2}$<br>
+$\qquad\quad= ((A_4-A_3)*Seed) \pmod{q} + [N_0*a^4 + c*a^3 + c*a^2 +c *a + c - N_0*a^3 - c*a^2 - c*a - c]$<br>
+$\qquad\quad= ((A_4-A_3)*Seed) \pmod{q} + [N_0*a^4 + c*a^3 - N_0*a^3] \pmod{q_2}$<br>
+$\qquad\quad= ((A_4-A_3)*Seed) \pmod{q} + [N_0*a^4 - N_0*a^3 + c*a^3 ] \pmod{q_2}$<br>
+$\qquad\quad= ((A_4-A_3)*Seed) \pmod{q} + [ N_0*a - N_0 + c] * a^3 \pmod{q_2}$</p>
+<p><em>(En notant $q_2$, le modulo du 2nd LCG (mod dans le code))</em></p>
+<p>On obtient ainsi la relation de récurrence :</p>
+<ul>
+<li>$b_{i+1}-b{i} = (A_{i+1}-A_{i})*Seed \pmod{q} + [N0*a-N_0+c]*a^i \pmod{q_2}$</li>
+</ul>
+<p>On peut compter le nombre d’inconnus :</p>
+<ul>
+<li>12 pour la $Seed$</li>
+<li>$N_0$, $a$ et $c$</li>
+</ul>
+<p>Ainsi avec 15 équations de cette forme, nous devrions être capable de retrouver tous les inconnus.</p>
+<p>A ce stade du CTF, j&rsquo;ai stoppé cette piste pour une simple.<br>
+Pourtant, la méthode présentée devrait très bien fonctionner mais j&rsquo;ai préféré faire autrement pour m&rsquo;éviter l&rsquo;implémentation d&rsquo;un solver pour ce genre de système.</p>
+<h2 id="from-lattice-to-crypto">From Lattice to Crypto</h2>
+<p>Une chose notable est que le <em>noise</em> ne fait que 32 bits, il est ainsi bien inférieur au résultat de la multiplication matricielle $A_{i}*Seed$ qui elle est dans $GF(q)=GF(279622638356169037213136872013126932777)$</p>
+<p>Il est ainsi raisonnable d&rsquo;écrire :</p>
+<ul>
+<li>$\begin{cases}
+b_i = A_i*Seed + N_i \pmod{q} \newline
+N_i &laquo; A_i*Seed
+\end{cases}$</li>
+</ul>
+<p>Ce genre de problème s&rsquo;appelle un <code>LWE</code> crypto-système et l&rsquo;utilisation de lattice nous permet de le résoudre.</p>
+<p>Nous avons 100 IV d&rsquo;où: $\exists~(k_1,k_2,&hellip;,k_{100})<del>\in</del>Z^{100}$ tel que:</p>
+<p>$\begin{cases}
+b_1 - N_1 - k_{1}*q = A_1*Seed \newline
+b_2 - N_2 - k_{2}*q = A_2*Seed \newline
+&hellip;  \newline
+\end{cases}$</p>
+<p>ce qui donne:</p>
+<p>$\begin{cases}
+b_1 - N_1 = A_1*Seed + k_{1}*q \newline
+b_2 - N_2 = A_2*Seed + k_{2}*q \newline
+&hellip;  \newline
+b_{100} - N_{100} = A_{100}*Seed + k_{100}*q \newline
+\end{cases}$</p>
+<p>Sous forme matricielle, nous avons :</p>
+<p>$\begin{bmatrix}
+A_{1,1} &amp; A_{1,1} &amp; &hellip; &amp; A_{1,12} &amp; q    &amp; 0   &amp; &hellip; &amp; 0 \newline
+A_{2,1} &amp; ⋱       &amp;     &amp; ⋮        &amp; 0    &amp; q   &amp; &hellip; &amp; 0 \newline
+⋮       &amp;         &amp; ⋱   &amp; ⋮        &amp; ⋮     &amp;     &amp; ⋱ &amp; 0 \newline
+A_{12,1} &amp; &hellip; &amp; &hellip; &amp; A_{12,12}  &amp; 0     &amp; &hellip; &amp; &hellip; &amp; q \newline
+\end{bmatrix}*\begin{bmatrix}
+S_1 \newline
+⋮ \newline
+S_{12} \newline
+k_{1} \newline
+⋮ \newline
+k_{100} \newline
+\end{bmatrix} = b-N$</p>
+<p>et</p>
+<p>$S_1*\begin{bmatrix}
+A_{1,1 }\newline
+⋮ \newline
+⋮ \newline
+A_{100,1} \newline
+\end{bmatrix} +<del>&hellip;</del>+S_n\begin{bmatrix}
+A_{1,12} \newline
+⋮ \newline
+⋮ \newline
+A_{100,12} \newline
+\end{bmatrix} + k_1* \begin{bmatrix}
+q \newline
+0 \newline
+⋮ \newline
+0 \newline
+\end{bmatrix} + k_2* \begin{bmatrix}
+0 \newline
+q \newline
+⋮ \newline
+0 \newline
+\end{bmatrix} +<del>&hellip;</del>+ k_{100}* \begin{bmatrix}
+0 \newline
+0 \newline
+⋮ \newline
+q \newline
+\end{bmatrix} = b-N$</p>
+<p>On a ainsi un réseau (Lattice) dans une base de $100+12=112$ vecteurs et nous devons trouver le plus petit vecteur s&rsquo;approchant de $b-N$</p>
+<p>L&rsquo;erreur $N$ étant petite, on peut combiner l&rsquo;utilisation de l&rsquo;algorithme <em>LLL</em> ainsi que l&rsquo;algorithme <em>du plan le plus proche de Babai</em> pour retrouver ce vecteur qui nous donnera la seed.</p>
+<p>On a :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">babai_closest_vector</span>(M, G, target):
+</span></span><span style="display:flex;"><span>	small <span style="color:#f92672">=</span> target
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> reversed(range(M<span style="color:#f92672">.</span>nrows())):
+</span></span><span style="display:flex;"><span>		c <span style="color:#f92672">=</span> ((small <span style="color:#f92672">*</span> G[i]) <span style="color:#f92672">/</span> (G[i] <span style="color:#f92672">*</span> G[i]))<span style="color:#f92672">.</span>round()
+</span></span><span style="display:flex;"><span>		small <span style="color:#f92672">-=</span>  M[i] <span style="color:#f92672">*</span> c
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> target <span style="color:#f92672">-</span> small
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>A <span style="color:#f92672">=</span> [list(As[i][<span style="color:#ae81ff">0</span>]) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)]
+</span></span><span style="display:flex;"><span>B <span style="color:#f92672">=</span> [iv[i] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>T <span style="color:#f92672">=</span> vector(B)
+</span></span><span style="display:flex;"><span>m <span style="color:#f92672">=</span> len(A)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>L <span style="color:#f92672">=</span> matrix(ZZ, m <span style="color:#f92672">+</span> n,m)
+</span></span><span style="display:flex;"><span>L<span style="color:#f92672">.</span>set_block(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, matrix(A)<span style="color:#f92672">.</span>transpose())
+</span></span><span style="display:flex;"><span>L<span style="color:#f92672">.</span>set_block(n, <span style="color:#ae81ff">0</span>, matrix<span style="color:#f92672">.</span>identity(m) <span style="color:#f92672">*</span> q)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> L<span style="color:#f92672">.</span>LLL()
+</span></span><span style="display:flex;"><span>G <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>gram_schmidt()[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>solution <span style="color:#f92672">=</span> babai_closest_vector(X[<span style="color:#f92672">-</span>m:, <span style="color:#f92672">-</span>m:], G, T)
+</span></span><span style="display:flex;"><span>seed <span style="color:#f92672">=</span> matrix(GF(q),matrix(GF(q), A)<span style="color:#f92672">.</span>solve_right(solution))<span style="color:#f92672">.</span>transpose()
+</span></span></code></pre></div><p>Ce cette manière on retrouve la seed !</p>
+<pre tabindex="0"><code>[3058268284241006487061442364908]
+[2402808679325168210186933401485]
+[ 912561198398914062812833580123]
+[3447026327735407212640466127880]
+[3579826512545358844840553316487]
+[3929680478630796447813590253380]
+[3926341848877002242261661718906]
+[ 292072138037108009618964395474]
+[ 483084212078556642759837397862]
+[1251756688835572777877914645198]
+[ 473590955827537442363235226794]
+[ 803861956621296089474035124354]
+</code></pre><p>On peut donc isoler les $N_i$:</p>
+<ul>
+<li>$N_i \pmod{q_2} = b_i-A_i*Seed$</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>mod <span style="color:#f92672">=</span> <span style="color:#ae81ff">2551431067</span>
+</span></span><span style="display:flex;"><span>Ni <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>  	int(GF(q)(iv[i]) <span style="color:#f92672">-</span> (matrix(GF(q), As[i])<span style="color:#f92672">*</span>seed)[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>  	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(A))
+</span></span><span style="display:flex;"><span>]
+</span></span></code></pre></div><p>Nous avons enfin accès aux valeurs du 2nd PRNG qui lui est trivial à casser:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>m <span style="color:#f92672">=</span> ((Ni[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">-</span> Ni[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">*</span> pow(Ni[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> Ni[<span style="color:#ae81ff">0</span>],<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,mod)) <span style="color:#f92672">%</span> mod
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> (Ni[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> Ni[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">*</span>m) <span style="color:#f92672">%</span> mod
+</span></span></code></pre></div><p>On obtient :</p>
+<ul>
+<li>$m=1989529305$</li>
+<li>$c=2273245205$</li>
+</ul>
+<p>On peut ainsi retrouver $N_0$ = <em>self._lcgseed</em> initial:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>state_initial <span style="color:#f92672">=</span> pow(a,<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,mod)<span style="color:#f92672">*</span>(Ni[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">-</span>c)<span style="color:#f92672">%</span>mod
+</span></span></code></pre></div><p>Il ne nous reste plus qu&rsquo;a modifier la Class d&rsquo;origine pour y mettre l&rsquo;état du PRNG :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PRNG</span>(object):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> __init__(self,a,c,state,seed):
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>_seed <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>q <span style="color:#f92672">=</span> <span style="color:#ae81ff">279622638356169037213136872013126932777</span>
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>n <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>A <span style="color:#f92672">=</span> Matrix(GF(self<span style="color:#f92672">.</span>q), <span style="color:#ae81ff">1</span>, self<span style="color:#f92672">.</span>n, [
+</span></span><span style="display:flex;"><span>				<span style="color:#ae81ff">19159356164385140466</span>,
+</span></span><span style="display:flex;"><span>				<span style="color:#ae81ff">19848194065535878410</span>,
+</span></span><span style="display:flex;"><span>				<span style="color:#ae81ff">33461959522325830456</span>,
+</span></span><span style="display:flex;"><span>				<span style="color:#ae81ff">12213590058439028697</span>,
+</span></span><span style="display:flex;"><span>				<span style="color:#ae81ff">35299014249932143965</span>,
+</span></span><span style="display:flex;"><span>				<span style="color:#ae81ff">13327781436808877193</span>,
+</span></span><span style="display:flex;"><span>				<span style="color:#ae81ff">20921178705527762622</span>,
+</span></span><span style="display:flex;"><span>				<span style="color:#ae81ff">9371898426952684667</span>,
+</span></span><span style="display:flex;"><span>				<span style="color:#ae81ff">9769023908222006322</span>,
+</span></span><span style="display:flex;"><span>				<span style="color:#ae81ff">28712160343104144896</span>,
+</span></span><span style="display:flex;"><span>				<span style="color:#ae81ff">32272228797175569095</span>,
+</span></span><span style="display:flex;"><span>				<span style="color:#ae81ff">14666990089233663894</span>
+</span></span><span style="display:flex;"><span>			])
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># LCG props</span>
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>a <span style="color:#f92672">=</span> int(a)
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>c <span style="color:#f92672">=</span> int(c)
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>_lcgseed <span style="color:#f92672">=</span> int(state)
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>mod <span style="color:#f92672">=</span> int(<span style="color:#ae81ff">2551431067</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># LCG</span>
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>_seed <span style="color:#f92672">=</span> seed
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@property</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">noise</span>(self):
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>_lcgseed <span style="color:#f92672">=</span> (self<span style="color:#f92672">.</span>a <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>_lcgseed <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>c) <span style="color:#f92672">%</span> self<span style="color:#f92672">.</span>mod
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_lcgseed
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@property</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">seed</span>(self):
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_seed
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">randint</span>(self):
+</span></span><span style="display:flex;"><span>		b <span style="color:#f92672">=</span> (self<span style="color:#f92672">.</span>A <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>seed <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>noise)[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>A <span style="color:#f92672">=</span> Matrix(GF(self<span style="color:#f92672">.</span>q), <span style="color:#ae81ff">1</span>, self<span style="color:#f92672">.</span>n, [
+</span></span><span style="display:flex;"><span>			int(x <span style="color:#f92672">*</span> b<span style="color:#f92672">^</span>(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)) <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">^</span><span style="color:#ae81ff">65</span> <span style="color:#66d9ef">for</span> i, x <span style="color:#f92672">in</span> enumerate(self<span style="color:#f92672">.</span>A[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>		])
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> b
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>rng <span style="color:#f92672">=</span> PRNG(
+</span></span><span style="display:flex;"><span>	a<span style="color:#f92672">=</span>a,
+</span></span><span style="display:flex;"><span>	c<span style="color:#f92672">=</span>c,
+</span></span><span style="display:flex;"><span>	state<span style="color:#f92672">=</span>state_initial,
+</span></span><span style="display:flex;"><span>	seed<span style="color:#f92672">=</span>seed
+</span></span><span style="display:flex;"><span>)
+</span></span></code></pre></div><p>Enfin, on regénère les clés privées pour déchiffrer le flag :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>n <span style="color:#f92672">=</span> <span style="color:#ae81ff">100</span>
+</span></span><span style="display:flex;"><span>p <span style="color:#f92672">=</span> <span style="color:#ae81ff">1552518092300708935130918131258481755631334049434514313202351194902966239949102107258669453876591642442910007680288864229150803718918046342632727613031282983744380820890196288509170691316593175367469551763119843371637221007210577919</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ivs <span style="color:#f92672">=</span> [long_to_bytes(int(rng<span style="color:#f92672">.</span>randint()))<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">16</span>, <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">&#39;</span>) <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(n)]
+</span></span><span style="display:flex;"><span>secret_keys <span style="color:#f92672">=</span> [int(rng<span style="color:#f92672">.</span>randint()) <span style="color:#f92672">|</span> int(rng<span style="color:#f92672">.</span>randint() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">128</span>) <span style="color:#f92672">|</span> int(rng<span style="color:#f92672">.</span>randint() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">256</span>) <span style="color:#f92672">|</span> int(rng<span style="color:#f92672">.</span>randint() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">384</span>) <span style="color:#f92672">|</span> int(rng<span style="color:#f92672">.</span>randint() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">512</span>) <span style="color:#f92672">|</span> int(rng<span style="color:#f92672">.</span>randint() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">640</span>) <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(n)]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>shared_secret <span style="color:#f92672">=</span> pow(user[<span style="color:#ae81ff">0</span>], secret_keys[<span style="color:#ae81ff">0</span>], p)
+</span></span><span style="display:flex;"><span>sha1 <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>sha1()
+</span></span><span style="display:flex;"><span>sha1<span style="color:#f92672">.</span>update(str(shared_secret)<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;ascii&#39;</span>))
+</span></span><span style="display:flex;"><span>key <span style="color:#f92672">=</span> sha1<span style="color:#f92672">.</span>digest()[:<span style="color:#ae81ff">16</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cipher <span style="color:#f92672">=</span> AES<span style="color:#f92672">.</span>new(key, AES<span style="color:#f92672">.</span>MODE_CBC, ivs[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>print(unpad(cipher<span style="color:#f92672">.</span>decrypt(unhexlify(bytes(enc[<span style="color:#ae81ff">0</span>],<span style="color:#e6db74">&#39;utf-8&#39;</span>))),<span style="color:#ae81ff">16</span>))
+</span></span></code></pre></div><p><em>Ouput</em>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>⚡ root  share  ✘  sage solver3.sage
+</span></span><span style="display:flex;"><span>b<span style="color:#e6db74">&#39;PWNME{d334d082994743b12464c529ea597ed85dcd08e49e6d2d644b46f295b24a2f25}&#39;</span>
+</span></span></code></pre></div><p>Voici le code complet de solve:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Util.number <span style="color:#f92672">import</span> bytes_to_long,long_to_bytes
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> binascii <span style="color:#f92672">import</span> unhexlify
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> hashlib
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Cipher <span style="color:#f92672">import</span> AES
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Util.Padding <span style="color:#f92672">import</span> pad, unpad
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> Crypto.Util.number <span style="color:#f92672">import</span> getStrongPrime, long_to_bytes, bytes_to_long
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">PRNG</span>(object):
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> __init__(self,a,c,state,seed):
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>_seed <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>q <span style="color:#f92672">=</span> <span style="color:#ae81ff">279622638356169037213136872013126932777</span>
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>n <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>    self<span style="color:#f92672">.</span>A <span style="color:#f92672">=</span> Matrix(GF(self<span style="color:#f92672">.</span>q), <span style="color:#ae81ff">1</span>, self<span style="color:#f92672">.</span>n, [<span style="color:#ae81ff">19159356164385140466</span>,<span style="color:#ae81ff">19848194065535878410</span>,<span style="color:#ae81ff">33461959522325830456</span>,<span style="color:#ae81ff">12213590058439028697</span>,<span style="color:#ae81ff">35299014249932143965</span>,<span style="color:#ae81ff">13327781436808877193</span>,<span style="color:#ae81ff">20921178705527762622</span>,<span style="color:#ae81ff">9371898426952684667</span>,<span style="color:#ae81ff">9769023908222006322</span>,<span style="color:#ae81ff">28712160343104144896</span>,<span style="color:#ae81ff">32272228797175569095</span>,<span style="color:#ae81ff">14666990089233663894</span>])
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># LCG props</span>
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>a <span style="color:#f92672">=</span> int(a)
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>c <span style="color:#f92672">=</span> int(c)
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>_lcgseed <span style="color:#f92672">=</span> int(state)
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>mod <span style="color:#f92672">=</span> int(<span style="color:#ae81ff">2551431067</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>		<span style="color:#75715e"># LCG</span>
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>_seed <span style="color:#f92672">=</span> seed
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@property</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">noise</span>(self):
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>_lcgseed <span style="color:#f92672">=</span> (self<span style="color:#f92672">.</span>a <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>_lcgseed <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>c) <span style="color:#f92672">%</span> self<span style="color:#f92672">.</span>mod
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_lcgseed
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#a6e22e">@property</span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">seed</span>(self):
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>_seed
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">def</span> <span style="color:#a6e22e">randint</span>(self):
+</span></span><span style="display:flex;"><span>		b <span style="color:#f92672">=</span> (self<span style="color:#f92672">.</span>A <span style="color:#f92672">*</span> self<span style="color:#f92672">.</span>seed <span style="color:#f92672">+</span> self<span style="color:#f92672">.</span>noise)[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>		self<span style="color:#f92672">.</span>A <span style="color:#f92672">=</span> Matrix(GF(self<span style="color:#f92672">.</span>q), <span style="color:#ae81ff">1</span>, self<span style="color:#f92672">.</span>n, [
+</span></span><span style="display:flex;"><span>			int(x <span style="color:#f92672">*</span> b<span style="color:#f92672">^</span>(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)) <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">^</span><span style="color:#ae81ff">65</span> <span style="color:#66d9ef">for</span> i, x <span style="color:#f92672">in</span> enumerate(self<span style="color:#f92672">.</span>A[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>		])
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> b
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">decode_iv</span>(iv):
+</span></span><span style="display:flex;"><span>	b <span style="color:#f92672">=</span> unhexlify(bytes(iv,<span style="color:#e6db74">&#39;utf-8&#39;</span>))<span style="color:#f92672">.</span>strip(<span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">&#39;</span>)
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> bytes_to_long(b)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">parser</span>(data):
+</span></span><span style="display:flex;"><span>	alice,user,iv,enc <span style="color:#f92672">=</span> [],[],[],[]
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> line <span style="color:#f92672">in</span> data<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#39;</span>):
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;Alice&#39;</span> <span style="color:#f92672">in</span> line:
+</span></span><span style="display:flex;"><span>			alice<span style="color:#f92672">.</span>append(int(line<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;public key: &#34;</span>)[<span style="color:#ae81ff">1</span>]))
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;User&#39;</span> <span style="color:#f92672">in</span> line:
+</span></span><span style="display:flex;"><span>			user<span style="color:#f92672">.</span>append(int(line<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;public key: &#34;</span>)[<span style="color:#ae81ff">1</span>]))
+</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span> <span style="color:#e6db74">&#39;encrypt&#39;</span> <span style="color:#f92672">in</span> line:
+</span></span><span style="display:flex;"><span>			info <span style="color:#f92672">=</span> eval(line<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;= &#34;</span>)[<span style="color:#ae81ff">1</span>])
+</span></span><span style="display:flex;"><span>			iv<span style="color:#f92672">.</span>append(decode_iv(info[<span style="color:#e6db74">&#39;iv&#39;</span>]))
+</span></span><span style="display:flex;"><span>			enc<span style="color:#f92672">.</span>append(info[<span style="color:#e6db74">&#39;encrypted_msg&#39;</span>])
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> alice,user,iv,enc
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>logs <span style="color:#f92672">=</span> open(<span style="color:#e6db74">&#39;logs&#39;</span>,<span style="color:#e6db74">&#39;r&#39;</span>)<span style="color:#f92672">.</span>read()
+</span></span><span style="display:flex;"><span>alice,user,iv,enc <span style="color:#f92672">=</span> parser(logs)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Re-Calculate Matrix Ai</span>
+</span></span><span style="display:flex;"><span>q <span style="color:#f92672">=</span> <span style="color:#ae81ff">279622638356169037213136872013126932777</span>
+</span></span><span style="display:flex;"><span>n <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>
+</span></span><span style="display:flex;"><span>As <span style="color:#f92672">=</span> [Matrix(GF(q), <span style="color:#ae81ff">1</span>, n, [
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">19159356164385140466</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">19848194065535878410</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">33461959522325830456</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">12213590058439028697</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">35299014249932143965</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">13327781436808877193</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">20921178705527762622</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">9371898426952684667</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">9769023908222006322</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">28712160343104144896</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">32272228797175569095</span>,
+</span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">14666990089233663894</span>
+</span></span><span style="display:flex;"><span>])]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> b <span style="color:#f92672">in</span> iv:
+</span></span><span style="display:flex;"><span>	As<span style="color:#f92672">.</span>append(Matrix(GF(q), <span style="color:#ae81ff">1</span>,n, [ int(x <span style="color:#f92672">*</span> b<span style="color:#f92672">^</span>(i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)) <span style="color:#f92672">%</span> <span style="color:#ae81ff">2</span><span style="color:#f92672">^</span><span style="color:#ae81ff">65</span> <span style="color:#66d9ef">for</span> i, x <span style="color:#f92672">in</span> enumerate(As[<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][<span style="color:#ae81ff">0</span>])]))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">babai_closest_vector</span>(M, G, target):
+</span></span><span style="display:flex;"><span>	small <span style="color:#f92672">=</span> target
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> reversed(range(M<span style="color:#f92672">.</span>nrows())):
+</span></span><span style="display:flex;"><span>		c <span style="color:#f92672">=</span> ((small <span style="color:#f92672">*</span> G[i]) <span style="color:#f92672">/</span> (G[i] <span style="color:#f92672">*</span> G[i]))<span style="color:#f92672">.</span>round()
+</span></span><span style="display:flex;"><span>		small <span style="color:#f92672">-=</span>  M[i] <span style="color:#f92672">*</span> c
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">return</span> target <span style="color:#f92672">-</span> small
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>A <span style="color:#f92672">=</span> [list(As[i][<span style="color:#ae81ff">0</span>]) <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)]
+</span></span><span style="display:flex;"><span>B <span style="color:#f92672">=</span> [iv[i] <span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span><span style="color:#f92672">*</span>n<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>)]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>T <span style="color:#f92672">=</span> vector(B)
+</span></span><span style="display:flex;"><span>m <span style="color:#f92672">=</span> len(A)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>L <span style="color:#f92672">=</span> matrix(ZZ, m <span style="color:#f92672">+</span> n,m)
+</span></span><span style="display:flex;"><span>L<span style="color:#f92672">.</span>set_block(<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">0</span>, matrix(A)<span style="color:#f92672">.</span>transpose())
+</span></span><span style="display:flex;"><span>L<span style="color:#f92672">.</span>set_block(n, <span style="color:#ae81ff">0</span>, matrix<span style="color:#f92672">.</span>identity(m) <span style="color:#f92672">*</span> q)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>X <span style="color:#f92672">=</span> L<span style="color:#f92672">.</span>LLL()
+</span></span><span style="display:flex;"><span>G <span style="color:#f92672">=</span> X<span style="color:#f92672">.</span>gram_schmidt()[<span style="color:#ae81ff">0</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>solution <span style="color:#f92672">=</span> babai_closest_vector(X[<span style="color:#f92672">-</span>m:, <span style="color:#f92672">-</span>m:], G, T)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>seed <span style="color:#f92672">=</span> matrix(GF(q),matrix(GF(q), A)<span style="color:#f92672">.</span>solve_right(solution))<span style="color:#f92672">.</span>transpose()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Ni <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>	int(GF(q)(iv[i]) <span style="color:#f92672">-</span> (matrix(GF(q), As[i])<span style="color:#f92672">*</span>seed)[<span style="color:#ae81ff">0</span>][<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(len(A))
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>mod <span style="color:#f92672">=</span> <span style="color:#ae81ff">2551431067</span>
+</span></span><span style="display:flex;"><span>a <span style="color:#f92672">=</span> ((Ni[<span style="color:#ae81ff">2</span>] <span style="color:#f92672">-</span> Ni[<span style="color:#ae81ff">1</span>]) <span style="color:#f92672">*</span> pow(Ni[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> Ni[<span style="color:#ae81ff">0</span>],<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,mod)) <span style="color:#f92672">%</span> mod
+</span></span><span style="display:flex;"><span>c <span style="color:#f92672">=</span> (Ni[<span style="color:#ae81ff">1</span>] <span style="color:#f92672">-</span> Ni[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">*</span>a) <span style="color:#f92672">%</span> mod
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>state_initial <span style="color:#f92672">=</span> pow(a,<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,mod)<span style="color:#f92672">*</span>(Ni[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">-</span>c)<span style="color:#f92672">%</span>mod
+</span></span><span style="display:flex;"><span>rng <span style="color:#f92672">=</span> PRNG(
+</span></span><span style="display:flex;"><span>	a<span style="color:#f92672">=</span>a,
+</span></span><span style="display:flex;"><span>	c<span style="color:#f92672">=</span>c,
+</span></span><span style="display:flex;"><span>	state<span style="color:#f92672">=</span>state_initial,
+</span></span><span style="display:flex;"><span>	seed<span style="color:#f92672">=</span>seed
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>n,p <span style="color:#f92672">=</span><span style="color:#ae81ff">100</span>,<span style="color:#ae81ff">1552518092300708935130918131258481755631334049434514313202351194902966239949102107258669453876591642442910007680288864229150803718918046342632727613031282983744380820890196288509170691316593175367469551763119843371637221007210577919</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>ivs <span style="color:#f92672">=</span> [long_to_bytes(int(rng<span style="color:#f92672">.</span>randint()))<span style="color:#f92672">.</span>ljust(<span style="color:#ae81ff">16</span>, <span style="color:#e6db74">b</span><span style="color:#e6db74">&#39;</span><span style="color:#ae81ff">\0</span><span style="color:#e6db74">&#39;</span>) <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(n)]
+</span></span><span style="display:flex;"><span>secret_keys <span style="color:#f92672">=</span> [
+</span></span><span style="display:flex;"><span>  int(rng<span style="color:#f92672">.</span>randint()) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>  int(rng<span style="color:#f92672">.</span>randint() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">128</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>  int(rng<span style="color:#f92672">.</span>randint() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">256</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>  int(rng<span style="color:#f92672">.</span>randint() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">384</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>  int(rng<span style="color:#f92672">.</span>randint() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">512</span>) <span style="color:#f92672">|</span>
+</span></span><span style="display:flex;"><span>  int(rng<span style="color:#f92672">.</span>randint() <span style="color:#f92672">&lt;&lt;</span> <span style="color:#ae81ff">640</span>)
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">for</span> _ <span style="color:#f92672">in</span> range(n)
+</span></span><span style="display:flex;"><span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>shared_secret <span style="color:#f92672">=</span> pow(user[<span style="color:#ae81ff">0</span>], secret_keys[<span style="color:#ae81ff">0</span>], p)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>sha1 <span style="color:#f92672">=</span> hashlib<span style="color:#f92672">.</span>sha1()
+</span></span><span style="display:flex;"><span>sha1<span style="color:#f92672">.</span>update(str(shared_secret)<span style="color:#f92672">.</span>encode(<span style="color:#e6db74">&#39;ascii&#39;</span>))
+</span></span><span style="display:flex;"><span>key <span style="color:#f92672">=</span> sha1<span style="color:#f92672">.</span>digest()[:<span style="color:#ae81ff">16</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>cipher <span style="color:#f92672">=</span> AES<span style="color:#f92672">.</span>new(key, AES<span style="color:#f92672">.</span>MODE_CBC, ivs[<span style="color:#ae81ff">0</span>])
+</span></span><span style="display:flex;"><span>print(unpad(cipher<span style="color:#f92672">.</span>decrypt(unhexlify(bytes(enc[<span style="color:#ae81ff">0</span>],<span style="color:#e6db74">&#39;utf-8&#39;</span>))),<span style="color:#ae81ff">16</span>))
+</span></span></code></pre></div>
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/writeups/another_blog-pwnme-2023/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Another Blog | PWNME CTF 2023</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/writeups/yeswehack_dojo_23/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Writeup 5Ways2XSS - DOJO #23 | YesWeHack</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#analyse-du-prng">Analyse du Prng</a></li>
+    <li><a href="#premières-recherches-sur-le-lcg">Premières recherches sur le LCG.</a></li>
+    <li><a href="#from-lattice-to-crypto">From Lattice to Crypto</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

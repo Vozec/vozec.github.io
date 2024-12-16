@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rendering on </title>
+    <link>//localhost:1313/tags/rendering/</link>
+    <description>Recent content in Rendering on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 28 Apr 2023 12:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/rendering/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Peculiar Caterpillar | FCSC 2023</title>
+      <link>//localhost:1313/writeups/peculiar-caterpillar/</link>
+      <pubDate>Fri, 28 Apr 2023 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/writeups/peculiar-caterpillar/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Alors qu&amp;#39;elle se promenait au Pays des merveilles, Alice tomba sur une chenille étrange. À sa grande surprise, cette dernière se vantait d&amp;#39;avoir construit son propre site web en utilisant Javascript. Bien que le site semblait simple, Alice ne pouvait s&amp;#39;empêcher de se demander s&amp;#39;il était vraiment sécurisé.&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Les sources de ce challenge sont fournies :&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;public&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── docker-compose.yml&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;├── Dockerfile&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;└── src&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ├── index.js&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ├── package.json&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    ├── views&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    │└── index.ejs&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    └── yarn.lock&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pr</description>
+    </item>
+  </channel>
+</rss>

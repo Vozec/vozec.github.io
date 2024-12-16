@@ -1,0 +1,83 @@
+baseURL = "/"
+languageCode = "en-us"
+theme = "poison"
+paginate = 10
+pluralizelisttitles = false
+
+[params]
+    brand = "Vozec's Blog"
+    remote_brand_image = 'https://avatars.githubusercontent.com/u/61807609?v=4'
+
+    description = "A student passionate about cybersecurity"
+    dark_mode = true
+    favicon = "/images/favicon.png"
+
+    front_page_content = ["writeups","articles","rsa", "aes","other"] 
+
+    menu = [
+        {Name = "About", URL = "/about/", HasChildren = false},
+
+        {Name = "Writeups", URL = "/writeups/"},
+
+        {Name = "Researchs", URL = "/researchs/"},
+        
+        {Name = "1/ Crypto RSA", URL = "/rsa/"},
+        {Name = "2/ Crypto AES", URL = "/aes/"},
+        {Name = "3/ Crypto Other", URL = "/other/"},
+
+    ]
+
+    discord_url = "vozec"
+    github_url = "https://github.com/Vozec"
+    linkedin_url = "https://www.linkedin.com/in/arthur-dlfr/"
+    email_url = "https://www.root-me.org/Vozec"
+    twitter_url = "https://twitter.com/Vozec1"
+
+    moon_sun_background_color = "#515151"   # default is #515151
+    moon_sun_color = "#FFF"                 # default is #FFF
+    sidebar_a_color = "#FFF"                # default is #FFF
+    sidebar_bg_color = "#202020"            # default is #202020
+    sidebar_h1_color = "#FFF"               # default is #FFF
+    sidebar_img_border_color = "#515151"    # default is #515151
+    sidebar_p_color = "#909090"             # default is #909090
+    sidebar_socials_color = "#FFF"          # default is #FFF
+
+    # Hex colors for your content in light mode.
+    code_color = "#000"                     # default is #000
+    code_background_color = "#E5E5E5"       # default is #E5E5E5
+    code_block_color = "#FFF"               # default is #FFF
+    code_block_background_color = "#272822" # default is #272822
+    content_bg_color = "#FAF9F6"            # default is #FAF9F6
+    date_color = "#515151"                  # default is #515151
+    link_color = "#268BD2"                  # default is #268BD2
+    list_color = "#5A5A5A"                  # default is #5A5A5A
+    post_title_color = "#303030"            # default is #303030
+    table_border_color = "#E5E5E5"          # default is #E5E5E5
+    table_stripe_color = "#F9F9F9"          # default is #F9F9F9
+    text_color = "#222"                     # default is #222
+
+    # Hex colors for your content in dark mode
+    code_color_dark = "#FFF"                        # default is #FFF
+    code_background_color_dark = "#515151"          # default is #515151
+    code_block_color_dark = "#FFF"                  # default is #FFF
+    code_block_background_color_dark = "#272822"    # default is #272822
+    content_bg_color_dark = "#121212"               # default is #121212
+    date_color_dark = "#9A9A9A"                     # default is #9A9A9A
+    link_color_dark = "#268BD2"                     # default is #268BD2
+    list_color_dark = "#9D9D9D"                     # default is #9D9D9D
+    post_title_color_dark = "#DBE2E9"               # default is #DBE2E9
+    table_border_color_dark = "#515151"             # default is #515151
+    table_stripe_color_dark = "#202020"             # default is #202020
+    text_color_dark = "#EEE"                        # default is #EEE
+
+    # NOTE: If using Remark42 as commenting engine, uncomment and configure these lines
+    # remark42 = true
+    # remark42_host = "https://yourhost.com"
+    # remark42_site_id = "your_site_id"
+
+    # NOTE: The following three params are optional and are used to create meta tags + enhance SEO.
+    # og_image = ""                       # path to social icon - front matter: image takes precedent, then og_image, then brand_url
+                                          # this is also used in the schema output as well. Image is resized to max 1200x630
+                                          # For this to work though og_image and brand_url must be a path inside the assets directory
+                                          # e.g. /assets/images/site/og-image.png becomes images/site/og-image.png
+    # publisher_icon = ""                 # path to publisher icon - defaults to favicon, used in schema

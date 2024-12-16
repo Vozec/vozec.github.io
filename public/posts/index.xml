@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on </title>
+    <link>//localhost:1313/posts/</link>
+    <description>Recent content in Posts on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 23 Aug 2022 12:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lutter contre la triche en CTF ?</title>
+      <link>//localhost:1313/posts/anti-cheat-ctf/</link>
+      <pubDate>Tue, 23 Aug 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/anti-cheat-ctf/</guid>
+      <description>&lt;h1 id=&#34;introduction&#34;&gt;Introduction&lt;/h1&gt;&#xA;&lt;p&gt;Dans cet article, je vais présenter les différentes possibilités pour empêcher la triche en compétition, notamment sur des CTF basés sur CTFd. Je précise que ces techniques permettent de mettre en avant les comptes suspects. Il y a plusieurs façons de repérer les tricheurs en suivant ces critères, et inversement, il y a malheureusement plusieurs façons de contourner ces protections. Tout ce que je vais expliquer ici sert donc à mettre en avant un compte ou une équipe afin que des admins procèdent à une vérification manuelle et agissent en conséquence.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Malware Analysis d&#39;une Virus Télégram</title>
+      <link>//localhost:1313/posts/analyse-telegram-stealer/</link>
+      <pubDate>Sat, 08 Jan 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/analyse-telegram-stealer/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Je suis tombé sur ce .exe et j&amp;rsquo;ai décidé de l&amp;rsquo;analyser.&#xA;Voici le fichier : &lt;a href=&#34;./files/Do_Not_Execute&#34;&gt;ici&lt;/a&gt;&#xA;&lt;em&gt;Attention à ne pas l&amp;rsquo;executer !&lt;/em&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;commencement&#34;&gt;Commencement&lt;/h2&gt;&#xA;&lt;p&gt;Comme le dernier analyse de malware , j&amp;rsquo;ai regardé sur Dnspy si le code était obfusqué .&#xA;A notre plus grande surprise il ne l&amp;rsquo;était pas !&#xA;Regardons de quoi est composé notre payload :&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;./img/dnspy.png&#34; alt=&#34;All text&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;La Première chose qui saute aux yeux et que c&amp;rsquo;est un malware !&#xA;Regardons la Class &lt;code&gt;Client&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Execution de ShellCode grâce au Dll Hidjacking</title>
+      <link>//localhost:1313/posts/pourquoi-vous-devez-securiser-vos-dll-2/</link>
+      <pubDate>Sun, 05 Dec 2021 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/pourquoi-vous-devez-securiser-vos-dll-2/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Nous avons déjà parlé du DLL Hidjacking dans un article précédent. Nous avions détourné la Bibliothèque &lt;em&gt;LeafXnet.dll&lt;/em&gt;.&#xA;Nous aurions pu utiliser une autre, comme &lt;em&gt;Newtonsoft.Json.dll&lt;/em&gt; ou encore &lt;em&gt;Colorful.Console.dll&lt;/em&gt; .&#xA;Voici le résultat que nous avions la dernière fois :&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;./img/hijacked.png&#34; alt=&#34;Alt text&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Nous récupérions juste les requêtes pour les écrire dans un fichier texte.&lt;/p&gt;&#xA;&lt;h3 id=&#34;petit-rappel&#34;&gt;Petit Rappel&lt;/h3&gt;&#xA;&lt;p&gt;Le Dll Hidjacking consiste à modifier une bibliothèque appelée par un programme et ainsi ajouter du code exécuter.&#xA;Ainsi la fonction qui est appelée exécutera ce qu&amp;rsquo;elle est censée faire pour que le programme continue de fonctionner mais elle exécutera des actions en plus.&#xA;Voir &lt;a href=&#34;http://vozec.fr/articles/pourquoi-vous-devez-s%C3%A9curiser-vos-dll/&#34; target=&#34;_blank&#34;&gt;mon ancien article ici&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Malware Analysis d&#39;un Fake Cheat</title>
+      <link>//localhost:1313/posts/analyse-fake-cheat-valorant/</link>
+      <pubDate>Thu, 25 Nov 2021 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/analyse-fake-cheat-valorant/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Je suis tombé sur ce prétendu Cheat Valorant et j&amp;rsquo;ai décidé de l&amp;rsquo;analyser.&#xA;Voici le fichier : &lt;a href=&#34;./files/Do_Not_Execute&#34;&gt;ici&lt;/a&gt;&#xA;Attention à ne pas l&amp;rsquo;exécuter !&lt;/p&gt;&#xA;&lt;h2 id=&#34;commencement&#34;&gt;Commencement&lt;/h2&gt;&#xA;&lt;p&gt;Après avoir téléchargé le .exe, je lui supprime tout de suite son extension &lt;em&gt;.exe&lt;/em&gt; pour éviter de le lancer par erreur en cliquant dessus.&lt;/p&gt;&#xA;&lt;p&gt;Je lance DetectItEasy et je me rends compte qu&amp;rsquo;il est compilé en .Net&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;./img/die.png&#34; alt=&#34;All text&#34;&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Comment contourner le SSL Pinning sur android</title>
+      <link>//localhost:1313/posts/contourner-le-ssl-pinning-sur-android/</link>
+      <pubDate>Thu, 04 Nov 2021 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/contourner-le-ssl-pinning-sur-android/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Pour un projet personnel, j&amp;rsquo;ai dû récupérer une requête provenant d&amp;rsquo;une application de mon téléphone. Après de nombreuses recherches j&amp;rsquo;ai trouvé comment faire et j&amp;rsquo;ai compris toutes les méthodes pour y parvenir.&#xA;La principale difficulté pour récupérer le traffic réseau de votre téléphone est de déchiffrer les requêtes https.&lt;/p&gt;&#xA;&lt;h3 id=&#34;https--cest-quoi-&#34;&gt;Http&lt;strong&gt;S&lt;/strong&gt; , c&amp;rsquo;est quoi ?&lt;/h3&gt;&#xA;&lt;p&gt;&amp;ldquo;HyperText Transfer Protocol Secure&amp;rdquo; est un Protocol qui succède à l&amp;rsquo;http . En effet il reprend l&amp;rsquo;http en y rajoutant une couche de chiffrement comme SSL ou TLS .&#xA;&lt;code&gt;Un certificat&lt;/code&gt; assure l&amp;rsquo;intégrité de la destination et empêche à un Tier de se plaçant entre votre machine et votre site web pour contrôler votre requête web .&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Comment utiliser l&#39;OCR pour résoudre des captchas</title>
+      <link>//localhost:1313/posts/les-captchas-sont-inutiles-part3/</link>
+      <pubDate>Fri, 29 Oct 2021 08:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/les-captchas-sont-inutiles-part3/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Dans des articles précédent, nous avons vu comment bypass 2 types de catpcha .&#xA;Nous allons voir comment bypass d&amp;rsquo;une autre manière ces captchas grâce à l&amp;rsquo;OCR&lt;/p&gt;&#xA;&lt;h1 id=&#34;hcaptha&#34;&gt;HCaptha&lt;/h1&gt;&#xA;&lt;p&gt;Hcaptcha est un concurrent à google de plus en plus connu :&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;./img/hcaptcha.png&#34; alt=&#34;Alt text&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;Il existe deux manières de le contourner :&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Avec un script JS&lt;/li&gt;&#xA;&lt;li&gt;Avec ce lien : &lt;a href=&#34;https://dashboard.hcaptcha.com/signup?type=accessibility&#34; target=&#34;_blank&#34;&gt;https://dashboard.hcaptcha.com/signup?type=accessibility&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;En effet , on peut recevoir un cookie par mail qui bypass tous les captcha !&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Comment Isoler un Recaptcha</title>
+      <link>//localhost:1313/posts/les-captchas-sont-inutiles-part2/</link>
+      <pubDate>Thu, 28 Oct 2021 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/les-captchas-sont-inutiles-part2/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Nous avons vu dans un précédent comment bypass les reCAPTCHA Silencieux, ceux en arrière-plan.&#xA;Mais comment faire quand ces captchas nécessitent une interaction humaine ?&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;./img/robot.png&#34; alt=&#34;Alt text&#34;&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;le-problème&#34;&gt;Le problème&lt;/h2&gt;&#xA;&lt;p&gt;Dans un captcha silencieux, il n&amp;rsquo;y pas d&amp;rsquo;interactions entre l&amp;rsquo;utilisateur et le captcha. On peut donc le contourner en simulant des actions identiques au script natif.&#xA;En revanche dans un captcha visible, les choses changent &amp;hellip;&lt;br&gt;&#xA;Le payload généré et envoyé dépend des images cliquées. On ne peut donc pas générer une template de post-data comme précédemment. (Voir &lt;a href=&#34;http://vozec.fr/articles/les-captchas-sont-inutiles-part1&#34; target=&#34;_blank&#34;&gt;ici&lt;/a&gt;)&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Comment Bypass un Silent Recaptcha V3</title>
+      <link>//localhost:1313/posts/les-captchas-sont-inutiles-part1/</link>
+      <pubDate>Wed, 27 Oct 2021 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/les-captchas-sont-inutiles-part1/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Les Captchas sont des petits programmes web qui servent à déterminer si leur interlocuteur est un humain ou un robot. Ce n&amp;rsquo;est généralement pas dérangeant pour les gens normaux mais cela devient ennuyeux pour les développeur qui souhaitent faire du scraping web ou juste se connecter à un service depuis le site-Web.&#xA;Dans cet article nous allons nous concentrer sur les recaptchas de google et particulièrement ceux en mode &lt;strong&gt;Silent&lt;/strong&gt; en version 2&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Comment casser un mot de passe Wifi</title>
+      <link>//localhost:1313/posts/pourquoi-votre-wifi-est-vuln%C3%A9rable/</link>
+      <pubDate>Tue, 26 Oct 2021 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/pourquoi-votre-wifi-est-vuln%C3%A9rable/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;La sécurité WPA2 (&lt;em&gt;Wi-Fi Protected Access Version 2&lt;/em&gt;) est la sécurité la plus courante sur votre box internet.&#xA;Il est pris en charge depuis 2005 sur Windows XP et il est encore utilisé de nos jours.&#xA;WPA2 reprend la technologie WPA en y rajoutant la &lt;a href=&#34;https://fr.wikipedia.org/wiki/IEEE_802.11&#34; target=&#34;_blank&#34;&gt;norme 802.11&lt;/a&gt; qui assure la prise en charge de nouveaux protocols (&lt;em&gt;ex:CCMP&lt;/em&gt;) et qui améliore la sécurité de celui-ci ( &lt;a href=&#34;https://fr.wikipedia.org/wiki/Advanced_Encryption_Standard&#34; target=&#34;_blank&#34;&gt;&lt;em&gt;AES&lt;/em&gt;&lt;/a&gt; ).&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Pourquoi il faut sécuriser vos DLL P1</title>
+      <link>//localhost:1313/posts/pourquoi-vous-devez-securiser-vos-dll/</link>
+      <pubDate>Mon, 25 Oct 2021 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/pourquoi-vous-devez-securiser-vos-dll/</guid>
+      <description>&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;Une DLL (Dynamic Link Library) est une bibliothèque logicielle qui permet le partage, par des programmes, de codes.&#xA;Pour résumer, c&amp;rsquo;est une bibliothèque avec plusieurs fonctions à l&amp;rsquo;intérieur. C&amp;rsquo;est très utile pour ne pas toujours coder la même chose.&#xA;On code une fois la DLL et on a plus qu&amp;rsquo;a appelé ses fonctions dans tous ses projets.&#xA;L&amp;rsquo;avantage du C# est qu&amp;rsquo;il existe un grand nombre de bibliothèques, et la plupart sont Open-Source, sur GitHub principalement&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Comment Reverse du .Net facilement</title>
+      <link>//localhost:1313/posts/comment-reverse-du-.net-facilement/</link>
+      <pubDate>Sun, 24 Oct 2021 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/comment-reverse-du-.net-facilement/</guid>
+      <description>&lt;h2 id=&#34;--created-by-vozec-23102021&#34;&gt;&#xA;&#xD;&#xA;&lt;script src=&#34;https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js&#34;&gt;&lt;/script&gt;&#xD;&#xA;&lt;script&gt;&#xD;&#xA;$(document).ready(function() {&#xD;&#xA;    var ctrlDown = false,&#xD;&#xA;        ctrlKey = 17,&#xD;&#xA;        cmdKey = 91,&#xD;&#xA;        vKey = 86,&#xD;&#xA;        cKey = 67;&#xD;&#xA;&#xD;&#xA;    $(document).keydown(function(e) {&#xD;&#xA;        if (e.keyCode == ctrlKey || e.keyCode == cmdKey) ctrlDown = true;&#xD;&#xA;    }).keyup(function(e) {&#xD;&#xA;        if (e.keyCode == ctrlKey || e.keyCode == cmdKey) ctrlDown = false;&#xD;&#xA;    });&#xD;&#xA;    $(document).keydown(function(e) {&#xD;&#xA;        if (ctrlDown &amp;&amp; (e.keyCode == cKey)) window.location.href = &#34;https://www.youtube.com/watch?v=cvh0nX08nRw&#34;;&#xD;&#xA;        if (ctrlDown &amp;&amp; (e.keyCode == vKey)) window.location.href = &#34;https://www.youtube.com/watch?v=cvh0nX08nRw&#34;;&#xD;&#xA;    });&#xD;&#xA;});&#xD;&#xA;&lt;/script&gt;&#xD;&#xA;&#xA;&#xA;[//]: &amp;lt;&amp;gt; (Created By Vozec 23/10/2021)&lt;/h2&gt;&#xA;&lt;h2 id=&#34;nécessaires&#34;&gt;Nécessaires&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;./files/DotNetPack.rar&#34;&gt;Ce pack complet pour l&amp;rsquo;obfuscation C#&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;introduction&#34;&gt;Introduction&lt;/h2&gt;&#xA;&lt;p&gt;.Net est un langage assez facile à reverse en général. Grâce à de simples outils comme JetBrain Dotpeek , DnSpy ou Ilspy , on peut facilement débugger , éditer , patcher un assembly sans soucis .&#xA;La principale difficulté et la multitude de protection qui existe autour du Framework de Microsoft (.Net Framework/Core).&#xA;Nous allons donc voir quelles sont les principales sécurités et comment les contourner.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

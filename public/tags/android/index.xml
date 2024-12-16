@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android on </title>
+    <link>//localhost:1313/tags/android/</link>
+    <description>Recent content in Android on </description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 11 Jan 2022 12:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/android/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Android CrackMe Native | CyberSpace CTF 2022 | Catégorie Reverse | [Vozec/FR] </title>
+      <link>//localhost:1313/writeups/android-crackme-native_cyberspacectf/</link>
+      <pubDate>Tue, 11 Jan 2022 12:00:00 +0000</pubDate>
+      <guid>//localhost:1313/writeups/android-crackme-native_cyberspacectf/</guid>
+      <description>&lt;h2 id=&#34;fichiers&#34;&gt;Fichier(s)&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;./files/CrackMe.apk&#34;&gt;Android App&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;nécessaires&#34;&gt;Nécessaires&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Ghidra&lt;/li&gt;&#xA;&lt;li&gt;Python3&lt;/li&gt;&#xA;&lt;li&gt;Jdax&lt;/li&gt;&#xA;&lt;li&gt;Apktool&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;flag&#34;&gt;Flag&lt;/h2&gt;&#xA;&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;HL{J4v4.nativ3.d0.n0t.c4r3}&#xA;&lt;/code&gt;&lt;/pre&gt;&lt;h2 id=&#34;solution-détaillée&#34;&gt;Solution détaillée&lt;/h2&gt;&#xA;&lt;p&gt;La première chose est de décompiler l&amp;rsquo;apk pour en retrouver le code Java .&#xA;J&amp;rsquo;ai utilisé Apktool pour extraire le code smali et avoir tous les fichiers natifs :&lt;/p&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;apktool d CrackMe.apk&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Puis j&amp;rsquo;ai passé l&amp;rsquo;apk dans Jadx, un outil très utilisé pour le reverse de code Java  :&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+    
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+<script defer language="javascript" type="text/javascript" src="/js/bundle.min.145453261a7755f5042a854c4213501d215a8fbe34c08d181c40f803f1315e74.js"></script>
+
+
+
+
+
+
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    
+    <link rel="icon" href=/images/favicon.png>
+
+    
+    
+
+
+
+
+
+  
+
+
+
+
+
+  
+  
+  
+
+
+<!-- Open Graph image and Twitter Card metadata -->
+
+<title itemprop="name">Vozec&#39;s Blog - Android CrackMe Native | CyberSpace CTF 2022 | Catégorie Reverse | [Vozec/FR] </title>
+<meta property="og:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Android&#32;CrackMe&#32;Native&#32;|&#32;CyberSpace&#32;CTF&#32;2022&#32;|&#32;Catégorie&#32;Reverse&#32;|&#32;[Vozec/FR]&#32; />
+<meta name="twitter:title" content=Vozec&#39;s&#32;Blog&#32;-&#32;Android&#32;CrackMe&#32;Native&#32;|&#32;CyberSpace&#32;CTF&#32;2022&#32;|&#32;Catégorie&#32;Reverse&#32;|&#32;[Vozec/FR]&#32; />
+<meta itemprop="name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Android&#32;CrackMe&#32;Native&#32;|&#32;CyberSpace&#32;CTF&#32;2022&#32;|&#32;Catégorie&#32;Reverse&#32;|&#32;[Vozec/FR]&#32; />
+<meta name="application-name" content=Vozec&#39;s&#32;Blog&#32;-&#32;Android&#32;CrackMe&#32;Native&#32;|&#32;CyberSpace&#32;CTF&#32;2022&#32;|&#32;Catégorie&#32;Reverse&#32;|&#32;[Vozec/FR]&#32; />
+<meta property="og:site_name" content="" />
+
+
+<meta name="description" content="Android CrackMe Native | CyberSpace CTF 2022" />
+<meta itemprop="description" content="Android CrackMe Native | CyberSpace CTF 2022" />
+<meta property="og:description" content="Android CrackMe Native | CyberSpace CTF 2022" />
+<meta name="twitter:description" content="Android CrackMe Native | CyberSpace CTF 2022" />
+
+
+<base href="//localhost:1313/writeups/android-crackme-native_cyberspacectf/" />
+<link rel="canonical" href="//localhost:1313/writeups/android-crackme-native_cyberspacectf/" itemprop="url" />
+<meta name="url" content="//localhost:1313/writeups/android-crackme-native_cyberspacectf/" />
+<meta name="twitter:url" content="//localhost:1313/writeups/android-crackme-native_cyberspacectf/" />
+<meta property="og:url" content="//localhost:1313/writeups/android-crackme-native_cyberspacectf/" />
+
+
+<meta property="og:updated_time" content="2022-01-11T12:00:00Z" />
+
+
+<link rel="sitemap" type="application/xml" title="Sitemap" href='//localhost:1313/sitemap.xml' />
+
+<meta name="robots" content="index,follow" />
+<meta name="googlebot" content="index,follow" />
+
+
+<meta name="twitter:site" content="https://twitter.com/Vozec1" />
+<meta name="twitter:creator" content="https://twitter.com/Vozec1" />
+<meta property="fb:admins" content="" />
+
+
+<meta name="apple-mobile-web-app-title" content="" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.134.1">
+
+
+    
+    
+
+<link type="text/css" rel="stylesheet" href="/css/bundle.min.94a339836f89f0d25f31980cb6b0631da21e20af128308747ce44e0525eb16ef.css">
+
+
+    
+    <style>
+    body {
+        --sidebar-bg-color: #202020;
+        --sidebar-img-border-color: #515151;
+        --sidebar-p-color: #909090;
+        --sidebar-h1-color: #FFF;
+        --sidebar-a-color: #FFF;
+        --sidebar-socials-color: #FFF;
+        --text-color: #222;
+        --bkg-color: #FAF9F6;
+        --post-title-color: #303030;
+        --list-color: #5A5A5A;
+        --link-color: #268BD2;
+        --date-color: #515151;
+        --table-border-color: #E5E5E5;
+        --table-stripe-color: #F9F9F9;
+        --code-color: #000;
+        --code-background-color: #E5E5E5;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+        --moon-sun-color: #FFF;
+        --moon-sun-background-color: #515151;
+    }
+    body.dark-theme {
+        --text-color: #EEE;
+        --bkg-color: #121212;
+        --post-title-color: #DBE2E9;
+        --list-color: #9D9D9D;
+        --link-color: #268BD2;
+        --date-color: #9A9A9A;
+        --table-border-color: #515151;
+        --table-stripe-color: #202020;
+        --code-color: #FFF;
+        --code-background-color: #515151;
+        --code-block-color: #FFF;
+        --code-block-background-color: #272822;
+    }
+    body {
+        background-color: var(--bkg-color);
+    }
+</style>
+
+</head>
+
+    <body class="dark-theme">
+        <div class="wrapper">
+            <aside class="sidebar">
+    <div class="container sidebar-sticky">
+        <div class="light-dark" align="right">
+    <button class="btn-light-dark" title="Toggle light/dark mode">
+        <svg class="moon" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M6 .278a.768.768 0 0 1 .08.858a7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277c.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316a.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71C0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
+        </svg>
+        <svg class="sun" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M8 12a4 4 0 1 0 0-8a4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+        </svg>
+    </button>
+</div>
+
+        <div class="sidebar-about">
+    <h1 class="brand">
+        
+            <a href="//localhost:1313/">
+                <img src="https://avatars.githubusercontent.com/u/61807609?v=4" alt="brand image">
+            </a>
+        
+        
+            <a href="//localhost:1313/">
+                <h1>Vozec&#39;s Blog</h1>
+            </a>
+        
+    </h1>
+    <p class="lead">
+    A student passionate about cybersecurity
+    </p>
+</div>
+
+        <nav>
+    <ul class="sidebar-nav">
+
+        
+        
+        
+        
+            
+
+            
+                
+                
+                    <li class="heading">
+                        <a href="/about/">About</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/writeups/">Writeups</a>
+                    </li>
+                    
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/researchs/">Researchs</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/rsa/">1/ Crypto RSA</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/aes/">2/ Crypto AES</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+        
+            
+
+            
+                
+                
+            
+                
+                
+            
+                
+                
+                    <li class="heading">
+                        <a href="/other/">3/ Crypto Other</a>
+                    </li>
+                    
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+                
+                
+            
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+            
+                
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+                        
+                
+            
+        
+
+    </ul>
+</nav>
+
+        
+    <a target="_blank" class="social" title="GitHub" href="https://github.com/Vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="-2 -2 24 24">
+            <path fill="currentColor" d="M18.88 1.099C18.147.366 17.265 0 16.233 0H3.746C2.714 0 1.832.366 1.099 1.099C.366 1.832 0 2.714 0 3.746v12.487c0 1.032.366 1.914 1.099 2.647c.733.733 1.615 1.099 2.647 1.099H6.66c.19 0 .333-.007.429-.02a.504.504 0 0 0 .286-.169c.095-.1.143-.245.143-.435l-.007-.885c-.004-.564-.006-1.01-.006-1.34l-.3.052c-.19.035-.43.05-.721.046a5.555 5.555 0 0 1-.904-.091a2.026 2.026 0 0 1-.872-.39a1.651 1.651 0 0 1-.572-.8l-.13-.3a3.25 3.25 0 0 0-.41-.663c-.186-.243-.375-.407-.566-.494l-.09-.065a.956.956 0 0 1-.17-.156a.723.723 0 0 1-.117-.182c-.026-.061-.004-.111.065-.15c.07-.04.195-.059.378-.059l.26.04c.173.034.388.138.643.311a2.1 2.1 0 0 1 .631.677c.2.355.44.626.722.813c.282.186.566.28.852.28c.286 0 .533-.022.742-.065a2.59 2.59 0 0 0 .585-.196c.078-.58.29-1.028.637-1.34a8.907 8.907 0 0 1-1.333-.234a5.314 5.314 0 0 1-1.223-.507a3.5 3.5 0 0 1-1.047-.872c-.277-.347-.505-.802-.683-1.365c-.177-.564-.266-1.215-.266-1.952c0-1.049.342-1.942 1.027-2.68c-.32-.788-.29-1.673.091-2.652c.252-.079.625-.02 1.119.175c.494.195.856.362 1.086.5c.23.14.414.257.553.352a9.233 9.233 0 0 1 2.497-.338c.859 0 1.691.113 2.498.338l.494-.312a6.997 6.997 0 0 1 1.197-.572c.46-.174.81-.221 1.054-.143c.39.98.424 1.864.103 2.653c.685.737 1.028 1.63 1.028 2.68c0 .737-.089 1.39-.267 1.957c-.177.568-.407 1.023-.689 1.366a3.65 3.65 0 0 1-1.053.865c-.42.234-.828.403-1.223.507a8.9 8.9 0 0 1-1.333.235c.45.39.676 1.005.676 1.846v3.11c0 .147.021.266.065.357a.36.36 0 0 0 .208.189c.096.034.18.056.254.064c.074.01.18.013.318.013h2.914c1.032 0 1.914-.366 2.647-1.099c.732-.732 1.099-1.615 1.099-2.647V3.746c0-1.032-.367-1.914-1.1-2.647z"/>
+        </svg>
+    </a>
+
+
+
+    <a target="_blank" class="social" title="LinkedIn" href="https://www.linkedin.com/in/arthur-dlfr/">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 448 512">
+            <path fill="currentColor" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5c0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7c-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5c67.2 0 79.7 44.3 79.7 101.9V416z"/>
+        </svg>
+    </a>
+
+
+    <a target="_blank" class="social" title="Twitter" href="https://twitter.com/Vozec1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 16 16">
+            <path fill="currentColor" d="M5.032 14.286c6.037 0 9.34-4.837 9.34-9.032c0-.137 0-.274-.01-.41A6.56 6.56 0 0 0 16 3.2c-.6.256-1.235.425-1.885.5a3.207 3.207 0 0 0 1.443-1.757c-.645.37-1.35.63-2.085.77a3.322 3.322 0 0 0-1.862-.958a3.384 3.384 0 0 0-2.082.334a3.223 3.223 0 0 0-1.442 1.49a3.08 3.08 0 0 0-.208 2.03a9.57 9.57 0 0 1-3.747-.963a9.269 9.269 0 0 1-3.018-2.354a3.086 3.086 0 0 0-.36 2.314c.189.787.68 1.475 1.376 1.924a3.344 3.344 0 0 1-1.49-.398v.04c0 .734.263 1.444.743 2.01a3.3 3.3 0 0 0 1.89 1.102c-.483.128-.99.146-1.482.055a3.19 3.19 0 0 0 1.168 1.577a3.36 3.36 0 0 0 1.9.627A6.732 6.732 0 0 1 0 12.86a9.527 9.527 0 0 0 5.032 1.423"/>
+        </svg>
+    </a>
+
+
+
+
+    <a target="_blank" class="social" title="Discord" href="vozec">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1.2em" height="1.2em" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M19.27 5.33C17.94 4.71 16.5 4.26 15 4a.09.09 0 0 0-.07.03c-.18.33-.39.76-.53 1.09a16.09 16.09 0 0 0-4.8 0c-.14-.34-.35-.76-.54-1.09c-.01-.02-.04-.03-.07-.03c-1.5.26-2.93.71-4.27 1.33c-.01 0-.02.01-.03.02c-2.72 4.07-3.47 8.03-3.1 11.95c0 .02.01.04.03.05c1.8 1.32 3.53 2.12 5.24 2.65c.03.01.06 0 .07-.02c.4-.55.76-1.13 1.07-1.74c.02-.04 0-.08-.04-.09c-.57-.22-1.11-.48-1.64-.78c-.04-.02-.04-.08-.01-.11c.11-.08.22-.17.33-.25c.02-.02.05-.02.07-.01c3.44 1.57 7.15 1.57 10.55 0c.02-.01.05-.01.07.01c.11.09.22.17.33.26c.04.03.04.09-.01.11c-.52.31-1.07.56-1.64.78c-.04.01-.05.06-.04.09c.32.61.68 1.19 1.07 1.74c.03.01.06.02.09.01c1.72-.53 3.45-1.33 5.25-2.65c.02-.01.03-.03.03-.05c.44-4.53-.73-8.46-3.1-11.95c-.01-.01-.02-.02-.04-.02zM8.52 14.91c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.84 2.12-1.89 2.12zm6.97 0c-1.03 0-1.89-.95-1.89-2.12s.84-2.12 1.89-2.12c1.06 0 1.9.96 1.89 2.12c0 1.17-.83 2.12-1.89 2.12z"/>
+        </svg>
+    </a>
+
+
+
+
+
+
+
+
+
+
+    <a target="_blank" class="social" title="Email" href="https://www.root-me.org/Vozec">
+       <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1.2em" viewBox="0 0 485.211 485.211">
+            <path fill="currentColor" d="M301.393,241.631L464.866,424.56H20.332l163.474-182.928l58.801,51.443L301.393,241.631z M462.174,60.651H23.027 l219.579,192.142L462.174,60.651z M324.225,221.67l160.986,180.151V80.792L324.225,221.67z M0,80.792v321.029L160.972,221.64 L0,80.792z"/>
+       </svg>
+    </a>
+
+
+        <p class="footnote">
+powered by <a target="_blank" href="https://gohugo.io">Hugo</a> | themed with <a target="_blank" href="https://github.com/lukeorth/poison">poison</a>
+    <br>
+    &copy; 2024 . All rights reserved.
+</p>
+
+  </div>
+</aside>
+
+            <main class="content container">
+                <div class="post">
+  <div class="info">
+  <h1 class="post-title">
+    <a href="//localhost:1313/writeups/android-crackme-native_cyberspacectf/">Android CrackMe Native | CyberSpace CTF 2022 | Catégorie Reverse | [Vozec/FR] </a>
+  </h1>
+
+  <div class="headline">
+    <div>
+      
+      <time datetime=" 2022-01-11T12:00:00Z" class="post-date">
+        January 11, 2022
+      </time>
+      
+      <span> - </span>
+      <span class="reading-time">
+        
+          
+        
+
+        <span>6 mins read</span>
+      </span>
+    </div>
+
+    
+    <ul class="tags">
+      
+      <li class="tag-reverse">
+        <a href="//localhost:1313/tags/reverse">reverse</a>
+      </li>
+      
+      <li class="tag-android">
+        <a href="//localhost:1313/tags/android">android</a>
+      </li>
+      
+      <li class="tag-writeup">
+        <a href="//localhost:1313/tags/writeup">writeup</a>
+      </li>
+      
+    </ul>
+    
+  </div>
+
+  
+  
+
+  
+</div>
+
+  <h2 id="fichiers">Fichier(s)</h2>
+<ul>
+<li><a href="./files/CrackMe.apk">Android App</a></li>
+</ul>
+<h2 id="nécessaires">Nécessaires</h2>
+<ul>
+<li>Ghidra</li>
+<li>Python3</li>
+<li>Jdax</li>
+<li>Apktool</li>
+</ul>
+<h2 id="flag">Flag</h2>
+<pre tabindex="0"><code>HL{J4v4.nativ3.d0.n0t.c4r3}
+</code></pre><h2 id="solution-détaillée">Solution détaillée</h2>
+<p>La première chose est de décompiler l&rsquo;apk pour en retrouver le code Java .
+J&rsquo;ai utilisé Apktool pour extraire le code smali et avoir tous les fichiers natifs :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>apktool d CrackMe.apk
+</span></span></code></pre></div><p>Puis j&rsquo;ai passé l&rsquo;apk dans Jadx, un outil très utilisé pour le reverse de code Java  :</p>
+<p><img src="./img/jdax.png" alt="Alt text"></p>
+<p>J&rsquo;ai installé l&rsquo;apk sur mon appareil après avoir vérifié l&rsquo;absence de virus et voici la page d&rsquo;accueil :</p>
+<p><img src="./img/intro.png" alt="Alt text"></p>
+<p>Cherchons dans le code la fonction de vérification de mot passe :
+On retrouve à 2 endroits une fonction <strong>getCode</strong></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> <span style="color:#a6e22e">getCode</span>(String str) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> bytes <span style="color:#f92672">=</span> str.<span style="color:#a6e22e">getBytes</span>();
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> iArr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>str.<span style="color:#a6e22e">length</span>()<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> str.<span style="color:#a6e22e">length</span>(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>        iArr<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> bytes<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">^</span> x0<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> iArr;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Ainsi qu&rsquo;un appel à la fonction :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> checkPw <span style="color:#f92672">=</span> checkPw(getCode(str));
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> (checkPw.<span style="color:#a6e22e">length</span> <span style="color:#f92672">&gt;</span> 0) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">loginResult</span>.<span style="color:#a6e22e">setValue</span>(<span style="color:#66d9ef">new</span> LoginResult(<span style="color:#66d9ef">new</span> LoggedInUser(getStringFromCode(checkPw), <span style="color:#e6db74">&#34;Well done you did it.&#34;</span>)));
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Un autre chose remarquable est ceci :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">loginDataChanged</span>(String str) {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>isPasswordValid(str)) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">loginFormState</span>.<span style="color:#a6e22e">setValue</span>(<span style="color:#66d9ef">new</span> LoginFormState((Integer) <span style="color:#66d9ef">null</span>, Integer.<span style="color:#a6e22e">valueOf</span>(R.<span style="color:#a6e22e">string</span>.<span style="color:#a6e22e">invalid_password</span>)));
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (str.<span style="color:#a6e22e">indexOf</span>(<span style="color:#e6db74">&#34;HL&#34;</span>) <span style="color:#f92672">&lt;</span> 0) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">loginFormState</span>.<span style="color:#a6e22e">setValue</span>(<span style="color:#66d9ef">new</span> LoginFormState((Integer) <span style="color:#66d9ef">null</span>, Integer.<span style="color:#a6e22e">valueOf</span>(R.<span style="color:#a6e22e">string</span>.<span style="color:#a6e22e">must_contain_HL</span>)));
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (checkHooking()) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">loginFormState</span>.<span style="color:#a6e22e">setValue</span>(<span style="color:#66d9ef">new</span> LoginFormState((Integer) <span style="color:#66d9ef">null</span>, Integer.<span style="color:#a6e22e">valueOf</span>(R.<span style="color:#a6e22e">string</span>.<span style="color:#a6e22e">must_not_hook</span>)));
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (str.<span style="color:#a6e22e">indexOf</span>(123) <span style="color:#f92672">&lt;</span> 0) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">loginFormState</span>.<span style="color:#a6e22e">setValue</span>(<span style="color:#66d9ef">new</span> LoginFormState((Integer) <span style="color:#66d9ef">null</span>, Integer.<span style="color:#a6e22e">valueOf</span>(R.<span style="color:#a6e22e">string</span>.<span style="color:#a6e22e">is_of_format</span>)));
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span> (str.<span style="color:#a6e22e">indexOf</span>(125) <span style="color:#f92672">&lt;</span> 0) {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">loginFormState</span>.<span style="color:#a6e22e">setValue</span>(<span style="color:#66d9ef">new</span> LoginFormState((Integer) <span style="color:#66d9ef">null</span>, Integer.<span style="color:#a6e22e">valueOf</span>(R.<span style="color:#a6e22e">string</span>.<span style="color:#a6e22e">is_of_format</span>)));
+</span></span><span style="display:flex;"><span>        } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">this</span>.<span style="color:#a6e22e">loginFormState</span>.<span style="color:#a6e22e">setValue</span>(<span style="color:#66d9ef">new</span> LoginFormState(<span style="color:#66d9ef">true</span>));
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Cette fonction prend en entrée supposément le mot de passe et vérifie si il contient :</p>
+<ul>
+<li><code>HL</code> , <code>{</code> ,  <code>}</code></li>
+</ul>
+<p>On retrouve aussi une fonction qui vérifie si le téléphone est rooté et une autre fonction qui vérifie qu&rsquo;il n&rsquo;y a pas de processus de hooking sur l&rsquo;application . Nous ne nous en servirons pas dans ce challenge .</p>
+<p>Regardons de plus prêt la fonction : <code>Getode()</code></p>
+<p>Premièrement , elle prend en entrée une chaine de charactères ; on peut deviner que c&rsquo;est notre mot de passe entrée .
+Puis elle <strong>XoR chaque Bytes de l&rsquo;input</strong> avec un élément d&rsquo;une liste prédéfinit en variable globale :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> x0 <span style="color:#f92672">=</span> {121, 134, 239, 213, 16, 28, 184, 101, 150, 60, 170, 49, 159, 189, 241, 146, 141, 22, 205, 223, 218, 210, 99, 219, 34, 84, 156, 237, 26, 94, 178, 230, 27, 180, 72, 32, 102, 192, 178, 234, 228, 38, 37, 142, 242, 142, 133, 159, 142, 33};
+</span></span></code></pre></div><p>Pour être sur de bien comprendre ce que fait <strong>getBytes();</strong> , j&rsquo;ai écris ce code en java .
+Je voulais m&rsquo;assurer que la fonction : <strong>ord</strong> en python donné le même résultat</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#f92672">import</span> java.util.Arrays;
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Decode</span> {
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> x0 <span style="color:#f92672">=</span> {121, 134, 239, 213, 16, 28, 184, 101, 150, 60, 170, 49, 159, 189, 241, 146, 141, 22, 205, 223, 218, 210, 99, 219, 34, 84, 156, 237, 26, 94, 178, 230, 27, 180, 72, 32, 102, 192, 178, 234, 228, 38, 37, 142, 242, 142, 133, 159, 142, 33};
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span>(String<span style="color:#f92672">[]</span> args) {
+</span></span><span style="display:flex;"><span>        String str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;HL{&#34;</span>;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">byte</span><span style="color:#f92672">[]</span> bytes <span style="color:#f92672">=</span> str.<span style="color:#a6e22e">getBytes</span>();
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> iArr <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>str.<span style="color:#a6e22e">length</span>()<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">for</span> (<span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0; i <span style="color:#f92672">&lt;</span> str.<span style="color:#a6e22e">length</span>(); i<span style="color:#f92672">++</span>) {
+</span></span><span style="display:flex;"><span>            iArr<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> bytes<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">^</span> x0<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span>;
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">out</span>.<span style="color:#a6e22e">println</span>(Arrays.<span style="color:#a6e22e">toString</span>(iArr));
+</span></span><span style="display:flex;"><span>    }    
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Quelque chose qui m&rsquo;a perturbé et cette appel : <code>int[] checkPw = checkPw(getCode(str));</code>
+On sait que GetCode renvoie une liste de charactères Xorés mais que fais <strong>CheckPw</strong> ???</p>
+<p>Je n&rsquo;ai d&rsquo;abord pas trouvé de fonction de ce nom puis quelque chose m&rsquo;a frappé :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Java" data-lang="Java"><span style="display:flex;"><span><span style="color:#66d9ef">static</span> {
+</span></span><span style="display:flex;"><span>        System.<span style="color:#a6e22e">loadLibrary</span>(<span style="color:#e6db74">&#34;native-lib&#34;</span>);
+</span></span><span style="display:flex;"><span>    }
+</span></span></code></pre></div><p>Il y a une importation d&rsquo;une librairie !
+C&rsquo;est là que apktool nous sert . Dans les fichiers de l&rsquo;apk , il y avait une librairy en C du nom de : <strong>libnative-lib.so</strong></p>
+<p>Je l&rsquo;ai donc ouvert avec Ghidra et voici ce que j&rsquo;y ai trouvé !</p>
+<p><img src="./img/allfunctions.png" alt="Alt Text"></p>
+<p>On voit la fonction checkHooking évoqué plus haut et surtout notre fonction <strong>CheckPW</strong> ! Nous sommes sauvés</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">void</span> <span style="color:#a6e22e">Java_org_bfe_crackmenative_ui_LoginViewModel_checkPw</span>
+</span></span><span style="display:flex;"><span>               (<span style="color:#66d9ef">int</span> <span style="color:#f92672">*</span>param_1,undefined4 param_2,undefined4 param_3)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> iVar1;
+</span></span><span style="display:flex;"><span>  uint <span style="color:#f92672">*</span>puVar2;
+</span></span><span style="display:flex;"><span>  uint <span style="color:#f92672">*</span>puVar3;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">bool</span> bVar4;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> iVar5;
+</span></span><span style="display:flex;"><span>  FILE <span style="color:#f92672">*</span>__stream;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>pcVar6;
+</span></span><span style="display:flex;"><span>  uint <span style="color:#f92672">*</span>puVar7;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> iVar8;
+</span></span><span style="display:flex;"><span>  uint uVar9;
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">char</span> acStack4140 [<span style="color:#ae81ff">4096</span>];
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">int</span> iStack44;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  iStack44 <span style="color:#f92672">=</span> __stack_chk_guard;
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">__android_log_write</span>(<span style="color:#ae81ff">4</span>,<span style="color:#e6db74">&#34;Native Check&#34;</span>,<span style="color:#e6db74">&#34;Checking password ...&#34;</span>);
+</span></span><span style="display:flex;"><span>  (<span style="color:#f92672">**</span>(code <span style="color:#f92672">**</span>)(<span style="color:#f92672">*</span>param_1 <span style="color:#f92672">+</span> <span style="color:#ae81ff">0x2cc</span>))(param_1,<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>  iVar5 <span style="color:#f92672">=</span> (<span style="color:#f92672">**</span>(code <span style="color:#f92672">**</span>)(<span style="color:#f92672">*</span>param_1 <span style="color:#f92672">+</span> <span style="color:#ae81ff">0x2ac</span>))(param_1,param_3);
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (iVar5 <span style="color:#f92672">==</span> <span style="color:#ae81ff">0x1b</span>) {
+</span></span><span style="display:flex;"><span>    __stream <span style="color:#f92672">=</span> <span style="color:#a6e22e">fopen</span>(<span style="color:#e6db74">&#34;/proc/self/maps&#34;</span>,<span style="color:#e6db74">&#34;r&#34;</span>);
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">do</span> {
+</span></span><span style="display:flex;"><span>      pcVar6 <span style="color:#f92672">=</span> <span style="color:#a6e22e">fgets</span>(acStack4140,<span style="color:#ae81ff">0x1000</span>,__stream);
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">if</span> (pcVar6 <span style="color:#f92672">==</span> (<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)<span style="color:#ae81ff">0x0</span>) {
+</span></span><span style="display:flex;"><span>        bVar4 <span style="color:#f92672">=</span> false;
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">goto</span> LAB_00010a32;
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>      pcVar6 <span style="color:#f92672">=</span> <span style="color:#a6e22e">strstr</span>(acStack4140,<span style="color:#e6db74">&#34;Xposed&#34;</span>);
+</span></span><span style="display:flex;"><span>    } <span style="color:#66d9ef">while</span> ((pcVar6 <span style="color:#f92672">==</span> (<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)<span style="color:#ae81ff">0x0</span>) <span style="color:#f92672">&amp;&amp;</span>
+</span></span><span style="display:flex;"><span>            (pcVar6 <span style="color:#f92672">=</span> <span style="color:#a6e22e">strstr</span>(acStack4140,<span style="color:#e6db74">&#34;frida&#34;</span>), pcVar6 <span style="color:#f92672">==</span> (<span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>)<span style="color:#ae81ff">0x0</span>));
+</span></span><span style="display:flex;"><span>    bVar4 <span style="color:#f92672">=</span> true;
+</span></span><span style="display:flex;"><span>LAB_00010a32:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (__stream <span style="color:#f92672">!=</span> (FILE <span style="color:#f92672">*</span>)<span style="color:#ae81ff">0x0</span>) {
+</span></span><span style="display:flex;"><span>      <span style="color:#a6e22e">fclose</span>(__stream);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> (<span style="color:#f92672">!</span>bVar4) {
+</span></span><span style="display:flex;"><span>      iVar8 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>      iVar5 <span style="color:#f92672">=</span> (<span style="color:#f92672">**</span>(code <span style="color:#f92672">**</span>)(<span style="color:#f92672">*</span>param_1 <span style="color:#f92672">+</span> <span style="color:#ae81ff">0x2ec</span>))(param_1,param_3,<span style="color:#ae81ff">0</span>);
+</span></span><span style="display:flex;"><span>      puVar7 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>DAT_00012a60;
+</span></span><span style="display:flex;"><span>      <span style="color:#66d9ef">do</span> {
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> (iVar8 <span style="color:#f92672">==</span> <span style="color:#ae81ff">0x1b</span>) <span style="color:#66d9ef">break</span>;
+</span></span><span style="display:flex;"><span>        iVar1 <span style="color:#f92672">=</span> iVar8 <span style="color:#f92672">*</span> <span style="color:#ae81ff">4</span>;
+</span></span><span style="display:flex;"><span>        puVar2 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>DAT_000128f8 <span style="color:#f92672">+</span> iVar8;
+</span></span><span style="display:flex;"><span>        uVar9 <span style="color:#f92672">=</span> <span style="color:#f92672">*</span>puVar7;
+</span></span><span style="display:flex;"><span>        puVar3 <span style="color:#f92672">=</span> <span style="color:#f92672">&amp;</span>DAT_00012a94 <span style="color:#f92672">+</span> iVar8;
+</span></span><span style="display:flex;"><span>        iVar8 <span style="color:#f92672">=</span> iVar8 <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>        puVar7 <span style="color:#f92672">=</span> puVar7 <span style="color:#f92672">+</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>;
+</span></span><span style="display:flex;"><span>      } <span style="color:#66d9ef">while</span> ((<span style="color:#f92672">*</span>(uint <span style="color:#f92672">*</span>)(iVar5 <span style="color:#f92672">+</span> iVar1) <span style="color:#f92672">^</span> <span style="color:#f92672">*</span>puVar2 <span style="color:#f92672">^</span> uVar9) <span style="color:#f92672">==</span> <span style="color:#f92672">*</span>puVar3);
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>  <span style="color:#66d9ef">if</span> (__stack_chk_guard <span style="color:#f92672">-</span> iStack44 <span style="color:#f92672">==</span> <span style="color:#ae81ff">0</span>) {
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span>;
+</span></span><span style="display:flex;"><span>  }
+</span></span><span style="display:flex;"><span>                    <span style="color:#75715e">/* WARNING: Subroutine does not return */</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">__stack_chk_fail</span>(__stack_chk_guard <span style="color:#f92672">-</span> iStack44);
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Voici à quoi ressemble la fonction. On y voit premièrement une partie inutile, la partie supérieur de la fonction est en fait un Hook par Frida , un Framework pour modifier des application Android .</p>
+<p>On initialise une liste : <code>puVar7 = &amp;DAT_00012a60;</code></p>
+<p>La Boucle while final est intéressante :</p>
+<p><img src="./img/function.png" alt="Alt Text"></p>
+<ul>
+<li>On identifie directement un conteur :</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-C" data-lang="C"><span style="display:flex;"><span>iVar8 <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>;
+</span></span><span style="display:flex;"><span>. . .
+</span></span><span style="display:flex;"><span>iVar8 <span style="color:#f92672">=</span> iVar8 <span style="color:#f92672">+</span> <span style="color:#ae81ff">1</span>;
+</span></span></code></pre></div><ul>
+<li>
+<p>Nous voyons qu&rsquo;il y a un <code>break;</code>
+On voit que celui-ci se déclenche quand <strong>iVar8</strong> est égale à <strong>0x1b</strong> soit <code>27</code>
+Parfait, on a déjà la taille de notre mot de passe !</p>
+</li>
+<li>
+<p>Finalement, on observe 2 XoR successifs de puVar7 (défini plus haut) avec 2 autres listes : <strong>DAT_000128f8</strong> et <strong>DAT_00012a94</strong></p>
+</li>
+</ul>
+<p>On peut en déduire que le mot de passe secret est puVar7 et que le XoR avec ces 2 listes et comparé à la liste généré avec le code Java .</p>
+<p>On peut donc utiliser les propriétés du XoR pour retrouver le flag original .
+Rappel :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Tex" data-lang="Tex"><span style="display:flex;"><span>B ⊕ ( A ⊕ B ) = B ⊕ ( B ⊕ A ) (associative)
+</span></span><span style="display:flex;"><span>B ⊕ ( A ⊕ B ) = (B ⊕ B) ⊕ A   (self-inverse)
+</span></span><span style="display:flex;"><span>B ⊕ ( A ⊕ B ) = 0 ⊕ A         (identity element)
+</span></span><span style="display:flex;"><span>B ⊕ ( A ⊕ B ) = A
+</span></span></code></pre></div><p>Voici le code python de ma solution :
+On Xor les derniers 27 charactères de DAT_000128f8 avec DAT_00012a94 et DAT_00012a94 puis enfin avec la liste obtenue dans le java :</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>all_ <span style="color:#f92672">=</span> [<span style="color:#ae81ff">121</span>, <span style="color:#ae81ff">134</span>, <span style="color:#ae81ff">239</span>, <span style="color:#ae81ff">213</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">28</span>, <span style="color:#ae81ff">184</span>, <span style="color:#ae81ff">101</span>, <span style="color:#ae81ff">150</span>, <span style="color:#ae81ff">60</span>, <span style="color:#ae81ff">170</span>, <span style="color:#ae81ff">49</span>, <span style="color:#ae81ff">159</span>, <span style="color:#ae81ff">189</span>, <span style="color:#ae81ff">241</span>, <span style="color:#ae81ff">146</span>, <span style="color:#ae81ff">141</span>, <span style="color:#ae81ff">22</span>, <span style="color:#ae81ff">205</span>, <span style="color:#ae81ff">223</span>, <span style="color:#ae81ff">218</span>, <span style="color:#ae81ff">210</span>, <span style="color:#ae81ff">99</span>, <span style="color:#ae81ff">219</span>, <span style="color:#ae81ff">34</span>, <span style="color:#ae81ff">84</span>, <span style="color:#ae81ff">156</span>, <span style="color:#ae81ff">237</span>, <span style="color:#ae81ff">26</span>, <span style="color:#ae81ff">94</span>, <span style="color:#ae81ff">178</span>, <span style="color:#ae81ff">230</span>, <span style="color:#ae81ff">27</span>, <span style="color:#ae81ff">180</span>, <span style="color:#ae81ff">72</span>, <span style="color:#ae81ff">32</span>, <span style="color:#ae81ff">102</span>, <span style="color:#ae81ff">192</span>, <span style="color:#ae81ff">178</span>, <span style="color:#ae81ff">234</span>, <span style="color:#ae81ff">228</span>, <span style="color:#ae81ff">38</span>, <span style="color:#ae81ff">37</span>, <span style="color:#ae81ff">142</span>, <span style="color:#ae81ff">242</span>, <span style="color:#ae81ff">142</span>, <span style="color:#ae81ff">133</span>, <span style="color:#ae81ff">159</span>, <span style="color:#ae81ff">142</span>, <span style="color:#ae81ff">33</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DAT_000128f8 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0xd0</span>,<span style="color:#ae81ff">0x45</span>,<span style="color:#ae81ff">0x28</span>,<span style="color:#ae81ff">0x76</span>,<span style="color:#ae81ff">0x6f</span>,<span style="color:#ae81ff">0xf3</span>,<span style="color:#ae81ff">0x5a</span>,<span style="color:#ae81ff">0xf4</span>,<span style="color:#ae81ff">0xc7</span>,<span style="color:#ae81ff">0xce</span>,<span style="color:#ae81ff">0xfb</span>,<span style="color:#ae81ff">0xc3</span>,<span style="color:#ae81ff">0x7f</span>,<span style="color:#ae81ff">0x48</span>,<span style="color:#ae81ff">0xce</span>,<span style="color:#ae81ff">0x3c</span>,<span style="color:#ae81ff">0x3a</span>,<span style="color:#ae81ff">0x0b</span>,<span style="color:#ae81ff">0xf1</span>,<span style="color:#ae81ff">0x53</span>,<span style="color:#ae81ff">0xb1</span>,<span style="color:#ae81ff">0x4b</span>,<span style="color:#ae81ff">0xb9</span>,<span style="color:#ae81ff">0x5e</span>,<span style="color:#ae81ff">0xa2</span>,<span style="color:#ae81ff">0x65</span>,<span style="color:#ae81ff">0x77</span>,<span style="color:#ae81ff">0xa5</span>,<span style="color:#ae81ff">0x81</span>,<span style="color:#ae81ff">0x95</span>,<span style="color:#ae81ff">0xca</span>,<span style="color:#ae81ff">0x31</span>,<span style="color:#ae81ff">0x18</span>,<span style="color:#ae81ff">0x88</span>,<span style="color:#ae81ff">0xee</span>,<span style="color:#ae81ff">0xdd</span>,<span style="color:#ae81ff">0x38</span>,<span style="color:#ae81ff">0x5d</span>,<span style="color:#ae81ff">0xd5</span>,<span style="color:#ae81ff">0xa9</span>,<span style="color:#ae81ff">0x4a</span>,<span style="color:#ae81ff">0x7c</span>,<span style="color:#ae81ff">0x9d</span>,<span style="color:#ae81ff">0xc9</span>,<span style="color:#ae81ff">0xb8</span>,<span style="color:#ae81ff">0xe8</span>,<span style="color:#ae81ff">0xfb</span>,<span style="color:#ae81ff">0x9f</span>,<span style="color:#ae81ff">0x64</span>,<span style="color:#ae81ff">0x57</span>,<span style="color:#ae81ff">0xe0</span>,<span style="color:#ae81ff">0xd6</span>,<span style="color:#ae81ff">0x42</span>,<span style="color:#ae81ff">0x95</span>,<span style="color:#ae81ff">0x29</span>,<span style="color:#ae81ff">0x8f</span>,<span style="color:#ae81ff">0xd4</span>,<span style="color:#ae81ff">0x35</span>,<span style="color:#ae81ff">0x2d</span>,<span style="color:#ae81ff">0x0a</span>,<span style="color:#ae81ff">0x54</span>,<span style="color:#ae81ff">0xed</span>,<span style="color:#ae81ff">0xc4</span>,<span style="color:#ae81ff">0x48</span>,<span style="color:#ae81ff">0x4c</span>,<span style="color:#ae81ff">0x7b</span>,<span style="color:#ae81ff">0x73</span>,<span style="color:#ae81ff">0x6f</span>,<span style="color:#ae81ff">0x72</span>,<span style="color:#ae81ff">0x72</span>,<span style="color:#ae81ff">0x79</span>,<span style="color:#ae81ff">0x2e</span>,<span style="color:#ae81ff">0x74</span>,<span style="color:#ae81ff">0x68</span>,<span style="color:#ae81ff">0x69</span>,<span style="color:#ae81ff">0x73</span>,<span style="color:#ae81ff">0x2e</span>,<span style="color:#ae81ff">0x69</span>,<span style="color:#ae81ff">0x73</span>,<span style="color:#ae81ff">0x2e</span>,<span style="color:#ae81ff">0x4e</span>,<span style="color:#ae81ff">0x4f</span>,<span style="color:#ae81ff">0x54</span>,<span style="color:#ae81ff">0x2e</span>,<span style="color:#ae81ff">0x74</span>,<span style="color:#ae81ff">0x68</span>,<span style="color:#ae81ff">0x65</span>,<span style="color:#ae81ff">0x2e</span>,<span style="color:#ae81ff">0x66</span>,<span style="color:#ae81ff">0x6c</span>,<span style="color:#ae81ff">0x61</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DAT_00012a94 <span style="color:#f92672">=</span> [<span style="color:#ae81ff">0x80</span>,<span style="color:#ae81ff">0xe3</span>,<span style="color:#ae81ff">0xda</span>,<span style="color:#ae81ff">0xc7</span>,<span style="color:#ae81ff">0x2e</span>,<span style="color:#ae81ff">0xf1</span>,<span style="color:#ae81ff">0xa2</span>,<span style="color:#ae81ff">0x91</span>,<span style="color:#ae81ff">0x6b</span>,<span style="color:#ae81ff">0xdc</span>,<span style="color:#ae81ff">0x6b</span>,<span style="color:#ae81ff">0xb5</span>,<span style="color:#ae81ff">0xe5</span>,<span style="color:#ae81ff">0xaf</span>,<span style="color:#ae81ff">0x3f</span>,<span style="color:#ae81ff">0xb9</span>,<span style="color:#ae81ff">0xee</span>,<span style="color:#ae81ff">0x5b</span>,<span style="color:#ae81ff">0x26</span>,<span style="color:#ae81ff">0x92</span>,<span style="color:#ae81ff">0x66</span>,<span style="color:#ae81ff">0xc5</span>,<span style="color:#ae81ff">0xcb</span>,<span style="color:#ae81ff">0xde</span>,<span style="color:#ae81ff">0x81</span>,<span style="color:#ae81ff">0x79</span>,<span style="color:#ae81ff">0xda</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>DAT_00012a94_Reversed <span style="color:#f92672">=</span> DAT_000128f8[::<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>][:<span style="color:#ae81ff">27</span><span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>final <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">27</span>):
+</span></span><span style="display:flex;"><span>	final<span style="color:#f92672">.</span>append(chr(DAT_000128f8[i] <span style="color:#f92672">^</span> DAT_00012a94[i] <span style="color:#f92672">^</span> DAT_00012a94_Reversed[i] <span style="color:#f92672">^</span> all_[i]))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;&#39;</span><span style="color:#f92672">.</span>join(final))
+</span></span></code></pre></div><p>Output:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-Bash" data-lang="Bash"><span style="display:flex;"><span>root@DESKTOP-HNQJECB: /c/AndroidReverse
+</span></span><span style="display:flex;"><span>➜   python3 solve.py
+</span></span><span style="display:flex;"><span>HL<span style="color:#f92672">{</span>J4v4.nativ3.d0.n0t.c4r3<span style="color:#f92672">}</span>
+</span></span></code></pre></div>
+  
+  <hr>
+<div class="footer">
+    
+	    
+            <a class="previous-post" href="//localhost:1313/writeups/crackity-tfc-ctf-2021/?ref=footer"><span style="font-weight:bold;">« Previous</span><br>Writeup Crackity | TFC CTF 2021 | Catégorie...</a>
+        
+	    
+            <div class="next-post">
+                <a href="//localhost:1313/writeups/herald-insomnihack-ctf-2022/?ref=footer"><span style="font-weight:bold;">Next »</span><br>Writeup Herald | Insomnihack 2022 | Catégorie...</a>
+            </div>
+        
+    
+</div>
+
+  
+</div>
+            </main>
+            
+  
+    <div class="article-toc ">
+    <div class="toc-wrapper">
+      <h4 id="contents"></h4>
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#fichiers">Fichier(s)</a></li>
+    <li><a href="#nécessaires">Nécessaires</a></li>
+    <li><a href="#flag">Flag</a></li>
+    <li><a href="#solution-détaillée">Solution détaillée</a></li>
+  </ul>
+</nav>
+    </div>
+</div>
+
+  
+
+        </div>
+    </body>
+</html>

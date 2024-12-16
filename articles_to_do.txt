@@ -1,0 +1,41 @@
+RSA:
+- Low Primes | Small Message & e=3
+- Common Modulus | Common Exponent
+- Big E : Wiener
+- Fermat
+- Pollard p-1
+- RSA Fractions Continues
+- Multi-Primes
+- Oracle de Déchiffrement
+- Hastad Broadcast
+- CopperSmith Short-Pad
+- CopperSmith Recover [c=(M+m)^e % n] (Franklin-Reiter)
+- SideChannel Attack
+- Bleichenbacher on signature attack
+- Fault attack on signature
+
+AES:
+- Square Attack
+- DFA on aes
+- Aes CPA
+- AES OFB
+- AES CTR
+- Padding Oracle On CBC
+
+Other :
+- Discret Log:
+	- Pohlig Hellman
+	- BabyStep Giant Step
+	- Pollard P-1
+- Shamir Secret
+- FEAL
+- 3DES
+- DES 
+- WEP
+- ESDCA , nonce reuse
+- elgamal
+- hash length extension
+- Breaking Randomisation (PRNG & V8 js)
+- Linear Congruence Generator
+- ADFGVX
+- Hill Cipher

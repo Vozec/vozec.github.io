@@ -1,0 +1,1 @@
+<script>if (document.querySelector('.dark') == undefined){document.querySelector('.dark-mode-toggle').click();}</script>
