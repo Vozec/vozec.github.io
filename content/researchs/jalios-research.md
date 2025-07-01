@@ -916,9 +916,7 @@ The final rendering is as follows:
 
 ### Demo
 
-<video controls> 
-  <source src="./video/xss_opener.mp4" type="video/mp4"> 
-</video>
+- https://vozec.fr/researchs/jalios-research/video/xss_opener.mp4
 
 ## Self-XSS & Clickjacking
 
