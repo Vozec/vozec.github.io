@@ -1003,9 +1003,7 @@ alert(1)
 
 ### Demo
 
-<video controls> 
-  <source src="./video/xss_clickjacking.mp4" type="video/mp4"> 
-</video>
+- https://vozec.fr/researchs/jalios-research/video/xss_clickjacking.mp4
 
 # Jalios Detection
 
