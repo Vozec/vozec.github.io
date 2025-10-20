@@ -12,7 +12,7 @@ Voici les différents théorèmes et application pour comprendre le chiffrement 
 
 ## Opération Modulaires
 
-L'opérateur modulo et une opération qui retourne le reste de la division euclidienne d'un nombre A par B:
+L'opérateur modulo est une opération qui retourne le reste de la division euclidienne d'un nombre A par B:
 
 $a \equiv r \pmod b$  
 $\Rightarrow~\exists~k \in N~|~a = b*k + r$
